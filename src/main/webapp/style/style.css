@@ -1,0 +1,225 @@
+/*
+Description: Css design sheet, contains all designs separated to groups (by pages).
+
+Author: Michal Drda
+
+Version:	ver  / DD-MM-CCYY / comment
+			0.01 / 23-10-2017 / initial version
+			0.02 / 28-10-2017 / new design for mainpage, profile box and events/friends online box are now fused 
+			0.03 / 31-10-2017 / added css for posts and comments (incl. forms, pictures, text)
+ 
+TODO:		1)	Design of profile, events
+
+*/
+
+<head>
+	<style type="text/css">
+		
+		/* General parts designs */
+		.nav.navbar-nav li a {
+		   color: #ffb84d;
+		   font-family: "Open Sans";
+		 }
+
+		.nav.navbar-nav a:hover {
+		 color: #e5e5e5;
+		}
+		
+		.p-basic-white {
+			color: #ffffff;
+		}
+		
+		.p-bigger-white {
+			font-size: 16px;
+			color: #ffffff;
+		}
+		
+		.container-border-1px {
+			border: 1px solid #ffb84d;
+			margin-bottom: 5px;
+		}
+		
+		.img-border {
+			border: 1px solid #ffb84d;
+			border-radius: 4px;
+			padding: 5px;
+			position: center;
+			max-width: 100%;
+		}
+		
+		p {
+			font-family: "Open Sans";
+			font-size: 14px;
+			color: #808080;
+		}
+		
+		.p-small-text {
+			font-size: 10px;
+		}
+		
+		.box-text-a {
+			margin-top: 10px;
+		}
+
+		h1 {
+			color: #ffffff;
+			font-family: "Open Sans";
+			text-align: left;
+			margin-bottom: 15px;
+		}
+		
+		h2 {
+			color: #808080;
+			font-family: "Open Sans"
+		}
+		
+		h4 {
+			color: #ffb84d;
+			font-family: "Open Sans";
+			text-align: left;
+			margin-bottom: 10px;			
+		}
+
+		li a {
+			color: #ffb84d;
+			padding: 8px 16px;
+			display: block;
+			text-align: left;
+		}
+
+		label {
+			font-family: "Open Sans";
+			font-size: 14px;
+			color:white;
+		}
+		
+		body {
+			background-color: #ffb84d;
+		}
+		
+		hr {
+			margin: 10px;
+		}
+		
+		.disable-padding {
+			padding-right: 0px;
+			padding-left: 0px;
+		}
+		
+		/* Forms */
+		
+		.terms {
+			border: 1px solid #e5e5e5; 
+			border-radius: 4px;
+			background: #ffffff;
+			height: 180px; 
+			overflow: auto; 
+			padding: 15px;
+		}
+		
+		.terms-padding {
+			padding-left: 15px;
+			padding-right: 15px;
+		}		
+		
+		.form-max-width {
+			max-width: 920px;
+		}
+		
+		/* Main-page news feed */
+
+		.box-column-master {
+			border: 2px solid #e5e5e5;
+			border-radius: 7px;
+			background: #ffffff;
+			padding-top: 15px;
+			margin-bottom: 20px;
+		}
+		
+		/* feed main post window*/
+		.box-column-feed {
+			padding-top: 2vw;
+			padding-bottom: 3vw;
+			padding-left: 5vw;
+			padding-right: 5vw;
+			min-height: 30vh;
+			overflow: auto;
+		}
+		
+		/* Image in post */
+		.post-image {
+			border-radius: 7px;
+			background: #ffffff;
+			padding: 5px;
+		}
+		
+		/* Profile snipplet on feed page */
+		.box-column-profile {
+			min-height: 450px;
+			overflow: hidden;
+			padding-bottom: 10px;
+		}
+		
+		/* Login, register & about box*/
+		.box-border {
+			border: 1px solid #e5e5e5;
+			border-radius: 7px;
+			padding-top: 15px;
+			padding-left: 15px;
+			padding-right: 15px;
+			padding-bottom: 0px;
+		}
+		
+		.register-form-border {
+			margin-left: 10vw;
+			margin-right: 10vw;
+		}
+		
+		.login-max-width {
+			max-width: 400px;
+		}
+		
+		.p-about {
+			max-width: 383px;
+			padding-bottom: 15px;
+		}
+		
+		/* Comment form and parts */
+		.comment-label {
+			color: #e5e5e5;
+		}
+		
+		.comment-box {
+			max-height: 250px;
+			overflow: auto;
+			border: 1px solid #e5e5e5;
+			border-radius: 7px;
+			margin-bottom: 5px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+		
+		.comment-icon {
+			padding-right: 0px;
+			padding-left: 10px;
+			max-width: 68px;
+		}
+		
+		.comment-text {
+			padding-right: 0px;
+		}
+		
+		.comment-input {
+			border: 1px solid #ffb84d; 
+			margin-bottom: 15px;
+		}
+		
+		.button-right {
+			float: right;
+			margin-left: 5px;
+		}
+		
+	</style>
+</head>

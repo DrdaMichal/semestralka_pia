@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"
+>
+
+    <context:annotation-config/>
+    <context:component-scan base-package="drdm.school.pia.**.*"/>
+
+    <!--
+     Replaces all ${placeholders} with values from property files listed in "locations" property
+     E.g. postservice.url in apiaryPostServiceClient.
+    -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+            </list>
+        </property>
+        <property name="searchSystemEnvironment" value="true" />
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+    </bean>
+
+    <!-- Security -->
+
+    <security:http authentication-manager-ref="authManager" >
+        <!-- login-page: URL of login page -->
+        <!-- default-target-url: redirects to /secret/vip after login if no other secured page had been requested before-->
+        <security:form-login login-page="/" default-target-url="/secret/vip"/>
+        <security:intercept-url pattern="*" access="permitAll()"/>
+        <!-- user must be logged in to access any secret page -->
+        <security:intercept-url pattern="/secret/*" access="hasAuthority('ADMIN')"/>
+        <security:intercept-url pattern="/public/*" access="hasAuthority('USER')"/>
+    </security:http>
+
+    <security:authentication-manager id="authManager">
+        <!-- use UserDaoJpa as user data provider-->
+        <security:authentication-provider user-service-ref="userDaoMemorySmarter">
+            <!-- use PasswordHashEncoder as password encoder -->
+            <security:password-encoder ref="passwordHashEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <security:global-method-security pre-post-annotations="enabled"/>
+</beans>
