@@ -7,7 +7,7 @@ Author: Michal Drda
 Version:	ver  / DD-MM-CCYY / comment
 			0.01 / 20-10-2017 / initial version
 			0.02 / 31-10-2017 / form align
- 
+            0.03 / 22-10-2018 / refactoring to 2018 project (Internet banking)
  -->
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -40,14 +40,14 @@ Version:	ver  / DD-MM-CCYY / comment
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>                        
 					</button>
-					<a class="navbar-brand" href="main_page.html">CoolBank</a>
+					<a class="navbar-brand" href="main_page">CoolBank</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="about.html">About</a></li>
+						<li><a href="about">About</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li id="login"><a href="login.html" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li id="login"><a href="login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
 				</div>
 			</div>

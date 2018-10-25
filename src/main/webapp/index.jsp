@@ -18,7 +18,7 @@
     creates the controller -->
 <form action="login" method="post">
     <!-- Part of Spring security mechanism of protection against CSRF attacks, we will
-        talk more about this during the respective lab -->
+        talk more About this during the respective lab -->
     <sec:csrfInput/>
     <sec:csrfMetaTags/>
     <label for="username">Login:&nbsp;</label>

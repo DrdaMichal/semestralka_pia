@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- 
+Description: About page, used for an info About project.
+
+Author: Michal Drda
+
+Version:	ver  / DD-MM-CCYY / comment
+			0.01 / 28-10-2017 / initial version
+			0.02 / 25-10-2018 / refactoring to 2018 project (Internet banking)
+ 
+TODO:		1)	Improve text
+TODO:		2)	Create main_page.jsp
+ 
+ -->
+ 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>About CoolBank</title>
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../style/style.css">
+		
+		<!-- Used for hiding menu - small screens -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Used for hiding menu - small screens -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Function used for hiding login/logout button -->
+		<script src="../js/loginFunction.js"></script>
+	</head>
+	<body>
+	    <nav class="navbar navbar-default navbar-static-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>                        
+					</button>
+					<a class="navbar-brand" href="main_page">CoolBank</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="about">About</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li id="register"><a href="register" onclick="loginFunction()"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+						<li id="login"><a href="login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li id="logout" style="display: none"><a href="" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<h1 class="col-xs-offset-1 col-sm-offset-4">About the CoolBank ...</h1>
+			<p class="container-fluid p-bigger-white col-xs-12 col-sm-6 col-md-4 col-xs-offset-1 col-sm-offset-4 col-md-offset-4 p-about box-border">CoolBank is a web application that has been created during winter semester of university year 2018/2019. It has to be some kind of website like internet banking, so students will learn how to work with various technologies used for developing web applications.</p>
+		</div>
+	</body>
+</html>
