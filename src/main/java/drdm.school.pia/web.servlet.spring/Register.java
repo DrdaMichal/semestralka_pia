@@ -34,10 +34,9 @@ public class Register extends AbstractServlet {
     private static final String ADDRESS_PARAMETER = "address";
     private static final String ZIP_PARAMETER = "zip";
     private static final String BIRTHID_PARAMETER = "birthId";
-    private static final String BIRTHDATE_PARAMETER = "birthDate";
+    private static final String BIRTHDATE_PARAMETER = "birthdate";
     private static final String GENDER_PARAMETER = "gender";
     //TODO: check tableName and columnName where username is stored
-    private static final String USERNAME_PARAMETER = String.valueOf(generateNumber.getRandomNumber(8, "user", "username"));
     //private static final String ROLE = "role";
 
     private static final String ERROR_ATTRIBUTE = "err";
@@ -65,10 +64,10 @@ public class Register extends AbstractServlet {
         String address = req.getParameter(ADDRESS_PARAMETER);
         String zip = req.getParameter(ZIP_PARAMETER);
         String birthId = req.getParameter(BIRTHID_PARAMETER);
-        String username = req.getParameter(USERNAME_PARAMETER);
+        String username = String.valueOf(generateNumber.getRandomNumber(8, "user", "username"));
         Date birthDate = null;
         try {
-            birthDate = new SimpleDateFormat("dd-MMM-yyyy").parse(req.getParameter(BIRTHDATE_PARAMETER));
+            birthDate = new SimpleDateFormat("MM-dd-yyyy").parse(req.getParameter(BIRTHDATE_PARAMETER));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -83,7 +82,7 @@ public class Register extends AbstractServlet {
         try {
             //userManager.register(new User(firstname, password, role));
             userManager.register(new User(username, firstname, lastname, email, password, address, zip, birthId, birthDate, gender));
-            resp.sendRedirect("");  //not perfect, user should get a message registration was successful!
+            resp.sendRedirect("login");  //not perfect, user should get a message registration was successful!
         } catch (UserValidationException e) {
             errorDispatch(e.getMessage(), req, resp);
         }

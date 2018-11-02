@@ -40,7 +40,7 @@ Version:	ver  / DD-MM-CCYY / comment
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>                        
 					</button>
-					<a class="navbar-brand" href="main_page.jsp">CoolBank</a>
+					<a class="navbar-brand" href="index.jsp">CoolBank</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
@@ -53,7 +53,15 @@ Version:	ver  / DD-MM-CCYY / comment
 			</div>
 		</nav>
 		<div class="container-fluid">
-			<form action="login" class="form-horizontal">
+			<c:if test="${not empty requestScope.err}">
+				<div class="alert alert-danger alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<p>Error: ${requestScope.err}</p>
+				</div>
+			</c:if>
+			<form action="login" method="post" class="form-horizontal">
+				<sec:csrfInput/>
+				<sec:csrfMetaTags/>
 				<h1 class="col-sm-offset-4">Login to CoolBank now!</h1>
 				<div class="container-fluid col-xs-12 col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-4 box-border login-max-width">
 					<div class="container-fluid">

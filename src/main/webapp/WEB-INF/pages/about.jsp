@@ -39,7 +39,7 @@ TODO:		2)	Create main_page.jsp
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>                        
 					</button>
-					<a class="navbar-brand" href="main_page">CoolBank</a>
+					<a class="navbar-brand" href="index.jsp">CoolBank</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">

@@ -94,7 +94,7 @@ TODO:		1)	Design of profile, events
 		}
 		
 		body {
-			background-color: #ffb84d;
+			background-color: #8c8cc6;
 		}
 		
 		hr {
@@ -171,6 +171,12 @@ TODO:		1)	Design of profile, events
 		}
 		
 		.register-form-border {
+			margin-left: 10vw;
+			margin-right: 10vw;
+			margin-bottom: 20px;
+		}
+
+		.register-h1-margins {
 			margin-left: 10vw;
 			margin-right: 10vw;
 		}

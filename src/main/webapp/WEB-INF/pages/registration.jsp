@@ -30,6 +30,7 @@ Version:	ver  / DD-MM-CCYY / comment
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<!-- Function used for hiding login/logout button -->
 		<script src="../js/loginFunction.js"></script>
+        <script src="../js/dateToday.js"></script>
 	</head>
 	<body>
 	    <nav class="navbar navbar-default navbar-static-top">
@@ -40,7 +41,7 @@ Version:	ver  / DD-MM-CCYY / comment
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>                        
 					</button>
-					<a class="navbar-brand" href="main_page">CoolBank</a>
+					<a class="navbar-brand" href="index.jsp">CoolBank</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
@@ -55,11 +56,16 @@ Version:	ver  / DD-MM-CCYY / comment
 
 		<div class="container-fluid">
             <c:if test="${not empty requestScope.err}">
-                Error: ${requestScope.err}
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <p>Error: ${requestScope.err}</p>
+                </div>
             </c:if>
-			<h1 class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1">Register to CoolBank now!</h1>
+			<h1 class="register-h1-margins">Register to CoolBank now!</h1>
 			<form action="register" method="post" class="form-horizontal register-form-border box-border form-max-width">
-				<div class="container-fluid disable-padding">
+                <sec:csrfInput/>
+                <sec:csrfMetaTags/>
+                <div class="container-fluid disable-padding">
 					<div class="col-xs-6 col-sm-6 col-md-6">
 						<div class="form-group">
 							<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="firstname">*Firstname</label>
@@ -114,7 +120,7 @@ Version:	ver  / DD-MM-CCYY / comment
 						<div class="form-group">
 							<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="birthdate">*Birth date</label>
 							<div class="col-xs-10 col-sm-6 col-md-6 disable-padding">
-								<input class="form-control" type="date" id="birthdate" name="birthdate" min="01-Jan-1900" max="01-Jan-2019"/>
+								<input class="form-control" type="date" id="birthdate" name="birthdate" min="1900-01-01" max="2019-01-01"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -128,44 +134,61 @@ Version:	ver  / DD-MM-CCYY / comment
 				</div>
 				<div class="container-fluid disable-padding">
 					<div class="form-group terms-padding">
-						<p class="col-sm-offset-2 col-md-offset-2 p-basic-white">Please note, that it is mandatory to answer all columns with * sign.</p>
+						<p class="col-sm-offset-3 col-md-offset-3 p-basic-white">Please note, that it is mandatory to answer all columns with * sign.</p>
 					</div>
 					<div class="form-group terms-padding">
-						<label class="col-xs-12 col-sm-3 col-md-3 control-label">Terms of use</label>
+						<label class="col-xs-12 col-sm-3 col-md-3 control-label">Terms and Conditions</label>
 						<div class="col-xs-12 col-sm-9 col-md-9 terms">
-							<p>Považte, děti, co se pejskovi jednou stalo!
+                            <h2>Introduction</h2>
+                            <p>These Website Standard Terms and Conditions written on this webpage shall manage your use of our website, coolbank.com accessible at cool-bank.com.</p>
+                            <p>These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions. These terms and conditions have been <a href="https://termsandcondiitionssample.com">generated at Terms And Conditions Sample.com</a></p>
+                            <p>Minors or people below 18 years old are not allowed to use this Website.</p>
 
-Hopsal, skákal, hrál si s kočičkou na louce, váleli sudy, dělali kotrmelce a všelijaké jiné komedie a přitom si někde vrazil do pacičky ostrý střep. Byl to malý střep, ale hodně to bolelo a nemohl na tu nožičku dobře došlápnout.
+                            <h2>Intellectual Property Rights</h2>
+                            <p>Other than the content you own, under these Terms, CoolBank and/or its licensors own all the intellectual property rights and materials contained in this Website.</p>
+                            <p>You are granted limited license only for purposes of viewing the material contained on this Website.</p>
 
-“Je to ale nerozum a neopatrnost,” hubovala kočička, “nechat takhle někde válet střepy. To by lidé neměli nikdy dělat! Střepy se mají vždycky pěkně uklidit. Pak na to někdo šlápne, třeba některé zvířátko, nebo třeba i děti, když jsou bosý, a rozříznou si nožičku a pak to bolí a teče jim z toho krev. Pojď, pejsku, můj chudáčku, moje nynyny, ty můj pišulko a pišulánku, můj pišiši a pišišišínku, ty můj broučku zlatý, pojď, ty moje ubohá pišišindo, já tě vezmu domů a zavážu ti tlapičku, aby tě ta bolístka tak nebolela!”
+                            <h2>Restrictions</h2>
+                            <p>You are specifically restricted from all of the following:</p>
+                            <ul>
+                                <li>publishing any Website material in any other media;</li>
+                                <li>selling, sublicensing and/or otherwise commercializing any Website material;</li>
+                                <li>publicly performing and/or showing any Website material;</li>
+                                <li>using this Website in any way that is or may be damaging to this Website;</li>
+                                <li>using this Website in any way that impacts user access to this Website;</li>
+                                <li>using this Website contrary to applicable laws and regulations, or in any way may cause harm to the Website, or to any person or business entity;</li>
+                                <li>engaging in any data mining, data harvesting, data extracting or any other similar activity in relation to this Website;</li>
+                                <li>using this Website to engage in any advertising or marketing.</li>
+                            </ul>
+                            <p>Certain areas of this Website are restricted from being access by you and CoolBank may further restrict access by you to any areas of this Website, at any time, in absolute discretion. Any user ID and password you may have for this Website are confidential and you must maintain confidentiality as well.</p>
 
-Doma kočička pejskovi tlapičku pofoukala a vymyla a zavázala, aby ho ta bolístka tak nebolela. “Já se bojím, aby se mně z toho neudělal vřes,” povídal pejsek, když mu to kočička zavazovala. “Co aby se ti z toho neudělalo?” divila se kočka. “No, vřes aby se mně z toho neudělal. To se přece někdy z takových bolístek udělá velká bolenice, napuchne to, až je z toho velká boule, kolem je to červené a uvnitř bílé a tomu se říká vřes. A ten pak moc bolí.” – “Aha, ty myslíš vřed!” pochopila kočička. “Ale ne! Vřes myslím. Přece vřed roste u lesa a dává se do vázy!” řekl pejsek. “Ale kdepak!” řekla kočička, “to si to pleteš. Přece vřes se dává do vázy, a ne vřed. Hihihi, kdopak by si dával do vázy vřed! To se přece nedělá, to ne, to ne!” “Ty si to pleteš!” hádal se pejsek. “Z bolístky se někdy udělá vřes a u lesa roste vřed. Tak je to!”
+                            <h2>Your Content</h2>
+                            <p>In these Website Standard Terms and Conditions, "Your Content" shall mean any audio, video text, images or other material you choose to display on this Website. By displaying Your Content, you grant CoolBank a non-exclusive, worldwide irrevocable, sub licensable license to use, reproduce, adapt, publish, translate and distribute it in any and all media.</p>
+                            <p>Your Content must be your own and must not be invading any third-party’s rights. CoolBank reserves the right to remove any of Your Content from this Website at any time without notice.</p>
 
-“Tak si tomu tedy říkej jak chceš, ale já se ti musím smát, až to povím dětem, tak se ti budou smát taky,” řekla kočička a položila pejska na polštář. Pejsek seděl na polštáři s tlapičkou zavázanou a čekal, až se mu na ní udělá ten vřes. Čekal dlouho, vrtěl sebou všelijak, ale běhat nemohl, a tak mu byla dlouhá chvíle. “Co mám dělat, co mám dělat!” naříkal, “já mám dlouhou chvíli. Prosím tě, kočičko, povídej mně něco.”
+                            <h2>No warranties</h2>
+                            <p>This Website is provided "as is," with all faults, and CoolBank express no representations or warranties, of any kind related to this Website or the materials contained on this Website. Also, nothing contained on this Website shall be interpreted as advising you.</p>
 
-“A co bych ti povídala?” řekla kočička. “Povídej mně nějakou pohádku!” řekl pejsek. “A jakou?” ptala se kočička. “Nějakou hezkou,” žádal pejsek. “Povídej, povídej!” “Chtěl bys o noční košilce?” ptala se kočička. “Tak, o noční košilce, ale musí to s ní nakonec dobře dopadnout,” poručil pejsek.
+                            <h2>Limitation of liability</h2>
+                            <p>In no event shall CoolBank, nor any of its officers, directors and employees, shall be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract.  CoolBank, including its officers, directors and employees shall not be held liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website.</p>
 
-“Tak tedy o noční košilce,” řekla kočička a začala vypravovat:
+                            <h2>Indemnification</h2>
+                            <p>You hereby indemnify to the fullest extent CoolBank from and against any and/or all liabilities, costs, demands, causes of action, damages and expenses arising in any way related to your breach of any of the provisions of these Terms.</p>
 
-“Tak byla jednou jedna noční košilka a ta byla chudá. A protože byla chudá, tak na sobě neměla žádné červené, ani modré, ani žluté, zelené nebo fialové proužečky, ani žádné vyšívání s kuličkami, čtverečky, hvězdičkami, kytičkami, ani lístky. Byla jenom bílá, ale přitom byla moc hodná. A tak šla jednou na procházku a potkala jinou noční košilku.
+                            <h2>Severability</h2>
+                            <p>If any provision of these Terms is found to be invalid under any applicable law, such provisions shall be deleted without affecting the remaining provisions herein.</p>
 
-‚Jéjej, to je krásná košilka!’ vykřikla ta chudá noční košilka. Ona ta druhá noční košilka byla bohatá a byla krásně barevná a měla na sobě vyšívané čtverečky, proužečky a všelijaká kolečka a všecko možné, jak moc byla zdobená. ‚Ach košilo, ty jsi tak krásná, ty se mně tak tuze líbíš, řekla ta chudá noční košilka té bohaté noční košilce, ‚pojď si se mnou hrát!’ Ale ta bohatá noční košilka byla pyšná. ‚Nepůjdu!’ řekla, ‚ty na sobě nemáš žádné proužečky, ani žádná kolečka a nic, s tebou já si nebudu hrát!’ To řekla a šla pyšně dál.”
+                            <h2>Variation of Terms</h2>
+                            <p>CoolBank is permitted to revise these Terms at any time as it sees fit, and by using this Website you are expected to review these Terms on a regular basis.</p>
 
-“To nebyla hodná noční košilka,” řekl pejsek, “když si s tou chudou košilkou nechtěla hrát.” “Baže nebyla,” řekla kočička. “Však taky, jak si potom hrála sama, tak na sebe nedala dobře pozor a hrála si v blátě a moc se umazala.” “To měla z toho, že byla pyšná!” řekl pejsek, “a teď zas povídej dál!”
+                            <h2>Assignment</h2>
+                            <p>The CoolBank is allowed to assign, transfer, and subcontract its rights and/or obligations under these Terms without any notification. However, you are not allowed to assign, transfer, or subcontract any of your rights and/or obligations under these Terms.</p>
 
-“No tak teda,” povídala kočička dál, “tu chudou noční košilku to trápilo a byla z toho smutná. Šla domů, sedla si na postýlku a byla pořád ještě z toho smutná, jak si ta pyšná noční košilka s ní nechtěla hrát. A tu k ní přišel takový andělíček a povídá jí: ‚Proč jsi tak smutná, košilko?’ ‚Já jsem smutná,’ řekla chudá noční košilka, ‚protože jsem potkala krásnou noční košilku, ta byla vyšívaná a měla na sobě všelijaká kolečka, jahůdky, čtverečky a proužečky a ta se mně tak tuze líbila a já jsem si s ní chtěla hrát, ale ona nechtěla, protože jsem chudá a nemám na sobě žádné takové vyšívání, jako měla ona.’
+                            <h2>Entire Agreement</h2>
+                            <p>These Terms constitute the entire agreement between CoolBank and you in relation to your use of this Website, and supersede all prior agreements and understandings.</p>
 
-‚Nic si z toho nedělej,’ řekl andělíček. ‚Jen se pěkně svlékni a jdi hajat. Však ono se to do rána už třebas nějak spraví.’ Tak se tedy ta chudá noční košilka svlékla a šla pěkně hajat.
-
-A když spala, zavolal ten andělíček ještě jiné andělíčky a ti tu košilku krásně vyšili a udělali na ní proužečky a červené tečky a čtverečky a ještě takové všelijaké věci, jak to má kdo rád, a ještě ji pěkně vyžehlili a pak zas odletěli. A když se ráno ta noční košilka probudila a oblékla se, tu se ani nemohla poznat. Šla na procházku a teď potkala tu pyšnou noční košilku, která si s ní včera nechtěla hrát. A ta pyšná noční košilka byla dosti umazaná, to jsme už povídali, a nemohla tu košilku ani poznat. ‚To je krásná noční košilka,’ řekla si, ‚kdyby si tak chtěla se mnou hrát!'”
-
-“Ať si s ní ta chudá košilka hraje!” řekl pejsek kočičce. “Ať si s ní hraje a není taky pyšná, když tamta byla pyšná a nechtěla si s ní hrát!” “To také že nebyla pyšná, ta chudá noční košilka,” řekla kočička, “třebaže teď byla čistá a měla na sobě tečky a čtverečky a proužečky. Ona řekla té pyšné: ‚Jen si pojď se mnou, ty košilko, hrát!'”
-
-“To je dobře, to se mně líbí,” řekl pejsek, “že se nestala pyšnou. A na co si všechno hrály?”
-
-“No na všecko si hrály,” povídala kočička. “Hrály si s panenkami a na prodávanou, na školu i na honěnou i na schovávanou, dělaly si věnečky a zahrádku, hrály si na vaření a na návštěvu a na všecko možné, až si dost vyhrály, a pak šly spolu do jedné postýlky spát. A ta pyšná noční košilka už nebyla pyšná, ona si řekla, že už nikdy pyšná nebude, a potom si ty dvě noční košilky spolu hrály každý den a nikdy se ani spolu nehádaly, ani žádná z nich nechtěla jedna druhé poroučet.”
-
-“Tak to bylo dobře,” řekl pejsek. “A mne už tlapička nebolí. Já jsem na tu bolístku při tom povídání docela zapomněl.”</p>
+                            <h2>Governing Law & Jurisdiction</h2>
+                            <p>These Terms will be governed by and interpreted in accordance with the laws of the State of cz, and you submit to the non-exclusive jurisdiction of the state and federal courts located in cz for the resolution of any disputes.</p>
 						</div>
 					</div>
 					<div class="form-group terms-padding">
