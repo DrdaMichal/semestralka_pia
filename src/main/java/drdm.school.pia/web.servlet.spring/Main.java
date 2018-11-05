@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/main")
+@WebServlet({"/main", "/manage", "/banking"})
 public class Main extends AbstractServlet {
 
     private SecretManager SecretManager;

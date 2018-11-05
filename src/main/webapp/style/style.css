@@ -12,9 +12,7 @@ TODO:		1)	Design of profile, events
 
 */
 
-<head>
-	<style type="text/css">
-		
+
 		/* General parts designs */
         .nav.navbar-nav {
             background-color: #ffb84d;
@@ -234,6 +232,4 @@ TODO:		1)	Design of profile, events
 			float: right;
 			margin-left: 5px;
 		} */
-		
-	</style>
-</head>
+
