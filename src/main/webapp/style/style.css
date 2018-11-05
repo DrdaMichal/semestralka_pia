@@ -16,15 +16,35 @@ TODO:		1)	Design of profile, events
 	<style type="text/css">
 		
 		/* General parts designs */
-		.nav.navbar-nav li a {
-		   color: #ffb84d;
+        .nav.navbar-nav {
+            background-color: #ffb84d;
+        }
+
+        .nav.navbar-nav li a {
+		   color: #ffffff;
 		   font-family: "Open Sans";
 		 }
 
-		.nav.navbar-nav a:hover {
-		 color: #e5e5e5;
+        .navbar-default .navbar-brand {
+            color: #ffffff;
+        }
+
+        .navbar-default {
+            background-color: #ffb84d;
+        }
+
+		.nav.navbar-nav li a:hover {
+		    color: #808080;
 		}
-		
+
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+        }
+
+        .navbar-default .navbar-toggle:hover {
+            background-color: #ffffff;
+        }
+
 		.p-basic-white {
 			color: #ffffff;
 		}
@@ -62,7 +82,7 @@ TODO:		1)	Design of profile, events
 		}
 
 		h1 {
-			color: #ffffff;
+			color: #808080;
 			font-family: "Open Sans";
 			text-align: left;
 			margin-bottom: 15px;
@@ -90,11 +110,11 @@ TODO:		1)	Design of profile, events
 		label {
 			font-family: "Open Sans";
 			font-size: 14px;
-			color:white;
+			color: #808080;
 		}
 		
 		body {
-			background-color: #8c8cc6;
+			background-color: #e5e5e5;
 		}
 		
 		hr {
@@ -105,11 +125,15 @@ TODO:		1)	Design of profile, events
 			padding-right: 0px;
 			padding-left: 0px;
 		}
+
+        .disable-margin-top {
+            margin-top: 0px;
+        }
 		
 		/* Forms */
 		
 		.terms {
-			border: 1px solid #e5e5e5; 
+			border: 1px solid #808080; 
 			border-radius: 4px;
 			background: #ffffff;
 			height: 180px; 
@@ -125,44 +149,17 @@ TODO:		1)	Design of profile, events
 		.form-max-width {
 			max-width: 920px;
 		}
-		
-		/* Main-page news feed */
 
-		.box-column-master {
-			border: 2px solid #e5e5e5;
-			border-radius: 7px;
-			background: #ffffff;
-			padding-top: 15px;
-			margin-bottom: 20px;
-		}
-		
-		/* feed main post window*/
-		.box-column-feed {
-			padding-top: 2vw;
-			padding-bottom: 3vw;
-			padding-left: 5vw;
-			padding-right: 5vw;
-			min-height: 30vh;
-			overflow: auto;
-		}
-		
-		/* Image in post */
-		.post-image {
-			border-radius: 7px;
-			background: #ffffff;
-			padding: 5px;
-		}
-		
-		/* Profile snipplet on feed page */
-		.box-column-profile {
-			min-height: 450px;
-			overflow: hidden;
-			padding-bottom: 10px;
-		}
-		
+        .h1-terms-smaller {
+            font-size: 180%;
+        }
+
+        .h2-terms-smaller {
+            font-size: 140%;
+        }
+
 		/* Login, register & About box*/
 		.box-border {
-			border: 1px solid #e5e5e5;
 			border-radius: 7px;
 			padding-top: 15px;
 			padding-left: 15px;
@@ -189,8 +186,19 @@ TODO:		1)	Design of profile, events
 			max-width: 383px;
 			padding-bottom: 15px;
 		}
+
+        .btn-default {
+            color: #ffffff;
+            background-color: #ffb84d;
+            font-family: "Open Sans";
+            border: 1px solid transparent;
+        }
+        .btn-default:hover {
+            background-color: #ffffff;
+            color: #808080;
+        }
 		
-		/* Comment form and parts */
+		/* Comment form and parts
 		.comment-label {
 			color: #e5e5e5;
 		}
@@ -225,7 +233,7 @@ TODO:		1)	Design of profile, events
 		.button-right {
 			float: right;
 			margin-left: 5px;
-		}
+		} */
 		
 	</style>
 </head>

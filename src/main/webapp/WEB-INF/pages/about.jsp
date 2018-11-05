@@ -6,7 +6,7 @@ Author: Michal Drda
 
 Version:	ver  / DD-MM-CCYY / comment
 			0.01 / 28-10-2017 / initial version
-			0.02 / 25-10-2018 / refactoring to 2018 project (Internet banking)
+			0.02 / 25-10-2018 / refactoring to 2018 project (Internet Banking)
  
 TODO:		1)	Improve text
 TODO:		2)	Create main_page.jsp

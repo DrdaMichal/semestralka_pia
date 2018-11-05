@@ -31,13 +31,14 @@ public class Register extends AbstractServlet {
     private static final String EMAIL_PARAMETER = "email";
     private static final String PASSWORD_PARAMETER = "password";
     private static final String CONFIRM_PWD_PARAMETER = "confirmPwd";
+    private static final String ROLE_PARAMETER = "role";
     private static final String ADDRESS_PARAMETER = "address";
+    private static final String CITY_PARAMETER = "city";
     private static final String ZIP_PARAMETER = "zip";
     private static final String BIRTHID_PARAMETER = "birthId";
-    private static final String BIRTHDATE_PARAMETER = "birthdate";
     private static final String GENDER_PARAMETER = "gender";
+    private static final String CAPTCHA_PARAMETER = "captcha";
     //TODO: check tableName and columnName where username is stored
-    //private static final String ROLE = "role";
 
     private static final String ERROR_ATTRIBUTE = "err";
 
@@ -55,24 +56,21 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pattern = "yyyy-MM-dd";
         String firstname = req.getParameter(FIRSTNAME_PARAMETER);
         String lastname = req.getParameter(LASTNAME_PARAMETER);
         String email = req.getParameter(EMAIL_PARAMETER);
         String password = req.getParameter(PASSWORD_PARAMETER);
         String confirmPwd = req.getParameter(CONFIRM_PWD_PARAMETER);
+        String role = req.getParameter(ROLE_PARAMETER);
         String address = req.getParameter(ADDRESS_PARAMETER);
+        String city = req.getParameter(CITY_PARAMETER);
         String zip = req.getParameter(ZIP_PARAMETER);
         String birthId = req.getParameter(BIRTHID_PARAMETER);
         String username = String.valueOf(generateNumber.getRandomNumber(8, "user", "username"));
-        Date birthDate = null;
-        try {
-            birthDate = new SimpleDateFormat("MM-dd-yyyy").parse(req.getParameter(BIRTHDATE_PARAMETER));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        System.out.println("Psw: " +  password);
         String gender = req.getParameter(GENDER_PARAMETER);
-        //String role = req.getParameter(ROLE);
+        String captcha = req.getParameter(CAPTCHA_PARAMETER);
+
 
         if(!Objects.equals(password, confirmPwd)) {
             errorDispatch("The password and confirm password fields do not match!", req, resp);
@@ -81,7 +79,7 @@ public class Register extends AbstractServlet {
 
         try {
             //userManager.register(new User(firstname, password, role));
-            userManager.register(new User(username, firstname, lastname, email, password, address, zip, birthId, birthDate, gender));
+            userManager.register(new User(username, firstname, lastname, email, password, role, address, city, zip, birthId, gender));
             resp.sendRedirect("login");  //not perfect, user should get a message registration was successful!
         } catch (UserValidationException e) {
             errorDispatch(e.getMessage(), req, resp);

@@ -24,29 +24,31 @@ public class User extends BaseObject implements UserDetails {
     private String firstname;
     private String lastname;
     private String email;
+    private String role;
     /**
      * Secret for signing-in
      */
     private String password;
     private String address;
+    private String city;
     private String zip;
     private String birthId;
-    private Date birthDate;
     private String gender;
 
     public User() {
     }
 
-    public User(String username, String firstname, String lastname, String email, String password, String address, String zip, String birthId, Date birthDate, String gender) {
+    public User(String username, String firstname, String lastname, String email, String password, String role, String address, String city, String zip, String birthId, String gender) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
+        this.role = role;
         this.address = address;
+        this.city = city;
         this.zip = zip;
         this.birthId = birthId;
-        this.birthDate = birthDate;
         this.gender = gender;
     }
 
@@ -60,14 +62,15 @@ public class User extends BaseObject implements UserDetails {
      */
     public void validate() throws UserValidationException {
         if(StringUtils.isBlank(username)) throw new UserValidationException("Username is a required field");
-        if(StringUtils.isBlank(firstname)) throw new UserValidationException("Firstname is a required field");
-        if(StringUtils.isBlank(lastname)) throw new UserValidationException("Lastname is a required field");
-        if(StringUtils.isBlank(email)) throw new UserValidationException("Email is a required field");
+        if(StringUtils.isBlank(firstname)) throw new UserValidationException("First name is a required field");
+        if(StringUtils.isBlank(lastname)) throw new UserValidationException("Last name is a required field");
+        if(StringUtils.isBlank(email)) throw new UserValidationException("E-mail is a required field");
         if(StringUtils.isBlank(password)) throw new UserValidationException("Password is a required field");
+        if(StringUtils.isBlank(role)) throw new UserValidationException("Role is a required field");
         if(StringUtils.isBlank(address)) throw new UserValidationException("Address is a required field");
+        if(StringUtils.isBlank(city)) throw new UserValidationException("City is a required field");
         if(StringUtils.isBlank(zip)) throw new UserValidationException("Zip Code is a required field");
         if(StringUtils.isBlank(birthId)) throw new UserValidationException("Birth id is a required field");
-        if(StringUtils.isBlank(birthDate.toString())) throw new UserValidationException("Date of birth is a required field");
         if(StringUtils.isBlank(gender)) throw new UserValidationException("Gender is a required field");
     }
 
@@ -77,7 +80,7 @@ public class User extends BaseObject implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("role"));
+        return Collections.singleton(new SimpleGrantedAuthority(role));
     }
 
     @Override
@@ -122,7 +125,6 @@ public class User extends BaseObject implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     @Override
     public boolean equals(Object o) {

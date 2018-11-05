@@ -36,11 +36,13 @@
     <security:http authentication-manager-ref="authManager" >
         <!-- login-page: URL of login page -->
         <!-- default-target-url: redirects to /secret/vip after login if no other secured page had been requested before-->
-        <security:form-login login-page="/" default-target-url="/secret/vip"/>
+        <security:form-login login-page="/" default-target-url="/main"/>
+        <!-- added logout first try (DRDM 20181105) -->
+        <security:logout logout-success-url="/"/>
         <security:intercept-url pattern="*" access="permitAll()"/>
         <!-- user must be logged in to access any secret page -->
-        <security:intercept-url pattern="/secret/*" access="hasAuthority('ADMIN')"/>
-        <security:intercept-url pattern="/public/*" access="hasAuthority('USER')"/>
+        <security:intercept-url pattern="/manage/*" access="hasAuthority('ADMIN')"/>
+        <security:intercept-url pattern="/banking/*" access="hasAuthority('USER')"/>
     </security:http>
 
     <security:authentication-manager id="authManager">

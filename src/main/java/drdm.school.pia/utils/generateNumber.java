@@ -31,6 +31,8 @@ public class generateNumber {
             randomNumber = (lowerBound + rnd.nextInt(addition));
         }
 
+        System.out.println("Username is: " + randomNumber);
+
         return randomNumber;
     }
 
