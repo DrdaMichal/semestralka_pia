@@ -52,11 +52,22 @@ TODO:		2)	Create main_page.jsp
 				</div>
 			</div>
 		</nav>
+		<div class="clear"></div>
+
 		<div class="container-fluid">
 			<div class="container about">
 				<h1>About the CoolBank ...</h1>
 				<p>CoolBank is a web application that has been created during winter semester of university year 2018/2019. It has to be some kind of website like internet banking, so students will learn how to work with various technologies used for developing web applications.</p>
+				<h1>You would like an account too?</h1>
+				<p>For account creation, please contact administrator on <a href="mailto:drdam@students.zcu.cz">drdam@students.zcu.cz</a></p>
 			</div>
 		</div>
+
+		<div class="clear"></div>
+		<footer id="footer">
+			<div class="container-fluid">
+				<p class="p-bigger-white">Created by Michal Drda in 2018.</p>
+			</div>
+		</footer>
 	</body>
 </html>

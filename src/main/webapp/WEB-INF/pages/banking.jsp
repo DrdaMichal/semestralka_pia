@@ -53,6 +53,7 @@
             </div>
         </div>
     </nav>
+    <div class="clear"></div>
 
     <div class="container-fluid max-width-1300">
         <div class="row">
@@ -126,5 +127,11 @@
         </div>
     </div>
 
+    <div class="clear"></div>
+    <footer id="footer">
+        <div id="container-fluid">
+            <p class="p-bigger-white">Created by Michal Drda in 2018.</p>
+        </div>
+    </footer>
 </body>
 </html>

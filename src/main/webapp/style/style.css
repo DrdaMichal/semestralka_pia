@@ -28,6 +28,8 @@ TODO:		1)	Design of profile, events
         }
 
         .navbar-default {
+			position: fixed;
+			width: 100%;
             background-color: #ffb84d;
         }
 
@@ -48,7 +50,8 @@ TODO:		1)	Design of profile, events
 		}
 		
 		.p-bigger-white {
-			font-size: 16px;
+			padding-top: 10px;
+			font-size: 15px;
 			color: #ffffff;
 		}
 		
@@ -119,7 +122,22 @@ TODO:		1)	Design of profile, events
 		body {
 			background-color: #e5e5e5;
 		}
-		
+
+		.clear {
+			clear: both;
+			height: 60px;
+		}
+
+		#footer {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			color: #ffffff;
+			background-color: #ffb84d;
+			text-align: right;
+		}
+
 		hr {
 			margin: 10px;
 		}
@@ -200,7 +218,7 @@ TODO:		1)	Design of profile, events
 		}
 		
 		.about {
-			max-width: 383px;
+			max-width: 600px;
 			padding-bottom: 15px;
 		}
 

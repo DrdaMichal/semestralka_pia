@@ -32,51 +32,60 @@ Version:	ver  / DD-MM-CCYY / comment
     <script src="../js/loginFunction.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.jsp">CoolBank</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="clear"></div>
+
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.jsp">CoolBank</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="about">About</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container-fluid">
-    <c:if test="${not empty requestScope.err}">
-        <div class="alert alert-danger alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <p>Error: ${requestScope.err}</p>
-        </div>
-    </c:if>
-    <div class="container login-max-width">
-        <h1 class="form-h1-paddings">Login to CoolBank</h1>
-        <form action="login" method="post" class="form-horizontal form-border box-border">
-            <sec:csrfInput/>
-            <sec:csrfMetaTags/>
-            <div class="container"></div>
-            <div class="form-group">
-                <label class="" for="username">User ID</label>
-                <input class="form-control" type="text" id="username" name="username"/>
+        <c:if test="${not empty requestScope.err}">
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <p>Error: ${requestScope.err}</p>
             </div>
-            <div class="form-group">
-                <label for="password">PIN</label>
-                <div class="">
-                    <input class="form-control" type="password" id="password" name="password"/>
+        </c:if>
+        <div class="container login-max-width">
+            <h1 class="form-h1-paddings">Login to CoolBank</h1>
+            <form action="login" method="post" class="form-horizontal form-border box-border">
+                <sec:csrfInput/>
+                <sec:csrfMetaTags/>
+                <div class="container"></div>
+                <div class="form-group">
+                    <label class="" for="username">User ID</label>
+                    <input class="form-control" type="text" id="username" name="username"/>
                 </div>
-            </div>
-            <div class="form-group col-xs-12 ">
-                <button class="btn btn-default" type="submit" value="login">Login</button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label for="password">PIN</label>
+                    <div class="">
+                        <input class="form-control" type="password" id="password" name="password"/>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12 ">
+                    <button class="btn btn-default" type="submit" value="login">Login</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+
+    <div class="clear"></div>
+    <footer id="footer">
+        <div class="container-fluid">
+            <p class="p-bigger-white">Created by Michal Drda in 2018.</p>
+        </div>
+    </footer>
 </body>
 </html>
