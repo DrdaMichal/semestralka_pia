@@ -3,7 +3,7 @@ package drdm.school.pia.web.servlet.spring;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.manager.UserManager;
-import drdm.school.pia.utils.generateNumber;
+import drdm.school.pia.utils.generateString;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletException;
@@ -66,7 +66,7 @@ public class Register extends AbstractServlet {
         String city = req.getParameter(CITY_PARAMETER);
         String zip = req.getParameter(ZIP_PARAMETER);
         String birthId = req.getParameter(BIRTHID_PARAMETER);
-        String username = String.valueOf(generateNumber.getRandomNumber(8, "user", "username"));
+        String username = String.valueOf(generateString.getRandomString(8));
         System.out.println("Psw: " +  password);
         String gender = req.getParameter(GENDER_PARAMETER);
         String captcha = req.getParameter(CAPTCHA_PARAMETER);

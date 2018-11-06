@@ -27,7 +27,7 @@ Version:	ver  / DD-MM-CCYY / comment
     <!-- Used for hiding menu - small screens -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Used for hiding menu - small screens -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Function used for hiding login/logout button -->
     <script src="../js/loginFunction.js"></script>
 </head>
@@ -46,9 +46,6 @@ Version:	ver  / DD-MM-CCYY / comment
             <ul class="nav navbar-nav">
                 <li><a href="about">About</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-            </ul>
         </div>
     </div>
 </nav>
@@ -59,28 +56,27 @@ Version:	ver  / DD-MM-CCYY / comment
             <p>Error: ${requestScope.err}</p>
         </div>
     </c:if>
-    <form action="login" method="post" class="form-horizontal">
-        <sec:csrfInput/>
-        <sec:csrfMetaTags/>
-        <h1 class="col-sm-offset-4">Login to CoolBank now!</h1>
-        <div class="container-fluid col-xs-12 col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-4 box-border login-max-width">
-            <div class="container-fluid">
-                <div class="form-group">
-                    <label class="" for="username">User ID</label>
-                    <input class="form-control" type="text" id="username" name="username"/>
-                </div>
-                <div class="form-group">
-                    <label for="password">PIN</label>
-                    <div class="">
-                        <input class="form-control" type="password" id="password" name="password"/>
-                    </div>
+    <div class="container login-max-width">
+        <h1 class="form-h1-paddings">Login to CoolBank</h1>
+        <form action="login" method="post" class="form-horizontal form-border box-border">
+            <sec:csrfInput/>
+            <sec:csrfMetaTags/>
+            <div class="container"></div>
+            <div class="form-group">
+                <label class="" for="username">User ID</label>
+                <input class="form-control" type="text" id="username" name="username"/>
+            </div>
+            <div class="form-group">
+                <label for="password">PIN</label>
+                <div class="">
+                    <input class="form-control" type="password" id="password" name="password"/>
                 </div>
             </div>
             <div class="form-group col-xs-12 ">
                 <button class="btn btn-default" type="submit" value="login">Login</button>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 </body>
 </html>

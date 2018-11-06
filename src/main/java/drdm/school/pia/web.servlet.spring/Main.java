@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet({"/main", "/manage", "/banking"})
+@WebServlet({"/main"})
 public class Main extends AbstractServlet {
 
     private SecretManager SecretManager;
@@ -21,8 +21,12 @@ public class Main extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String url = "/login";
-        System.out.println("Role: [" +  req.isUserInRole("ROLE_USER") + ", " + req.isUserInRole("USER") + ", " + req.isUserInRole("ADMIN") +  "]");
+        //String url = "/login";
+        String url = "/WEB-INF/pages/banking.jsp";
+        System.out.println("Role: ROLE_USER[" +  req.isUserInRole("ROLE_USER") + "]");
+        System.out.println("Role: ROLE_ADMIN[" +  req.isUserInRole("ROLE_ADMIN") + "]");
+        System.out.println("Role: USER[" +  req.isUserInRole("USER") + "]");
+        System.out.println("Role: ADMIN[" +  req.isUserInRole("ADMIN") + "]");
         if (req.isUserInRole("ROLE_USER")) {
             url = "/WEB-INF/pages/banking.jsp";
         }

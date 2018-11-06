@@ -56,6 +56,11 @@ TODO:		1)	Design of profile, events
 			border: 1px solid #ffb84d;
 			margin-bottom: 5px;
 		}
+
+		.row {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
 		
 		.img-border {
 			border: 1px solid #ffb84d;
@@ -127,25 +132,41 @@ TODO:		1)	Design of profile, events
         .disable-margin-top {
             margin-top: 0px;
         }
+
+		.box-background  {
+			background-color: #ffffff;
+		}
 		
 		/* Forms */
 		
 		.terms {
-			border: 1px solid #808080; 
+			border: 1px solid #ccc;
 			border-radius: 4px;
 			background: #ffffff;
 			height: 180px; 
 			overflow: auto; 
 			padding: 15px;
 		}
-		
-		.terms-padding {
+
+		.form-group {
 			padding-left: 15px;
 			padding-right: 15px;
-		}		
+		}
 		
 		.form-max-width {
 			max-width: 920px;
+		}
+
+		.max-width-700 {
+			max-width: 700px;
+		}
+
+		.max-width-460 {
+			max-width: 460px;
+		}
+
+		.max-width-1300 {
+			max-width: 1300px;
 		}
 
         .h1-terms-smaller {
@@ -165,22 +186,20 @@ TODO:		1)	Design of profile, events
 			padding-bottom: 0px;
 		}
 		
-		.register-form-border {
-			margin-left: 10vw;
-			margin-right: 10vw;
+		.form-border {
 			margin-bottom: 20px;
 		}
 
-		.register-h1-margins {
-			margin-left: 10vw;
-			margin-right: 10vw;
+		.form-h1-paddings {
+			padding-left: 15px;
+			padding-right: 15px;
 		}
 		
 		.login-max-width {
 			max-width: 400px;
 		}
 		
-		.p-about {
+		.about {
 			max-width: 383px;
 			padding-bottom: 15px;
 		}

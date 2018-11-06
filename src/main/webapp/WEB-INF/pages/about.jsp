@@ -26,7 +26,7 @@ TODO:		2)	Create main_page.jsp
 		<!-- Used for hiding menu - small screens -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- Used for hiding menu - small screens -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		<!-- Function used for hiding login/logout button -->
 		<script src="../js/loginFunction.js"></script>
 	</head>
@@ -46,7 +46,6 @@ TODO:		2)	Create main_page.jsp
 						<li><a href="about">About</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li id="register"><a href="register" onclick="loginFunction()"><span class="glyphicon glyphicon-user"></span> Register</a></li>
 						<li id="login"><a href="login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						<li id="logout" style="display: none"><a href="" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 					</ul>
@@ -54,8 +53,10 @@ TODO:		2)	Create main_page.jsp
 			</div>
 		</nav>
 		<div class="container-fluid">
-			<h1 class="col-xs-offset-1 col-sm-offset-4">About the CoolBank ...</h1>
-			<p class="container-fluid p-bigger-white col-xs-12 col-sm-6 col-md-4 col-xs-offset-1 col-sm-offset-4 col-md-offset-4 p-about box-border">CoolBank is a web application that has been created during winter semester of university year 2018/2019. It has to be some kind of website like internet banking, so students will learn how to work with various technologies used for developing web applications.</p>
+			<div class="container about">
+				<h1>About the CoolBank ...</h1>
+				<p>CoolBank is a web application that has been created during winter semester of university year 2018/2019. It has to be some kind of website like internet banking, so students will learn how to work with various technologies used for developing web applications.</p>
+			</div>
 		</div>
 	</body>
 </html>

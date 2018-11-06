@@ -15,7 +15,6 @@ public class generateNumber {
 
     }
 
-
     public static int getRandomNumber (int numberLength, String tableName, String columnName) {
         return generateRandomNumber(numberLength, tableName, columnName);
     }
@@ -35,7 +34,9 @@ public class generateNumber {
 
         return randomNumber;
     }
-
+    /*
+        Should be somewhere in DAO (at least calling to DB, other logic can remain here).
+     */
     private static boolean isUniqueCheckDB(int number, String tableName, String columnName) {
         String sqlQuery = "SELECT COUNT(" + columnName + ") FROM " + tableName + " WHERE " + columnName + " = '" + number + "';";
         //TODO check with DB that generated number does not exist yet (current is just a mock)

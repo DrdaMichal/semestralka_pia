@@ -41,8 +41,8 @@
         <security:logout logout-success-url="/"/>
         <security:intercept-url pattern="*" access="permitAll()"/>
         <!-- user must be logged in to access any secret page -->
-        <security:intercept-url pattern="/manage/*" access="hasRole('ROLE_ADMIN')"/>
-        <security:intercept-url pattern="/banking/*" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/manage/*" access="hasRole('ADMIN')"/>
+        <security:intercept-url pattern="/banking/*" access="hasRole('USER')"/>
     </security:http>
 
     <security:authentication-manager id="authManager">
