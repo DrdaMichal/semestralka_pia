@@ -21,8 +21,11 @@ public class Main extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String url="/WEB-INF/pages/banking.jsp";
+        String url = "/login";
         System.out.println("Role: [" +  req.isUserInRole("ROLE_USER") + ", " + req.isUserInRole("USER") + ", " + req.isUserInRole("ADMIN") +  "]");
+        if (req.isUserInRole("ROLE_USER")) {
+            url = "/WEB-INF/pages/banking.jsp";
+        }
         if (req.isUserInRole("ROLE_ADMIN")) {
             url = "/WEB-INF/pages/manage.jsp";
         }
