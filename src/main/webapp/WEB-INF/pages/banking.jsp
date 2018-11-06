@@ -38,7 +38,7 @@
                 <a class="navbar-brand" href="main">CoolBank</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav underline-menu">
                     <li><a href="pay">New payment</a></li>
                     <li><a href="history">Payment history</a></li>
                     <li><a href="account">Update account</a></li>

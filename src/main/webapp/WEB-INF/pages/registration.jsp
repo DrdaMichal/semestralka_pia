@@ -43,7 +43,7 @@ Version:	ver  / DD-MM-CCYY / comment
 					<a class="navbar-brand" href="index.jsp">CoolBank</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav underline-menu">
 						<li><a href="register">Register</a></li>
 						<li><a href="about">About</a></li>
 					</ul>

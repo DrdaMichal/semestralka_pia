@@ -38,7 +38,7 @@
                 <a class="navbar-brand" href="main">CoolBank</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav underline-menu">
                     <li><a href="about">About</a></li>
                     <li><a href="register">Register</a></li>
                     <li><p>Logged in as ADMIN. (for testing purpouses)</p></li>

@@ -19,8 +19,8 @@ TODO:		1)	Design of profile, events
         }
 
         .nav.navbar-nav li a {
-		   color: #ffffff;
-		   font-family: "Open Sans";
+			color: #ffffff;
+			font-family: "Open Sans";
 		 }
 
         .navbar-default .navbar-brand {
@@ -28,8 +28,6 @@ TODO:		1)	Design of profile, events
         }
 
         .navbar-default {
-			/*position: fixed;
-			width: 100%;*/
             background-color: #ffb84d;
         }
 
@@ -37,9 +35,13 @@ TODO:		1)	Design of profile, events
 		    color: #808080;
 		}
 
-        .navbar-default .navbar-toggle {
-            border-color: transparent;
-        }
+		.underline-menu a {
+			border-bottom: 3px solid transparent;
+		}
+
+		.underline-menu a:hover {
+			border-bottom: 3px solid #808080;
+		}
 
         .navbar-default .navbar-toggle:hover {
             background-color: #ffffff;
@@ -143,7 +145,7 @@ TODO:		1)	Design of profile, events
 			/* Set the fixed height of the footer here */
 			height: 45px;
 			color: #ffffff;
-			background-color: #ffb84d;
+			background-color: #808080;
 			text-align: right;
 			width: 100%;
 		}
