@@ -52,7 +52,6 @@ TODO:		2)	Create main_page.jsp
 				</div>
 			</div>
 		</nav>
-		<div class="clear"></div>
 
 		<div class="container-fluid">
 			<div class="container about">
@@ -63,7 +62,6 @@ TODO:		2)	Create main_page.jsp
 			</div>
 		</div>
 
-		<div class="clear"></div>
 		<footer id="footer">
 			<div class="container-fluid">
 				<p class="p-bigger-white">Created by Michal Drda in 2018.</p>

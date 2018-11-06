@@ -49,13 +49,11 @@
             </div>
         </div>
     </nav>
-    <div class="clear"></div>
 
     <div class="container-fluid">
         <h1 class="">Welcome to CoolBank Manage!</h1>
     </div>
 
-    <div class="clear"></div>
     <footer id="footer">
         <div class="container-fluid">
             <p class="p-bigger-white">Created by Michal Drda in 2018.</p>

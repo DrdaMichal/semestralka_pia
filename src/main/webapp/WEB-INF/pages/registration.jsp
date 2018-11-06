@@ -54,7 +54,6 @@ Version:	ver  / DD-MM-CCYY / comment
 				</div>
 			</div>
 		</nav>
-		<div class="clear"></div>
 
 
 		<div class="container-fluid">
@@ -225,7 +224,6 @@ Version:	ver  / DD-MM-CCYY / comment
 			</div>
 		</div>
 
-		<div class="clear"></div>
 		<footer id="footer">
 			<div class="container-fluid">
 				<p class="p-bigger-white">Created by Michal Drda in 2018.</p>
