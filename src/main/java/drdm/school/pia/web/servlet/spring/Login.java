@@ -38,7 +38,7 @@ public class Login extends AbstractServlet {
 
         boolean authenticated = authService.authenticate(req.getSession(), username, password);
         if(authenticated) {
-            resp.sendRedirect("main");
+            resp.sendRedirect("/main");
         } else {
             req.setAttribute(ERR_ATTRIBUTE, "Invalid credentials!");
             req.getRequestDispatcher("/").forward(req, resp);

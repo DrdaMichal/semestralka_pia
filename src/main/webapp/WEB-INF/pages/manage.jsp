@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html lang="en">
 <head>
@@ -54,10 +53,6 @@
         <h1 class="">Welcome to CoolBank Manage!</h1>
     </div>
 
-    <footer id="footer">
-        <div class="container-fluid">
-            <p class="p-bigger-white">Created by Michal Drda in 2018.</p>
-        </div>
-    </footer>
+    <jsp:include page="generic/footer.jsp"/>
 </body>
 </html>

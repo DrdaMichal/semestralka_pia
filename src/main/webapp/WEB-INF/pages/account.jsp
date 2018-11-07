@@ -12,5 +12,7 @@
 </head>
 <body>
 
+
+<jsp:include page="generic/footer.jsp"/>
 </body>
 </html>
