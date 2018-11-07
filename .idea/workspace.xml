@@ -10,13 +10,11 @@
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/semestralka_pia.iml" beforeDir="false" afterPath="$PROJECT_DIR$/semestralka_pia.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/GenericDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/GenericDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/GenericDaoMemory.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoMemorySmarter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoJDBC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/BaseObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/BaseObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/UserValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/UserValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/ConfigurableSecretManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/SecretManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/SecretManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java" afterDir="false" />
@@ -25,12 +23,14 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/PasswordHashEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/PasswordHashEncoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/generateNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/generateNumber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/generateString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/generateString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web.servlet.spring/About.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web.servlet.spring/AbstractServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web.servlet.spring/Login.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web.servlet.spring/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web.servlet.spring/Register.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web.servlet.spring/SecretServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/filter/AuthenticationGuard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/filter/AuthenticationGuard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/About.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/About.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/AbstractServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/AbstractServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/SecretServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/SecretServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/about.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/about.jsp" afterDir="false" />
@@ -39,10 +39,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/history.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/history.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/logout.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registerSuccess.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registerSuccess.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registration.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/pay.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/pay.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/generic/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/generic/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/generic/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/generic/footer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dateToday.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dateToday.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/loginFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/loginFunction.js" afterDir="false" />
@@ -135,7 +135,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="46" />
-          <entry key="jsp" value="4" />
+          <entry key="jsp" value="5" />
           <entry key="properties" value="2" />
           <entry key="xml" value="4" />
         </counts>
@@ -143,7 +143,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="46" />
-          <entry key="JSP" value="4" />
+          <entry key="JSP" value="5" />
           <entry key="Properties" value="2" />
           <entry key="XML" value="4" />
         </counts>
@@ -152,7 +152,7 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="java" value="1089" />
-          <entry key="jsp" value="75" />
+          <entry key="jsp" value="97" />
           <entry key="properties" value="3" />
           <entry key="xml" value="36" />
         </counts>
@@ -160,7 +160,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="1089" />
-          <entry key="JSP" value="75" />
+          <entry key="JSP" value="97" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="Properties" value="3" />
           <entry key="XML" value="36" />
@@ -173,8 +173,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registration.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
+            <state relative-caret-position="296">
+              <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
             </state>
           </provider>
         </entry>
@@ -182,8 +182,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="344">
+              <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/generic/footer.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -191,8 +200,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+            <state relative-caret-position="238">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -200,7 +209,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Login.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-44">
@@ -317,7 +326,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/history.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/account.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/logout.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/generic/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/generic/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking.jsp" />
@@ -337,13 +345,14 @@
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/PasswordHashEncoder.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoJDBC.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registration.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Login.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/generic/footer.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registration.jsp" />
       </list>
     </option>
   </component>
@@ -553,6 +562,16 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="generic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="semestralka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="semestralka_pia" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="manage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -566,7 +585,7 @@
     <property name="SearchEverywhereHistoryKey" value="userDao&#9;FILE&#9;file://C:/user/Private/PIA/semestralka_pia/src/main/java/drdm/school/pia/dao/UserDaoJDBC.java&#10;userDaoMemorySmarter&#9;null&#9;null&#10;userDaoSmarter&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541600541950" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541601110773" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -576,6 +595,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\user\Private\PIA\semestralka_pia\src\main\webapp\WEB-INF\pages" />
       <recent name="C:\user\Private\PIA\semestralka_pia\src\main\webapp\WEB-INF\pages\manage" />
       <recent name="C:\user\git\semestralka_pia\src\main\webapp" />
     </key>
@@ -638,12 +658,12 @@
       <workItem from="1541498889666" duration="28435000" />
       <workItem from="1541578235752" duration="291000" />
       <workItem from="1541580215000" duration="11403000" />
-      <workItem from="1541596754242" duration="3626000" />
+      <workItem from="1541596754242" duration="4195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66845000" />
+    <option name="totallyTimeSpent" value="67414000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -769,13 +789,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/generic/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -967,30 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registration.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1051,6 +1040,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-44">
           <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manage/registration.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/generic/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
         </state>
       </provider>
     </entry>
