@@ -6,13 +6,12 @@ Author: Michal Drda
 
 Version:	ver  / DD-MM-CCYY / comment
 0.01 / 28-10-2017 / initial version
-0.02 / 25-10-2018 / refactoring to 2018 project (Internet Main)
+0.02 / 25-10-2018 / refactoring to 2018 project (Internet Banking)
 
 -->
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html lang="en">
 <head>
@@ -57,11 +56,15 @@ Version:	ver  / DD-MM-CCYY / comment
                 <p>Error: ${requestScope.err}</p>
             </div>
         </c:if>
+        <c:if test="${not empty requestScope.suc}">
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <p>Error: ${requestScope.suc}</p>
+            </div>
+        </c:if>
         <div class="container login-max-width">
             <h1 class="form-h1-paddings">Login to CoolBank</h1>
             <form action="login" method="post" class="form-horizontal form-border box-border">
-                <sec:csrfInput/>
-                <sec:csrfMetaTags/>
                 <div class="container"></div>
                 <div class="form-group">
                     <label class="" for="username">User ID</label>
@@ -79,11 +82,6 @@ Version:	ver  / DD-MM-CCYY / comment
             </form>
         </div>
     </div>
-
-    <footer id="footer">
-        <div class="container-fluid">
-            <p class="p-bigger-white">Created by Michal Drda in 2018.</p>
-        </div>
-    </footer>
+    <jsp:include page="WEB-INF/pages/generic/footer.jsp"/>
 </body>
 </html>

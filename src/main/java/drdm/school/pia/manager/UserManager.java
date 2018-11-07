@@ -28,4 +28,5 @@ public interface UserManager {
     void register(User newUser) throws UserValidationException;
 
 
+    String userRole(String username);
 }

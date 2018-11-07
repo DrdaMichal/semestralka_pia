@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 public class AuthenticationService {
 
     private static final String USER = "user";
+    private static final String ROLE = "role";
 
     private UserManager userManager;
 
@@ -36,8 +37,12 @@ public class AuthenticationService {
     public boolean authenticate(HttpSession session, String username, String password) {
         boolean authenticated = userManager.authenticate(username, password);
 
+
+
         if(authenticated) {
+            String userRole = userManager.userRole(username);
             session.setAttribute(USER, username);
+            session.setAttribute(ROLE, userRole);
             return true;
         }
 

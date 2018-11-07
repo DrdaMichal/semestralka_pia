@@ -24,6 +24,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Function used for hiding login/logout button -->
     <script src="../js/loginFunction.js"></script>
+    <script>
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+            $("#success-alert").slideUp(500);
+        });
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -34,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="main">CoolBank</a>
+                <a class="navbar-brand" href="banking">CoolBank</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
@@ -52,6 +57,22 @@
             </div>
         </div>
     </nav>
+
+    <div class="container-fluid">
+        <c:if test="${not empty sessionScope.err}">
+            <div class="alert alert-danger alert-dismissible fade-in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <p>Error: ${sessionScope.err}</p>
+            </div>
+        </c:if>
+        <c:if test="${not empty sessionScope.suc}">
+            <div class="alert alert-success alert-dismissible" id="success-alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <p>Error: ${sessionScope.suc}</p>
+                ${session.removeAttribute("suc")}
+            </div>
+        </c:if>
+    </div>
 
     <div class="container-fluid max-width-1300">
         <div class="row">

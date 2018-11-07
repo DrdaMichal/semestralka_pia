@@ -48,7 +48,6 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.print("Session: " + req.getSession());
         req.getRequestDispatcher("/WEB-INF/pages/manage/registration.jsp").forward(req, resp);
     }
 
