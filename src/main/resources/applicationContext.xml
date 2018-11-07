@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation=
                "http://www.springframework.org/schema/beans
      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
      http://www.springframework.org/schema/context
-     http://www.springframework.org/schema/context/spring-context-4.0.xsd
-     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 >
 
     <context:annotation-config/>
@@ -31,27 +27,10 @@
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
     </bean>
 
-    <!-- Security -->
+    <bean id="userDaoJDBC" class="drdm.school.pia.dao.UserDaoJDBC">
+        <constructor-arg name="jdbcUrl" value="${jdbc.url}"/>
+        <constructor-arg name="user" value="${jdbc.user}"/>
+        <constructor-arg name="password" value="${jdbc.pwd}"/>
+    </bean>
 
-    <security:http authentication-manager-ref="authManager" >
-        <!-- login-page: URL of login page -->
-        <!-- default-target-url: redirects to /secret/vip after login if no other secured page had been requested before-->
-        <security:form-login login-page="/" default-target-url="/main"/>
-        <!-- added logout first try (DRDM 20181105) -->
-        <security:logout logout-success-url="/"/>
-        <security:intercept-url pattern="*" access="permitAll()"/>
-        <!-- user must be logged in to access any secret page -->
-        <security:intercept-url pattern="/manage/*" access="hasRole('ADMIN')"/>
-        <security:intercept-url pattern="/banking/*" access="hasRole('USER')"/>
-    </security:http>
-
-    <security:authentication-manager id="authManager">
-        <!-- use UserDaoJpa as user data provider-->
-        <security:authentication-provider user-service-ref="userDaoMemorySmarter">
-            <!-- use PasswordHashEncoder as password encoder -->
-            <security:password-encoder ref="passwordHashEncoder"/>
-        </security:authentication-provider>
-    </security:authentication-manager>
-
-    <security:global-method-security pre-post-annotations="enabled"/>
 </beans>

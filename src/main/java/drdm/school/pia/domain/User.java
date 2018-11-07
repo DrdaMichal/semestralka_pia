@@ -1,13 +1,6 @@
 package drdm.school.pia.domain;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
 
 /**
  * Entity representing application User.
@@ -16,7 +9,7 @@ import java.util.Date;
  *
  * @author Michal Drda
  */
-public class User extends BaseObject implements UserDetails {
+public class User extends BaseObject {
     /**
      * Login, unique
      */
@@ -38,7 +31,7 @@ public class User extends BaseObject implements UserDetails {
     public User() {
     }
 
-    public User(String username, String firstname, String lastname, String email, String password, String role, String address, String city, String zip, String birthId, String gender) {
+    public User(String username, String password, String role, String firstname, String lastname, String email, String address, String city, String zip, String birthId, String gender) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -78,27 +71,27 @@ public class User extends BaseObject implements UserDetails {
     ########### Spring Security ##################
      */
 
-    @Override
+/*    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(role));
-    }
+    }*/
 
-    @Override
+
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    @Override
+
     public boolean isAccountNonLocked() {
         return true;
     }
 
-    @Override
+
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    @Override
+
     public boolean isEnabled() {
         return true;
     }
@@ -107,7 +100,7 @@ public class User extends BaseObject implements UserDetails {
     ########### MAPPINGS #####################
      */
 
-    @Override
+
     public String getUsername() {
         return username;
     }
@@ -117,13 +110,41 @@ public class User extends BaseObject implements UserDetails {
     }
 
 
-    @Override
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+    public String getFirstname() {
+        return firstname;
+    }
+    public String getLastname() {
+        return lastname;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public String getCity() {
+        return city;
+    }
+    public String getZip() {
+        return zip;
+    }
+    public String getBirthid() {
+        return birthId;
+    }
+    public String getGender() {
+        return gender;
     }
 
     @Override

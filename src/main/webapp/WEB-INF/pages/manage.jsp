@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
                     <li><a href="about">About</a></li>
-                    <li><a href="register">Register</a></li>
+                    <li><a href="manage/register">Register</a></li>
                     <li><p>Logged in as ADMIN. (for testing purpouses)</p></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

@@ -1,6 +1,5 @@
 package drdm.school.pia.utils;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +13,7 @@ import java.security.spec.InvalidKeySpecException;
  * @author Jakub Danek
  */
 @Component
-public class PasswordHashEncoder implements Encoder, PasswordEncoder {
+public class PasswordHashEncoder implements Encoder {
 
     @Override
     public String encode(String text) {
@@ -46,12 +45,10 @@ public class PasswordHashEncoder implements Encoder, PasswordEncoder {
         }
     }
 
-    @Override
     public String encode(CharSequence rawPassword) {
         return encode(rawPassword.toString());
     }
 
-    @Override
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
         return validate(rawPassword.toString(), encodedPassword);
     }

@@ -11,9 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -23,7 +20,7 @@ import java.util.Objects;
  *
  * @author Michal Drda
  */
-@WebServlet("/register")
+@WebServlet("/manage/register")
 public class Register extends AbstractServlet {
 
     private static final String FIRSTNAME_PARAMETER = "firstname";
@@ -51,7 +48,8 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/registration.jsp").forward(req, resp);
+        System.out.print("Session: " + req.getSession());
+        req.getRequestDispatcher("/WEB-INF/pages/manage/registration.jsp").forward(req, resp);
     }
 
     @Override
@@ -65,7 +63,7 @@ public class Register extends AbstractServlet {
         String address = req.getParameter(ADDRESS_PARAMETER);
         String city = req.getParameter(CITY_PARAMETER);
         String zip = req.getParameter(ZIP_PARAMETER);
-        String birthId = req.getParameter(BIRTHID_PARAMETER);
+        String birthid = req.getParameter(BIRTHID_PARAMETER);
         String username = String.valueOf(generateString.getRandomString(8));
         System.out.println("Psw: " +  password);
         String gender = req.getParameter(GENDER_PARAMETER);
@@ -78,9 +76,8 @@ public class Register extends AbstractServlet {
         }
 
         try {
-            //userManager.register(new User(firstname, password, role));
-            userManager.register(new User(username, firstname, lastname, email, password, role, address, city, zip, birthId, gender));
-            resp.sendRedirect("login");  //not perfect, user should get a message registration was successful!
+            userManager.register(new User(username, password, role, firstname, lastname, email, address, city, zip, birthid, gender));
+            resp.sendRedirect("/");  //not perfect, user should get a message registration was successful!
         } catch (UserValidationException e) {
             errorDispatch(e.getMessage(), req, resp);
         }
@@ -88,6 +85,6 @@ public class Register extends AbstractServlet {
 
     private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
-        req.getRequestDispatcher("/WEB-INF/pages/registration.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/manage/registration.jsp").forward(req, resp);
     }
 }

@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="semestralka" />
+        <module name="semestralka_pia" />
       </profile>
     </annotationProcessing>
   </component>

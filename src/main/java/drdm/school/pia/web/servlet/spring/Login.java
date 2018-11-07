@@ -1,6 +1,7 @@
 package drdm.school.pia.web.servlet.spring;
 
 import drdm.school.pia.manager.UserManager;
+import drdm.school.pia.web.auth.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ public class Login extends AbstractServlet {
     private static final String USERNAME_PARAMETER = "username";
     private static final String PASSWORD_PARAMETER = "password";
 
+    private static final String ERR_ATTRIBUTE = "err";
+
     private UserManager userManager;
 
     @Autowired
@@ -21,18 +24,24 @@ public class Login extends AbstractServlet {
         this.userManager = userManager;
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+    private AuthenticationService authService;
+
+    @Autowired
+    public void setAuthService(AuthenticationService authService) {
+        this.authService = authService;
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String username = req.getParameter(USERNAME_PARAMETER);
         String password = req.getParameter(PASSWORD_PARAMETER);
 
-            //TODO: add try, catch??
-            userManager.authenticate(username, password);
-            resp.sendRedirect("");
+        boolean authenticated = authService.authenticate(req.getSession(), username, password);
+        if(authenticated) {
+            resp.sendRedirect("main");
+        } else {
+            req.setAttribute(ERR_ATTRIBUTE, "Invalid credentials!");
+            req.getRequestDispatcher("/").forward(req, resp);
+        }
     }
 }

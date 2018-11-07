@@ -27,6 +27,8 @@ public class Main extends AbstractServlet {
         System.out.println("Role: ROLE_ADMIN[" +  req.isUserInRole("ROLE_ADMIN") + "]");
         System.out.println("Role: USER[" +  req.isUserInRole("USER") + "]");
         System.out.println("Role: ADMIN[" +  req.isUserInRole("ADMIN") + "]");
+        System.out.print("Session: " + req.getSession());
+
         if (req.isUserInRole("ROLE_USER")) {
             url = "/WEB-INF/pages/banking.jsp";
         }
