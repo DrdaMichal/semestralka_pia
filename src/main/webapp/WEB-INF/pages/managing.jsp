@@ -35,6 +35,7 @@
                 <ul class="nav navbar-nav underline-menu">
                     <li><a href="${location.reload(true)}">Managing</a></li>
                     <li><a href="managing/register">Register</a></li>
+                    <li><a href="managing/manage_user">User management</a></li>
                     <li><p>Logged in as ADMIN. (for testing purpouses)</p></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

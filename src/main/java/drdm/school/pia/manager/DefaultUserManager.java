@@ -37,8 +37,6 @@ public class DefaultUserManager implements UserManager {
         if (userRole == null) {
             userRole = "NOTSET";
         }
-
-        System.out.println("User: "  + username + ", role[" + userRole +  "]");
         return userRole;
     }
 
