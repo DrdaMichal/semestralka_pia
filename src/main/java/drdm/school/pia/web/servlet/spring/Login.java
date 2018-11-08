@@ -33,6 +33,11 @@ public class Login extends AbstractServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException  {
         String username = req.getParameter(USERNAME_PARAMETER);
         String password = req.getParameter(PASSWORD_PARAMETER);
@@ -51,7 +56,7 @@ public class Login extends AbstractServlet {
                     dir = "/banking";
                 }
                 else if (req.getSession().getAttribute("role").equals("ADMIN")) {
-                    dir = "/manage";
+                    dir = "/managing";
                 }
             }
 

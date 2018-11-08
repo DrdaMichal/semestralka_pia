@@ -47,6 +47,10 @@ TODO:		1)	Design of profile, events
             background-color: #ffffff;
         }
 
+		brand {
+			border-right: 3px solid #808080;
+		}
+
 		.p-basic-white {
 			color: #ffffff;
 		}

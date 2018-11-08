@@ -20,7 +20,7 @@ import java.util.Objects;
  *
  * @author Michal Drda
  */
-@WebServlet("/manage/register")
+@WebServlet("/managing/register")
 public class Register extends AbstractServlet {
 
     private static final String FIRSTNAME_PARAMETER = "firstname";
@@ -48,7 +48,7 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/manage/registration.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/managing/registration.jsp").forward(req, resp);
     }
 
     @Override
@@ -84,6 +84,6 @@ public class Register extends AbstractServlet {
 
     private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
-        req.getRequestDispatcher("/WEB-INF/pages/manage/registration.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/managing/registration.jsp").forward(req, resp);
     }
 }
