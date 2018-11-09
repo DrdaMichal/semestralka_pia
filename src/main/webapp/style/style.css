@@ -44,7 +44,21 @@ TODO:		1)	Design of profile, events
 
         .navbar-default .navbar-toggle:hover {
             background-color: #ffffff;
-        }
+			border-color: #ffffff;
+		}
+
+		.navbar-default .navbar-toggle {
+			border-color: #ffffff;
+			color: #ffffff;
+		}
+
+		.navbar-default .navbar-toggle .icon-bar {
+			background-color: #ffffff;
+		}
+
+		.navbar-default .navbar-toggle:hover .icon-bar {
+			background-color: #808080;
+		}
 
 		brand {
 			border-right: 3px solid #808080;
