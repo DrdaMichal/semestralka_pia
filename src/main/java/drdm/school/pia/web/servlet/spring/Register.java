@@ -38,6 +38,7 @@ public class Register extends AbstractServlet {
     //TODO: check tableName and columnName where username is stored
 
     private static final String ERROR_ATTRIBUTE = "err";
+    private static final String SUCCESS_ATTRIBUTE = "suc";
 
     private UserManager userManager;
 
@@ -76,10 +77,16 @@ public class Register extends AbstractServlet {
 
         try {
             userManager.register(new User(username, password, role, firstname, lastname, email, address, city, zip, birthid, gender));
-            resp.sendRedirect("/");  //not perfect, user should get a message registration was successful!
+            //resp.sendRedirect("/");  //not perfect, user should get a message registration was successful!
+            succsessDispatch("User successfully registered!", req, resp);
         } catch (UserValidationException e) {
             errorDispatch(e.getMessage(), req, resp);
         }
+    }
+
+    private void succsessDispatch(String suc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute(SUCCESS_ATTRIBUTE, suc);
+        req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
     }
 
     private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

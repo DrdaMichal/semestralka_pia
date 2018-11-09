@@ -34,7 +34,7 @@
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="banking">CoolBank</a>
+                <a class="navbar-brand" href="/index.jsp">CoolBank</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
@@ -42,7 +42,6 @@
                     <li><a href="banking/pay">New payment</a></li>
                     <li><a href="banking/history">Payment history</a></li>
                     <li><a href="banking/account">Update account</a></li>
-                    <li><p >Logged in as USER. (for testing purpouses)</p></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="login" style="display: none"><a href="/login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -52,20 +51,10 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <c:if test="${not empty requestScope.err}">
-            <div class="alert alert-danger alert-dismissible fade-in">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <p>Error: ${requestScope.err}</p>
-            </div>
-        </c:if>
-        <c:if test="${not empty requestScope.suc}">
-            <div class="alert alert-success alert-dismissible" id="success-alert">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <p>${requestScope.suc}</p>
-            </div>
-        </c:if>
-    </div>
+    <jsp:include page="generic/alerts.jsp">
+        <jsp:param name="err" value="${requestScope.err}"/>
+        <jsp:param name="suc" value="${requestScope.suc}"/>
+    </jsp:include>
 
     <div class="container-fluid max-width-1300">
         <div class="row">

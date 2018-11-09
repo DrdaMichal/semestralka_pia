@@ -22,17 +22,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Function used for hiding login/logout button -->
     <script src="../js/loginFunction.js"></script>
-    <script>
-        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-            $("#success-alert").slideUp(500);
-        });
-    </script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="banking">CoolBank</a>
+                <a class="navbar-brand" href="/index.jsp">CoolBank</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
@@ -50,6 +45,11 @@
             </div>
         </div>
     </nav>
+
+    <jsp:include page="../generic/alerts.jsp">
+        <jsp:param name="err" value="${requestScope.err}"/>
+        <jsp:param name="suc" value="${requestScope.suc}"/>
+    </jsp:include>
 
     <div class="container-fluid">
         <h1>TBS.</h1>

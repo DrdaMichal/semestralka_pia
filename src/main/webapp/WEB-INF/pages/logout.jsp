@@ -42,6 +42,11 @@
         </div>
     </nav>
 
+    <jsp:include page="generic/alerts.jsp">
+        <jsp:param name="err" value="${requestScope.err}"/>
+        <jsp:param name="suc" value="${requestScope.suc}"/>
+    </jsp:include>
+
     <div class="container">
         <h1 class="text-center">You were successfully logged out.</h1>
         <p class="text-center">See you soon!</p>

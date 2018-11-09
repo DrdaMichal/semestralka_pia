@@ -12,6 +12,11 @@
 </head>
 <body>
 
+    <jsp:include page="../generic/alerts.jsp">
+        <jsp:param name="err" value="${requestScope.err}"/>
+        <jsp:param name="suc" value="${requestScope.suc}"/>
+    </jsp:include>
+
     <jsp:include page="../generic/footer.jsp"/>
 </body>
 </html>

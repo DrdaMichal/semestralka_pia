@@ -20,7 +20,6 @@ TODO:		1)	Design of profile, events
 
         .nav.navbar-nav li a {
 			color: #ffffff;
-			font-family: "Open Sans";
 		 }
 
         .navbar-default .navbar-brand {
@@ -80,7 +79,6 @@ TODO:		1)	Design of profile, events
 		}
 		
 		p {
-			font-family: "Open Sans";
 			font-size: 14px;
 			color: #808080;
 		}
@@ -95,19 +93,16 @@ TODO:		1)	Design of profile, events
 
 		h1 {
 			color: #808080;
-			font-family: "Open Sans";
 			text-align: left;
 			margin-bottom: 15px;
 		}
 		
 		h2 {
 			color: #808080;
-			font-family: "Open Sans"
 		}
 		
 		h4 {
 			color: #ffb84d;
-			font-family: "Open Sans";
 			text-align: left;
 			margin-bottom: 10px;			
 		}
@@ -120,7 +115,6 @@ TODO:		1)	Design of profile, events
 		}
 
 		label {
-			font-family: "Open Sans";
 			font-size: 14px;
 			color: #808080;
 		}
@@ -241,14 +235,18 @@ TODO:		1)	Design of profile, events
         .btn-default {
             color: #ffffff;
             background-color: #ffb84d;
-            font-family: "Open Sans";
             border: 1px solid transparent;
         }
         .btn-default:hover {
-            background-color: #ffffff;
-            color: #808080;
+			color: #ffffff;
+            background-color: #808080;
         }
-		
+
+		.alert-placeholder {
+			min-height: 52px;
+			margin-bottom: 20px;
+		}
+
 		/* Comment form and parts
 		.comment-label {
 			color: #e5e5e5;

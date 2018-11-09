@@ -34,53 +34,67 @@ Version:	ver  / DD-MM-CCYY / comment
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="banking">CoolBank</a>
+                <a class="navbar-brand" href="${location.reload(true)}">CoolBank</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
-                    <li><a href="about">About</a></li>
+                    <c:if test="${sessionScope.role == 'ADMIN'}">
+                        <li><a href="managing">Managing</a></li>
+                        <li><a href="managing/register">Register</a></li>
+                        <li><a href="managing/manage_user">User management</a></li>
+                    </c:if>
+                    <c:if test="${sessionScope.role == 'USER'}">
+                        <li><a href="banking">Banking</a></li>
+                        <li><a href="banking/pay">New payment</a></li>
+                        <li><a href="history">Payment history</a></li>
+                    </c:if>
+                    <c:if test="${sessionScope.role == 'NOTSET' || empty sessionScope.role}">
+                        <li><a href="about">About</a></li>
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="login"><a href="${location.reload(true)}" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <%--<li id="logout" style="display: none"><a href="logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>--%>
+                    <li id="logout" style="display: none"><a href="logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <c:if test="${not empty requestScope.err}">
-            <div class="alert alert-danger alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <p>Error: ${requestScope.err}</p>
-            </div>
-        </c:if>
-        <c:if test="${not empty requestScope.suc}">
-            <div class="alert alert-success alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <p>Error: ${requestScope.suc}</p>
-            </div>
-        </c:if>
-        <div class="container login-max-width">
-            <h1 class="form-h1-paddings">Login to CoolBank</h1>
-            <form action="login" method="post" class="form-horizontal form-border box-border">
-                <div class="container"></div>
-                <div class="form-group">
-                    <label class="" for="username">User ID</label>
-                    <input class="form-control" type="text" id="username" name="username"/>
-                </div>
-                <div class="form-group">
-                    <label for="password">PIN</label>
-                    <div class="">
-                        <input class="form-control" type="password" id="password" name="password"/>
+    <jsp:include page="WEB-INF/pages/generic/alerts.jsp">
+        <jsp:param name="err" value="${requestScope.err}"/>
+        <jsp:param name="suc" value="${requestScope.suc}"/>
+    </jsp:include>
+
+    <c:if test="${sessionScope.role == 'NOTSET' || empty sessionScope.role}">
+        <div class="container-fluid">
+            <div class="container login-max-width">
+                <h1 class="form-h1-paddings">Login to CoolBank</h1>
+                <form action="login" method="post" class="form-horizontal form-border box-border">
+                    <div class="container"></div>
+                    <div class="form-group">
+                        <label class="" for="username">User ID</label>
+                        <input class="form-control" type="text" id="username" name="username"/>
                     </div>
-                </div>
-                <div class="form-group col-xs-12 ">
-                    <button class="btn btn-default" type="submit" value="login">Login</button>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <label for="password">PIN</label>
+                        <div class="">
+                            <input class="form-control" type="password" id="password" name="password"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 ">
+                        <button class="btn btn-default" type="submit" value="login">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    </c:if>
+
+    <c:if test="${not (sessionScope.role == 'NOTSET' || empty sessionScope.role)}">
+        <div class="container-fluid">
+            <h1 class="text-center">You are already logged in. Please choose what you want to do.</h1>
+        </div>
+    </c:if>
+
     <jsp:include page="WEB-INF/pages/generic/footer.jsp"/>
 </body>
 </html>

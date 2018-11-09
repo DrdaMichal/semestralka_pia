@@ -48,6 +48,11 @@ TODO:		2)	Create main_page.jsp
 			</div>
 		</nav>
 
+		<jsp:include page="generic/alerts.jsp">
+			<jsp:param name="err" value="${requestScope.err}"/>
+			<jsp:param name="suc" value="${requestScope.suc}"/>
+		</jsp:include>
+
 		<div class="container-fluid">
 			<div class="container about">
 				<h1>About the CoolBank ...</h1>

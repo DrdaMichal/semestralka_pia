@@ -29,14 +29,13 @@
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="managing">CoolBank</a>
+                <a class="navbar-brand" href="/index.jsp">CoolBank</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
                     <li><a href="${location.reload(true)}">Managing</a></li>
                     <li><a href="managing/register">Register</a></li>
                     <li><a href="managing/manage_user">User management</a></li>
-                    <li><p>Logged in as ADMIN. (for testing purpouses)</p></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="login" style="display: none"><a href="/login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -45,6 +44,11 @@
             </div>
         </div>
     </nav>
+
+    <jsp:include page="generic/alerts.jsp">
+        <jsp:param name="err" value="${requestScope.err}"/>
+        <jsp:param name="suc" value="${requestScope.suc}"/>
+    </jsp:include>
 
     <div class="container-fluid">
         <h1 class="">Welcome to CoolBank Manage!</h1>
