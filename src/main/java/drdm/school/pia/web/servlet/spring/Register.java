@@ -35,6 +35,7 @@ public class Register extends AbstractServlet {
     private static final String BIRTHID_PARAMETER = "birthId";
     private static final String GENDER_PARAMETER = "gender";
     private static final String CAPTCHA_PARAMETER = "captcha";
+    private static final String TERMS_PARAMETER = "terms";
     //TODO: check tableName and columnName where username is stored
 
     private static final String ERROR_ATTRIBUTE = "err";
@@ -49,7 +50,12 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
+        if (req.getSession().getAttribute("role").equals("ADMIN")) {
+            req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
+        } else {
+            // User is not authorised to do the action.
+            resp.sendError(401, "User role is not authorised to access this page.");
+        }
     }
 
     @Override
@@ -68,10 +74,21 @@ public class Register extends AbstractServlet {
         System.out.println("Psw: " +  password);
         String gender = req.getParameter(GENDER_PARAMETER);
         String captcha = req.getParameter(CAPTCHA_PARAMETER);
+        String terms = req.getParameter(TERMS_PARAMETER);
 
 
         if(!Objects.equals(password, confirmPwd)) {
             errorDispatch("The password and confirm password fields do not match!", req, resp);
+            return;
+        }
+
+        if(!captcha.equals("42")) {
+            errorDispatch("Captcha answer is incorrect.", req, resp);
+            return;
+        }
+
+        if(null == terms) {
+            errorDispatch("Please accept terms of use.", req, resp);
             return;
         }
 

@@ -58,8 +58,12 @@ Version:	ver  / DD-MM-CCYY / comment
                     </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="login"><a href="${location.reload(true)}" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li id="logout" style="display: none"><a href="logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <c:if test="${sessionScope.role == 'NOTSET' || empty sessionScope.role}">
+                        <li id="login"><a href="${location.reload(true)}" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </c:if>
+                    <c:if  test="${sessionScope.role != 'NOTSET' && not empty sessionScope.role}">
+                        <li id="logout"><a href="logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </c:if>
                 </ul>
             </div>
         </div>

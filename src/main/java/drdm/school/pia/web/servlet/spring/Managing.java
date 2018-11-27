@@ -20,7 +20,12 @@ public class Managing extends AbstractServlet {
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
+        if (req.getSession().getAttribute("role").equals("ADMIN")) {
+            req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
+        } else {
+            // User is not authorised to do the action.
+            resp.sendError(401, "User role is not authorised to access this page.");
+        }
     }
 
 }

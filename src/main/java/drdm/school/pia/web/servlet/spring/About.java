@@ -11,7 +11,12 @@ public class About extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/about.jsp").forward(req, resp);
-    }
+        if (null == req.getSession().getAttribute("role")) {
+            req.getRequestDispatcher("/WEB-INF/pages/about.jsp").forward(req, resp);
+        } else {
+            // User is not authorised to do the action.
+            resp.sendError(401, "Only guests can visit this page.");
+        }
 
+    }
 }

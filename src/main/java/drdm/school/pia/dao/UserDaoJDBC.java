@@ -50,12 +50,12 @@ public class UserDaoJDBC implements UserDao {
 
     @Override
     public User findOne(Long id) {
-        throw new UnsupportedOperationException("Database schema does not support this operation!");
+        throw new UnsupportedOperationException("Not implemented!");
     }
 
     @Override
     public void remove(User toRemove) {
-        throw new UnsupportedOperationException("We do not need to implement this method in this lab!");
+        throw new UnsupportedOperationException("Not implemented yet!");
     }
 
     @Override

@@ -3,13 +3,6 @@ Description: Css design sheet, contains all designs separated to groups (by page
 
 Author: Michal Drda
 
-Version:	ver  / DD-MM-CCYY / comment
-			0.01 / 23-10-2017 / initial version
-			0.02 / 28-10-2017 / new design for mainpage, profile box and events/friends online box are now fused 
-			0.03 / 31-10-2017 / added css for posts and comments (incl. forms, pictures, text)
- 
-TODO:		1)	Design of profile, events
-
 */
 
 
@@ -58,10 +51,6 @@ TODO:		1)	Design of profile, events
 
 		.navbar-default .navbar-toggle:hover .icon-bar {
 			background-color: #808080;
-		}
-
-		brand {
-			border-right: 3px solid #808080;
 		}
 
 		.p-basic-white {
@@ -139,7 +128,7 @@ TODO:		1)	Design of profile, events
 		}
 		
 		body {
-			min-height: 100%;
+			/*min-height: 100%;*/
 			/* Margin bottom by footer height */
 			margin-bottom: 60px;
 			background-color: #e5e5e5;
@@ -260,41 +249,3 @@ TODO:		1)	Design of profile, events
 			min-height: 52px;
 			margin-bottom: 20px;
 		}
-
-		/* Comment form and parts
-		.comment-label {
-			color: #e5e5e5;
-		}
-		
-		.comment-box {
-			max-height: 250px;
-			overflow: auto;
-			border: 1px solid #e5e5e5;
-			border-radius: 7px;
-			margin-bottom: 5px;
-			padding-top: 10px;
-			padding-bottom: 10px;
-			padding-left: 0px;
-			padding-right: 0px;
-		}
-		
-		.comment-icon {
-			padding-right: 0px;
-			padding-left: 10px;
-			max-width: 68px;
-		}
-		
-		.comment-text {
-			padding-right: 0px;
-		}
-		
-		.comment-input {
-			border: 1px solid #ffb84d; 
-			margin-bottom: 15px;
-		}
-		
-		.button-right {
-			float: right;
-			margin-left: 5px;
-		} */
-
