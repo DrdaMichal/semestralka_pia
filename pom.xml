@@ -16,7 +16,6 @@
         <org.slf4j-version>1.7.25</org.slf4j-version>
         <hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
         <hibernate.version>5.2.17.Final</hibernate.version>
-        <!--<maven.test.skip>true</maven.test.skip>-->
     </properties>
 
     <dependencies>

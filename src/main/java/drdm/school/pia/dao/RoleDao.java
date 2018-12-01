@@ -2,8 +2,6 @@ package drdm.school.pia.dao;
 
 import drdm.school.pia.domain.Role;
 
-import java.util.Set;
-
 /**
  * DAO interface for the Role entity
  * @author Michal Drda

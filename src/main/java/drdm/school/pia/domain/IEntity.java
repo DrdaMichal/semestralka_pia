@@ -15,6 +15,6 @@ public interface IEntity<PK extends Serializable> {
      *
      * @return  primary key of the instance
      */
-    String getPK();
+    PK getPK();
 
 }

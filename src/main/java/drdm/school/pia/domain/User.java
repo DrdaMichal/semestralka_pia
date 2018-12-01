@@ -115,10 +115,10 @@ public class User extends BaseObject implements IEntity<String>  {
     }
 
     /**
-     * ManyToMany association between user and his roles.
+     * ManyToOne association between user and his role.
      *
-     * -- Role may be attached to multiple users, User may have multiple roles
-     * thus the ManyToMany
+     * -- Role may be attached to multiple users, User may have one role
+     * thus the ManyToOne
      * @return
      */
     @ManyToOne(fetch = FetchType.EAGER)
@@ -126,12 +126,10 @@ public class User extends BaseObject implements IEntity<String>  {
     public Role getRole() { return role; }
 
     public void setRole(Role role){ this.role = role; }
-/*
+    /*
     public void setRole(String role) {
         this.role = new Role(role);
     }*/
-
-
 
     public String getPassword() {
         return password;
