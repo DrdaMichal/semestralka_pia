@@ -7,7 +7,7 @@ import drdm.school.pia.domain.User;
  *
  * @author Jakub Danek
  */
-public interface UserDao extends GenericDao<User> {
+public interface UserDao extends GenericDao<User, String> {
 
     /**
      *
@@ -15,5 +15,7 @@ public interface UserDao extends GenericDao<User> {
      * @return user with the given username or null
      */
     User findByUsername(String username);
+
+    User create(User user);
 
 }
