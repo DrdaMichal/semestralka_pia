@@ -2,6 +2,10 @@ package drdm.school.pia.domain;
 
 import org.apache.commons.lang3.StringUtils;
 
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 /**
  * Entity representing application User.
  *
@@ -9,7 +13,9 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author Michal Drda
  */
-public class User extends BaseObject {
+@Entity
+@Table(name = "pia_drdm_user")
+public class User implements IEntity<String> {
     /**
      * Login, unique
      */
@@ -28,9 +34,6 @@ public class User extends BaseObject {
     private String birthId;
     private String gender;
 
-    public User() {
-    }
-
     public User(String username, String password, String role, String firstname, String lastname, String email, String address, String city, String zip, String birthId, String gender) {
         this.username = username;
         this.firstname = firstname;
@@ -43,6 +46,18 @@ public class User extends BaseObject {
         this.zip = zip;
         this.birthId = birthId;
         this.gender = gender;
+    }
+
+    @Override
+    @Transient
+    public String getPK() {
+        return getUsername();
+    }
+
+    private Set<Role> roles;
+
+    public User() {
+        this.roles = new LinkedHashSet<>();
     }
 
     /*
@@ -100,7 +115,8 @@ public class User extends BaseObject {
     ########### MAPPINGS #####################
      */
 
-
+    @Id
+    @Column(name = "username")
     public String getUsername() {
         return username;
     }
@@ -109,7 +125,23 @@ public class User extends BaseObject {
         this.username = username;
     }
 
+    /**
+     * ManyToMany association between user and his roles.
+     *
+     * -- Role may be attached to multiple users, User may have multiple roles
+     * thus the ManyToMany
+     * @return
+     */
+    @ManyToMany
+    @JoinTable(name = "pia_drdm_user_roles", joinColumns = @JoinColumn(name = "user", referencedColumnName = "username"),
+            inverseJoinColumns = @JoinColumn(name= "role", referencedColumnName = "id"))
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public String getPassword() {
         return password;
@@ -158,13 +190,10 @@ public class User extends BaseObject {
 
     }
 
-
-
     @Override
     public int hashCode() {
         return username != null ? username.hashCode() : 0;
     }
-
 
     @Override
     public String toString() {
