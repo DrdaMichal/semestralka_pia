@@ -27,10 +27,10 @@
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
     </bean>
 
-    <bean id="userDaoJDBC" class="drdm.school.pia.dao.UserDaoJDBC">
+    <!--<bean id="userDaoJDBC" class="drdm.school.pia.dao.UserDaoJDBC">
         <constructor-arg name="jdbcUrl" value="${jdbc.url}"/>
         <constructor-arg name="user" value="${jdbc.user}"/>
         <constructor-arg name="password" value="${jdbc.pwd}"/>
-    </bean>
+    </bean>-->
 
 </beans>

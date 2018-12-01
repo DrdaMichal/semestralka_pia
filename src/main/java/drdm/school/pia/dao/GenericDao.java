@@ -1,6 +1,8 @@
 package drdm.school.pia.dao;
 
-import drdm.school.pia.domain.BaseObject;
+import drdm.school.pia.domain.IEntity;
+
+import java.io.Serializable;
 
 /**
  * Common interface for all DAOs
@@ -9,12 +11,28 @@ import drdm.school.pia.domain.BaseObject;
  *
  * @author Jakub Danek
  */
-public interface GenericDao<T extends BaseObject> {
+public interface GenericDao<E extends IEntity<PK>, PK extends Serializable> {
 
-    T save(T value);
+    /**
+     * Either inserts new or updates existing instance.
+     *
+     * @param instance to be persisted
+     * @return persisted instance
+     */
+    E save(E instance);
 
-    T findOne(Long id);
+    /**
+     *
+     * @param id
+     * @return instance with the given id or null if not found
+     */
+    E findOne(PK id);
 
-    void remove(T toRemove);
+    /**
+     * Removes the given entity from persistence.
+     *
+     * @param id if of the entity instance
+     */
+    void delete(PK id);
 
 }

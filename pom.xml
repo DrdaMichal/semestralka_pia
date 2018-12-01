@@ -13,6 +13,9 @@
         <commons.lang3.version>3.3.2</commons.lang3.version>
         <spring.version>4.3.19.RELEASE</spring.version>
         <spring.security.version>4.2.8.RELEASE</spring.security.version>
+        <org.slf4j-version>1.7.25</org.slf4j-version>
+        <hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
+        <hibernate.version>5.2.17.Final</hibernate.version>
     </properties>
 
     <dependencies>
@@ -30,6 +33,35 @@
             <version>${mysql.connector.version}</version>
         </dependency>
 
+
+        <!-- Hibernate -->
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>${hibernate.jpa.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <!-- Apache -->
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -43,6 +75,7 @@
         </dependency>
 
         <!-- Spring Dependencies -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -88,7 +121,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>${org.slf4j-version}</version>
         </dependency>
 
         <dependency>
