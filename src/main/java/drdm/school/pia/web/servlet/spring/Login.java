@@ -2,6 +2,7 @@ package drdm.school.pia.web.servlet.spring;
 
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.web.auth.AuthenticationService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import java.io.IOException;
 public class Login extends AbstractServlet {
     private static final String USERNAME_PARAMETER = "username";
     private static final String PASSWORD_PARAMETER = "password";
+
+    final static Logger logger = Logger.getLogger(Login.class);
 
     private static final String ERR_ATTRIBUTE = "err";
     private static final String SUC_ATTRIBUTTE = "suc";
@@ -45,10 +48,12 @@ public class Login extends AbstractServlet {
         boolean authenticated = authService.authenticate(req.getSession(), username, password);
         if(authenticated) {
 
-            System.out.println("User["  + req.getSession().getAttribute("user") + "], role[" + req.getSession().getAttribute("role") +  "], session[" + req.getSession().getId() + "] successfully authenticated.");
+            logger.info("Custom log > User [" + req.getSession().getAttribute("user") + "], Role [" + req.getSession().getAttribute("role") +  "], Session [" + req.getSession().getId() + "] | Authentication successful.");
+
             String dir = "/login";
             if (null == req.getSession().getAttribute("role") || req.getSession().getAttribute("role").equals("NOTSET")) {
-                System.out.println("Redirecting back to the index page.");
+                req.setAttribute(ERR_ATTRIBUTE, "Unknown user role!");
+                logger.warn("Custom log > User [" + req.getSession().getAttribute("user") + "], Role [" + req.getSession().getAttribute("role") +  "], Session [" + req.getSession().getId() + "] | Unknown user role!");
             }
             else {
                 if (req.getSession().getAttribute("role").equals("USER")) {
@@ -59,9 +64,11 @@ public class Login extends AbstractServlet {
                 }
             }
 
+            logger.info("Custom log > User [" + req.getSession().getAttribute("user") + "], Role [" + req.getSession().getAttribute("role") +  "], Session [" + req.getSession().getId() + "] | Redirecting to [" + dir + "] page...");
             resp.sendRedirect(dir);
 
         } else {
+            logger.info("Custom log > User [" + req.getSession().getAttribute("user") + "], Role [" + req.getSession().getAttribute("role") +  "], Session [" + req.getSession().getId() + "] | Login failed!");
             req.setAttribute(ERR_ATTRIBUTE, "Invalid credentials!");
             req.getRequestDispatcher("/").forward(req, resp);
         }

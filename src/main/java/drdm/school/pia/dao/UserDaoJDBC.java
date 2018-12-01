@@ -36,7 +36,7 @@ public class UserDaoJDBC implements UserDao {
             pstm.setString(10, value.getBirthid());
             pstm.setString(11, value.getGender());
 
-            System.out.println("Created SELECT: " + pstm.toString());
+            System.out.println("Created USER: " + pstm.toString());
 
             pstm.executeUpdate();
 

@@ -5,6 +5,7 @@ import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.generateString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +43,8 @@ public class Register extends AbstractServlet {
     private static final String SUCCESS_ATTRIBUTE = "suc";
 
     private UserManager userManager;
+    @Value("${captcha.value}")
+    private String captchaValue;
 
     @Autowired
     public void setUserManager(UserManager userManager) {
@@ -82,7 +85,7 @@ public class Register extends AbstractServlet {
             return;
         }
 
-        if(!captcha.equals("42")) {
+        if(!captcha.equals(captchaValue)) {
             errorDispatch("Captcha answer is incorrect.", req, resp);
             return;
         }
