@@ -6,10 +6,7 @@ import javax.persistence.EntityManager;
 
 /**
  * JPA implementation of the UserDao interface
- *
- * Date: 26.9.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
 

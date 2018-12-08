@@ -7,10 +7,7 @@ import java.io.Serializable;
 
 /**
  * JPA implementation of the GenericDao interface
- *
- * Date: 26.9.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> implements GenericDao<E, PK> {
 

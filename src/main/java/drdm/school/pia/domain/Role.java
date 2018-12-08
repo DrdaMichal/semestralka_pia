@@ -3,15 +3,12 @@ package drdm.school.pia.domain;
 import javax.persistence.*;
 
 /**
- * Date: 26.9.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 @Entity
-@Table(name="pia_drdm_user_role")
-public class Role implements IEntity<Long> {
+@Table(name="drdm_user_role_pia")
+public class Role implements IEntity<String> {
 
-    private Long id;
     private String name;
 
     public Role() {
@@ -23,20 +20,10 @@ public class Role implements IEntity<Long> {
 
     @Transient
     @Override
-    public Long getPK() {
-        return getId();
+    public String getPK() {
+        return getName();
     }
-
     @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -48,7 +35,6 @@ public class Role implements IEntity<Long> {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Role{");
-        sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
         sb.append('}');
         return sb.toString();

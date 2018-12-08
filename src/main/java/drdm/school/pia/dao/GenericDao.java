@@ -6,10 +6,7 @@ import java.io.Serializable;
 
 /**
  * Common interface for all DAOs
- *
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 public interface GenericDao<E extends IEntity<PK>, PK extends Serializable> {
 

@@ -3,16 +3,12 @@ package drdm.school.pia.dao;
 import drdm.school.pia.domain.Role;
 
 import javax.persistence.EntityManager;
-import java.util.Set;
 
 /**
  * JPA implementation of the RoleDao interface
- *
- * Date: 26.9.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
-public class RoleDaoJpa extends GenericDaoJpa<Role, Long> implements RoleDao {
+public class RoleDaoJpa extends GenericDaoJpa<Role, String> implements RoleDao {
 
     /**
      *
@@ -23,7 +19,7 @@ public class RoleDaoJpa extends GenericDaoJpa<Role, Long> implements RoleDao {
     }
 
     @Override
-    public Set<Role> findByUser(String username) {
+    public Role findByUser(String username) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

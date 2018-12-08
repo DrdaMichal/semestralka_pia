@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 @WebFilter({"/managing/*", "/banking/*", "/logout/*"})
 public class AuthenticationGuard implements Filter {

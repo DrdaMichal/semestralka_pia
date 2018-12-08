@@ -7,10 +7,7 @@ import java.security.spec.InvalidKeySpecException;
 
 /**
  * Dummy encoder doing literally nothing.
- *
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 @Component
 public class PasswordHashEncoder implements Encoder {

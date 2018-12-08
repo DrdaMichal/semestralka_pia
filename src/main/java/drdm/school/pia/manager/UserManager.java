@@ -1,12 +1,11 @@
 package drdm.school.pia.manager;
 
+import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 
 /**
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 public interface UserManager {
 
@@ -28,5 +27,7 @@ public interface UserManager {
     void register(User newUser) throws UserValidationException;
 
 
-    String userRole(String username);
+    Role userRole(String username);
+
+
 }

@@ -1,9 +1,7 @@
 package drdm.school.pia.utils;
 
 /**
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 public interface Encoder {
 
