@@ -1,11 +1,9 @@
 package drdm.school.pia.domain;
 
 /**
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
-public class BaseObject {
+public class BaseObject extends AbstractEntity {
 
     private Long id;
 

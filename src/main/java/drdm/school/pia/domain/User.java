@@ -3,19 +3,14 @@ package drdm.school.pia.domain;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 /**
  * Entity representing application User.
- *
- * Date: 22.10.18
- *
  * @author Michal Drda
  */
 @Entity
 @Table(name = "pia_drdm_user")
-public class User implements IEntity<String> {
+public class User extends BaseObject implements IEntity<String>  {
     /**
      * Login, unique
      */
@@ -54,10 +49,7 @@ public class User implements IEntity<String> {
         return getUsername();
     }
 
-    private Set<Role> roles;
-
     public User() {
-        this.roles = new LinkedHashSet<>();
     }
 
     /*
@@ -87,22 +79,22 @@ public class User implements IEntity<String> {
         return Collections.singleton(new SimpleGrantedAuthority(role));
     }*/
 
-
+    @Transient
     public boolean isAccountNonExpired() {
         return true;
     }
 
-
+    @Transient
     public boolean isAccountNonLocked() {
         return true;
     }
 
-
+    @Transient
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-
+    @Transient
     public boolean isEnabled() {
         return true;
     }
@@ -128,15 +120,14 @@ public class User implements IEntity<String> {
      * thus the ManyToMany
      * @return
      */
-    @ManyToMany
-    @JoinTable(name = "pia_drdm_user_roles", joinColumns = @JoinColumn(name = "user", referencedColumnName = "username"),
-            inverseJoinColumns = @JoinColumn(name= "role", referencedColumnName = "id"))
-    public Set<Role> getRoles() {
-        return roles;
+    @ManyToOne
+    @JoinTable(name = "drdm_user_role_pia")
+    public Role getRole() {
+        return getRole();
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPassword() {
@@ -147,9 +138,47 @@ public class User implements IEntity<String> {
         this.password = password;
     }
 
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setBirthId(String birthId) {
+        this.birthId = birthId;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * Deprecated - from JDBC version
+     * @return
+     */
+    /*
     public String getRole() {
         return role;
-    }
+    }*/
+
     public String getFirstname() {
         return firstname;
     }

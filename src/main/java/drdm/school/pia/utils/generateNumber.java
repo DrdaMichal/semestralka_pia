@@ -4,9 +4,6 @@ import java.util.Random;
 
 /**
  * Class used for generating numbers.
- *
- * Date: 24.10.18
- *
  * @author Michal Drda
  */
 public class generateNumber {
