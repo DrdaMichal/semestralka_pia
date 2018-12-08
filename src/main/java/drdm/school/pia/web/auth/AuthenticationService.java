@@ -1,5 +1,6 @@
 package drdm.school.pia.web.auth;
 
+import drdm.school.pia.domain.Role;
 import drdm.school.pia.manager.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,10 +9,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Wrapper around HttpSession providing authentication functionality.
- *
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 @Service
 public class AuthenticationService {
@@ -40,7 +38,7 @@ public class AuthenticationService {
 
 
         if(authenticated) {
-            String userRole = userManager.userRole(username);
+            Role userRole = userManager.userRole(username);
             session.setAttribute(USER, username);
             session.setAttribute(ROLE, userRole);
             return true;

@@ -1,6 +1,7 @@
 package drdm.school.pia.manager;
 
 import drdm.school.pia.dao.UserDao;
+import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.utils.Encoder;
@@ -8,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 @Service
 public class DefaultUserManager implements UserManager {
@@ -32,11 +31,8 @@ public class DefaultUserManager implements UserManager {
     }
 
     @Override
-    public String userRole (String username) {
-        String userRole = userDao.findByUsername(username).getRole();
-        if (userRole == null) {
-            userRole = "NOTSET";
-        }
+    public Role userRole (String username) {
+        Role userRole = userDao.findByUsername(username).getRole();
         return userRole;
     }
 

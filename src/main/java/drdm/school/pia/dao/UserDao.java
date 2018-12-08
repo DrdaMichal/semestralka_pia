@@ -3,9 +3,7 @@ package drdm.school.pia.dao;
 import drdm.school.pia.domain.User;
 
 /**
- * Date: 26.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 public interface UserDao extends GenericDao<User, String> {
 

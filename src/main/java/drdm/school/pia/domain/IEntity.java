@@ -7,9 +7,7 @@ import java.io.Serializable;
  *
  * PK type represents type of the entity's primary key.
  *
- * Date: 26.9.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 public interface IEntity<PK extends Serializable> {
 
@@ -17,6 +15,6 @@ public interface IEntity<PK extends Serializable> {
      *
      * @return  primary key of the instance
      */
-    PK getPK();
+    String getPK();
 
 }

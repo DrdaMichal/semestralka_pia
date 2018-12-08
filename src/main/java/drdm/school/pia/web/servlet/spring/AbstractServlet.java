@@ -9,9 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 /**
- * Date: 27.11.15
- *
- * @author Jakub Danek
+ * @author Michal Drda
  */
 public abstract class AbstractServlet extends HttpServlet {
 
