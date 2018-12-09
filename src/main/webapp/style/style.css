@@ -73,14 +73,6 @@ Author: Michal Drda
 			padding-right: 15px;
 		}
 		
-		.img-border {
-			border: 1px solid #ffb84d;
-			border-radius: 4px;
-			padding: 5px;
-			position: center;
-			max-width: 100%;
-		}
-		
 		p {
 			font-size: 14px;
 			color: #808080;

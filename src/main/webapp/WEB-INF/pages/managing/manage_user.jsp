@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
   User: Michal Drda
@@ -56,41 +57,40 @@
         <jsp:param name="suc" value="${requestScope.suc}"/>
     </jsp:include>
 
-        <c:if test="${empty requestScope.chosenAction}">
-            <div class="container form-max-width">
-                <h1>Choose an action</h1>
-                <form action="manage_user" method="post" class="form-horizontal form-border box-border">
-                    <div class="container-fluid disable-padding">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="username">*Username</label>
-                                <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                    <input class="form-control" type="text" id="username" name="username"/>
-                                </div>
-                                <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="action">*Action</label>
-                                <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                    <label class="radio-inline"><input type="radio" name="action" id="action" value="edit"> Edit</label>
-                                    <label class="radio-inline"><input type="radio" name="action" value="remove"> Remove</label>
-                                </div>
-                            </div>
-                        </div>
+    <c:if test="${empty requestScope.chosenAction}">
+        <div class="container form-max-width">
+            <h1>Choose an action</h1>
+            <form action="manage_user" method="post" class="form-horizontal form-border box-border">
+                <div class="container-fluid disable-padding">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <div class="col-xs-12 col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 disable-padding">
-                                <button class="btn btn-default" type="submit" value="chosenAction">Proceed</button>
+                            <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="username">*Username</label>
+                            <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
+                                <input class="form-control" type="text" id="username" name="username"/>
+                            </div>
+                            <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="action">*Action</label>
+                            <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
+                                <label class="radio-inline"><input type="radio" name="action" id="action" value="edit"> Edit</label>
+                                <label class="radio-inline"><input type="radio" name="action" value="remove"> Remove</label>
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-        </c:if>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 disable-padding">
+                            <button class="btn btn-default" type="submit" value="chosenAction">Proceed</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </c:if>
 
-        <c:if test="${requestScope.chosenAction == 'edit'}">
-            <h1>Edit a user.</h1>
-        </c:if>
-        <c:if test="${requestScope.chosenAction == 'remove'}">
-            <h1>Remove a user.</h1>
-        </c:if>
+    <c:if test="${requestScope.chosenAction == 'edit'}">
+        <h1>Edit a user.</h1>
+    </c:if>
+    <c:if test="${requestScope.chosenAction == 'remove'}">
+        <h1>Remove a user.</h1>
+    </c:if>
 
-    </div>
 </body>
 </html>

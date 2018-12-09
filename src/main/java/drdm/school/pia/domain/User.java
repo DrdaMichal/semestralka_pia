@@ -54,15 +54,11 @@ public class User extends BaseObject {
      * @throws UserValidationException in case the instance is not in valid state.
      */
     public void validate() throws UserValidationException {
-        if(StringUtils.isBlank(username)) throw new UserValidationException("Username is a required field");
         if(StringUtils.isBlank(firstname)) throw new UserValidationException("First name is a required field");
         if(StringUtils.isBlank(lastname)) throw new UserValidationException("Last name is a required field");
         if(StringUtils.isBlank(email)) throw new UserValidationException("E-mail is a required field");
         if(StringUtils.isBlank(password)) throw new UserValidationException("Password is a required field");
         if(StringUtils.isBlank(role)) throw new UserValidationException("Role is a required field");
-        if(StringUtils.isBlank(address)) throw new UserValidationException("Address is a required field");
-        if(StringUtils.isBlank(city)) throw new UserValidationException("City is a required field");
-        if(StringUtils.isBlank(zip)) throw new UserValidationException("Zip Code is a required field");
         if(StringUtils.isBlank(birthId)) throw new UserValidationException("Birth id is a required field");
         if(StringUtils.isBlank(gender)) throw new UserValidationException("Gender is a required field");
     }
