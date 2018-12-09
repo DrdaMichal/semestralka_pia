@@ -1,22 +1,24 @@
 package drdm.school.pia.dao;
 
 import drdm.school.pia.domain.User;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 
 /**
  * JPA implementation of the UserDao interface
+ *
  * @author Michal Drda
  */
+@Repository
 public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
 
     /**
      *
-     * @param em entity manager to be used by this dao
      */
-    public UserDaoJpa(EntityManager em) {
+    public UserDaoJpa() {
         // natvrdo davam User jako typ objektu, abych vedel v GenericDaoJpa, co zrovna pouzivam za objekt
-        super(em, User.class);
+        super(User.class);
     }
 
     @Override

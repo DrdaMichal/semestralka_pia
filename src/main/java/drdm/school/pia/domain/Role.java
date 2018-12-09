@@ -1,15 +1,17 @@
 package drdm.school.pia.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author Michal Drda
  */
 @Entity
-@Table(name="drdm_user_role_pia")
+@Table(name="drdam_role")
 public class Role implements IEntity<String> {
 
     private String name;
+    private List<User> users;
 
     public Role() {
     }
@@ -32,10 +34,15 @@ public class Role implements IEntity<String> {
         this.name = name;
     }
 
+    @OneToMany(targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "role")
+    public List<User> getUsers() {return users; }
+
+    public void setUsers(List<User> users) {this.users = users;}
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Role{");
-        sb.append(", name='").append(name).append('\'');
+        sb.append("name='").append(name).append('\'');
         sb.append('}');
         return sb.toString();
     }
