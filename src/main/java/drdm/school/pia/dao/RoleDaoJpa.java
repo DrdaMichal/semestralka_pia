@@ -1,6 +1,8 @@
 package drdm.school.pia.dao;
 
 import drdm.school.pia.domain.Role;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 
@@ -8,14 +10,15 @@ import javax.persistence.EntityManager;
  * JPA implementation of the RoleDao interface
  * @author Michal Drda
  */
+@Repository
 public class RoleDaoJpa extends GenericDaoJpa<Role, String> implements RoleDao {
 
     /**
      *
-     * @param em entity manager to be used by this instance
+     *
      */
-    public RoleDaoJpa(EntityManager em) {
-        super(em, Role.class);
+    public RoleDaoJpa() {
+        super(Role.class);
     }
 
     @Override

@@ -3,6 +3,7 @@ package drdm.school.pia.dao;
 import drdm.school.pia.domain.IEntity;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 
 /**
@@ -11,16 +12,17 @@ import java.io.Serializable;
  */
 public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> implements GenericDao<E, PK> {
 
+    @PersistenceContext
     protected EntityManager entityManager;
     protected Class<E> persistedClass;
 
     /**
      *
-     * @param em entity manager
+     *
      * @param persistedClass entity type to be persisted by this instance
      */
-    public GenericDaoJpa(EntityManager em, Class<E> persistedClass) {
-        this.entityManager = em;
+    public GenericDaoJpa(Class<E> persistedClass) {
+        this.entityManager = entityManager;
         this.persistedClass = persistedClass;
     }
 
@@ -34,13 +36,11 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
             // zmerguje vsechno se stejnym PK, proto muzeme pouzivat jen kdyz PK neexistuje -> novy zaznam
             return entityManager.merge(instance);
         }
-        //throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @Override
     public E findOne(PK id) {
         return entityManager.find(persistedClass, id);
-        //throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @Override
@@ -49,7 +49,6 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
         if(en != null) {
             entityManager.remove(en);
         }
-        //throw new UnsupportedOperationException("Not implemented yet");
     }
 
 }

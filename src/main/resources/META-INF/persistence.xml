@@ -5,18 +5,22 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <properties>
+
             <!-- JDBC Connection configuration -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.password" value="pia"/>
-            <property name="javax.persistence.jdbc.user" value="pia"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://students.kiv.zcu.cz:3306/pia"/>
+            <property name="javax.persistence.jdbc.password" value="${jdbc.pwd}"/>
+            <property name="javax.persistence.jdbc.user" value="${jdbc.user}"/>
+            <property name="javax.persistence.jdbc.url" value="${jdbc.url}"/>
 
             <!-- Hibernate-specific configuration -->
             <!-- WARNING - the following line clean the whole database on each application start!!! -->
             <!-- create (pokazde dropne a zalozi znovu schema v db) / update (dela samo zmeny v db) / validate (vhodne pro produkci) -->
             <property name="hibernate.hbm2ddl.auto" value="create"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL55Dialect"/>
             <property name="hibernate.validator.apply_to_ddl" value="true" />
+
+            <property name="hibernate.connection.useUnicode" value="true"/>
+            <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
 
             <!-- Hibernate-C3P0 configuration -->
             <property name="connection.provider_class" value="org.hibernate.c3p0.internal.C3P0ConnectionProvider"/>
