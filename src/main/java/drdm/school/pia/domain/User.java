@@ -1,6 +1,7 @@
 package drdm.school.pia.domain;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
  * @author Michal Drda
  */
 @Entity
-@Table(name = "pia_drdm_user")
+@Table(name = "drdam_user")
 public class User extends BaseObject implements IEntity<String>  {
     /**
      * Login, unique
@@ -18,7 +19,7 @@ public class User extends BaseObject implements IEntity<String>  {
     private String firstname;
     private String lastname;
     private String email;
-    private String role;
+    private Role role;
     /**
      * Secret for signing-in
      */
@@ -35,7 +36,7 @@ public class User extends BaseObject implements IEntity<String>  {
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.role = new Role(role);
         this.address = address;
         this.city = city;
         this.zip = zip;
@@ -65,7 +66,7 @@ public class User extends BaseObject implements IEntity<String>  {
         if(StringUtils.isBlank(lastname)) throw new UserValidationException("Last name is a required field");
         if(StringUtils.isBlank(email)) throw new UserValidationException("E-mail is a required field");
         if(StringUtils.isBlank(password)) throw new UserValidationException("Password is a required field");
-        if(StringUtils.isBlank(role)) throw new UserValidationException("Role is a required field");
+        if(StringUtils.isBlank(role.getName())) throw new UserValidationException("Role is a required field");
         if(StringUtils.isBlank(birthId)) throw new UserValidationException("Birth id is a required field");
         if(StringUtils.isBlank(gender)) throw new UserValidationException("Gender is a required field");
     }
@@ -104,7 +105,7 @@ public class User extends BaseObject implements IEntity<String>  {
      */
 
     @Id
-    @Column(name = "username")
+    @Column(unique = true)
     public String getUsername() {
         return username;
     }
@@ -120,15 +121,17 @@ public class User extends BaseObject implements IEntity<String>  {
      * thus the ManyToMany
      * @return
      */
-    @ManyToOne
-    @JoinTable(name = "drdm_user_role_pia")
-    public Role getRole() {
-        return getRole();
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Username")
+    public Role getRole() { return role; }
 
+    public void setRole(Role role){ this.role = role; }
+/*
     public void setRole(String role) {
-        this.role = role;
-    }
+        this.role = new Role(role);
+    }*/
+
+
 
     public String getPassword() {
         return password;
@@ -197,7 +200,7 @@ public class User extends BaseObject implements IEntity<String>  {
     public String getZip() {
         return zip;
     }
-    public String getBirthid() {
+    public String getBirthId() {
         return birthId;
     }
     public String getGender() {
