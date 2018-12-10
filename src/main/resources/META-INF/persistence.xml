@@ -22,6 +22,11 @@
             <property name="hibernate.connection.useUnicode" value="true"/>
             <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
 
+            <property name="hibernate.connection.url" value="${jdbc.url}" />
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.username" value="${jdbc.user}" />
+            <property name="hibernate.connection.password" value="${jdbc.pwd}" />
+
             <!-- Hibernate-C3P0 configuration -->
             <property name="connection.provider_class" value="org.hibernate.c3p0.internal.C3P0ConnectionProvider"/>
             <property name="hibernate.c3p0.min_size" value="5"/>
