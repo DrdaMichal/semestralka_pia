@@ -14,6 +14,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CoolBank Internet Banking</title>
+    <link rel="icon" href="../img/icon-c.jpg">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,11 +26,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Function used for hiding login/logout button -->
     <script src="../js/loginFunction.js"></script>
-    <script>
-        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-            $("#success-alert").slideUp(500);
-        });
-    </script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -44,7 +40,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
-                    <li><a href="${location.reload(true)}">Banking</a></li>
+                    <li><a id="selected-page-item" href="${location.reload(true)}">Banking</a></li>
                     <li><a href="banking/pay">New payment</a></li>
                     <li><a href="banking/history">Payment history</a></li>
                     <li><a href="banking/account">Update account</a></li>

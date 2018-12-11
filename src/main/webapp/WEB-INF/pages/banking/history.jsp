@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Payment history</title>
+    <link rel="icon" href="../img/icon-c.jpg">
 </head>
 <body>
 

@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CoolBank Internet Banking</title>
+    <link rel="icon" href="../img/icon-c.jpg">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,7 +39,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
                     <li><a href="/banking">Banking</a></li>
-                    <li><a href="${location.reload(true)}">New payment</a></li>
+                    <li><a id="selected-page-item" href="${location.reload(true)}">New payment</a></li>
                     <li><a href="history">Payment history</a></li>
                     <li><a href="account">Update account</a></li>
                     <li><p >Logged in as USER. (for testing purpouses)</p></li>

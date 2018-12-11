@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<!--
-Description: Login form page.
-
-Author: Michal Drda
-
-Version:	ver  / DD-MM-CCYY / comment
-0.01 / 28-10-2017 / initial version
-0.02 / 25-10-2018 / refactoring to 2018 project (Internet Banking)
-
--->
+<%--
+  Created by IntelliJ IDEA.
+  User: Michal Drda
+  Date: 30-Sep-18
+  Time: 22:35
+  To change this template use File | Settings | File Templates.
+--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,6 +15,7 @@ Version:	ver  / DD-MM-CCYY / comment
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login to CoolBank</title>
+    <link rel="icon" href="../img/icon-c.jpg">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

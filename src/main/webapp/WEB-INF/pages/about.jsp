@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<!-- 
-Description: About page, used for an info About project.
-
-Author: Michal Drda
-
-Version:	ver  / DD-MM-CCYY / comment
-			0.01 / 28-10-2017 / initial version
-			0.02 / 25-10-2018 / refactoring to 2018 project (Internet Banking)
- 
-TODO:		1)	Improve text
-TODO:		2)	Create main_page.jsp
- 
- -->
+<%--
+  Created by IntelliJ IDEA.
+  User: Michal Drda
+  Date: 05-Nov-18
+  Time: 17:41
+  To change this template use File | Settings | File Templates.
+--%>
  
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>About CoolBank</title>
+		<link rel="icon" href="../img/icon-c.jpg">
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -29,6 +24,8 @@ TODO:		2)	Create main_page.jsp
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		<!-- Function used for hiding login/logout button -->
 		<script src="../js/loginFunction.js"></script>
+		<!-- show text to contact admin on click -->
+		<script src="../js/onBtnClickShow.js"></script>
 	</head>
 	<body>
 	    <nav class="navbar navbar-default navbar-static-top">
@@ -43,7 +40,7 @@ TODO:		2)	Create main_page.jsp
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav underline-menu">
-						<li><a href="${location.reload(true)}">About</a></li>
+						<li><a id="selected-page-item" href="${location.reload(true)}">About</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li id="login"><a href="login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -59,11 +56,14 @@ TODO:		2)	Create main_page.jsp
 		</jsp:include>
 
 		<div class="container-fluid">
-			<div class="container about">
-				<h1>About the CoolBank ...</h1>
-				<p>CoolBank is a web application that has been created during winter semester of university year 2018/2019. It has to be some kind of website like internet banking, so students will learn how to work with various technologies used for developing web applications.</p>
-				<h1>You would like an account too?</h1>
-				<p>For account creation, please contact administrator on <a href="mailto:drdam@students.zcu.cz">drdam@students.zcu.cz</a></p>
+			<div class="container about about-center">
+				<h1 class="about-center">About the CoolBank ...</h1>
+				<p >CoolBank is a web application that has been created during winter semester of university year 2018/2019. It has to be some kind of website like internet banking, so students will learn how to work with various technologies used for developing web applications.</p>
+				<h1 class="about-center">You would like an account too?</h1>
+				<button id="hideBtn" class="btn btn-default" onclick="hideBtn()">Yes!</button>
+				<div id="showText" style="display: none">
+					<p>For account creation, please contact administrator on <a href="mailto:drdam@students.zcu.cz">drdam@students.zcu.cz</a></p>
+				</div>
 			</div>
 		</div>
 

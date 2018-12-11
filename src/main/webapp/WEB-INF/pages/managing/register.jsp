@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<!-- 
-Description: Register form page, used for adding new user to the database.
-
-Author: Michal Drda
-
-Version:	ver  / DD-MM-CCYY / comment
-			0.01 / 20-10-2017 / initial version
-			0.02 / 31-10-2017 / form align
-            0.03 / 22-10-2018 / refactoring to 2018 project (Internet Banking)
- -->
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,6 +8,7 @@ Version:	ver  / DD-MM-CCYY / comment
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Registration</title>
+		<link rel="icon" href="../img/icon-c.jpg">
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -44,7 +35,7 @@ Version:	ver  / DD-MM-CCYY / comment
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav underline-menu">
 						<li><a href="/managing">Managing</a></li>
-						<li><a href="${location.reload(true)}">Register</a></li>
+						<li><a id="selected-page-item" href="${location.reload(true)}" class="selected">Register</a></li>
 						<li><a href="manage_user">User management</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

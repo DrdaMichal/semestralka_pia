@@ -11,6 +11,11 @@ Author: Michal Drda
             background-color: #ffb84d;
         }
 
+		.underline-menu a#selected-page-item {
+			color: #808080;
+			border-bottom: 3px solid #808080;
+		}
+
         .nav.navbar-nav li a {
 			color: #ffffff;
 		 }
@@ -171,6 +176,10 @@ Author: Michal Drda
 			padding: 15px;
 		}
 
+		.form-horizontal .radio-inline {
+			padding-bottom: 7px;
+		}
+
 		.form-group {
 			padding-left: 15px;
 			padding-right: 15px;
@@ -232,6 +241,11 @@ Author: Michal Drda
             background-color: #ffb84d;
             border: 1px solid transparent;
         }
+
+		.about-center {
+			text-align: center;
+		}
+
         .btn-default:hover {
 			color: #ffffff;
             background-color: #808080;

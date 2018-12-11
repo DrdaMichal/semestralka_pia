@@ -14,6 +14,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Manage CoolBank</title>
+    <link rel="icon" href="../img/icon-c.jpg">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,7 +40,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
-                    <li><a href="${location.reload(true)}">Managing</a></li>
+                    <li><a id="selected-page-item" href="${location.reload(true)}">Managing</a></li>
                     <li><a href="managing/register">Register</a></li>
                     <li><a href="managing/manage_user">User management</a></li>
                 </ul>
