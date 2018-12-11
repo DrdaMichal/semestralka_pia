@@ -66,7 +66,7 @@ public class User extends BaseObject implements IEntity<String>  {
         if(StringUtils.isBlank(lastname)) throw new UserValidationException("Last name is a required field");
         if(StringUtils.isBlank(email)) throw new UserValidationException("E-mail is a required field");
         if(StringUtils.isBlank(password)) throw new UserValidationException("Password is a required field");
-        if(StringUtils.isBlank(role)) throw new UserValidationException("Role is a required field");
+        if(StringUtils.isBlank(role.getName())) throw new UserValidationException("Role is a required field");
         if(StringUtils.isBlank(birthId)) throw new UserValidationException("Birth id is a required field");
         if(StringUtils.isBlank(gender)) throw new UserValidationException("Gender is a required field");
     }
