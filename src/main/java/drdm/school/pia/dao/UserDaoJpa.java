@@ -1,9 +1,12 @@
 package drdm.school.pia.dao;
 
 import drdm.school.pia.domain.User;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 
 /**
  * JPA implementation of the UserDao interface
@@ -23,7 +26,13 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
 
     @Override
     public User findByUsername(String username) {
-        return null;
+        TypedQuery<User> q = entityManager.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
+        q.setParameter("username", username);
+        try {
+            return q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
