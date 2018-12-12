@@ -6,12 +6,8 @@ import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.utils.Encoder;
+import drdm.school.pia.utils.StringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,6 +23,7 @@ public class DefaultUserManager implements UserManager {
     private UserDao userDao;
     private RoleDao roleDao;
     private Encoder encoder;
+    private StringGenerator stringGenerator;
 
     public DefaultUserManager(){
 
@@ -63,6 +60,10 @@ public class DefaultUserManager implements UserManager {
         this.encoder = encoder;
     }
 
+    public StringGenerator getStringGenerator() { return stringGenerator; }
+    @Autowired
+    public void setStringGenerator(StringGenerator generator) { this.stringGenerator = generator; }
+
     @Override
     public boolean authenticate(String username, String password) {
         User u = userDao.findByUsername(username);
@@ -82,14 +83,19 @@ public class DefaultUserManager implements UserManager {
             throw new RuntimeException("User already exists, use save method for updates!");
         }
 
+        newUser.setUsername(stringGenerator.generate(8));
+
         newUser.validate();
 
         User existinCheck = userDao.findByUsername(newUser.getUsername());
         if(existinCheck != null) {
-            throw new UserValidationException("Username already taken!");
+            stringGenerator.generate(8);
+            //throw new UserValidationException("Username already taken!");
         }
 
         newUser.setPassword(encoder.encode(newUser.getPassword()));
+
+
 
         userDao.save(newUser);
     }

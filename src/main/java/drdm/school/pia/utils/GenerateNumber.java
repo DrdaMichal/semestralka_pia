@@ -1,21 +1,37 @@
 package drdm.school.pia.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Random;
 
 /**
  * Class used for generating numbers.
  * @author Michal Drda
  */
-public class generateNumber {
+@Component
+public class GenerateNumber implements IntGenerator {
 
-    public generateNumber() {
+    public GenerateNumber() {
 
     }
 
+    public int generate(int numberLength) {
+        int lowerBound = (int) Math.pow(10, (numberLength-1));
+        int addition = (int) (Math.pow(10, (numberLength-1)) * 9);
+
+        Random rnd = new Random();
+        int randomNumber = (lowerBound + rnd.nextInt(addition));
+
+        return randomNumber;
+
+    }
+
+    /*
     public static int getRandomNumber (int numberLength, String tableName, String columnName) {
         return generateRandomNumber(numberLength, tableName, columnName);
-    }
+    }*/
 
+    /*
     private static int generateRandomNumber(int numberLength, String tableName, String columnName) {
         int lowerBound = (int) Math.pow(10, (numberLength-1));
         int addition = (int) (Math.pow(10, (numberLength-1)) * 9);
@@ -31,6 +47,8 @@ public class generateNumber {
 
         return randomNumber;
     }
+    */
+
     /*
         Should be somewhere in DAO (at least calling to DB, other logic can remain here).
      */

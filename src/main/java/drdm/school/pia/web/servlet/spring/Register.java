@@ -1,10 +1,10 @@
 package drdm.school.pia.web.servlet.spring;
 
-import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.manager.UserManager;
-import drdm.school.pia.utils.generateString;
+import drdm.school.pia.utils.GenerateString;
+import drdm.school.pia.utils.StringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -38,7 +38,6 @@ public class Register extends AbstractServlet {
     private static final String GENDER_PARAMETER = "gender";
     private static final String CAPTCHA_PARAMETER = "captcha";
     private static final String TERMS_PARAMETER = "terms";
-    //TODO: check tableName and columnName where username is stored
 
     private static final String ERROR_ATTRIBUTE = "err";
     private static final String SUCCESS_ATTRIBUTE = "suc";
@@ -74,7 +73,7 @@ public class Register extends AbstractServlet {
         String city = req.getParameter(CITY_PARAMETER);
         String zip = req.getParameter(ZIP_PARAMETER);
         String birthid = req.getParameter(BIRTHID_PARAMETER);
-        String username = String.valueOf(generateString.getRandomString(8));
+        //String username = GenerateString.generate(8);
         System.out.println("Psw: " +  password);
         String gender = req.getParameter(GENDER_PARAMETER);
         String captcha = req.getParameter(CAPTCHA_PARAMETER);
@@ -97,8 +96,7 @@ public class Register extends AbstractServlet {
         }
 
         try {
-            userManager.register(new User(username, password, role, firstname, lastname, email, address, city, zip, birthid, gender));
-            //resp.sendRedirect("/");  //not perfect, user should get a message registration was successful!
+            userManager.register(new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender));
             succsessDispatch("User successfully registered!", req, resp);
         } catch (UserValidationException e) {
             errorDispatch(e.getMessage(), req, resp);

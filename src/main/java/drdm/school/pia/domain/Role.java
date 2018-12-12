@@ -7,7 +7,7 @@ import java.util.List;
  * @author Michal Drda
  */
 @Entity
-@Table(name="drdam_role")
+@Table(name="drdam_rolea")
 public class Role implements IEntity<String> {
 
     private String name;

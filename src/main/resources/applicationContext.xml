@@ -32,24 +32,23 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           destroy-method="destroy">
-        <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
+
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter" ref="hibernateVendorAdapter"/>
         <property name="packagesToScan" value="drdm.school.pia.domain"/>
-        <property name="persistenceUnitName" value="pia"/>
-<!--        <property name="jpaProperties">
+
+        <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</prop>
             </props>
-        </property>-->
+        </property>
     </bean>
 
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="${jdbc.url}" />
-        <property name="username" value="${jdbc.user}" />
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="${jdbc.url}" />
+        <property name="user" value="${jdbc.user}" />
         <property name="password" value="${jdbc.pwd}" />
     </bean>
 

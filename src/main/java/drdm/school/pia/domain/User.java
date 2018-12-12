@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @author Michal Drda
  */
 @Entity
-@Table(name = "drdam_user")
+@Table(name = "drdam_usera")
 public class User extends BaseObject implements IEntity<String>  {
     /**
      * Login, unique
@@ -30,8 +30,21 @@ public class User extends BaseObject implements IEntity<String>  {
     private String birthId;
     private String gender;
 
+    public User(String password, String role, String firstname, String lastname, String email, String address, String city, String zip, String birthId, String gender) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.role = new Role(role);
+        this.address = address;
+        this.city = city;
+        this.zip = zip;
+        this.birthId = birthId;
+        this.gender = gender;
+    }
+
+    //TODO delete
     public User(String username, String password, String role, String firstname, String lastname, String email, String address, String city, String zip, String birthId, String gender) {
-        this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -122,7 +135,7 @@ public class User extends BaseObject implements IEntity<String>  {
      * @return
      */
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "Username")
+    @JoinColumn(name = "role")
     public Role getRole() { return role; }
 
     public void setRole(Role role){ this.role = role; }
