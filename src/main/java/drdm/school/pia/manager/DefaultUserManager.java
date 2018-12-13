@@ -8,6 +8,7 @@ import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.utils.Encoder;
 import drdm.school.pia.utils.StringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -24,6 +25,8 @@ public class DefaultUserManager implements UserManager {
     private RoleDao roleDao;
     private Encoder encoder;
     private StringGenerator stringGenerator;
+    @Value("${username.length}")
+    private int usernameLength;
 
     public DefaultUserManager(){
 
@@ -89,7 +92,7 @@ public class DefaultUserManager implements UserManager {
 
         User existinCheck = userDao.findByUsername(newUser.getUsername());
         if(existinCheck != null) {
-            stringGenerator.generate(8);
+            stringGenerator.generate(usernameLength);
             //throw new UserValidationException("Username already taken!");
         }
 
