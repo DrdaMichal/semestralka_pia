@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * @author Michal Drda
@@ -27,6 +28,8 @@ public class DefaultUserManager implements UserManager {
     private StringGenerator stringGenerator;
     @Value("${username.length}")
     private int usernameLength;
+    @Value("#{'${user.roles}'.split(',')}")
+    private List<String> permittedRoles;
 
     public DefaultUserManager(){
 
@@ -88,6 +91,13 @@ public class DefaultUserManager implements UserManager {
 
         newUser.setUsername(stringGenerator.generate(8));
 
+        if (roleDao.findByRoleName(newUser.getRoleName()) != null && permittedRoles.contains(newUser.getRoleName())) {
+            newUser.setRole(roleDao.findByRoleName(newUser.getRoleName()));
+        } else if (roleDao.findByRoleName(newUser.getRoleName()) == null && permittedRoles.contains(newUser.getRoleName())){
+            newUser.setRole(newUser.getRoleName());
+        } else {
+            throw new UserValidationException("Role is not in the list of permitted roles! Please contact administrator.");
+        }
         newUser.validate();
 
         User existinCheck = userDao.findByUsername(newUser.getUsername());

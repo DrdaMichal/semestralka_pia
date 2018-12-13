@@ -73,11 +73,12 @@ public class Register extends AbstractServlet {
         String city = req.getParameter(CITY_PARAMETER);
         String zip = req.getParameter(ZIP_PARAMETER);
         String birthid = req.getParameter(BIRTHID_PARAMETER);
-        //String username = GenerateString.generate(8);
-        System.out.println("Psw: " +  password);
         String gender = req.getParameter(GENDER_PARAMETER);
         String captcha = req.getParameter(CAPTCHA_PARAMETER);
         String terms = req.getParameter(TERMS_PARAMETER);
+
+
+        System.out.println("Psw: " +  password);
 
 
         if(!Objects.equals(password, confirmPwd)) {

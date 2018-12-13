@@ -6,7 +6,7 @@ import drdm.school.pia.domain.Role;
  * DAO interface for the Role entity
  * @author Michal Drda
  */
-public interface RoleDao extends GenericDao<Role, String> {
+public interface RoleDao extends GenericDao<Role, Long> {
 
     /**
      *
@@ -15,4 +15,5 @@ public interface RoleDao extends GenericDao<Role, String> {
      */
     Role findByUser(String username);
 
+    Role findByRoleName(String roleName);
 }

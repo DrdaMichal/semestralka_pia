@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @author Michal Drda
  */
 @Entity
-@Table(name = "drdam_usera")
+@Table(name = "drdam_user")
 public class User extends BaseObject implements IEntity<String>  {
     /**
      * Login, unique
@@ -19,6 +19,7 @@ public class User extends BaseObject implements IEntity<String>  {
     private String firstname;
     private String lastname;
     private String email;
+    private String roleName;
     private Role role;
     /**
      * Secret for signing-in
@@ -35,7 +36,7 @@ public class User extends BaseObject implements IEntity<String>  {
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-        this.role = new Role(role);
+        this.roleName = role;
         this.address = address;
         this.city = city;
         this.zip = zip;
@@ -49,7 +50,7 @@ public class User extends BaseObject implements IEntity<String>  {
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-        this.role = new Role(role);
+        //this.role = new Role(role);
         this.address = address;
         this.city = city;
         this.zip = zip;
@@ -79,7 +80,7 @@ public class User extends BaseObject implements IEntity<String>  {
         if(StringUtils.isBlank(lastname)) throw new UserValidationException("Last name is a required field");
         if(StringUtils.isBlank(email)) throw new UserValidationException("E-mail is a required field");
         if(StringUtils.isBlank(password)) throw new UserValidationException("Password is a required field");
-        if(StringUtils.isBlank(role.getName())) throw new UserValidationException("Role is a required field");
+        if(StringUtils.isBlank(roleName)) throw new UserValidationException("Role is a required field");
         if(StringUtils.isBlank(birthId)) throw new UserValidationException("Birth id is a required field");
         if(StringUtils.isBlank(gender)) throw new UserValidationException("Gender is a required field");
     }
@@ -118,7 +119,6 @@ public class User extends BaseObject implements IEntity<String>  {
      */
 
     @Id
-    @Column(unique = true)
     public String getUsername() {
         return username;
     }
@@ -134,15 +134,21 @@ public class User extends BaseObject implements IEntity<String>  {
      * thus the ManyToOne
      * @return
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "role")
-    public Role getRole() { return role; }
+    public Role getRole() {
+        return role; }
 
     public void setRole(Role role){ this.role = role; }
-    /*
-    public void setRole(String role) {
-        this.role = new Role(role);
-    }*/
+
+    public void setRole(String roleName) {
+        this.role = new Role(roleName);
+    }
+
+    @Transient
+    public String getRoleName() {
+        return roleName;
+    }
 
     public String getPassword() {
         return password;

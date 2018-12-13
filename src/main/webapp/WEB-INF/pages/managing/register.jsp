@@ -119,7 +119,7 @@
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="birthId">*Birth id</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<input class="form-control" type="number" id="birthId" name="birthId"/>
+									<input class="form-control" type="text" id="birthId" minlength="4" maxlength="10" name="birthId"/>
 								</div>
 							</div>
 							<div class="form-group">
