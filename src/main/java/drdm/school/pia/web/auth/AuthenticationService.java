@@ -40,7 +40,7 @@ public class AuthenticationService {
         if(authenticated) {
             Role userRole = userManager.userRole(username);
             session.setAttribute(USER, username);
-            session.setAttribute(ROLE, userRole);
+            session.setAttribute(ROLE, userRole.getName());
             return true;
         }
 

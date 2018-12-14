@@ -53,12 +53,12 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //if (req.getSession().getAttribute("role").equals("ADMIN")) {
+        if (req.getSession().getAttribute("role").equals("ADMIN")) {
             req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
-        //} else {
+        } else {
             // User is not authorised to do the action.
-        //    resp.sendError(401, "User role is not authorised to access this page.");
-        //}
+            resp.sendError(401, "User role is not authorised to access this page.");
+        }
     }
 
     @Override
