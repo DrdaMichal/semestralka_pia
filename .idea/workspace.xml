@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7f202ae-61ac-4c75-89b5-10c986ec8825" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDaoJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDaoJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/drdm/school/pia/domain/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/drdm/school/pia/domain/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,100 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="63" column="96" selection-start-line="63" selection-start-column="96" selection-end-line="63" selection-end-column="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-408">
-              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#311#312#0" expanded="true" />
-                <element signature="e#343#344#0" expanded="true" />
-                <element signature="e#401#402#0" expanded="true" />
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#486#487#0" expanded="true" />
-                <element signature="e#511#512#0" expanded="true" />
-                <element signature="e#471#472#0" expanded="true" />
-                <element signature="e#498#499#0" expanded="true" />
-                <element signature="e#538#539#0" expanded="true" />
-                <element signature="e#570#571#0" expanded="true" />
-                <element signature="e#1318#1319#0" expanded="true" />
-                <element signature="e#1375#1376#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="142" selection-start-line="142" selection-end-line="142" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1768#1769#0" expanded="true" />
-                <element signature="e#1804#1805#0" expanded="true" />
-                <element signature="e#3170#3171#0" expanded="true" />
-                <element signature="e#3197#3198#0" expanded="true" />
-                <element signature="e#3255#3256#0" expanded="true" />
-                <element signature="e#3282#3283#0" expanded="true" />
-                <element signature="e#3345#3346#0" expanded="true" />
-                <element signature="e#3372#3373#0" expanded="true" />
-                <element signature="e#3421#3422#0" expanded="true" />
-                <element signature="e#3448#3449#0" expanded="true" />
-                <element signature="e#3554#3555#0" expanded="true" />
-                <element signature="e#3585#3586#0" expanded="true" />
-                <element signature="e#3633#3634#0" expanded="true" />
-                <element signature="e#3673#3674#0" expanded="true" />
-                <element signature="e#4155#4156#0" expanded="true" />
-                <element signature="e#4201#4202#0" expanded="true" />
-                <element signature="e#4254#4255#0" expanded="true" />
-                <element signature="e#4296#4297#0" expanded="true" />
-                <element signature="e#4190#4191#0" expanded="true" />
-                <element signature="e#4221#4222#0" expanded="true" />
-                <element signature="e#4269#4270#0" expanded="true" />
-                <element signature="e#4309#4310#0" expanded="true" />
-                <element signature="e#4359#4360#0" expanded="true" />
-                <element signature="e#4401#4402#0" expanded="true" />
-                <element signature="e#4449#4450#0" expanded="true" />
-                <element signature="e#4489#4490#0" expanded="true" />
-                <element signature="e#4531#4532#0" expanded="true" />
-                <element signature="e#4565#4566#0" expanded="true" />
-                <element signature="e#4611#4612#0" expanded="true" />
-                <element signature="e#4649#4650#0" expanded="true" />
-                <element signature="e#4689#4690#0" expanded="true" />
-                <element signature="e#4721#4722#0" expanded="true" />
-                <element signature="e#4759#4760#0" expanded="true" />
-                <element signature="e#4789#4790#0" expanded="true" />
-                <element signature="e#4835#4836#0" expanded="true" />
-                <element signature="e#4873#4874#0" expanded="true" />
-                <element signature="e#4917#4918#0" expanded="true" />
-                <element signature="e#4953#4954#0" expanded="true" />
-                <element signature="e#5125#5126#0" expanded="true" />
-                <element signature="e#5157#5158#0" expanded="true" />
-                <element signature="e#5191#5192#0" expanded="true" />
-                <element signature="e#5222#5223#0" expanded="true" />
-                <element signature="e#5253#5254#0" expanded="true" />
-                <element signature="e#5281#5282#0" expanded="true" />
-                <element signature="e#5314#5315#0" expanded="true" />
-                <element signature="e#5344#5345#0" expanded="true" />
-                <element signature="e#5374#5375#0" expanded="true" />
-                <element signature="e#5401#5402#0" expanded="true" />
-                <element signature="e#5430#5431#0" expanded="true" />
-                <element signature="e#5456#5457#0" expanded="true" />
-                <element signature="e#5489#5490#0" expanded="true" />
-                <element signature="e#5519#5520#0" expanded="true" />
-                <element signature="e#5551#5552#0" expanded="true" />
-                <element signature="e#5580#5581#0" expanded="true" />
-                <element signature="e#5893#5894#0" expanded="true" />
-                <element signature="e#5958#5959#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="50" column="53" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -139,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="98" column="123" lean-forward="true" selection-start-line="98" selection-start-column="123" selection-end-line="98" selection-end-column="123" />
+            <state relative-caret-position="145">
+              <caret line="98" selection-start-line="98" selection-end-line="98" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#921#952#1" expanded="true" />
@@ -150,10 +52,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="108" column="5" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+            <state relative-caret-position="357">
+              <caret line="89" column="45" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,19 +64,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+            <state relative-caret-position="221">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.19.RELEASE/spring-aop-4.3.19.RELEASE-sources.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/runners/ParentRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="238" selection-start-line="238" selection-end-line="238" />
+            <state relative-caret-position="349">
+              <caret line="296" selection-start-line="296" selection-end-line="296" />
+              <folding>
+                <element signature="e#2922#2923#0" expanded="true" />
+                <element signature="e#2966#2967#0" expanded="true" />
+                <element signature="e#11040#11204#0" expanded="true" />
+                <element signature="e#11203#11204#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/runners/BlockJUnit4ClassRunner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
             </state>
           </provider>
         </entry>
@@ -192,10 +109,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoJpa.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            <state relative-caret-position="-328">
+              <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1797#1798#0" expanded="true" />
+                <element signature="e#1833#1834#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/drdm/school/pia/domain/UserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-161">
+              <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -204,15 +135,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/GenericDaoJpa.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1134#1135#0" expanded="true" />
-                <element signature="e#1195#1196#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -309,16 +235,16 @@
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/StringGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/GenerateString.java" />
-        <option value="$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/drdm/school/pia/domain/UserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/AbstractEntity.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoJpa.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/test/java/drdm/school/pia/domain/UserTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java" />
       </list>
     </option>
   </component>
@@ -358,9 +284,6 @@
       </expand>
       <select />
     </treeState>
-  </component>
-  <component name="MavenRunner">
-    <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
@@ -567,6 +490,32 @@
             </path>
             <path>
               <item name="semestralka_pia" type="b2602c69:ProjectViewProjectNode" />
+              <item name="semestralka_pia" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pia" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="semestralka_pia" type="b2602c69:ProjectViewProjectNode" />
+              <item name="semestralka_pia" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pia" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="semestralka_pia" type="b2602c69:ProjectViewProjectNode" />
+              <item name="semestralka_pia" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pia" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="semestralka_pia" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
@@ -599,7 +548,7 @@
     <property name="SearchEverywhereHistoryKey" value="main&#9;FILE&#9;file://C:/user/git/semestralka_pia/src/main&#10;setSecretManager&#9;PSI&#9;JAVA://drdm.school.pia.web.servlet.spring.Main#setSecretManager&#10;security&#9;PSI&#9;JAVA://java.security.Security&#10;userDao&#9;FILE&#9;file://C:/user/Private/PIA/semestralka_pia/src/main/java/drdm/school/pia/dao/UserDaoJDBC.java&#10;userDaoMemorySmarter&#9;null&#9;null&#10;userDaoSmarter&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544742494130" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544748569137" />
     <property name="last_opened_file_path" value="$USER_HOME$/OneDrive - AIMTEC a. s/Documents/School/PIA/cv06_02_jpa1_complete" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -634,7 +583,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.semestralka [tomcat7:run-war]">
+  <component name="RunManager" selected="JUnit.All in semestralka_pia">
     <configuration name="All in semestralka_pia" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="semestralka_pia" />
       <option name="PACKAGE_NAME" value="" />
@@ -657,6 +606,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="semestralka_pia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="drdm.school.pia.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="drdm.school.pia.domain" />
+      <option name="MAIN_CLASS_NAME" value="drdm.school.pia.domain.UserTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserTest.testValidate_Ok" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="semestralka_pia" />
       <extension name="coverage">
@@ -672,33 +635,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="semestralka [tomcat7:run-war-only]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="tomcat7:run-war-only" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map>
-                <entry key="test" value="false" />
-              </map>
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
     </configuration>
     <configuration name="semestralka [tomcat7:run-war]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
@@ -729,16 +665,16 @@
       <item itemvalue="JUnit.All in semestralka_pia" />
       <item itemvalue="JUnit.DefaultUserManagerTest" />
       <item itemvalue="JUnit.UserTest.testValidate_Ok" />
-      <item itemvalue="Maven.semestralka [tomcat7:run-war-only]" />
       <item itemvalue="Maven.semestralka [tomcat7:run-war]" />
+      <item itemvalue="JUnit.UserTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in semestralka_pia" />
+        <item itemvalue="JUnit.UserTest" />
         <item itemvalue="Maven.semestralka [tomcat7:run-war]" />
         <item itemvalue="JUnit.UserTest.testValidate_Ok" />
-        <item itemvalue="JUnit.All in semestralka_pia" />
         <item itemvalue="JUnit.DefaultUserManagerTest" />
-        <item itemvalue="Maven.semestralka [tomcat7:run-war-only]" />
       </list>
     </recent_temporary>
   </component>
@@ -775,39 +711,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DefaultUserManagerTest - 2018.12.01 at 01h 25m 18s.xml">
-      <configuration name="DefaultUserManagerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_semestralka_pia - 2018.12.01 at 01h 32m 15s.xml">
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 31m 41s.xml">
       <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_semestralka_pia - 2018.12.05 at 12h 16m 06s.xml">
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 32m 57s.xml">
       <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_semestralka_pia - 2018.12.05 at 12h 18m 27s.xml">
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 36m 40s.xml">
       <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_semestralka_pia - 2018.12.05 at 12h 18m 52s.xml">
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 37m 30s.xml">
       <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_semestralka_pia - 2018.12.05 at 12h 25m 43s.xml">
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 40m 04s.xml">
       <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_semestralka_pia - 2018.12.08 at 19h 49m 56s.xml">
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 40m 21s.xml">
       <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_semestralka_pia - 2018.12.08 at 19h 50m 48s.xml">
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 40m 27s.xml">
       <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_semestralka_pia - 2018.12.08 at 19h 53m 08s.xml">
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 42m 10s.xml">
       <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTest_testValidate_Ok - 2018.12.08 at 20h 06m 12s.xml">
-      <configuration name="UserTest.testValidate_Ok" configurationId="JUnit" />
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 43m 06s.xml">
+      <configuration name="All in semestralka_pia" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_semestralka_pia - 2018.12.14 at 01h 46m 05s.xml">
+      <configuration name="All in semestralka_pia" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202704000" />
+    <option name="totallyTimeSpent" value="206283000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -822,19 +758,19 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.75524473" visible="true" weight="0.17217484" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.75102884" visible="true" weight="0.17217484" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" sideWeight="0.24475524" side_tool="true" weight="0.18757467" />
+      <window_info id="Web" order="7" sideWeight="0.2489712" side_tool="true" weight="0.17217484" />
       <window_info id="Persistence" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32690248" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3033226" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.31511253" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.4790997" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31511253" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969603" />
@@ -893,6 +829,18 @@
           <line>93</line>
           <properties />
           <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java</url>
+          <line>113</line>
+          <properties />
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -966,33 +914,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Logout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/ManageUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar!/javax/persistence/Persistence.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1131,26 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/drdm/school/pia/domain/UserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Managing.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1281,42 +1182,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoJpa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.19.RELEASE/spring-aop-4.3.19.RELEASE-sources.jar!/org/springframework/aop/framework/ReflectiveMethodInvocation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="156" selection-start-line="156" selection-end-line="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/GenericDaoJpa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1134#1135#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDaoJpa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1327,86 +1196,6 @@
           <folding>
             <element signature="e#3928#3929#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1768#1769#0" expanded="true" />
-            <element signature="e#1804#1805#0" expanded="true" />
-            <element signature="e#3170#3171#0" expanded="true" />
-            <element signature="e#3197#3198#0" expanded="true" />
-            <element signature="e#3255#3256#0" expanded="true" />
-            <element signature="e#3282#3283#0" expanded="true" />
-            <element signature="e#3345#3346#0" expanded="true" />
-            <element signature="e#3372#3373#0" expanded="true" />
-            <element signature="e#3421#3422#0" expanded="true" />
-            <element signature="e#3448#3449#0" expanded="true" />
-            <element signature="e#3554#3555#0" expanded="true" />
-            <element signature="e#3585#3586#0" expanded="true" />
-            <element signature="e#3633#3634#0" expanded="true" />
-            <element signature="e#3673#3674#0" expanded="true" />
-            <element signature="e#4155#4156#0" expanded="true" />
-            <element signature="e#4201#4202#0" expanded="true" />
-            <element signature="e#4254#4255#0" expanded="true" />
-            <element signature="e#4296#4297#0" expanded="true" />
-            <element signature="e#4190#4191#0" expanded="true" />
-            <element signature="e#4221#4222#0" expanded="true" />
-            <element signature="e#4269#4270#0" expanded="true" />
-            <element signature="e#4309#4310#0" expanded="true" />
-            <element signature="e#4359#4360#0" expanded="true" />
-            <element signature="e#4401#4402#0" expanded="true" />
-            <element signature="e#4449#4450#0" expanded="true" />
-            <element signature="e#4489#4490#0" expanded="true" />
-            <element signature="e#4531#4532#0" expanded="true" />
-            <element signature="e#4565#4566#0" expanded="true" />
-            <element signature="e#4611#4612#0" expanded="true" />
-            <element signature="e#4649#4650#0" expanded="true" />
-            <element signature="e#4689#4690#0" expanded="true" />
-            <element signature="e#4721#4722#0" expanded="true" />
-            <element signature="e#4759#4760#0" expanded="true" />
-            <element signature="e#4789#4790#0" expanded="true" />
-            <element signature="e#4835#4836#0" expanded="true" />
-            <element signature="e#4873#4874#0" expanded="true" />
-            <element signature="e#4917#4918#0" expanded="true" />
-            <element signature="e#4953#4954#0" expanded="true" />
-            <element signature="e#5125#5126#0" expanded="true" />
-            <element signature="e#5157#5158#0" expanded="true" />
-            <element signature="e#5191#5192#0" expanded="true" />
-            <element signature="e#5222#5223#0" expanded="true" />
-            <element signature="e#5253#5254#0" expanded="true" />
-            <element signature="e#5281#5282#0" expanded="true" />
-            <element signature="e#5314#5315#0" expanded="true" />
-            <element signature="e#5344#5345#0" expanded="true" />
-            <element signature="e#5374#5375#0" expanded="true" />
-            <element signature="e#5401#5402#0" expanded="true" />
-            <element signature="e#5430#5431#0" expanded="true" />
-            <element signature="e#5456#5457#0" expanded="true" />
-            <element signature="e#5489#5490#0" expanded="true" />
-            <element signature="e#5519#5520#0" expanded="true" />
-            <element signature="e#5551#5552#0" expanded="true" />
-            <element signature="e#5580#5581#0" expanded="true" />
-            <element signature="e#5893#5894#0" expanded="true" />
-            <element signature="e#5958#5959#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="63" column="96" selection-start-line="63" selection-start-column="96" selection-end-line="63" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1424,10 +1213,115 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="108" column="5" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoJpa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/GenericDaoJpa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/drdm/school/pia/domain/UserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-161">
+          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-328">
+          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1797#1798#0" expanded="true" />
+            <element signature="e#1833#1834#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="50" column="53" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDaoJpa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/runners/BlockJUnit4ClassRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/runners/ParentRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="296" selection-start-line="296" selection-end-line="296" />
+          <folding>
+            <element signature="e#2922#2923#0" expanded="true" />
+            <element signature="e#2966#2967#0" expanded="true" />
+            <element signature="e#11040#11204#0" expanded="true" />
+            <element signature="e#11203#11204#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="98" column="123" lean-forward="true" selection-start-line="98" selection-start-column="123" selection-end-line="98" selection-end-column="123" />
+        <state relative-caret-position="145">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#921#952#1" expanded="true" />
@@ -1435,10 +1329,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="108" column="5" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+        <state relative-caret-position="357">
+          <caret line="89" column="45" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,9 +1,12 @@
 package drdm.school.pia.manager;
 
+import drdm.school.pia.dao.RoleDao;
 import drdm.school.pia.dao.UserDao;
 
+import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.utils.Encoder;
+import drdm.school.pia.utils.StringGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +15,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -19,15 +25,25 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DefaultUserManagerTest {
-/*
+
     @Mock
     private Encoder encoder;
     @Mock
     private UserDao userDao;
-
+    @Mock
+    private StringGenerator stringGenerator;
+    @Mock
+    private RoleDao roleDao;
+    @Mock
+    private User user;
+    @Mock
+    List<String> permittedRoles = Arrays.asList(new String[]{"Role", "role2"});
 
     @InjectMocks
     private DefaultUserManager userManager;
+
+    public DefaultUserManagerTest() {
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -36,8 +52,8 @@ public class DefaultUserManagerTest {
 
     @Test
     public void testUserRegistration() throws Exception {
+        final String username = "Username";
         final String hashed = "Hash";
-        //final String username = "Username";
         final String password = "Password";
         final String role = "Role";
         final String firstname = "Name";
@@ -49,26 +65,34 @@ public class DefaultUserManagerTest {
         final String birthid = "BirthId";
         final String gender = "Gender";
 
-
         // Need to put actual password here, because of validation of input, and hashing this password afterwards.
         User src = new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender);
+        Role roleObj = new Role(role);
 
         when(userDao.save(src)).thenReturn(src);
-        //when(userDao.findByUsername(username)).thenReturn(null);
+        when(userDao.findByUsername(username)).thenReturn(null);
         when(encoder.encode(password)).thenReturn(hashed);
+        when(stringGenerator.generate(8)).thenReturn(username);
+        when(roleDao.findByRoleName(role)).thenReturn(roleObj);
+        when(user.getRoleName()).thenReturn(role);
+        when(permittedRoles.contains(user.getRoleName())).thenReturn(true);
 
         userManager.register(src);
 
         verify(userDao, times(1)).save(any(User.class));
-        //verify(userDao, times(1)).findByUsername(username);
+        verify(userDao, times(1)).findByUsername(username);
         verify(encoder, times(1)).encode(password);
+        verify(stringGenerator, times(1)).generate(8);
+        verify(roleDao, times(2)).findByRoleName(role);
+        verify(permittedRoles,times(1)).contains(role);
+        verify(user, times(1)).getRoleName();
         assertEquals(hashed, src.getPassword());
     }
 
     @Test
     public void testUserAuth() throws Exception {
         final String hashed = "Hash";
-        //final String username = "Username";
+        final String username = "Username";
         final String password = "Password";
         final String role = "Role";
         final String firstname = "Name";
@@ -80,7 +104,7 @@ public class DefaultUserManagerTest {
         final String birthid = "BirthId";
         final String gender = "Gender";
 
-        //User src = new User(username, hashed, role, firstname, lastname, email, address, city, zip, birthid, gender);
+        User src = new User(hashed, role, firstname, lastname, email, address, city, zip, birthid, gender);
 
         when(userDao.findByUsername(username)).thenReturn(src);
         when (encoder.validate(password, hashed)).thenReturn(true);
@@ -106,7 +130,7 @@ public class DefaultUserManagerTest {
         final String birthid = "BirthId";
         final String gender = "Gender";
 
-        User src = new User(username, hashed, role, firstname, lastname, email, address, city, zip, birthid, gender);
+        User src = new User(hashed, role, firstname, lastname, email, address, city, zip, birthid, gender);
 
         when(userDao.findByUsername(username)).thenReturn(src);
         when (encoder.validate(password, hashed)).thenReturn(false);
@@ -132,5 +156,5 @@ public class DefaultUserManagerTest {
         verify(userDao, times(1)).findByUsername(username);
         verify(encoder,times(0)).validate(password, hashed);
     }
-*/
+
 }

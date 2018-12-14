@@ -44,7 +44,7 @@ public class User extends BaseObject implements IEntity<String>  {
         this.gender = gender;
     }
 
-    //TODO delete
+/*    //TODO delete
     public User(String username, String password, String role, String firstname, String lastname, String email, String address, String city, String zip, String birthId, String gender) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -56,7 +56,7 @@ public class User extends BaseObject implements IEntity<String>  {
         this.zip = zip;
         this.birthId = birthId;
         this.gender = gender;
-    }
+    }*/
 
     @Override
     @Transient
