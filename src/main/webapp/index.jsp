@@ -41,25 +41,25 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav underline-menu">
-                    <c:if test="${sessionScope.role.name == 'ADMIN'}">
+                    <c:if test="${sessionScope.role == 'ADMIN'}">
                         <li><a href="managing">Managing</a></li>
                         <li><a href="managing/register">Register</a></li>
                         <li><a href="managing/manage_user">User management</a></li>
                     </c:if>
-                    <c:if test="${sessionScope.role.name == 'USER'}">
+                    <c:if test="${sessionScope.role == 'USER'}">
                         <li><a href="banking">Banking</a></li>
                         <li><a href="banking/pay">New payment</a></li>
                         <li><a href="history">Payment history</a></li>
                     </c:if>
-                    <c:if test="${sessionScope.role.name == 'NOTSET' || empty sessionScope.role}">
+                    <c:if test="${sessionScope.role == 'NOTSET' || empty sessionScope.role}">
                         <li><a href="about">About</a></li>
                     </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <c:if test="${sessionScope.role.name == 'NOTSET' || empty sessionScope.role}">
+                    <c:if test="${sessionScope.role == 'NOTSET' || empty sessionScope.role}">
                         <li id="login"><a href="${location.reload(true)}" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </c:if>
-                    <c:if  test="${sessionScope.role.name != 'NOTSET' && not empty sessionScope.role}">
+                    <c:if  test="${sessionScope.role != 'NOTSET' && not empty sessionScope.role}">
                         <li id="logout"><a href="logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </c:if>
                 </ul>
@@ -96,7 +96,7 @@
         </div>
     </c:if>
 
-    <c:if test="${not (sessionScope.role.name == 'NOTSET' || empty sessionScope.role)}">
+    <c:if test="${not (sessionScope.role == 'NOTSET' || empty sessionScope.role)}">
         <div class="container-fluid">
             <h1 class="text-center">You are already logged in. Please choose what you want to do.</h1>
         </div>

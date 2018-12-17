@@ -1,9 +1,13 @@
 package drdm.school.pia.domain;
 
+import drdm.school.pia.utils.StringValidator;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Cascade;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Entity representing application User.
@@ -21,8 +25,14 @@ public class User extends BaseObject implements IEntity<String>  {
     private String email;
     private String roleName;
     private Role role;
+    //@Value("${regex.email}")
+    //private String regex;
+    private String regex = "^(.+)@(.+)$";
+
+    private StringValidator stringValidator = new StringValidator();
+
     /**
-     * Secret for signing-in
+     * Secret password to login
      */
     private String password;
     private String address;
@@ -31,6 +41,25 @@ public class User extends BaseObject implements IEntity<String>  {
     private String birthId;
     private String gender;
 
+
+    /**
+     * Default constructor
+     */
+    public User() {}
+
+    /**
+     * Main constructor
+     * @param password
+     * @param role
+     * @param firstname
+     * @param lastname
+     * @param email
+     * @param address
+     * @param city
+     * @param zip
+     * @param birthId
+     * @param gender
+     */
     public User(String password, String role, String firstname, String lastname, String email, String address, String city, String zip, String birthId, String gender) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -44,27 +73,10 @@ public class User extends BaseObject implements IEntity<String>  {
         this.gender = gender;
     }
 
-/*    //TODO delete
-    public User(String username, String password, String role, String firstname, String lastname, String email, String address, String city, String zip, String birthId, String gender) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        //this.role = new Role(role);
-        this.address = address;
-        this.city = city;
-        this.zip = zip;
-        this.birthId = birthId;
-        this.gender = gender;
-    }*/
-
     @Override
     @Transient
     public String getPK() {
         return getUsername();
-    }
-
-    public User() {
     }
 
     /*
@@ -83,6 +95,8 @@ public class User extends BaseObject implements IEntity<String>  {
         if(StringUtils.isBlank(roleName)) throw new UserValidationException("Role is a required field");
         if(StringUtils.isBlank(birthId)) throw new UserValidationException("Birth id is a required field");
         if(StringUtils.isBlank(gender)) throw new UserValidationException("Gender is a required field");
+
+       if(!stringValidator.isValid(email, regex)) throw new UserValidationException("Email is in invalid format!");
     }
 
     /*
@@ -130,7 +144,7 @@ public class User extends BaseObject implements IEntity<String>  {
     /**
      * ManyToOne association between user and his role.
      *
-     * -- Role may be attached to multiple users, User may have one role
+     * Role may be attached to multiple users, User may have one role
      * thus the ManyToOne
      * @return
      */
@@ -189,15 +203,6 @@ public class User extends BaseObject implements IEntity<String>  {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    /**
-     * Deprecated - from JDBC version
-     * @return
-     */
-    /*
-    public String getRole() {
-        return role;
-    }*/
 
     public String getFirstname() {
         return firstname;

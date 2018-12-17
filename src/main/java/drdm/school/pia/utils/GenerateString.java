@@ -11,6 +11,7 @@ public class GenerateString implements StringGenerator {
 
     }
 
+    @Override
     public String generate(int length) {
         String variants = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String generatedString = "";

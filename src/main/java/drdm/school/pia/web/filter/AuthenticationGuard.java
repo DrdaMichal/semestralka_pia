@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * @author Michal Drda
  */
-@WebFilter({"/banking/*", "/logout/*"})
+@WebFilter({"/banking/*", "/logout/*", "/managing/*"})
 public class AuthenticationGuard implements Filter {
 
     private AuthenticationService authService;

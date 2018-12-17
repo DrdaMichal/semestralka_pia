@@ -19,11 +19,15 @@ public class Pay extends AbstractServlet {
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getSession().getAttribute("role").equals("USER")) {
+        if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("USER")) {
             req.getRequestDispatcher("/WEB-INF/pages/banking/pay.jsp").forward(req, resp);
+
+            //https://stackoverflow.com/a/12488188
+            //Jak mit dva formulare na jedne strance.
+
         } else {
             // User is not authorised to do the action.
-            resp.sendError(401, "User role is not authorised to access this page.");
+            resp.sendError(401, "You are not authorised to access this page.");
         }
     }
 

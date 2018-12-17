@@ -15,7 +15,7 @@ public class About extends AbstractServlet {
             req.getRequestDispatcher("/WEB-INF/pages/about.jsp").forward(req, resp);
         } else {
             // User is not authorised to do the action.
-            resp.sendError(401, "Only guests can visit this page.");
+            resp.sendError(401, "Only non-authenticated guests can visit this page.");
         }
 
     }
