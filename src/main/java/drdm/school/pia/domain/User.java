@@ -2,20 +2,18 @@ package drdm.school.pia.domain;
 
 import drdm.school.pia.utils.StringValidator;
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.annotations.Cascade;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.Serializable;
+import java.util.Set;
 
 /**
- * Entity representing application User.
+ * Entity representing application User
  * @author Michal Drda
  */
 @Entity
-@Table(name = "drdam_user")
-public class User extends BaseObject implements IEntity<String>  {
+@Table(name = "drdam_usera")
+public class User extends BaseObject implements IEntity<String>, Serializable {
     /**
      * Login, unique
      */
@@ -25,6 +23,9 @@ public class User extends BaseObject implements IEntity<String>  {
     private String email;
     private String roleName;
     private Role role;
+    private String card;
+    private String cvc;
+    private String cardExpiration;
 
     private StringValidator stringValidator = new StringValidator();
 
@@ -37,6 +38,8 @@ public class User extends BaseObject implements IEntity<String>  {
     private String zip;
     private String birthId;
     private String gender;
+    private String accountNo;
+    private Set<Payment> payments;
 
 
     /**
@@ -152,6 +155,48 @@ public class User extends BaseObject implements IEntity<String>  {
 
     public void setRole(String roleName) {
         this.role = new Role(roleName);
+    }
+
+    @OneToMany(targetEntity = Payment.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userAccount")
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
+    }
+
+    public void setAccount(String accountNo) {
+        this.accountNo = accountNo;
+    }
+
+    @Column(unique = true)
+    public String getAccount() {
+        return accountNo;
+    }
+
+    public String getCard() {
+        return card;
+    }
+
+    public void setCard(String card) {
+        this.card = card;
+    }
+
+    public String getCvc() {
+        return cvc;
+    }
+
+    public void setCvc(String cvc) {
+        this.cvc = cvc;
+    }
+
+    public String getCardExpiration() {
+        return cardExpiration;
+    }
+
+    public void setCardExpiration(String cardExpiration) {
+        this.cardExpiration = cardExpiration;
     }
 
     @Transient

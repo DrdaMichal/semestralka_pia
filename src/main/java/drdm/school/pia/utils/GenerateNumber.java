@@ -15,12 +15,21 @@ public class GenerateNumber implements IntGenerator {
 
     }
 
+    /**
+     * Generates a random number of positive value
+     * @param numberLength number of digits
+     * @return positive number of desired length
+     */
     public int generate(int numberLength) {
         int lowerBound = (int) Math.pow(10, (numberLength-1));
         int addition = (int) (Math.pow(10, (numberLength-1)) * 9);
 
         Random rnd = new Random();
         int randomNumber = (lowerBound + rnd.nextInt(addition));
+
+        if(randomNumber < 0) {
+            randomNumber = randomNumber * (-1);
+        }
 
         return randomNumber;
 

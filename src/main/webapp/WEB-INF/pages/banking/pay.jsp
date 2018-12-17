@@ -6,7 +6,10 @@
   Time: 21:38
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -132,7 +135,7 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-3 col-md-3 control-label" for="msgrec">Recipient message</label>
                             <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                                <input class="form-control" type="password" id="msgrec" name="msgrec" value="<c:out value="${requestScope.msgrec}"/>"/>
+                                <input class="form-control" type="text" id="msgrec" name="msgrec" value="<c:out value="${requestScope.msgrec}"/>"/>
                             </div>
                         </div>
                         <div class="form-group">

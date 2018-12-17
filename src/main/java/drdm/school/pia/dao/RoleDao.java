@@ -15,5 +15,10 @@ public interface RoleDao extends GenericDao<Role, Long> {
      */
     Role findByUser(String username);
 
+    /**
+     *
+     * @param roleName
+     * @return
+     */
     Role findByRoleName(String roleName);
 }

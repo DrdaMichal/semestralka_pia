@@ -60,12 +60,12 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("ADMIN")) {
+        //if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("ADMIN")) {
             req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
-        } else {
+        //} else {
             // User is not authorised to do the action.
-            resp.sendError(401, "You are not authorised to access this page.");
-        }
+        //    resp.sendError(401, "You are not authorised to access this page.");
+        //}
     }
 
     @Override
@@ -94,12 +94,12 @@ public class Register extends AbstractServlet {
         }
 
         if(!captcha.equals(captchaValue)) {
-            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Captcha answer is incorrect.", req, resp);
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Captcha answer is incorrect!", req, resp);
             return;
         }
 
         if(null == terms) {
-            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Please accept terms of use.", req, resp);
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Please accept terms of use!", req, resp);
             return;
         }
 

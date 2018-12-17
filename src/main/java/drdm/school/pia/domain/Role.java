@@ -1,19 +1,23 @@
 package drdm.school.pia.domain;
 
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * @author Michal Drda
  */
 @Entity
-@Table(name="drdam_role")
-public class Role implements IEntity<Long> {
+@Table(name="drdam_rolea")
+public class Role extends BaseObject implements IEntity<Long>, Serializable {
 
     private String name;
+
+    /**
+     * A generated ID of the entity
+     */
     private Long id;
+
     private Set<User> users;
 
     public Role() {
@@ -28,6 +32,7 @@ public class Role implements IEntity<Long> {
     public Long getPK() {
         return getId();
     }
+
 
     @Id
     @GeneratedValue
