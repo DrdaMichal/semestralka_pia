@@ -25,9 +25,6 @@ public class User extends BaseObject implements IEntity<String>  {
     private String email;
     private String roleName;
     private Role role;
-    //@Value("${regex.email}")
-    //private String regex;
-    private String regex = "^(.+)@(.+)$";
 
     private StringValidator stringValidator = new StringValidator();
 
@@ -95,8 +92,6 @@ public class User extends BaseObject implements IEntity<String>  {
         if(StringUtils.isBlank(roleName)) throw new UserValidationException("Role is a required field");
         if(StringUtils.isBlank(birthId)) throw new UserValidationException("Birth id is a required field");
         if(StringUtils.isBlank(gender)) throw new UserValidationException("Gender is a required field");
-
-       if(!stringValidator.isValid(email, regex)) throw new UserValidationException("Email is in invalid format!");
     }
 
     /*

@@ -73,7 +73,6 @@ public class DefaultUserManager implements UserManager {
     @Override
     public boolean authenticate(String username, String password) {
         User u = userDao.findByUsername(username);
-        //System.out.println(u.toString());
         return u != null && encoder.validate(password, u.getPassword());
     }
 

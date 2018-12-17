@@ -5,6 +5,8 @@ import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.GenerateString;
 import drdm.school.pia.utils.StringGenerator;
+import drdm.school.pia.utils.StringValidator;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -45,6 +47,11 @@ public class Register extends AbstractServlet {
     private UserManager userManager;
     @Value("${captcha.value}")
     private String captchaValue;
+    @Value("${regex.email}")
+    private String emailRegex;
+
+    private final static Logger logger = Logger.getLogger(Login.class);
+    private final StringValidator stringValidator = new StringValidator();
 
     @Autowired
     public void setUserManager(UserManager userManager) {
@@ -78,21 +85,26 @@ public class Register extends AbstractServlet {
         String terms = req.getParameter(TERMS_PARAMETER);
 
 
-        System.out.println("Psw: " +  password);
+        logger.debug("Password [" + password + "]");
 
 
         if(!Objects.equals(password, confirmPwd)) {
-            errorDispatch("The password and confirm password fields do not match!", req, resp);
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "The password and confirm password fields do not match!", req, resp);
             return;
         }
 
         if(!captcha.equals(captchaValue)) {
-            errorDispatch("Captcha answer is incorrect.", req, resp);
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Captcha answer is incorrect.", req, resp);
             return;
         }
 
         if(null == terms) {
-            errorDispatch("Please accept terms of use.", req, resp);
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Please accept terms of use.", req, resp);
+            return;
+        }
+
+        if(!stringValidator.isValid(email, emailRegex)) {
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Email is in invalid format!", req, resp);
             return;
         }
 
@@ -100,12 +112,27 @@ public class Register extends AbstractServlet {
             userManager.register(new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender));
             succsessDispatch("User successfully registered!", req, resp);
         } catch (UserValidationException e) {
-            errorDispatch(e.getMessage(), req, resp);
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, e.getMessage(), req, resp);
         }
     }
 
     private void succsessDispatch(String suc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SUCCESS_ATTRIBUTE, suc);
+        req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
+    }
+
+    private void errorDispatch(String firstname, String lastname, String email, String role, String address, String city, String zip, String birthId, String gender, String terms, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute(FIRSTNAME_PARAMETER, firstname);
+        req.setAttribute(LASTNAME_PARAMETER, lastname);
+        req.setAttribute(EMAIL_PARAMETER, email);
+        req.setAttribute(ROLE_PARAMETER, role);
+        req.setAttribute(ADDRESS_PARAMETER, address);
+        req.setAttribute(CITY_PARAMETER, city);
+        req.setAttribute(ZIP_PARAMETER, zip);
+        req.setAttribute(BIRTHID_PARAMETER, birthId);
+        req.setAttribute(GENDER_PARAMETER, gender);
+        req.setAttribute(TERMS_PARAMETER, terms);
+        req.setAttribute(ERROR_ATTRIBUTE, err);
         req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
     }
 

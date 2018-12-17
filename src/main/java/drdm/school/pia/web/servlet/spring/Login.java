@@ -19,7 +19,6 @@ public class Login extends AbstractServlet {
     final static Logger logger = Logger.getLogger(Login.class);
 
     private static final String ERR_ATTRIBUTE = "err";
-    private static final String SUC_ATTRIBUTTE = "suc";
 
     private UserManager userManager;
 
@@ -70,6 +69,7 @@ public class Login extends AbstractServlet {
         } else {
             logger.info("Custom log > User [" + req.getSession().getAttribute("user") + "], Role [" + req.getSession().getAttribute("role") +  "], Session [" + req.getSession().getId() + "] | Login failed!");
             req.setAttribute(ERR_ATTRIBUTE, "Invalid credentials!");
+            req.setAttribute(USERNAME_PARAMETER, username);
             req.getRequestDispatcher("/").forward(req, resp);
         }
     }

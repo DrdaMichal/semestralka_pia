@@ -60,19 +60,19 @@
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="firstname">*First name</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<input class="form-control" type="text" id="firstname" name="firstname"/>
+									<input class="form-control" type="text" id="firstname" name="firstname" value="<c:out value="${requestScope.firstname}"/>"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="lastname">*Last name</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<input class="form-control" type="text" id="lastname" name="lastname"/>
+									<input class="form-control" type="text" id="lastname" name="lastname" value="<c:out value="${requestScope.lastname}"/>"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="email">*E-mail</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<input class="form-control" type="text" id="email" name="email"/>
+									<input class="form-control" type="text" id="email" name="email" value="<c:out value="${requestScope.email}"/>"/>
 								</div>
 							</div>
 							<div class="form-group">
@@ -91,8 +91,8 @@
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="role">*Role</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
 									<select class="form-control" id="role" name="role">
-										<option value="USER">User</option>
-										<option value="ADMIN">Admin</option>
+										<option value="USER" <c:if test="${requestScope.role eq 'USER'}">selected="selected"</c:if>>User</option>
+										<option value="ADMIN" <c:if test="${requestScope.role eq 'ADMIN'}">selected="selected"</c:if>>Admin</option>
 									</select>
 								</div>
 							</div>
@@ -101,32 +101,32 @@
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="address">Address</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<input class="form-control" type="text" id="address" name="address"/>
+									<input class="form-control" type="text" id="address" name="address" value="<c:out value="${requestScope.address}"/>"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="address">City</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<input class="form-control" type="text" id="city" name="city"/>
+									<input class="form-control" type="text" id="city" name="city" value="<c:out value="${requestScope.city}"/>"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="zip">Zip Code</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<input class="form-control" type="text" id="zip" name="zip"/>
+									<input class="form-control" type="text" id="zip" name="zip" value="<c:out value="${requestScope.zip}"/>"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="birthId">*Birth id</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<input class="form-control" type="text" id="birthId" minlength="4" maxlength="10" name="birthId"/>
+									<input class="form-control" type="text" id="birthId" minlength="4" maxlength="10" name="birthId" value="<c:out value="${requestScope.birthId}"/>"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="gender">*Gender</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-									<label class="radio-inline"><input type="radio" name="gender" id="gender" value="male"> Male</label>
-									<label class="radio-inline"><input type="radio" name="gender" value="female"> Female</label>
+									<label class="radio-inline"><input type="radio" name="gender" id="gender" value="male" <c:if test="${requestScope.gender eq 'male'}">checked="checked"</c:if>> Male</label>
+									<label class="radio-inline"><input type="radio" name="gender" value="female" <c:if test="${requestScope.gender eq 'female'}">checked="checked"</c:if>> Female</label>
 								</div>
 							</div>
 							<div class="form-group">

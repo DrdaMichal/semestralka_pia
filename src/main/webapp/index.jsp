@@ -80,7 +80,7 @@
                     <div class="container"></div>
                     <div class="form-group">
                         <label class="" for="username">User ID</label>
-                        <input class="form-control" type="text" id="username" name="username"/>
+                        <input class="form-control" type="text" id="username" name="username" value="<c:out value="${requestScope.username}"/>"/>
                     </div>
                     <div class="form-group">
                         <label for="password">PIN</label>

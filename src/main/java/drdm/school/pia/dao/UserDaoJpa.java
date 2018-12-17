@@ -1,10 +1,8 @@
 package drdm.school.pia.dao;
 
 import drdm.school.pia.domain.User;
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 

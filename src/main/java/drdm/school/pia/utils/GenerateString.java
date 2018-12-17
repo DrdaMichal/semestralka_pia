@@ -1,11 +1,16 @@
 package drdm.school.pia.utils;
 
+import drdm.school.pia.web.servlet.spring.Login;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
 @Component
 public class GenerateString implements StringGenerator {
+
+
+    private final static Logger logger = Logger.getLogger(Login.class);
 
     public GenerateString() {
 
@@ -19,7 +24,7 @@ public class GenerateString implements StringGenerator {
         while (generatedString.length() < length) {
             generatedString = generatedString + variants.charAt(r.nextInt((variants.length() - 1) - 0));
         }
-        System.out.println("Username is: " + generatedString);
+        logger.debug("Generated string [" + generatedString + "]");
         return generatedString;
     }
 

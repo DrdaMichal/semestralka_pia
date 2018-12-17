@@ -91,7 +91,7 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="sendto">*Send to</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="text" id="sendto" name="sendto"/>
+                                <input class="form-control" type="text" id="sendto" name="sendto"  value="<c:out value="${requestScope.sendto}"/>"/>
                             </div>
                         </div>
                     </div>
@@ -112,19 +112,19 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="vs">Variable symbol</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="text" id="vs" name="vs"/>
+                                <input class="form-control" type="text" id="vs" name="vs" value="<c:out value="${requestScope.vs}"/>"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="cs">Constant symbol</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="text" id="cs" name="cs"/>
+                                <input class="form-control" type="text" id="cs" name="cs" value="<c:out value="${requestScope.cs}"/>"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="ss">Specific symbol</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="text" id="ss" name="ss"/>
+                                <input class="form-control" type="text" id="ss" name="ss" value="<c:out value="${requestScope.ss}"/>"/>
                             </div>
                         </div>
                     </div>
@@ -132,13 +132,13 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-3 col-md-3 control-label" for="msgrec">Recipient message</label>
                             <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                                <input class="form-control" type="password" id="msgrec" name="msgrec"/>
+                                <input class="form-control" type="password" id="msgrec" name="msgrec" value="<c:out value="${requestScope.msgrec}"/>"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-3 col-md-3 control-label" for="msgme">My message</label>
                             <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                                <input class="form-control" type="text" id="msgme" name="msgme"/>
+                                <input class="form-control" type="text" id="msgme" name="msgme" value="<c:out value="${requestScope.msgme}"/>"/>
                             </div>
                         </div>
                     </div>
@@ -146,13 +146,13 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="amount">*Amount</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="number" id="amount" name="amount"/>
+                                <input class="form-control" type="number" id="amount" name="amount" value="<c:out value="${requestScope.amount}"/>"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="transactiondate">*Valid on</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="date" id="transactiondate" name="transactiondate"/>
+                                <input class="form-control" type="date" id="transactiondate" name="transactiondate" value="<c:out value="${requestScope.transactiondate}"/>"/>
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="template">*Template name</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="text" id="template" name="template"/>
+                                <input class="form-control" type="text" id="template" name="template" value="<c:out value="${requestScope.template}"/>"/>
                             </div>
                         </div>
                     </div>
