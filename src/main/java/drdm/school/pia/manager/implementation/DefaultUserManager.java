@@ -1,4 +1,4 @@
-package drdm.school.pia.manager;
+package drdm.school.pia.manager.implementation;
 
 import drdm.school.pia.dao.CardDao;
 import drdm.school.pia.dao.RoleDao;
@@ -7,6 +7,7 @@ import drdm.school.pia.domain.Card;
 import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
+import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.Encoder;
 import drdm.school.pia.utils.ExpirationGenerator;
 import drdm.school.pia.utils.LongGenerator;

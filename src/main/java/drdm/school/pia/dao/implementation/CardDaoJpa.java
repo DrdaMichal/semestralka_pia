@@ -1,5 +1,6 @@
-package drdm.school.pia.dao;
+package drdm.school.pia.dao.implementation;
 
+import drdm.school.pia.dao.CardDao;
 import drdm.school.pia.domain.Card;
 import org.springframework.stereotype.Repository;
 

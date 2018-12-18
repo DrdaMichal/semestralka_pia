@@ -1,5 +1,6 @@
-package drdm.school.pia.utils;
+package drdm.school.pia.utils.implementation;
 
+import drdm.school.pia.utils.Encoder;
 import org.springframework.stereotype.Component;
 
 import java.security.NoSuchAlgorithmException;

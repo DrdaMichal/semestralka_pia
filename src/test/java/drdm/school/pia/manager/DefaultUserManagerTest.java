@@ -5,6 +5,7 @@ import drdm.school.pia.dao.UserDao;
 
 import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
+import drdm.school.pia.manager.implementation.DefaultUserManager;
 import drdm.school.pia.utils.Encoder;
 import drdm.school.pia.utils.StringGenerator;
 import org.junit.Before;

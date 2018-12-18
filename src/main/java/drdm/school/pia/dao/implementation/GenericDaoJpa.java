@@ -1,5 +1,6 @@
-package drdm.school.pia.dao;
+package drdm.school.pia.dao.implementation;
 
+import drdm.school.pia.dao.GenericDao;
 import drdm.school.pia.domain.IEntity;
 
 import javax.persistence.EntityManager;

@@ -1,5 +1,6 @@
-package drdm.school.pia.utils;
+package drdm.school.pia.utils.implementation;
 
+import drdm.school.pia.utils.StringGenerator;
 import drdm.school.pia.web.servlet.spring.Login;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;

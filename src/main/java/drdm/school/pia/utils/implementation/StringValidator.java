@@ -1,11 +1,15 @@
-package drdm.school.pia.utils;
+package drdm.school.pia.utils.implementation;
 
+import drdm.school.pia.utils.Validator;
 import drdm.school.pia.web.servlet.spring.Login;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Component
 public class StringValidator implements Validator {
 
     private static Pattern pattern;

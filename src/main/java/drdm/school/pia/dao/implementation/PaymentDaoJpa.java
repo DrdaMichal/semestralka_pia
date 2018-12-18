@@ -1,5 +1,6 @@
-package drdm.school.pia.dao;
+package drdm.school.pia.dao.implementation;
 
+import drdm.school.pia.dao.PaymentDao;
 import drdm.school.pia.domain.Payment;
 import org.springframework.stereotype.Repository;
 

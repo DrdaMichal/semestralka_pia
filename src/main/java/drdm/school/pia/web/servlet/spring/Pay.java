@@ -1,7 +1,7 @@
 package drdm.school.pia.web.servlet.spring;
 
 import drdm.school.pia.manager.UserManager;
-import drdm.school.pia.utils.StringValidator;
+import drdm.school.pia.utils.Validator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,7 +34,13 @@ public class Pay extends AbstractServlet {
     private UserManager userManager;
 
     private final static Logger logger = Logger.getLogger(Login.class);
-    private final StringValidator stringValidator = new StringValidator();
+
+    private Validator stringValidator;
+
+    @Autowired
+    public void setStringValidator(Validator stringValidator) {
+        this.stringValidator = stringValidator;
+    }
 
     @Autowired
     public void setUserManager(UserManager userManager) { this.userManager = userManager; }

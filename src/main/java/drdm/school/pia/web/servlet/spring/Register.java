@@ -3,9 +3,7 @@ package drdm.school.pia.web.servlet.spring;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.manager.UserManager;
-import drdm.school.pia.utils.GenerateString;
-import drdm.school.pia.utils.StringGenerator;
-import drdm.school.pia.utils.StringValidator;
+import drdm.school.pia.utils.Validator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,7 +49,12 @@ public class Register extends AbstractServlet {
     private String emailRegex;
 
     private final static Logger logger = Logger.getLogger(Login.class);
-    private final StringValidator stringValidator = new StringValidator();
+    private Validator stringValidator;
+
+    @Autowired
+    public void setStringValidator(Validator stringValidator) {
+        this.stringValidator = stringValidator;
+    }
 
     @Autowired
     public void setUserManager(UserManager userManager) {
