@@ -1,10 +1,10 @@
 package drdm.school.pia.domain;
 
-import drdm.school.pia.utils.StringValidator;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -12,7 +12,7 @@ import java.util.Set;
  * @author Michal Drda
  */
 @Entity
-@Table(name = "drdam_usera")
+@Table(name = "drdam_users")
 public class User extends BaseObject implements IEntity<String>, Serializable {
     /**
      * Login, unique
@@ -23,11 +23,6 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
     private String email;
     private String roleName;
     private Role role;
-    private String card;
-    private String cvc;
-    private String cardExpiration;
-
-    private StringValidator stringValidator = new StringValidator();
 
     /**
      * Secret password to login
@@ -39,13 +34,15 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
     private String birthId;
     private String gender;
     private String accountNo;
-    private Set<Payment> payments;
+    private Set<Payment> payments = new LinkedHashSet<>();
+    private Set<Card> cards = new LinkedHashSet<>();
 
 
     /**
      * Default constructor
      */
-    public User() {}
+    public User() {
+    }
 
     /**
      * Main constructor
@@ -147,7 +144,7 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
      * @return
      */
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "role")
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     public Role getRole() {
         return role; }
 
@@ -157,13 +154,22 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
         this.role = new Role(roleName);
     }
 
-    @OneToMany(targetEntity = Payment.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userAccount")
+    @OneToMany(targetEntity = Payment.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     public Set<Payment> getPayments() {
         return payments;
     }
 
     public void setPayments(Set<Payment> payments) {
         this.payments = payments;
+    }
+
+    @OneToMany(targetEntity = Card.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    public Set<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(Set<Card> cards) {
+        this.cards = cards;
     }
 
     public void setAccount(String accountNo) {
@@ -175,34 +181,8 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
         return accountNo;
     }
 
-    public String getCard() {
-        return card;
-    }
-
-    public void setCard(String card) {
-        this.card = card;
-    }
-
-    public String getCvc() {
-        return cvc;
-    }
-
-    public void setCvc(String cvc) {
-        this.cvc = cvc;
-    }
-
-    public String getCardExpiration() {
-        return cardExpiration;
-    }
-
-    public void setCardExpiration(String cardExpiration) {
-        this.cardExpiration = cardExpiration;
-    }
-
     @Transient
-    public String getRoleName() {
-        return roleName;
-    }
+    public String getRoleName() { return roleName; }
 
     public String getPassword() {
         return password;

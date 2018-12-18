@@ -43,21 +43,10 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
         }
     }
 
-    public User findByCardNo(String card) {
-        TypedQuery<User> q = entityManager.createQuery("SELECT u FROM User u WHERE u.card = :card", User.class);
-        q.setParameter("card", card);
-        try {
-            return q.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
-
-    public User checkUniqueness(String username, String account, String card) {
-        TypedQuery<User> q = entityManager.createQuery("SELECT u FROM User u WHERE u.account = :account or u.username = :username or u.card = :card", User.class);
+    public User checkUniqueness(String username, String account) {
+        TypedQuery<User> q = entityManager.createQuery("SELECT u FROM User u WHERE u.account = :account or u.username = :username", User.class);
         q.setParameter("account", account);
         q.setParameter("username", username);
-        q.setParameter("card", card);
         try {
             return q.getSingleResult();
         } catch (NoResultException e) {

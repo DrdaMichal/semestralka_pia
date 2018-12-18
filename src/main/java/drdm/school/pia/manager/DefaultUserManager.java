@@ -1,13 +1,15 @@
 package drdm.school.pia.manager;
 
+import drdm.school.pia.dao.CardDao;
 import drdm.school.pia.dao.RoleDao;
 import drdm.school.pia.dao.UserDao;
+import drdm.school.pia.domain.Card;
 import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.utils.Encoder;
 import drdm.school.pia.utils.ExpirationGenerator;
-import drdm.school.pia.utils.IntGenerator;
+import drdm.school.pia.utils.LongGenerator;
 import drdm.school.pia.utils.StringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Michal Drda
@@ -26,9 +29,10 @@ public class DefaultUserManager implements UserManager {
 
     private UserDao userDao;
     private RoleDao roleDao;
+    private CardDao cardDao;
     private Encoder encoder;
     private StringGenerator stringGenerator;
-    private IntGenerator numberGenerator;
+    private LongGenerator numberGenerator;
     private ExpirationGenerator cardExpirationGenerator;
     @Value("${username.length}")
     private int usernameLength;
@@ -40,6 +44,8 @@ public class DefaultUserManager implements UserManager {
     private int cardNoLength;
     @Value("${cvcNo.length}")
     private int cvcNoLength;
+    @Value("${pin.length}")
+    private int pinLength;
     @Value("${cardExpiration.months}")
     private int cardExpirationInMonthsLength;
     @Value("#{'${user.roles}'.split(',')}")
@@ -72,6 +78,15 @@ public class DefaultUserManager implements UserManager {
         this.roleDao = roleDao;
     }
 
+    public CardDao getCardDao() {
+        return cardDao;
+    }
+
+    @Autowired
+    public void setCardDao(CardDao cardDao) {
+        this.cardDao = cardDao;
+    }
+
     public Encoder getEncoder() {
         return encoder;
     }
@@ -84,9 +99,9 @@ public class DefaultUserManager implements UserManager {
     @Autowired
     public void setStringGenerator(StringGenerator generator) { this.stringGenerator = generator; }
 
-    public IntGenerator getIntGenerator() { return numberGenerator; }
+    public LongGenerator getIntGenerator() { return numberGenerator; }
     @Autowired
-    public void setIntGenerator(IntGenerator generator) { this.numberGenerator = generator; }
+    public void setIntGenerator(LongGenerator generator) { this.numberGenerator = generator; }
 
     public ExpirationGenerator getCardExpirationGenerator() { return cardExpirationGenerator; }
     @Autowired
@@ -104,6 +119,26 @@ public class DefaultUserManager implements UserManager {
         return userRole;
     }
 
+    public Set<Card> createCard(User newUser) {
+        Card newCard = new Card();
+        newCard.setCardNumber(String.valueOf(numberGenerator.generate(cardNoLength)));
+        newCard.setCvc(String.valueOf(numberGenerator.generate(cvcNoLength)));
+        newCard.setCardExpiration(cardExpirationGenerator.generateExpiration(cardExpirationInMonthsLength));
+        newCard.setPin(String.valueOf(numberGenerator.generate(pinLength)));
+        newCard.setUser(newUser);
+
+        // Check that card is unique and generate new one in case that it's not
+        Card cardExistingCheck = cardDao.findByCardNumber(newCard.getCardNumber());
+        if (cardExistingCheck != null) {
+            numberGenerator.generate(cardNoLength);
+        }
+
+        newUser.getCards().add(newCard);
+        cardDao.save(newCard);
+
+        return newUser.getCards();
+    }
+
     @Override
     public void register(User newUser) throws UserValidationException {
         if (!newUser.isNew()) {
@@ -112,9 +147,6 @@ public class DefaultUserManager implements UserManager {
 
         newUser.setUsername(stringGenerator.generate(usernameLength));
         newUser.setAccount(numberGenerator.generate(accountNoLength) + "/" + bankcode);
-        newUser.setCard(Integer.toString(numberGenerator.generate(cardNoLength)));
-        newUser.setCvc(Integer.toString(numberGenerator.generate(cvcNoLength)));
-        newUser.setCardExpiration(cardExpirationGenerator.generateExpiration(cardExpirationInMonthsLength));
 
         if (roleDao.findByRoleName(newUser.getRoleName()) != null && permittedRoles.contains(newUser.getRoleName())) {
             newUser.setRole(roleDao.findByRoleName(newUser.getRoleName()));
@@ -127,19 +159,15 @@ public class DefaultUserManager implements UserManager {
 
         User usernameExistingCheck = userDao.findByUsername(newUser.getUsername());
         User accountExistingCheck = userDao.findByAccountNo(newUser.getAccount());
-        User cardExistingCheck = userDao.findByCardNo(newUser.getCard());
-        // No need to check cvc for uniqueness, doesn't have to be unique
 
-        while (usernameExistingCheck != null) {
-            newUser.setUsername(stringGenerator.generate(usernameLength));
+        if (usernameExistingCheck != null) {
+            stringGenerator.generate(usernameLength);
         }
-        while (accountExistingCheck != null) {
-            newUser.setAccount(numberGenerator.generate(accountNoLength) + "/" + bankcode);
-        }
-        while (cardExistingCheck != null) {
-            newUser.setCard(Integer.toString(numberGenerator.generate(cardNoLength)));
+        if (accountExistingCheck != null) {
+            numberGenerator.generateBankAccount(accountNoLength, bankcode);
         }
 
+        newUser.setCards(createCard(newUser));
         newUser.setPassword(encoder.encode(newUser.getPassword()));
         userDao.save(newUser);
     }

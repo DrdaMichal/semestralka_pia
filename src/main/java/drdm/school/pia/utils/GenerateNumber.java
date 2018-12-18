@@ -1,15 +1,20 @@
 package drdm.school.pia.utils;
 
+import drdm.school.pia.web.servlet.spring.Login;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Class used for generating numbers.
  * @author Michal Drda
  */
 @Component
-public class GenerateNumber implements IntGenerator {
+public class GenerateNumber implements LongGenerator {
+
+    final static Logger logger = Logger.getLogger(Login.class);
 
     public GenerateNumber() {
 
@@ -20,58 +25,37 @@ public class GenerateNumber implements IntGenerator {
      * @param numberLength number of digits
      * @return positive number of desired length
      */
-    public int generate(int numberLength) {
-        int lowerBound = (int) Math.pow(10, (numberLength-1));
-        int addition = (int) (Math.pow(10, (numberLength-1)) * 9);
-
+    public long generate(int numberLength) {
         Random rnd = new Random();
-        int randomNumber = (lowerBound + rnd.nextInt(addition));
+        String temp = "";
+
+        long lowerBound = (long) Math.pow(10, (numberLength-1));
+        long addition = (long) (Math.pow(10, (numberLength-1)) * 9);
+
+        long randomNumber = (lowerBound + ThreadLocalRandom.current().nextLong(addition));
 
         if(randomNumber < 0) {
             randomNumber = randomNumber * (-1);
         }
 
-        return randomNumber;
-
-    }
-
-    /*
-    public static int getRandomNumber (int numberLength, String tableName, String columnName) {
-        return generateRandomNumber(numberLength, tableName, columnName);
-    }*/
-
-    /*
-    private static int generateRandomNumber(int numberLength, String tableName, String columnName) {
-        int lowerBound = (int) Math.pow(10, (numberLength-1));
-        int addition = (int) (Math.pow(10, (numberLength-1)) * 9);
-
-        Random rnd = new Random();
-        int randomNumber = (lowerBound + rnd.nextInt(addition));
-
-        while (!isUniqueCheckDB(randomNumber, tableName, columnName)) {
-            randomNumber = (lowerBound + rnd.nextInt(addition));
+        if(String.valueOf(randomNumber).length() != numberLength) {
+            generate(numberLength);
         }
 
-        System.out.println("Username is: " + randomNumber);
+        logger.info("Generated number: [" + randomNumber + "]");
 
         return randomNumber;
-    }
-    */
 
-    /*
-        Should be somewhere in DAO (at least calling to DB, other logic can remain here).
+    }
+
+    /**
+     * Generates a bank account from number count before "/" and bankcode
+     * @param numberlength count of digits
+     * @param bankcode 4digit bank code
+     * @return bank account generated number
      */
-    private static boolean isUniqueCheckDB(int number, String tableName, String columnName) {
-        String sqlQuery = "SELECT COUNT(" + columnName + ") FROM " + tableName + " WHERE " + columnName + " = '" + number + "';";
-        //TODO check with DB that generated number does not exist yet (current is just a mock)
-        if (sqlQuery.equals("1")) {
-            //TODO uncoment this one.
-            //return false;
-            return true;
-        }
-        else {
-            return true;
-        }
+    public String generateBankAccount(int numberlength, String bankcode) {
+        return (generate(numberlength) + "/" + bankcode);
     }
 
 }

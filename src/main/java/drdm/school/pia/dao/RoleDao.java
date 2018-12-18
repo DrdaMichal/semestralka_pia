@@ -9,16 +9,16 @@ import drdm.school.pia.domain.Role;
 public interface RoleDao extends GenericDao<Role, Long> {
 
     /**
-     *
+     * Find role associated with a given user
      * @param username username of the user in scope
-     * @return role associated with the given user
+     * @return role associated with a given user
      */
     Role findByUser(String username);
 
     /**
-     *
-     * @param roleName
-     * @return
+     * Find role by it's name
+     * @param roleName name of the role in scope
+     * @return role with given name
      */
     Role findByRoleName(String roleName);
 }

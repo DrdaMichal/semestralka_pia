@@ -9,7 +9,7 @@ import java.util.Objects;
  * @author Michal Drda
  */
 @Entity
-@Table(name = "drdam_paymenta")
+@Table(name = "drdam_payments")
 public class Payment extends BaseObject implements IEntity<Long>, Serializable {
 
     private String selectedTemplate;
@@ -25,7 +25,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     private String transactionDate;
     private String template;
 
-    private User userAccount;
+    private User user;
 
     /**
      * A generated ID of the entity
@@ -75,7 +75,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -85,14 +85,14 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="userAccount", referencedColumnName = "account")
-    public User getUserAccount() {
-        return userAccount;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="user_account", referencedColumnName = "account")
+    public User getUser() {
+        return user;
     }
 
-    public void setUserAccount(User user) {
-        this.userAccount = user;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Transient

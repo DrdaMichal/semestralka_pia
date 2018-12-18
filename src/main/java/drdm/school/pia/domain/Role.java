@@ -8,7 +8,7 @@ import java.util.Set;
  * @author Michal Drda
  */
 @Entity
-@Table(name="drdam_rolea")
+@Table(name="drdam_roles")
 public class Role extends BaseObject implements IEntity<Long>, Serializable {
 
     private String name;
@@ -29,13 +29,11 @@ public class Role extends BaseObject implements IEntity<Long>, Serializable {
 
     @Transient
     @Override
-    public Long getPK() {
-        return getId();
-    }
+    public Long getPK() { return getId(); }
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -51,7 +49,7 @@ public class Role extends BaseObject implements IEntity<Long>, Serializable {
         this.name = name;
     }
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(targetEntity = User.class, cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "role")
     public Set<User> getUsers() {return users; }
 
     public void setUsers(Set<User> users) {this.users = users;}

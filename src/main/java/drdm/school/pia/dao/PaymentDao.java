@@ -15,10 +15,4 @@ public interface PaymentDao extends GenericDao<Payment, Long> {
      */
     Payment findByUsername(String username);
 
-    /**
-     *
-     * @param accountNumber
-     * @return
-     */
-    Payment findByAccountNumber(String accountNumber);
 }
