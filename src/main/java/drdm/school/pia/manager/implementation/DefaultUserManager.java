@@ -111,9 +111,7 @@ public class DefaultUserManager implements UserManager {
         }
 
         accountManager.createAccount(newUser);
-        logger.info("Account created for user<" + newUser.getUsername() + ">: " + newUser.getAccount().toString());
         cardManager.createCard(newUser, newUser.getAccount());
-        logger.info("Card created for user< " + newUser.getUsername() + ">: " + newUser.getAccount().getCards().toString());
 
         newUser.setPassword(encoder.encode(newUser.getPassword()));
         logger.info("Password generated for user<" + newUser.getUsername() + ">");

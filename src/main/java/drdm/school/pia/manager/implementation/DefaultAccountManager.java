@@ -7,6 +7,8 @@ import drdm.school.pia.domain.User;
 import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.utils.LongGenerator;
 import drdm.school.pia.utils.StringGenerator;
+import drdm.school.pia.web.servlet.spring.Login;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ public class DefaultAccountManager implements AccountManager {
     private AccountDao accountDao;
     private StringGenerator stringGenerator;
     private LongGenerator numberGenerator;
+
+    final static Logger logger = Logger.getLogger(Login.class);
 
     @Value("${accountNo.length}")
     private int accountNoLength;
@@ -56,17 +60,20 @@ public class DefaultAccountManager implements AccountManager {
     @Override
     public void createAccount(User user) {
         Account newAccount = new Account();
-        newAccount.setNumber(numberGenerator.generate(accountNoLength) + "/" + bankcode);
+        newAccount.setNumber(Long.toString(numberGenerator.generate(accountNoLength)));
+        newAccount.setBank(bankcode);
         newAccount.setBlocked(false);
         newAccount.setBalance(new Long(0));
 
+        // No need to check for bank code as it's always the same
         Account accountExistingCheck = accountDao.findByAccountNumber(newAccount.getNumber());
         if (accountExistingCheck != null) {
-            numberGenerator.generateBankAccount(accountNoLength, bankcode);
+            numberGenerator.generate(accountNoLength);
         }
 
         user.setAccount(newAccount);
         accountDao.save(newAccount);
+        logger.info("Account created for user<" + user.getUsername() + ">: " + user.getAccount().toString());
 
     }
 

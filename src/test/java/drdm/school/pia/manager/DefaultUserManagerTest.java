@@ -5,6 +5,9 @@ import drdm.school.pia.dao.UserDao;
 
 import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
+import drdm.school.pia.manager.implementation.DefaultAccountManager;
+import drdm.school.pia.manager.implementation.DefaultCardManager;
+import drdm.school.pia.manager.implementation.DefaultRoleManager;
 import drdm.school.pia.manager.implementation.DefaultUserManager;
 import drdm.school.pia.utils.Encoder;
 import drdm.school.pia.utils.StringGenerator;
@@ -34,11 +37,13 @@ public class DefaultUserManagerTest {
     @Mock
     private StringGenerator stringGenerator;
     @Mock
-    private RoleDao roleDao;
+    private DefaultRoleManager roleManager;
+    @Mock
+    private DefaultAccountManager accountManager;
+    @Mock
+    private DefaultCardManager cardManager;
     @Mock
     private User user;
-    @Mock
-    List<String> permittedRoles = Arrays.asList(new String[]{"Role", "role2"});
 
     @InjectMocks
     private DefaultUserManager userManager;
@@ -53,7 +58,7 @@ public class DefaultUserManagerTest {
 
     @Test
     public void testUserRegistration() throws Exception {
-        final String username = "Username";
+        final String username = "username";
         final String hashed = "Hash";
         final String password = "Password";
         final String role = "Role";
@@ -68,15 +73,11 @@ public class DefaultUserManagerTest {
 
         // Need to put actual password here, because of validation of input, and hashing this password afterwards.
         User src = new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender);
-        Role roleObj = new Role(role);
 
         when(userDao.save(src)).thenReturn(src);
         when(userDao.findByUsername(username)).thenReturn(null);
         when(encoder.encode(password)).thenReturn(hashed);
         when(stringGenerator.generate(8)).thenReturn(username);
-        when(roleDao.findByRoleName(role)).thenReturn(roleObj);
-        when(user.getRoleName()).thenReturn(role);
-        when(permittedRoles.contains(user.getRoleName())).thenReturn(true);
 
         userManager.register(src);
 
@@ -84,9 +85,6 @@ public class DefaultUserManagerTest {
         verify(userDao, times(1)).findByUsername(username);
         verify(encoder, times(1)).encode(password);
         verify(stringGenerator, times(1)).generate(8);
-        verify(roleDao, times(2)).findByRoleName(role);
-        verify(permittedRoles,times(1)).contains(role);
-        verify(user, times(1)).getRoleName();
         assertEquals(hashed, src.getPassword());
     }
 

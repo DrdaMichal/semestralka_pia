@@ -17,7 +17,7 @@ public interface AccountDao extends GenericDao<Account, Long> {
 
     /**
      * Find role by it's name
-     * @param accountNumber name of the role in scope
+     * @param accountNumber account number provided
      * @return role with given name
      */
     Account findByAccountNumber(String accountNumber);

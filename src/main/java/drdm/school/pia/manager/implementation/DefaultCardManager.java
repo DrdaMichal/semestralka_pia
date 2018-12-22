@@ -8,6 +8,8 @@ import drdm.school.pia.manager.CardManager;
 import drdm.school.pia.utils.ExpirationGenerator;
 import drdm.school.pia.utils.LongGenerator;
 import drdm.school.pia.utils.StringGenerator;
+import drdm.school.pia.web.servlet.spring.Login;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,8 @@ public class DefaultCardManager implements CardManager {
     private StringGenerator stringGenerator;
     private LongGenerator numberGenerator;
     private ExpirationGenerator cardExpirationGenerator;
+
+    final static Logger logger = Logger.getLogger(Login.class);
 
     @Value("${cardNo.length}")
     private int cardNoLength;
@@ -93,6 +97,7 @@ public class DefaultCardManager implements CardManager {
 
         account.getCards().add(newCard);
         cardDao.save(newCard);
+        logger.info("Card created for user< " + user.getUsername() + ">: " + user.getAccount().getCards().toString());
     }
 
     public Card findByUsername(String username) {

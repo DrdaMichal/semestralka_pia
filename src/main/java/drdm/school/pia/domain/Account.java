@@ -21,6 +21,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
     private Long id;
     private Long balance;
     private String number;
+    private String bank;
     private boolean blocked;
     private Set<Card> cards = new LinkedHashSet<>();
     private Set<Payment> payments = new LinkedHashSet<>();
@@ -48,6 +49,14 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
     }
 
     public Long getBalance() {
@@ -93,6 +102,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
                 Objects.equals(id, account.id) &&
                 Objects.equals(balance, account.balance) &&
                 Objects.equals(number, account.number) &&
+                Objects.equals(bank, account.bank) &&
                 Objects.equals(cards, account.cards) &&
                 Objects.equals(payments, account.payments) &&
                 Objects.equals(user, account.user);
@@ -100,7 +110,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, balance, number, blocked, cards, payments, user);
+        return Objects.hash(id, balance, number, bank, blocked, cards, payments, user);
     }
 
     @Override
@@ -109,9 +119,8 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
                 "id=" + id +
                 ", balance=" + balance +
                 ", number='" + number + '\'' +
+                ", bank code='" + bank + '\'' +
                 ", blocked=" + blocked +
-                ", cards=" + cards +
-                ", payments=" + payments +
                 '}';
     }
 
