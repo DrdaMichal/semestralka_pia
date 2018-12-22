@@ -1,5 +1,6 @@
 package drdm.school.pia.manager;
 
+import drdm.school.pia.domain.Account;
 import drdm.school.pia.domain.User;
 
 /**
@@ -11,7 +12,7 @@ public interface CardManager {
      * Creates a card for user
      * @param user user to own the card created
      */
-    void createCard(User user);
+    void createCard(User user, Account account);
 
 
 }

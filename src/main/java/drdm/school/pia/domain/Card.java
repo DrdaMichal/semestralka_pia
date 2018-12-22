@@ -5,14 +5,15 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "drdam_cards")
+@Table(name = "drdam_card")
 public class Card extends BaseObject implements IEntity<Long>, Serializable {
 
     private Long id;
-    private String cardNo;
+    private String cardNumber;
     private String cvc;
     private String cardExpiration;
     private String pin;
+    private Account account;
 
     private User user;
 
@@ -20,8 +21,8 @@ public class Card extends BaseObject implements IEntity<Long>, Serializable {
 
     }
 
-    public Card(String cardNo, String cvc, String cardExpiration, String pin) {
-        this.cardNo = cardNo;
+    public Card(String cardNumber, String cvc, String cardExpiration, String pin) {
+        this.cardNumber = cardNumber;
         this.cvc = cvc;
         this.cardExpiration = cardExpiration;
         this.pin = pin;
@@ -41,10 +42,19 @@ public class Card extends BaseObject implements IEntity<Long>, Serializable {
 
     public void setId(Long id) { this.id = id; }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="username_id")
+/*    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public User getUser() {
         return user;
+    }*/
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public void setUser(User user) {
@@ -52,11 +62,11 @@ public class Card extends BaseObject implements IEntity<Long>, Serializable {
     }
 
     public String getCardNumber() {
-        return cardNo;
+        return cardNumber;
     }
 
-    public void setCardNumber(String cardNo) {
-        this.cardNo = cardNo;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public String getCvc() {
@@ -89,7 +99,7 @@ public class Card extends BaseObject implements IEntity<Long>, Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Card card1 = (Card) o;
         return id.equals(card1.id) &&
-                cardNo.equals(card1.cardNo) &&
+                cardNumber.equals(card1.cardNumber) &&
                 cvc.equals(card1.cvc) &&
                 cardExpiration.equals(card1.cardExpiration) &&
                 Objects.equals(user, card1.user);
@@ -97,8 +107,18 @@ public class Card extends BaseObject implements IEntity<Long>, Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, cardNo, cvc, cardExpiration, user);
+        return Objects.hash(id, cardNumber, cvc, cardExpiration, user);
     }
 
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", cvc='" + cvc + '\'' +
+                ", cardExpiration='" + cardExpiration + '\'' +
+                ", pin='" + pin + '\'' +
+                '}';
+    }
 
 }

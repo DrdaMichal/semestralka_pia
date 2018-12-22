@@ -8,7 +8,7 @@ import java.util.Set;
  * @author Michal Drda
  */
 @Entity
-@Table(name="drdam_roles")
+@Table(name="drdam_role")
 public class Role extends BaseObject implements IEntity<Long>, Serializable {
 
     private String name;
@@ -52,14 +52,6 @@ public class Role extends BaseObject implements IEntity<Long>, Serializable {
     public void setUsers(Set<User> users) {this.users = users;}
 
     @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Role{");
-        sb.append("name='").append(name).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Role)) return false;
@@ -74,4 +66,13 @@ public class Role extends BaseObject implements IEntity<Long>, Serializable {
     public int hashCode() {
         return name != null ? name.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
 }

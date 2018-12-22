@@ -1,6 +1,7 @@
 package drdm.school.pia.manager.implementation;
 
 import drdm.school.pia.dao.CardDao;
+import drdm.school.pia.domain.Account;
 import drdm.school.pia.domain.Card;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.manager.CardManager;
@@ -76,13 +77,13 @@ public class DefaultCardManager implements CardManager {
      * @param user user to own the card created
      */
     @Override
-    public void createCard(User user) {
+    public void createCard(User user, Account account) {
         Card newCard = new Card();
         newCard.setCardNumber(String.valueOf(numberGenerator.generate(cardNoLength)));
         newCard.setCvc(String.valueOf(numberGenerator.generate(cvcNoLength)));
         newCard.setCardExpiration(cardExpirationGenerator.generateExpiration(cardExpirationInMonthsLength));
         newCard.setPin(String.valueOf(numberGenerator.generate(pinLength)));
-        newCard.setUser(user);
+        newCard.setAccount(account);
 
         // Check that card is unique and generate new one in case that it's not
         Card cardExistingCheck = cardDao.findByCardnumber(newCard.getCardNumber());
@@ -90,11 +91,11 @@ public class DefaultCardManager implements CardManager {
             numberGenerator.generate(cardNoLength);
         }
 
-        user.getCards().add(newCard);
+        account.getCards().add(newCard);
         cardDao.save(newCard);
     }
 
-    public Card getUserRoleByUsername(String username) {
+    public Card findByUsername(String username) {
         return cardDao.findByUsername(username);
     }
 }

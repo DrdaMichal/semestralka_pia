@@ -9,7 +9,7 @@ import java.util.Objects;
  * @author Michal Drda
  */
 @Entity
-@Table(name = "drdam_payments")
+@Table(name = "drdam_payment")
 public class Payment extends BaseObject implements IEntity<Long>, Serializable {
 
     private String selectedTemplate;
@@ -24,6 +24,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     private String currency;
     private String transactionDate;
     private String template;
+    private Account account;
 
     private User user;
 
@@ -85,14 +86,23 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="user_account", referencedColumnName = "account")
+/*    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }*/
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Transient
@@ -215,4 +225,24 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     public int hashCode() {
         return Objects.hash(sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, amount, currency, transactionDate, template, id);
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "selectedTemplate='" + selectedTemplate + '\'' +
+                ", sendTo='" + sendTo + '\'' +
+                ", bankCode='" + bankCode + '\'' +
+                ", vs='" + vs + '\'' +
+                ", cs='" + cs + '\'' +
+                ", ss='" + ss + '\'' +
+                ", recipientMessage='" + recipientMessage + '\'' +
+                ", myMessage='" + myMessage + '\'' +
+                ", amount='" + amount + '\'' +
+                ", currency='" + currency + '\'' +
+                ", transactionDate='" + transactionDate + '\'' +
+                ", template='" + template + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
 }

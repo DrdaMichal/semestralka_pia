@@ -114,7 +114,7 @@ public class Register extends AbstractServlet {
 
         try {
             userManager.register(new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender));
-            succsessDispatch("User successfully registered!", req, resp);
+            succsessDispatch("User " + firstname + " " + lastname + " successfully registered!", req, resp);
         } catch (UserValidationException e) {
             errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, e.getMessage(), req, resp);
         }

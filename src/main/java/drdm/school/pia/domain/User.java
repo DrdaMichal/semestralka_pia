@@ -12,7 +12,7 @@ import java.util.Set;
  * @author Michal Drda
  */
 @Entity
-@Table(name = "drdam_users")
+@Table(name = "drdam_user")
 public class User extends BaseObject implements IEntity<String>, Serializable {
     /**
      * Login, unique
@@ -33,9 +33,7 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
     private String zip;
     private String birthId;
     private String gender;
-    private String accountNo;
-    private Set<Payment> payments = new LinkedHashSet<>();
-    private Set<Card> cards = new LinkedHashSet<>();
+    private Account account;
 
 
     /**
@@ -154,31 +152,14 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
         this.role = new Role(roleName);
     }
 
-    @OneToMany(targetEntity = Payment.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-    public Set<Payment> getPayments() {
-        return payments;
+    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    public Account getAccount() {
+        return account;
     }
 
-    public void setPayments(Set<Payment> payments) {
-        this.payments = payments;
-    }
-
-    @OneToMany(targetEntity = Card.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-    public Set<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(Set<Card> cards) {
-        this.cards = cards;
-    }
-
-    public void setAccount(String accountNo) {
-        this.accountNo = accountNo;
-    }
-
-    @Column(unique = true)
-    public String getAccount() {
-        return accountNo;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Transient
@@ -267,10 +248,20 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("User{");
-        sb.append("username='").append(username).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "User{" +
+                "username='" + username + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", roleName='" + roleName + '\'' +
+                ", role=" + role +
+                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", zip='" + zip + '\'' +
+                ", birthId='" + birthId + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
     }
 
 }

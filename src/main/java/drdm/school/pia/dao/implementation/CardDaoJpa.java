@@ -49,4 +49,11 @@ public class CardDaoJpa extends GenericDaoJpa<Card, Long> implements CardDao {
         }
     }
 
+    @Override
+    public Card merge(Card card) {
+        entityManager.merge(card);
+        return card;
+        //throw new UnsupportedOperationException("Not implemented yet.");
+    }
+
 }

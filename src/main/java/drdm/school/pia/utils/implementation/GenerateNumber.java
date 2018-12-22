@@ -43,7 +43,7 @@ public class GenerateNumber implements LongGenerator {
             generate(numberLength);
         }
 
-        logger.info("Generated number: [" + randomNumber + "]");
+        logger.debug("Generated number: [" + randomNumber + "]");
 
         return randomNumber;
 

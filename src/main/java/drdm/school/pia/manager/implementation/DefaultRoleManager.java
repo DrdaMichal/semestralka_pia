@@ -6,6 +6,8 @@ import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.manager.RoleManager;
+import drdm.school.pia.web.servlet.spring.Login;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ import java.util.List;
 public class DefaultRoleManager implements RoleManager {
 
     private RoleDao roleDao;
+    final static Logger logger = Logger.getLogger(Login.class);
+
     @Value("#{'${user.roles}'.split(',')}")
     private List<String> permittedRoles;
 
@@ -52,6 +56,7 @@ public class DefaultRoleManager implements RoleManager {
         } else {
             throw new UserValidationException("Role is not in the list of permitted roles! Please contact administrator.");
         }
+        logger.info("Role assigned: " + user.getRole());
     }
 
     public Role getUserRoleByUsername(String username) {

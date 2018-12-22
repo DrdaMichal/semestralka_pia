@@ -31,7 +31,7 @@ public class StringValidator implements Validator {
      */
     @Override
         public Boolean isValid(String stringToValidate, String regex) {
-        logger.info("Validate[" + stringToValidate + "," + regex + "]");
+        logger.debug("Validate[" + stringToValidate + "," + regex + "]");
 
         pattern = Pattern.compile(regex);
         matcher = pattern.matcher(stringToValidate);
