@@ -44,7 +44,6 @@ public class Register extends AbstractServlet {
     private static final String SUCCESS_ATTRIBUTE = "suc";
 
     private UserManager userManager;
-    private RoleManager roleManager;
     @Value("${captcha.value}")
     private String captchaValue;
     @Value("${regex.email}")
@@ -61,11 +60,6 @@ public class Register extends AbstractServlet {
     @Autowired
     public void setUserManager(UserManager userManager) {
         this.userManager = userManager;
-    }
-
-    @Autowired
-    public void setRoleManager(RoleManager roleManager) {
-        this.roleManager = roleManager;
     }
 
     @Override

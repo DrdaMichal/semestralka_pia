@@ -9,13 +9,13 @@ public interface CardDao extends GenericDao<Card, Long> {
      * @param username
      * @return
      */
-    Card findByUser(String username);
+    Card findByUsername(String username);
 
     /**
      * Find a card by it's number
-     * @param cardNumber
+     * @param cardnumber
      * @return card with given number
      */
-    Card findByCardNumber(String cardNumber);
+    Card findByCardnumber(String cardnumber);
 
 }

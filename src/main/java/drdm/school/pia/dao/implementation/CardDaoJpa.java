@@ -17,8 +17,13 @@ public class CardDaoJpa extends GenericDaoJpa<Card, Long> implements CardDao {
         super(Card.class);
     }
 
+    /**
+     * Find a card by it's user - implementation
+     * @param username
+     * @return
+     */
     @Override
-    public Card findByUser(String username) {
+    public Card findByUsername(String username) {
         TypedQuery<Card> q = entityManager.createQuery("SELECT c FROM Card c WHERE c.user = :username_id", Card.class);
         q.setParameter("username_id", username);
         try {
@@ -28,9 +33,20 @@ public class CardDaoJpa extends GenericDaoJpa<Card, Long> implements CardDao {
         }
     }
 
+    /**
+     * Find a card by it's number - implementation
+     * @param cardnumber
+     * @return
+     */
     @Override
-    public Card findByCardNumber(String cardNumber) {
-        return null;
+    public Card findByCardnumber(String cardnumber) {
+        TypedQuery<Card> q = entityManager.createQuery("SELECT c FROM Card c WHERE c.cardNumber = :cardnumber", Card.class);
+        q.setParameter("cardnumber", cardnumber);
+        try {
+            return q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
 }
