@@ -8,6 +8,7 @@ import drdm.school.pia.domain.Role;
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
 import drdm.school.pia.manager.UserManager;
+import drdm.school.pia.manager.RoleManager;
 import drdm.school.pia.utils.Encoder;
 import drdm.school.pia.utils.ExpirationGenerator;
 import drdm.school.pia.utils.LongGenerator;
@@ -29,9 +30,9 @@ import java.util.Set;
 public class DefaultUserManager implements UserManager {
 
     private UserDao userDao;
-    private RoleDao roleDao;
     private CardDao cardDao;
     private Encoder encoder;
+    private RoleManager roleManager;
     private StringGenerator stringGenerator;
     private LongGenerator numberGenerator;
     private ExpirationGenerator cardExpirationGenerator;
@@ -49,8 +50,6 @@ public class DefaultUserManager implements UserManager {
     private int pinLength;
     @Value("${cardExpiration.months}")
     private int cardExpirationInMonthsLength;
-    @Value("#{'${user.roles}'.split(',')}")
-    private List<String> permittedRoles;
 
     public DefaultUserManager(){
 
@@ -61,6 +60,11 @@ public class DefaultUserManager implements UserManager {
         this.encoder = encoder;
     }
 
+    public RoleManager getRoleManager() { return roleManager; }
+
+    @Autowired
+    public void setRoleManager(RoleManager roleManager) { this.roleManager = roleManager; }
+
     public UserDao getUserDao() {
         return userDao;
     }
@@ -68,15 +72,6 @@ public class DefaultUserManager implements UserManager {
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
-    }
-
-    public RoleDao getRoleDao() {
-        return roleDao;
-    }
-
-    @Autowired
-    public void setRoleDao(RoleDao roleDao) {
-        this.roleDao = roleDao;
     }
 
     public CardDao getCardDao() {
@@ -114,11 +109,11 @@ public class DefaultUserManager implements UserManager {
         return u != null && encoder.validate(password, u.getPassword());
     }
 
-    @Override
+/*    @Override
     public Role userRole (String username) {
         Role userRole = userDao.findByUsername(username).getRole();
         return userRole;
-    }
+    }*/
 
     public Set<Card> createCard(User newUser) {
         Card newCard = new Card();
@@ -148,14 +143,8 @@ public class DefaultUserManager implements UserManager {
 
         newUser.setUsername(stringGenerator.generate(usernameLength));
         newUser.setAccount(numberGenerator.generate(accountNoLength) + "/" + bankcode);
+        roleManager.addRoleToUser(newUser, newUser.getRoleName());
 
-        if (roleDao.findByRoleName(newUser.getRoleName()) != null && permittedRoles.contains(newUser.getRoleName())) {
-            newUser.setRole(roleDao.findByRoleName(newUser.getRoleName()));
-        } else if (roleDao.findByRoleName(newUser.getRoleName()) == null && permittedRoles.contains(newUser.getRoleName())) {
-            newUser.setRole(newUser.getRoleName());
-        } else {
-            throw new UserValidationException("Role is not in the list of permitted roles! Please contact administrator.");
-        }
         newUser.validate();
 
         User usernameExistingCheck = userDao.findByUsername(newUser.getUsername());

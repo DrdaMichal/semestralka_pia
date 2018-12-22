@@ -23,8 +23,14 @@ public class RoleDaoJpa extends GenericDaoJpa<Role, Long> implements RoleDao {
     }
 
     @Override
-    public Role findByUser(String username) {
-        throw new UnsupportedOperationException("Not implemented yet");
+    public Role findByUserName(String username) {
+        TypedQuery<Role> q = entityManager.createQuery("SELECT r FROM Role r LEFT JOIN User u ON r.id = u.role.id WHERE u.username = :username ", Role.class);
+        q.setParameter("username", username);
+        try {
+            return q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public Role findByRoleName(String roleName) {

@@ -3,21 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c7f202ae-61ac-4c75-89b5-10c986ec8825" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/CardDaoJpa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/GenericDaoJpa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/PaymentDaoJpa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDaoJpa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/UserDaoJpa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/DefaultUserManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/CardExpirationGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/GenerateNumber.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/GenerateString.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/PasswordHash.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/PasswordHashEncoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/StringValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/RoleDaoJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/RoleDaoJpa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/roleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/RoleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,91 +33,94 @@
     <expand />
     <select />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="843">
+                    <caret line="146" selection-start-line="146" selection-end-line="146" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultRoleManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+            <state relative-caret-position="487">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#696#727#1" expanded="true" />
+                <element signature="e#909#910#0" expanded="true" />
+                <element signature="e#947#948#0" expanded="true" />
+                <element signature="e#1674#1675#0" expanded="true" />
+                <element signature="e#1716#1717#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/GenerateString.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/GenerateNumber.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/CardExpirationGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/StringValidator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/CardDao.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/RoleDaoJpa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/UserDaoJpa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" selection-start-line="27" selection-end-line="33" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/BaseObject.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="31" selection-start-column="31" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Card.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
+            <state relative-caret-position="284">
+              <caret line="104" selection-start-line="104" selection-end-line="104" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,19 +129,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/PasswordHashEncoder.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="436">
+              <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/PasswordHash.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/RoleManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="59" column="52" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
+            <state relative-caret-position="425">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,8 +165,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tomcat</find>
-      <find>Open Sans</find>
       <find>navbar-toggle</find>
       <find>jaxb-api-2.3.0.jar</find>
       <find>terms</find>
@@ -193,6 +193,8 @@
       <find>disable-padding</find>
       <find>errordi</find>
       <find>getPk</find>
+      <find>userMana</find>
+      <find>userM</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,11 +204,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/ManageUser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/About.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Banking.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Managing.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/StringVaidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/StringGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/EmailValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/Validator.java" />
@@ -225,9 +222,7 @@
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/GenerateCardExpiration.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/ExpirationGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/CardExpirationGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/IntGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Card.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Payment.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java" />
@@ -241,18 +236,25 @@
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/PaymentDaoJpa.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/PaymentDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/pay.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/GenerateString.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/cardManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/roleManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/paymentManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/accountManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/StringValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/CardDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/BaseObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultRoleManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/RoleDaoJpa.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/RoleManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java" />
       </list>
     </option>
   </component>
@@ -299,7 +301,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="y" value="-1440" />
-    <option name="width" value="1734" />
+    <option name="width" value="2004" />
     <option name="height" value="1417" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -310,7 +312,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -570,6 +571,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -577,7 +579,7 @@
     <property name="SearchEverywhereHistoryKey" value="main&#9;FILE&#9;file://C:/user/git/semestralka_pia/src/main&#10;setSecretManager&#9;PSI&#9;JAVA://drdm.school.pia.web.servlet.spring.Main#setSecretManager&#10;security&#9;PSI&#9;JAVA://java.security.Security&#10;userDao&#9;FILE&#9;file://C:/user/Private/PIA/semestralka_pia/src/main/java/drdm/school/pia/dao/UserDaoJDBC.java&#10;userDaoMemorySmarter&#9;null&#9;null&#10;userDaoSmarter&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545156842957" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545488912545" />
     <property name="last_opened_file_path" value="$USER_HOME$/OneDrive - AIMTEC a. s/Documents/School/PIA/cv06_02_jpa1_complete" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -741,7 +743,8 @@
       <workItem from="1544607203584" duration="4336000" />
       <workItem from="1544641514095" duration="1283000" />
       <workItem from="1544787921964" duration="39040000" />
-      <workItem from="1545063476465" duration="36005000" />
+      <workItem from="1545063476465" duration="38468000" />
+      <workItem from="1545479886074" duration="5297000" />
     </task>
     <servers />
   </component>
@@ -778,7 +781,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283388000" />
+    <option name="totallyTimeSpent" value="291148000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -790,10 +793,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-1440" width="1734" height="1417" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-1440" width="2004" height="1417" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7513398" visible="true" weight="0.19653524" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7513398" visible="true" weight="0.1707819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -802,16 +804,16 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" sideWeight="0.25050917" side_tool="true" weight="0.17217484" />
       <window_info id="Persistence" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection Results" weight="0.32943925" />
+      <window_info anchor="bottom" id="Hibernate Console" weight="0.32943925" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.326324" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.22274144" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.30607477" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.27258566" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969603" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3290461" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32866043" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.3033226" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
@@ -819,6 +821,7 @@
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.3290461" />
+      <window_info anchor="bottom" id="Inspection Results" order="16" weight="0.32943925" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24910395" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24946696" />
@@ -828,7 +831,7 @@
       <window_info anchor="right" id="Database" order="6" weight="0.32915172" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Maven" order="9" visible="true" weight="0.15949821" />
+      <window_info anchor="right" id="Maven" order="9" visible="true" weight="0.13734567" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -869,31 +872,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java</url>
-          <line>65</line>
+          <line>72</line>
           <properties />
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java</url>
-          <line>111</line>
+          <line>106</line>
           <properties />
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java</url>
-          <line>170</line>
+          <line>159</line>
           <properties />
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java</url>
-          <line>150</line>
+          <line>145</line>
           <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java</url>
-          <line>130</line>
+          <line>125</line>
           <properties />
           <option name="timeStamp" value="69" />
         </line-breakpoint>
@@ -905,19 +908,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java</url>
-          <line>35</line>
+          <line>38</line>
           <properties />
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java</url>
-          <line>112</line>
+          <line>107</line>
           <properties />
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java</url>
-          <line>53</line>
+          <line>59</line>
           <properties />
           <option name="timeStamp" value="75" />
         </line-breakpoint>
@@ -1008,20 +1011,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.3.19.RELEASE/spring-tx-4.3.19.RELEASE-sources.jar!/org/springframework/dao/support/PersistenceExceptionTranslationInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.19.RELEASE/spring-aop-4.3.19.RELEASE-sources.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="238" selection-start-line="238" selection-end-line="238" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.3.19.RELEASE/spring-tx-4.3.19.RELEASE-sources.jar!/org/springframework/transaction/interceptor/TransactionAspectSupport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -1075,13 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" selection-start-line="1" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1165,60 +1147,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Banking.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="916">
-          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Payment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1259,34 +1191,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/RoleDaoJpa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/UserDaoJpa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/AbstractEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/roleManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1304,40 +1212,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2069#2070#0" expanded="true" />
-            <element signature="e#2122#2123#0" expanded="true" />
-            <element signature="e#2254#2255#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/cardManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1416,6 +1294,142 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="31" selection-start-column="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="64" lean-forward="true" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Payment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-544">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="169" lean-forward="true" selection-start-line="169" selection-end-line="169" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/UserDaoJpa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" selection-start-line="27" selection-end-line="33" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/auth/AuthenticationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/RoleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/RoleDaoJpa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultRoleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#696#727#1" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="e#1716#1717#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/UserManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultUserManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="843">
+          <caret line="146" selection-start-line="146" selection-end-line="146" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Register.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,6 +1,7 @@
 package drdm.school.pia.web.auth;
 
 import drdm.school.pia.domain.Role;
+import drdm.school.pia.manager.RoleManager;
 import drdm.school.pia.manager.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,12 @@ public class AuthenticationService {
     private static final String ROLE = "role";
 
     private UserManager userManager;
+    private RoleManager roleManager;
 
     @Autowired
-    public AuthenticationService(UserManager userManager) {
+    public AuthenticationService(UserManager userManager, RoleManager roleManager) {
         this.userManager = userManager;
+        this.roleManager = roleManager;
     }
 
     /**
@@ -38,7 +41,7 @@ public class AuthenticationService {
 
 
         if(authenticated) {
-            Role userRole = userManager.userRole(username);
+            Role userRole = roleManager.getUserRoleByUsername(username);
             session.setAttribute(USER, username);
             session.setAttribute(ROLE, userRole.getName());
             return true;

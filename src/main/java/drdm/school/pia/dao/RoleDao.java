@@ -13,7 +13,7 @@ public interface RoleDao extends GenericDao<Role, Long> {
      * @param username username of the user in scope
      * @return role associated with a given user
      */
-    Role findByUser(String username);
+    Role findByUserName(String username);
 
     /**
      * Find role by it's name

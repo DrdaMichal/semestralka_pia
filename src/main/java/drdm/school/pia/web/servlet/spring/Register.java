@@ -2,6 +2,7 @@ package drdm.school.pia.web.servlet.spring;
 
 import drdm.school.pia.domain.User;
 import drdm.school.pia.domain.UserValidationException;
+import drdm.school.pia.manager.RoleManager;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.Validator;
 import org.apache.log4j.Logger;
@@ -43,6 +44,7 @@ public class Register extends AbstractServlet {
     private static final String SUCCESS_ATTRIBUTE = "suc";
 
     private UserManager userManager;
+    private RoleManager roleManager;
     @Value("${captcha.value}")
     private String captchaValue;
     @Value("${regex.email}")
@@ -59,6 +61,11 @@ public class Register extends AbstractServlet {
     @Autowired
     public void setUserManager(UserManager userManager) {
         this.userManager = userManager;
+    }
+
+    @Autowired
+    public void setRoleManager(RoleManager roleManager) {
+        this.roleManager = roleManager;
     }
 
     @Override
