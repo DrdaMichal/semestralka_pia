@@ -90,6 +90,25 @@ public class DefaultUserManager implements UserManager {
         return u != null && encoder.validate(password, u.getPassword());
     }
 
+/*
+
+    public void createDefaultUsers() throws UserValidationException {
+
+        User Admin001 = new User("1234", "ADMIN", "Admin", "Administrator", "admin@email.com", "Administrator street 101010", "Admintown", "101010", "404", "male");
+        register(Admin001);
+        //Admin001.setUsername("Admin001");
+
+        User User0001 = new User("0001", "USER", "First", "User", "user1@email.com", "User street 1", "Usertown", "111111", "1234567890", "male");
+        register(User0001);
+        //Admin001.setUsername("User0001");
+
+        User User0002 = new User("0001", "USER", "Second", "User", "user2@email.com", "User street 1", "Usertown", "111111", "1234567890", "female");
+        register(User0002);
+        //Admin001.setUsername("User0002");
+
+    }
+*/
+
     @Override
     public void register(User newUser) throws UserValidationException {
         logger.info("User register started...");
@@ -110,9 +129,10 @@ public class DefaultUserManager implements UserManager {
             stringGenerator.generate(usernameLength);
         }
 
-        accountManager.createAccount(newUser);
-        cardManager.createCard(newUser, newUser.getAccount());
-
+        if (!newUser.getRole().getName().equals("ADMIN")) {
+            accountManager.createAccount(newUser);
+            cardManager.createCard(newUser, newUser.getAccount());
+        }
         newUser.setPassword(encoder.encode(newUser.getPassword()));
         logger.info("Password generated for user<" + newUser.getUsername() + ">");
 

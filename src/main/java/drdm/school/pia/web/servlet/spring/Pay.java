@@ -1,5 +1,8 @@
 package drdm.school.pia.web.servlet.spring;
 
+import drdm.school.pia.domain.Payment;
+import drdm.school.pia.domain.User;
+import drdm.school.pia.manager.PaymentManager;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.Validator;
 import org.apache.log4j.Logger;
@@ -10,6 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.time.LocalDate;
 
 @WebServlet("/banking/pay")
 public class Pay extends AbstractServlet {
@@ -32,6 +39,7 @@ public class Pay extends AbstractServlet {
     private static final String SUCCESS_ATTRIBUTE = "suc";
 
     private UserManager userManager;
+    private PaymentManager paymentManager;
 
     private final static Logger logger = Logger.getLogger(Login.class);
 
@@ -44,6 +52,11 @@ public class Pay extends AbstractServlet {
 
     @Autowired
     public void setUserManager(UserManager userManager) { this.userManager = userManager; }
+
+    @Autowired
+    public void setPaymentManager(PaymentManager paymentManager) {
+        this.paymentManager = paymentManager;
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -70,6 +83,13 @@ public class Pay extends AbstractServlet {
         String transactionDate = req.getParameter(TRANSACTIONDATE_PARAMETER);
         String isTemplate = req.getParameter(ISTEMPLATE_PARAMETER);
         String template = req.getParameter(TEMPLATE_PARAMETER);
+
+        Date transactionDateDate = null;
+        try {
+            transactionDateDate = new SimpleDateFormat("yyyy-MM-dd").parse(transactionDate);
+        } catch (ParseException e) {
+            errorDispatch(selectedTemplate, sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, transactionDate, currency, isTemplate, template, "Date provided was in invalid format!", req, resp);
+        }
 
 
 
@@ -99,7 +119,7 @@ public class Pay extends AbstractServlet {
             }
 
             if (null != isTemplate && null == template) {
-                errorDispatch(selectedTemplate, sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, transactionDate, transactionDate, isTemplate, template, "Please fill the template name you want to save or uncheck 'Save as a template'!", req, resp);
+                errorDispatch(selectedTemplate, sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, transactionDate, currency, isTemplate, template, "Please fill the template name you want to save or uncheck 'Save as a template'!", req, resp);
                 return;
             }
 
@@ -107,9 +127,10 @@ public class Pay extends AbstractServlet {
 
             try {
                 logger.info("New payment created!. (but not really - to be deleted and replaced by PaymentManager call");
+                paymentManager.createPayment(new Payment(selectedTemplate, sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, amount, currency, transactionDateDate, template), req.getSession().getAttribute("user").toString());
                 succsessDispatch("Payment was successfully created!", req, resp);
             } catch(Exception e) {
-                //TODO when payment is not successful.
+                errorDispatch(selectedTemplate, sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, transactionDate, currency, isTemplate, template, e.getMessage(), req, resp);
             }
         }
 

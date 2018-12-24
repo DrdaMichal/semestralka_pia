@@ -1,7 +1,10 @@
 package drdm.school.pia.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -20,14 +23,11 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     private String ss;
     private String recipientMessage;
     private String myMessage;
-    private String amount;
+    private Long amount;
     private String currency;
-    private String transactionDate;
+    private Date transactionDate;
     private String template;
     private Account account;
-
-    private User user;
-
     /**
      * A generated ID of the entity
      */
@@ -36,6 +36,8 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     /**
      * Default constructor
      */
+    private Date created;
+
     public Payment() {
 
     }
@@ -51,9 +53,9 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
      * @param myMessage
      * @param amount
      * @param currency
-     * @param transactionDate
+     * @param transactionDate provided in format dd-MM-yyyy
      */
-    public Payment(String selectedTemplate, String sendTo, String bankCode, String vs, String cs, String ss, String recipientMessage, String myMessage, String amount, String currency, String transactionDate, String  template) {
+    public Payment(String selectedTemplate, String sendTo, String bankCode, String vs, String cs, String ss, String recipientMessage, String myMessage, String amount, String currency, Date transactionDate, String  template) {
         this.selectedTemplate = selectedTemplate;
         this.sendTo = sendTo;
         this.bankCode = bankCode;
@@ -63,8 +65,8 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.ss = ss;
         this.recipientMessage = recipientMessage;
         this.myMessage = myMessage;
-        this.amount = amount;
-        this.currency = currency;
+        this.amount = Long.parseLong(amount);
+        this.currency = "CZK";
         this.transactionDate = transactionDate;
         this.template = template;
     }
@@ -85,15 +87,6 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-/*    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }*/
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
@@ -170,11 +163,9 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.myMessage = myMessage;
     }
 
-    public String getAmount() {
-        return amount;
-    }
+    public Long getAmount() { return amount; }
 
-    public void setAmount(String amount) {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 
@@ -186,11 +177,11 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.currency = currency;
     }
 
-    public String getTransactionDate() {
+    public Date getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(String transactionDate) {
+    public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
     }
 
@@ -200,6 +191,25 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
 
     public void setTemplate(String template) {
         this.template = template;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    /**
+     * Validates that payment instance is currently in a valid state.
+     * @throws PaymentValidationException in case the instance is not in valid state.
+     */
+    public void validate() throws PaymentValidationException {
+        if(amount <= 0) throw new PaymentValidationException("Amount can't be zero or less!");
+        if(StringUtils.isBlank(bankCode)) throw new PaymentValidationException("Bank code is a required field!");
+        if(StringUtils.isBlank(sendTo)) throw new PaymentValidationException("Receiving account is a required field!");
+        if(null == (transactionDate)) throw new PaymentValidationException("Transaction date is a required field!");
     }
 
     @Override

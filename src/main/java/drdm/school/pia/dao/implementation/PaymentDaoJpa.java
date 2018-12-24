@@ -16,13 +16,12 @@ public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements Payme
 
     @Override
     public Payment findByUsername(String username) {
-        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM Payment p WHERE p.user = :user_account", Payment.class);
-        q.setParameter("user_account", username);
-        try {
-            return q.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
+
+    @Override
+    public Payment findByAccountNumber(String account) {
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public Payment create(Payment payment) {

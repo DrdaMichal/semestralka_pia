@@ -59,6 +59,5 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
     public User create(User user) {
         entityManager.persist(user);
         return user;
-        //throw new UnsupportedOperationException("Not implemented yet.");
     }
 }

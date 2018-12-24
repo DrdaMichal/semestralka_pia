@@ -82,7 +82,7 @@
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                                <button class="btn btn-default" type="submit" value="loadtemplate">Load template</button>
+                                <button class="btn btn-default" type="submit" name= "loadtemplate" value="loadtemplate">Load template</button>
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 disable-padding">
-                                <button class="btn btn-default" type="submit" value="pay">Make a payment</button>
+                                <button class="btn btn-default" type="submit" name="pay" value="pay">Make a payment</button>
                             </div>
                         </div>
                     </div>
