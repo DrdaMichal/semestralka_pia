@@ -10,6 +10,7 @@ import drdm.school.pia.manager.PaymentManager;
 import drdm.school.pia.web.servlet.spring.Login;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,6 +29,10 @@ public class DefaultPaymentManager implements PaymentManager {
     private PaymentDao paymentDao;
     private UserDao userDao;
     private AccountManager accountManager;
+    @Value("${bankcode}")
+    private String bankcode;
+    @Value("${accountNo.length}")
+    private int accountNoLength;
 
     final static Logger logger = Logger.getLogger(Login.class);
 
@@ -67,6 +72,8 @@ public class DefaultPaymentManager implements PaymentManager {
     public void createPayment(Payment newPayment, String username) throws PaymentValidationException {
         logger.info("Payment creation started...");
         User user = userDao.findByUsername(username);
+        // Check that receiving user exists in the bank
+        User receivingUser = userDao.findByAccountNo(newPayment.getSendTo());
         newPayment.setCreated(new java.util.Date());
         newPayment.setAccount(user.getAccount());
 
@@ -78,6 +85,11 @@ public class DefaultPaymentManager implements PaymentManager {
         c.set(Calendar.MILLISECOND, 0);
 
         Date test = c.getTime();
+
+        if (newPayment.getBankCode().equals(bankcode) && newPayment.getSendTo().equals(user.getAccount().getNumber())) {
+            logger.info("Receiving account can't be equal to senders account!");
+            throw new PaymentValidationException("Receiving account can't be equal to senders account!");
+        }
 
         if (newPayment.getTransactionDate().before(c.getTime())) {
             logger.info("The date selected is in the past!");
@@ -96,6 +108,11 @@ public class DefaultPaymentManager implements PaymentManager {
 
         newPayment.validate();
         accountManager.updateBallance(user.getAccount(), -1 * (newPayment.getAmount()));
+
+        if (newPayment.getBankCode().equals(bankcode) && newPayment.getSendTo().length() == accountNoLength && receivingUser != null) {
+            accountManager.updateBallance(receivingUser.getAccount(), newPayment.getAmount());
+        }
+
         paymentDao.save(newPayment);
         logger.info("Payment saved: " + newPayment.toString());
         // to be uncommented in case that future payments will be implemented

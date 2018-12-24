@@ -35,7 +35,7 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
     }
 
     public User findByAccountNo(String account) {
-        TypedQuery<User> q = entityManager.createQuery("SELECT u FROM User u WHERE u.account = :account", User.class);
+        TypedQuery<User> q = entityManager.createQuery("SELECT u FROM User u WHERE u.account.number = :account", User.class);
         q.setParameter("account", account);
         try {
             return q.getSingleResult();
