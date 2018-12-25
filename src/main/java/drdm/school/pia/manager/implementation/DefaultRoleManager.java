@@ -24,7 +24,7 @@ import java.util.List;
 public class DefaultRoleManager implements RoleManager {
 
     private RoleDao roleDao;
-    final static Logger logger = Logger.getLogger(Login.class);
+    final static Logger logger = Logger.getLogger(DefaultRoleManager.class);
 
     @Value("#{'${user.roles}'.split(',')}")
     private List<String> permittedRoles;

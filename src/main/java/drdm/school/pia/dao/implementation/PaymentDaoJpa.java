@@ -59,6 +59,18 @@ public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements Payme
         }
     }
 
+    @Override
+    public Payment findPaymentByTemplate(String username, String template) {
+        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM User u LEFT JOIN Account a ON u.account.id = a.id LEFT JOIN Payment p ON a.id = p.account.id WHERE u.username = :username and p.template = :template", Payment.class);
+        q.setParameter("template", template);
+        q.setParameter("username", username);
+        try {
+            return q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
     public Payment create(Payment payment) {
         entityManager.persist(payment);
         return payment;

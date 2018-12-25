@@ -37,7 +37,7 @@ public class DefaultPaymentManager implements PaymentManager {
     @Value("${accountNo.length}")
     private int accountNoLength;
 
-    final static Logger logger = Logger.getLogger(Login.class);
+    final static Logger logger = Logger.getLogger(DefaultPaymentManager.class);
 
     public DefaultPaymentManager() {
 
@@ -116,6 +116,14 @@ public class DefaultPaymentManager implements PaymentManager {
             accountManager.updateBallance(receivingUser.getAccount(), newPayment.getAmount());
         }
 
+        // Remove template from the old payment in case that new one with the same name to be created
+        if (null != newPayment.getTemplate()) {
+            Payment existingTemplate = paymentDao.findPaymentByTemplate(user.getUsername(), newPayment.getTemplate());
+            if (null != existingTemplate) {
+                existingTemplate.setTemplate(null);
+            }
+        }
+
         paymentDao.save(newPayment);
         logger.info("Payment saved: " + newPayment.toString());
         // to be uncommented in case that future payments will be implemented
@@ -130,6 +138,10 @@ public class DefaultPaymentManager implements PaymentManager {
         }
         logger.debug("Fetched following templates: " + templates.toString());
         return templates;
+    }
+
+    public Payment loadPaymentByTemplate(String username, String template) {
+        return paymentDao.findPaymentByTemplate(username, template);
     }
 
 }

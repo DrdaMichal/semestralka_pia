@@ -32,7 +32,7 @@ public class DefaultUserManager implements UserManager {
     private AccountManager accountManager;
     private StringGenerator stringGenerator;
 
-    final static Logger logger = Logger.getLogger(Login.class);
+    final static Logger logger = Logger.getLogger(DefaultUserManager.class);
 
     @Value("${username.length}")
     private int usernameLength;

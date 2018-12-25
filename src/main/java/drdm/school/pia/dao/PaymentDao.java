@@ -23,4 +23,6 @@ public interface PaymentDao extends GenericDao<Payment, Long> {
 
     List<Payment> findTemplatesByUsername(String username);
 
+    Payment findPaymentByTemplate(String username, String template);
+
 }

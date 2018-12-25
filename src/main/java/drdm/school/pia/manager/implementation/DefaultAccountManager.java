@@ -29,7 +29,7 @@ public class DefaultAccountManager implements AccountManager {
     private StringGenerator stringGenerator;
     private LongGenerator numberGenerator;
 
-    final static Logger logger = Logger.getLogger(Login.class);
+    final static Logger logger = Logger.getLogger(DefaultAccountManager.class);
 
     @Value("${accountNo.length}")
     private int accountNoLength;

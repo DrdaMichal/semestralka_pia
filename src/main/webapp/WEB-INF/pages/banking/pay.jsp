@@ -70,8 +70,8 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="vs">Saved templates</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="text" list="selecttemplates" id="selecttemplate" name="selecttemplate"/>
-                                <datalist id="selecttemplates">
+                                <input class="form-control" type="text" list="selecttemplates" id="selecttemplate" name="selecttemplate" value="<c:out value="${requestScope.selecttemplate}"/>"/>
+                                <datalist class="datalist" id="selecttemplates">
                                     <c:forEach items="${templates}" var="templateValue">
                                         <option value="${templateValue}">${templateValue}</option>
                                     </c:forEach>
@@ -102,11 +102,11 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="bankcode">*Bank code</label>
                             <div class="col-xs-5 col-sm-4 col-md-4 disable-padding">
-                                <input class="form-control" type="text" list="bankcodes" id="bankcode" name="bankcode"/>
-                                <datalist id="bankcodes">
-                                    <option>3030</option>
-                                    <option>1020</option>
-                                    <option>1234</option>
+                                <input class="form-control" type="text" list="bankcodes" id="bankcode" name="bankcode" value="<c:out value="${requestScope.bankcode}"/>"/>
+                                <datalist class="datalist" id="bankcodes">
+                                    <c:forEach items="${bankcodes}" var="bankcodeValue">
+                                        <option value="${bankcodeValue}">${bankcodeValue}</option>
+                                    </c:forEach>
                                 </datalist>
                             </div>
                         </div>
@@ -155,7 +155,13 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="transactiondate">*Valid on</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="date" id="transactiondate" name="transactiondate" value="<c:out value="${requestScope.transactiondate}"/>"/>
+                                <input class="form-control" type="date" placeholder="yyyy-MM-dd" id="transactiondate" name="transactiondate"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="captcha">*One + One =</label>
+                            <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
+                                <input class="form-control" type="text" id="captcha" name="captcha"/>
                             </div>
                         </div>
                     </div>

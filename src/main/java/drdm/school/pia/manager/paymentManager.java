@@ -11,4 +11,6 @@ public interface PaymentManager {
     void createPayment(Payment newPayment, String user) throws PaymentValidationException;
 
     ArrayList<String> loadPaymentTemplate(String username);
+
+    Payment loadPaymentByTemplate(String username, String template);
 }
