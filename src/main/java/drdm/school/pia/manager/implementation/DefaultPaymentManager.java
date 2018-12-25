@@ -14,8 +14,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -117,6 +120,16 @@ public class DefaultPaymentManager implements PaymentManager {
         logger.info("Payment saved: " + newPayment.toString());
         // to be uncommented in case that future payments will be implemented
         /*}*/
+    }
+
+    public ArrayList<String> loadPaymentTemplate(String username) {
+        ArrayList<Payment> paymentTemplates =(ArrayList) paymentDao.findTemplatesByUsername(username);
+        ArrayList<String> templates = new ArrayList<>();
+        for (int i=0; i<paymentTemplates.size(); i++) {
+            templates.add(paymentTemplates.get(i).getTemplate());
+        }
+        logger.debug("Fetched following templates: " + templates.toString());
+        return templates;
     }
 
 }

@@ -60,6 +60,7 @@ public class Pay extends AbstractServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("USER")) {
+            req.setAttribute("templates", paymentManager.loadPaymentTemplate(req.getSession().getAttribute("user").toString()));
             req.getRequestDispatcher("/WEB-INF/pages/banking/pay.jsp").forward(req, resp);
         } else {
             // User is not authorised to do the action.

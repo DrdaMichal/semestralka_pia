@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements PaymentDao {
@@ -15,13 +16,47 @@ public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements Payme
     }
 
     @Override
-    public Payment findByUsername(String username) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public List<Payment> findByUsername(String username) {
+        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM User u LEFT JOIN Account a ON u.account.id = a.id LEFT JOIN Payment p ON a.id = p.account.id WHERE u.username = :username", Payment.class);
+        q.setParameter("username", username);
+        try {
+            return q.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
-    public Payment findByAccountNumber(String account) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public List<Payment> findByAccountNumber(String account) {
+        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM User u LEFT JOIN Account a ON u.account.id = a.id LEFT JOIN Payment p ON a.id = p.account.id WHERE p.account.number = :account", Payment.class);
+        q.setParameter("account", account);
+        try {
+            return q.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Payment> findTemplatesByAccountNumber(String account) {
+        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM User u LEFT JOIN Account a ON u.account.id = a.id LEFT JOIN Payment p ON a.id = p.account.id WHERE p.account.number = :account and not(p.template = '')", Payment.class);
+        q.setParameter("account", account);
+        try {
+            return q.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Payment> findTemplatesByUsername(String username) {
+        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM User u LEFT JOIN Account a ON u.account.id = a.id LEFT JOIN Payment p ON a.id = p.account.id WHERE u.username = :username and not(p.template = '')", Payment.class);
+        q.setParameter("username", username);
+        try {
+            return q.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public Payment create(Payment payment) {

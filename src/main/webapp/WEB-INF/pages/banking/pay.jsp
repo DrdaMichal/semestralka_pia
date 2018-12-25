@@ -72,9 +72,9 @@
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
                                 <input class="form-control" type="text" list="selecttemplates" id="selecttemplate" name="selecttemplate"/>
                                 <datalist id="selecttemplates">
-                                    <option>template1</option>
-                                    <option>template2</option>
-                                    <option>template3</option>
+                                    <c:forEach items="${templates}" var="templateValue">
+                                        <option value="${templateValue}">${templateValue}</option>
+                                    </c:forEach>
                                 </datalist>
                             </div>
                         </div>
