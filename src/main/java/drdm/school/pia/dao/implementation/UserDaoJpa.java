@@ -1,7 +1,7 @@
 package drdm.school.pia.dao.implementation;
 
 import drdm.school.pia.dao.UserDao;
-import drdm.school.pia.domain.User;
+import drdm.school.pia.domain.entities.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;

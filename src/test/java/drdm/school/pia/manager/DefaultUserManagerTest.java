@@ -1,10 +1,8 @@
 package drdm.school.pia.manager;
 
-import drdm.school.pia.dao.RoleDao;
 import drdm.school.pia.dao.UserDao;
 
-import drdm.school.pia.domain.Role;
-import drdm.school.pia.domain.User;
+import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.manager.implementation.DefaultAccountManager;
 import drdm.school.pia.manager.implementation.DefaultCardManager;
 import drdm.school.pia.manager.implementation.DefaultRoleManager;
@@ -18,9 +16,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -79,7 +74,7 @@ public class DefaultUserManagerTest {
         when(encoder.encode(password)).thenReturn(hashed);
         when(stringGenerator.generate(8)).thenReturn(username);
 
-        userManager.register(src);
+        userManager.register(src, null);
 
         verify(userDao, times(1)).save(any(User.class));
         verify(userDao, times(1)).findByUsername(username);

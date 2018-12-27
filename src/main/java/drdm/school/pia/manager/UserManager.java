@@ -1,8 +1,7 @@
 package drdm.school.pia.manager;
 
-import drdm.school.pia.domain.Role;
-import drdm.school.pia.domain.User;
-import drdm.school.pia.domain.UserValidationException;
+import drdm.school.pia.domain.entities.User;
+import drdm.school.pia.domain.exceptions.UserValidationException;
 
 /**
  * @author Michal Drda
@@ -21,10 +20,11 @@ public interface UserManager {
     /**
      * Method for registering a new user.
      * @param newUser instance with new user data, expected not-null value
+     * @param username username can be set manually, otherwise it's generated alphanumeric string
      * @throws UserValidationException if the new user data instance is not in valid state,
      *                                 e.g. required fields are missing
      */
-    void register(User newUser) throws UserValidationException;
+    void register(User newUser, String username) throws UserValidationException;
 
 
 /*    Role userRole(String username);*/

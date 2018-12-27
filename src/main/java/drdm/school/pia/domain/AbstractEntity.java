@@ -11,8 +11,5 @@ public abstract class AbstractEntity {
 
     private static final String PERSISTENCE_UNIT = "drdm.school.pia";
 
-    //init
-//    EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
-//    EntityManager em = factory.createEntityManager();
 
 }

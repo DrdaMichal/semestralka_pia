@@ -45,7 +45,7 @@
                 <ul class="nav navbar-nav underline-menu">
                     <li><a href="/banking">Banking</a></li>
                     <li><a id="selected-page-item" href="${location.reload(true)}">New payment</a></li>
-                    <li><a href="history">Payment history</a></li>
+                    <li><a href="history">Transaction history</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="register" style="display: none"><a href="/register" onclick="loginFunction()"><span class="glyphicon glyphicon-user"></span> Register</a></li>

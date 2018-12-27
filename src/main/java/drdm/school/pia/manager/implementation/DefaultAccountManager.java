@@ -1,21 +1,18 @@
 package drdm.school.pia.manager.implementation;
 
 import drdm.school.pia.dao.AccountDao;
-import drdm.school.pia.domain.Account;
-import drdm.school.pia.domain.Card;
-import drdm.school.pia.domain.PaymentValidationException;
-import drdm.school.pia.domain.User;
+import drdm.school.pia.domain.entities.Account;
+import drdm.school.pia.domain.exceptions.PaymentValidationException;
+import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.utils.LongGenerator;
 import drdm.school.pia.utils.StringGenerator;
-import drdm.school.pia.web.servlet.spring.Login;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Set;
 
 /**
  * @author Michal Drda
@@ -90,6 +87,11 @@ public class DefaultAccountManager implements AccountManager {
             logger.info("Current account " + account.getNumber() + "/" + account.getBank() + " balance: " + account.getBalance());
             account.setBalance(account.getBalance() + valueOfChange);
         }
+    }
+
+    @Override
+    public Account findAccountByUsername(String username) {
+        return accountDao.findByUserName(username);
     }
 
 

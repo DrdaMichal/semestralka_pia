@@ -1,4 +1,4 @@
-package drdm.school.pia.domain;
+package drdm.school.pia.domain.exceptions;
 
 public class PaymentValidationException extends Exception {
 

@@ -1,6 +1,6 @@
 package drdm.school.pia.dao;
 
-import drdm.school.pia.domain.Account;
+import drdm.school.pia.domain.entities.Account;
 
 /**
  * DAO interface for the Account entity

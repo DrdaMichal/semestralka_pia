@@ -1,6 +1,7 @@
-package drdm.school.pia.domain;
+package drdm.school.pia.domain.entities;
 
-import org.hibernate.annotations.Check;
+import drdm.school.pia.domain.BaseObject;
+import drdm.school.pia.domain.IEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;

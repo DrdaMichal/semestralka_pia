@@ -1,15 +1,14 @@
 package drdm.school.pia.manager.implementation;
 
 import drdm.school.pia.dao.UserDao;
-import drdm.school.pia.domain.User;
-import drdm.school.pia.domain.UserValidationException;
+import drdm.school.pia.domain.entities.User;
+import drdm.school.pia.domain.exceptions.UserValidationException;
 import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.manager.CardManager;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.manager.RoleManager;
 import drdm.school.pia.utils.Encoder;
 import drdm.school.pia.utils.StringGenerator;
-import drdm.school.pia.web.servlet.spring.Login;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -90,34 +89,19 @@ public class DefaultUserManager implements UserManager {
         return u != null && encoder.validate(password, u.getPassword());
     }
 
-/*
-
-    public void createDefaultUsers() throws UserValidationException {
-
-        User Admin001 = new User("1234", "ADMIN", "Admin", "Administrator", "admin@email.com", "Administrator street 101010", "Admintown", "101010", "404", "male");
-        register(Admin001);
-        //Admin001.setUsername("Admin001");
-
-        User User0001 = new User("0001", "USER", "First", "User", "user1@email.com", "User street 1", "Usertown", "111111", "1234567890", "male");
-        register(User0001);
-        //Admin001.setUsername("User0001");
-
-        User User0002 = new User("0001", "USER", "Second", "User", "user2@email.com", "User street 1", "Usertown", "111111", "1234567890", "female");
-        register(User0002);
-        //Admin001.setUsername("User0002");
-
-    }
-*/
-
     @Override
-    public void register(User newUser) throws UserValidationException {
+    public void register(User newUser, String username) throws UserValidationException {
         logger.info("User register started...");
         if (!newUser.isNew()) {
             throw new RuntimeException("User already exists, use save method for updates!");
         }
 
-        newUser.setUsername(stringGenerator.generate(usernameLength));
-        logger.info("Username generated: " + newUser.getUsername());
+        if (username == null || username == "") {
+            newUser.setUsername(stringGenerator.generate(usernameLength));
+            logger.info("Username generated: " + newUser.getUsername());
+        } else {
+            newUser.setUsername(username);
+        }
 
         roleManager.addRoleToUser(newUser, newUser.getRoleName());
 

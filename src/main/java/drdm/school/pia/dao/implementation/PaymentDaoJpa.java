@@ -1,7 +1,7 @@
 package drdm.school.pia.dao.implementation;
 
 import drdm.school.pia.dao.PaymentDao;
-import drdm.school.pia.domain.Payment;
+import drdm.school.pia.domain.entities.Payment;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
@@ -66,6 +66,18 @@ public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements Payme
         q.setParameter("username", username);
         try {
             return q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Payment> findTransactionsByAccount(String account, String bankCode) {
+        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM Account a LEFT JOIN Payment p ON a.id = p.account.id WHERE (p.sendTo = :account and p.bankCode = :bank) or (a.number = :account and a.bank = :bank) ORDER BY p.created desc", Payment.class);
+        q.setParameter("account", account);
+        q.setParameter("bank", bankCode);
+        try {
+            return q.getResultList();
         } catch (NoResultException e) {
             return null;
         }

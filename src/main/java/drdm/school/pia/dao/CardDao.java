@@ -1,6 +1,6 @@
 package drdm.school.pia.dao;
 
-import drdm.school.pia.domain.Card;
+import drdm.school.pia.domain.entities.Card;
 
 public interface CardDao extends GenericDao<Card, Long> {
 

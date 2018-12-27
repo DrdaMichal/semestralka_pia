@@ -1,7 +1,7 @@
 package drdm.school.pia.dao.implementation;
 
 import drdm.school.pia.dao.CardDao;
-import drdm.school.pia.domain.Card;
+import drdm.school.pia.domain.entities.Card;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;

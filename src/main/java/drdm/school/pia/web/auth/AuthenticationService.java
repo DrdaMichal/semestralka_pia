@@ -1,6 +1,6 @@
 package drdm.school.pia.web.auth;
 
-import drdm.school.pia.domain.Role;
+import drdm.school.pia.domain.entities.Role;
 import drdm.school.pia.manager.RoleManager;
 import drdm.school.pia.manager.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;

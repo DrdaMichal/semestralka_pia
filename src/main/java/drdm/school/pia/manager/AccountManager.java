@@ -1,11 +1,8 @@
 package drdm.school.pia.manager;
 
-import drdm.school.pia.domain.Account;
-import drdm.school.pia.domain.Card;
-import drdm.school.pia.domain.PaymentValidationException;
-import drdm.school.pia.domain.User;
-
-import java.util.Set;
+import drdm.school.pia.domain.entities.Account;
+import drdm.school.pia.domain.exceptions.PaymentValidationException;
+import drdm.school.pia.domain.entities.User;
 
 public interface AccountManager {
 
@@ -21,5 +18,7 @@ public interface AccountManager {
      * @param valueOfChange valueOfChange provided as an addition or a substraction from the current account balance
      */
     void updateBallance(Account account, Long valueOfChange) throws PaymentValidationException;
+
+    Account findAccountByUsername(String username);
 
 }

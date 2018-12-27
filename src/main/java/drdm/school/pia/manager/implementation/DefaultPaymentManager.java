@@ -2,19 +2,20 @@ package drdm.school.pia.manager.implementation;
 
 import drdm.school.pia.dao.PaymentDao;
 import drdm.school.pia.dao.UserDao;
-import drdm.school.pia.domain.Payment;
-import drdm.school.pia.domain.PaymentValidationException;
-import drdm.school.pia.domain.User;
+import drdm.school.pia.domain.entities.Account;
+import drdm.school.pia.domain.entities.Payment;
+import drdm.school.pia.domain.exceptions.PaymentValidationException;
+import drdm.school.pia.domain.entities.User;
+import drdm.school.pia.domain.modules.Transaction;
 import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.manager.PaymentManager;
-import drdm.school.pia.web.servlet.spring.Login;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,6 +37,8 @@ public class DefaultPaymentManager implements PaymentManager {
     private String bankcode;
     @Value("${accountNo.length}")
     private int accountNoLength;
+    @Value("${default.pattern.date}")
+    private String transactionDatePattern;
 
     final static Logger logger = Logger.getLogger(DefaultPaymentManager.class);
 
@@ -142,6 +145,47 @@ public class DefaultPaymentManager implements PaymentManager {
 
     public Payment loadPaymentByTemplate(String username, String template) {
         return paymentDao.findPaymentByTemplate(username, template);
+    }
+
+    @Override
+    public ArrayList<Transaction> findTransactionsForUsername(String username) {
+        // Get Account for matching username parameter
+        Account account = accountManager.findAccountByUsername(username);
+        // Load Payments for matching username parameter
+        List<Payment> payments = paymentDao.findTransactionsByAccount(account.getNumber(), account.getBank());
+        // Initialize transactions ArrayList
+        ArrayList<Transaction> transactions = new ArrayList<>();
+        // Define date format
+        SimpleDateFormat dateFormat = new SimpleDateFormat(transactionDatePattern);
+
+        // Fill ArrayList with transactions for the user matching username parameter
+        for (int i=0; i<payments.size(); i++) {
+            Transaction transaction = new Transaction();
+            transaction.setId(Integer.toString(i+1));
+            transaction.setDate(dateFormat.format(payments.get(i).getTransactionDate()));
+            if ((payments.get(i).getAccount().equals(account))) {
+                transaction.setDirection("Out");
+                transaction.setAccount(payments.get(i).getSendTo() + "/" + payments.get(i).getBankCode());
+                transaction.setYourMessage(null != payments.get(i).getMyMessage() ? payments.get(i).getMyMessage() : "-");
+            } else {
+                transaction.setDirection("In");
+                transaction.setAccount(payments.get(i).getAccount().getNumber() + "/" + payments.get(i).getAccount().getBank());
+                transaction.setYourMessage("-");
+            }
+            transaction.setAmount(payments.get(i).getAmount() + " " + payments.get(i).getCurrency());
+            transaction.setVs(null != payments.get(i).getVs() ? payments.get(i).getVs() : "-");
+            transaction.setCs(null != payments.get(i).getCs() ? payments.get(i).getCs() : "-");
+            transaction.setSs(null != payments.get(i).getSs() ? payments.get(i).getSs() : "-");
+            transaction.setTheirMessage(null != payments.get(i).getRecipientMessage() ? payments.get(i).getRecipientMessage() : "-");
+
+            transactions.add(transaction);
+        }
+
+        if (transactions.size() > 0) {
+            return transactions;
+        } else {
+            return null;
+        }
     }
 
 }

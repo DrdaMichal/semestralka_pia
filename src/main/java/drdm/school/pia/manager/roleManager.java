@@ -1,8 +1,8 @@
 package drdm.school.pia.manager;
 
-import drdm.school.pia.domain.Role;
-import drdm.school.pia.domain.User;
-import drdm.school.pia.domain.UserValidationException;
+import drdm.school.pia.domain.entities.Role;
+import drdm.school.pia.domain.entities.User;
+import drdm.school.pia.domain.exceptions.UserValidationException;
 
 /**
  * @author Michal Drda

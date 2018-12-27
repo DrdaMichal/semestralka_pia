@@ -1,9 +1,9 @@
 package drdm.school.pia.manager.implementation;
 
 import drdm.school.pia.dao.CardDao;
-import drdm.school.pia.domain.Account;
-import drdm.school.pia.domain.Card;
-import drdm.school.pia.domain.User;
+import drdm.school.pia.domain.entities.Account;
+import drdm.school.pia.domain.entities.Card;
+import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.manager.CardManager;
 import drdm.school.pia.utils.ExpirationGenerator;
 import drdm.school.pia.utils.LongGenerator;

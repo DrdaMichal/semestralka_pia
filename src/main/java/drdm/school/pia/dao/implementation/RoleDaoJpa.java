@@ -1,7 +1,7 @@
 package drdm.school.pia.dao.implementation;
 
 import drdm.school.pia.dao.RoleDao;
-import drdm.school.pia.domain.Role;
+import drdm.school.pia.domain.entities.Role;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;

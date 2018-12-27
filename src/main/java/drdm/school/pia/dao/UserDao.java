@@ -1,6 +1,6 @@
 package drdm.school.pia.dao;
 
-import drdm.school.pia.domain.User;
+import drdm.school.pia.domain.entities.User;
 
 /**
  * @author Michal Drda

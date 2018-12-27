@@ -1,7 +1,7 @@
 package drdm.school.pia.manager;
 
-import drdm.school.pia.domain.Account;
-import drdm.school.pia.domain.User;
+import drdm.school.pia.domain.entities.Account;
+import drdm.school.pia.domain.entities.User;
 
 /**
  * @author Michal Drda

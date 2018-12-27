@@ -1,8 +1,7 @@
 package drdm.school.pia.web.servlet.spring;
 
-import drdm.school.pia.domain.User;
-import drdm.school.pia.domain.UserValidationException;
-import drdm.school.pia.manager.RoleManager;
+import drdm.school.pia.domain.entities.User;
+import drdm.school.pia.domain.exceptions.UserValidationException;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.Validator;
 import org.apache.log4j.Logger;
@@ -113,7 +112,7 @@ public class Register extends AbstractServlet {
         }
 
         try {
-            userManager.register(new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender));
+            userManager.register(new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender), null);
             succsessDispatch("User " + firstname + " " + lastname + " successfully registered!", req, resp);
         } catch (UserValidationException e) {
             errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, e.getMessage(), req, resp);

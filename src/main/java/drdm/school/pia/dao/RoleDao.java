@@ -1,6 +1,6 @@
 package drdm.school.pia.dao;
 
-import drdm.school.pia.domain.Role;
+import drdm.school.pia.domain.entities.Role;
 
 /**
  * DAO interface for the Role entity

@@ -1,6 +1,8 @@
 package drdm.school.pia.domain;
 
 
+import drdm.school.pia.domain.entities.User;
+import drdm.school.pia.domain.exceptions.UserValidationException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

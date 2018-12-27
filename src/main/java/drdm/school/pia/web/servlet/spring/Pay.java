@@ -1,7 +1,6 @@
 package drdm.school.pia.web.servlet.spring;
 
-import drdm.school.pia.domain.Payment;
-import drdm.school.pia.domain.User;
+import drdm.school.pia.domain.entities.Payment;
 import drdm.school.pia.manager.PaymentManager;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.Validator;

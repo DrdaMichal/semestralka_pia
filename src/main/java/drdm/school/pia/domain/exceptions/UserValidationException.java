@@ -1,4 +1,4 @@
-package drdm.school.pia.domain;
+package drdm.school.pia.domain.exceptions;
 
 /**
  * Exception thrown when User object fails internal state validation.

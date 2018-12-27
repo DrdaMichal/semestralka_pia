@@ -1,7 +1,7 @@
 package drdm.school.pia.dao.implementation;
 
 import drdm.school.pia.dao.AccountDao;
-import drdm.school.pia.domain.Account;
+import drdm.school.pia.domain.entities.Account;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;

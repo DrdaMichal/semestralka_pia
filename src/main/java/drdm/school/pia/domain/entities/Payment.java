@@ -1,5 +1,8 @@
-package drdm.school.pia.domain;
+package drdm.school.pia.domain.entities;
 
+import drdm.school.pia.domain.BaseObject;
+import drdm.school.pia.domain.IEntity;
+import drdm.school.pia.domain.exceptions.PaymentValidationException;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;

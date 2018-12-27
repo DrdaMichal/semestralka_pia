@@ -1,12 +1,10 @@
 package drdm.school.pia.manager.implementation;
 
-import drdm.school.pia.dao.CardDao;
 import drdm.school.pia.dao.RoleDao;
-import drdm.school.pia.domain.Role;
-import drdm.school.pia.domain.User;
-import drdm.school.pia.domain.UserValidationException;
+import drdm.school.pia.domain.entities.Role;
+import drdm.school.pia.domain.entities.User;
+import drdm.school.pia.domain.exceptions.UserValidationException;
 import drdm.school.pia.manager.RoleManager;
-import drdm.school.pia.web.servlet.spring.Login;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
