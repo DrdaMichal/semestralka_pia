@@ -166,17 +166,17 @@ public class DefaultPaymentManager implements PaymentManager {
             if ((payments.get(i).getAccount().equals(account))) {
                 transaction.setDirection("Out");
                 transaction.setAccount(payments.get(i).getSendTo() + "/" + payments.get(i).getBankCode());
-                transaction.setYourMessage(null != payments.get(i).getMyMessage() ? payments.get(i).getMyMessage() : "-");
+                transaction.setYourMessage(!payments.get(i).getMyMessage().isEmpty() ? payments.get(i).getMyMessage() : "-");
             } else {
                 transaction.setDirection("In");
                 transaction.setAccount(payments.get(i).getAccount().getNumber() + "/" + payments.get(i).getAccount().getBank());
                 transaction.setYourMessage("-");
             }
             transaction.setAmount(payments.get(i).getAmount() + " " + payments.get(i).getCurrency());
-            transaction.setVs(null != payments.get(i).getVs() ? payments.get(i).getVs() : "-");
-            transaction.setCs(null != payments.get(i).getCs() ? payments.get(i).getCs() : "-");
-            transaction.setSs(null != payments.get(i).getSs() ? payments.get(i).getSs() : "-");
-            transaction.setTheirMessage(null != payments.get(i).getRecipientMessage() ? payments.get(i).getRecipientMessage() : "-");
+            transaction.setVs(!payments.get(i).getVs().isEmpty() ? payments.get(i).getVs() : "-");
+            transaction.setCs(!payments.get(i).getCs().isEmpty() ? payments.get(i).getCs() : "-");
+            transaction.setSs(!payments.get(i).getSs().isEmpty() ? payments.get(i).getSs() : "-");
+            transaction.setTheirMessage(!payments.get(i).getRecipientMessage().isEmpty() ? payments.get(i).getRecipientMessage() : "-");
 
             transactions.add(transaction);
         }
