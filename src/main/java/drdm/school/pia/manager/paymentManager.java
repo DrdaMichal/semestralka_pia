@@ -2,10 +2,9 @@ package drdm.school.pia.manager;
 
 import drdm.school.pia.domain.entities.Payment;
 import drdm.school.pia.domain.exceptions.PaymentValidationException;
-import drdm.school.pia.domain.modules.Transaction;
+import drdm.school.pia.dto.implementation.Transaction;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface PaymentManager {
 

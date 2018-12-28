@@ -21,11 +21,19 @@
     <link rel="stylesheet" type="text/css" href="../style/style.css">
 
     <!-- Used for hiding menu - small screens -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Table paging -->
+    <script type="text/javascript" src="../../../js/paging.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <!-- Table paging style -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
     <!-- Used for hiding menu - small screens -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Function used for hiding login/logout button -->
-    <script src="../js/loginFunction.js"></script>
+    <script type="text/javascript" src="../js/loginFunction.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -63,7 +71,7 @@
         </div>
         <div  class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <table class="table box-background max-width-1300">
+                <table id="transactions" class="table box-background max-width-1300">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -93,67 +101,6 @@
                             <td class="hidden-xs">${transaction.theirMessage}</td>
                         </tr>
                     </c:forEach>
-                    <%--
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>21-10-2018</td>
-                            <td>In</td>
-                            <td>1257725423/3031</td>
-                            <td>6435 CZK</td>
-                            <td>9</td>
-                            <td>991</td>
-                            <td class="hidden-xs">1253</td>
-                            <td class="hidden-xs">-</td>
-                            <td class="hidden-xs">Buy some good alcohol for this, bro!</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>17-10-2018</td>
-                            <td>Out</td>
-                            <td>1257725422/3031</td>
-                            <td>65 CZK</td>
-                            <td>91</td>
-                            <td>3241</td>
-                            <td class="hidden-xs">45425</td>
-                            <td class="hidden-xs">sfdkj nsdf kjaskd jksfjg nafkjds f</td>
-                            <td class="hidden-xs">sdfkjn ksjdf jkajsk j kssfjdf kjdf kajsd kjds </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>15-10-2018</td>
-                            <td>Out</td>
-                            <td>1257725421/3031</td>
-                            <td>635 CZK</td>
-                            <td>0123</td>
-                            <td>9394</td>
-                            <td class="hidden-xs">34098234</td>
-                            <td class="hidden-xs">sdkf jkjsdf kjnaskd nsd f</td>
-                            <td class="hidden-xs">sdfkjnkfdjnkjnksdf ksdfn kj13k jnskdf nkjnk jsnfd c.</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>21-10-2018</td>
-                            <td>In</td>
-                            <td>1257725423/3031</td>
-                            <td>6435 CZK</td>
-                            <td></td>
-                            <td></td>
-                            <td class="hidden-xs"></td>
-                            <td class="hidden-xs">-</td>
-                            <td class="hidden-xs">nothing</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>17-10-2018</td>
-                            <td>Out</td>
-                            <td>1257725422/3031</td>
-                            <td>65 CZK</td>
-                            <td></td>
-                            <td>9291</td>
-                            <td class="hidden-xs"></td>
-                            <td class="hidden-xs">kjsdf kak jksf kjndskf jasd </td>
-                            <td class="hidden-xs">sgfkj nkfd</td>
-                        </tr>--%>
                     </tbody>
                 </table>
             </div>

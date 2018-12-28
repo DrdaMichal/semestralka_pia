@@ -5,8 +5,12 @@ Author: Michal Drda
 
 */
 
-
 		/* General parts designs */
+
+		* {
+			outline: none !important;
+		}
+
         .nav.navbar-nav {
             background-color: #ffb84d;
         }
@@ -260,4 +264,36 @@ Author: Michal Drda
 
 		.message-payment {
 			padding-right: 45px;
+		}
+
+		.center {
+			text-align: center;
+		}
+
+		/* Styling of table pagination */
+
+		.pagination > li:hover > a {
+			color: #ffffff;
+			background-color: #808080;
+			border: 1px solid transparent;
+			margin-right: 1px;
+			margin-left: 1px;
+		}
+
+		.pagination > li > a {
+			color: #ffffff;
+			background-color: #ffb84d;
+			border: 1px solid transparent;
+			margin-right: 1px;
+			margin-left: 1px;
+		}
+
+		.pagination > li > span,
+		.pagination > .active > a,
+		.pagination > .active > a:focus,
+		.pagination > .active > a:hover,
+		.pagination > .hover > a {
+			color: #ffffff;
+			background-color: #808080;
+			border: 1px solid transparent;
 		}

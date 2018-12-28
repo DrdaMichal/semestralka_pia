@@ -1,10 +1,10 @@
-package drdm.school.pia.domain.modules;
+package drdm.school.pia.dto.implementation;
 
-import drdm.school.pia.domain.NonEntityObject;
+import drdm.school.pia.dto.TransferObject;
 
 import java.util.Objects;
 
-public class Transaction implements NonEntityObject {
+public class Transaction implements TransferObject {
 
     private String id;
     private String date;

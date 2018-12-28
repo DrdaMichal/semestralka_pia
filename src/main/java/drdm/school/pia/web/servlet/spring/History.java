@@ -1,6 +1,6 @@
 package drdm.school.pia.web.servlet.spring;
 
-import drdm.school.pia.domain.modules.Transaction;
+import drdm.school.pia.dto.implementation.Transaction;
 import drdm.school.pia.manager.PaymentManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/banking/history")
 public class History extends AbstractServlet {
 
-    private static ArrayList<Transaction> transactions;
+    private static List<Transaction> transactions;
 
     private PaymentManager paymentManager;
 
@@ -33,10 +34,5 @@ public class History extends AbstractServlet {
             // User is not authorised to do the action.
             resp.sendError(401, "You are not authorised to access this page.");
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
     }
 }

@@ -6,9 +6,10 @@ import drdm.school.pia.domain.entities.Account;
 import drdm.school.pia.domain.entities.Payment;
 import drdm.school.pia.domain.exceptions.PaymentValidationException;
 import drdm.school.pia.domain.entities.User;
-import drdm.school.pia.domain.modules.Transaction;
+import drdm.school.pia.dto.implementation.Transaction;
 import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.manager.PaymentManager;
+import drdm.school.pia.web.servlet.spring.Pay;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,10 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -158,30 +156,34 @@ public class DefaultPaymentManager implements PaymentManager {
         // Define date format
         SimpleDateFormat dateFormat = new SimpleDateFormat(transactionDatePattern);
 
-        // Fill ArrayList with transactions for the user matching username parameter
-        for (int i=0; i<payments.size(); i++) {
-            Transaction transaction = new Transaction();
-            transaction.setId(Integer.toString(i+1));
-            transaction.setDate(dateFormat.format(payments.get(i).getTransactionDate()));
-            if ((payments.get(i).getAccount().equals(account))) {
-                transaction.setDirection("Out");
-                transaction.setAccount(payments.get(i).getSendTo() + "/" + payments.get(i).getBankCode());
-                transaction.setYourMessage(!payments.get(i).getMyMessage().isEmpty() ? payments.get(i).getMyMessage() : "-");
-            } else {
-                transaction.setDirection("In");
-                transaction.setAccount(payments.get(i).getAccount().getNumber() + "/" + payments.get(i).getAccount().getBank());
-                transaction.setYourMessage("-");
-            }
-            transaction.setAmount(payments.get(i).getAmount() + " " + payments.get(i).getCurrency());
-            transaction.setVs(!payments.get(i).getVs().isEmpty() ? payments.get(i).getVs() : "-");
-            transaction.setCs(!payments.get(i).getCs().isEmpty() ? payments.get(i).getCs() : "-");
-            transaction.setSs(!payments.get(i).getSs().isEmpty() ? payments.get(i).getSs() : "-");
-            transaction.setTheirMessage(!payments.get(i).getRecipientMessage().isEmpty() ? payments.get(i).getRecipientMessage() : "-");
+        if (payments.size() > 1) {
+            // Fill ArrayList with transactions for the user matching username parameter
+            for (int i = 0; i < payments.size(); i++) {
+                Transaction transaction = new Transaction();
+                transaction.setId(Integer.toString(i + 1));
+                transaction.setDate(dateFormat.format(payments.get(i).getTransactionDate()));
+                if ((payments.get(i).getAccount().equals(account))) {
+                    transaction.setDirection("Out");
+                    transaction.setAccount(payments.get(i).getSendTo() + "/" + payments.get(i).getBankCode());
+                    transaction.setYourMessage(!payments.get(i).getMyMessage().isEmpty() ? payments.get(i).getMyMessage() : "-");
+                } else {
+                    transaction.setDirection("In");
+                    transaction.setAccount(payments.get(i).getAccount().getNumber() + "/" + payments.get(i).getAccount().getBank());
+                    transaction.setYourMessage("-");
+                }
+                transaction.setAmount(payments.get(i).getAmount() + " " + payments.get(i).getCurrency());
+                transaction.setVs(!payments.get(i).getVs().isEmpty() ? payments.get(i).getVs() : "-");
+                transaction.setCs(!payments.get(i).getCs().isEmpty() ? payments.get(i).getCs() : "-");
+                transaction.setSs(!payments.get(i).getSs().isEmpty() ? payments.get(i).getSs() : "-");
+                transaction.setTheirMessage(!payments.get(i).getRecipientMessage().isEmpty() ? payments.get(i).getRecipientMessage() : "-");
 
-            transactions.add(transaction);
+                transactions.add(transaction);
+            }
+        } else {
+            logger.info("No transactions for account " + account.getNumber() + "/" + account.getBank());
         }
 
-        if (transactions.size() > 0) {
+        if (transactions.size() > 1) {
             return transactions;
         } else {
             return null;
