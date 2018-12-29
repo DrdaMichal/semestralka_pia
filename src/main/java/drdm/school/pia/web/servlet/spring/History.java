@@ -15,8 +15,6 @@ import java.util.List;
 @WebServlet("/banking/history")
 public class History extends AbstractServlet {
 
-    private static List<Transaction> transactions;
-
     private PaymentManager paymentManager;
 
     @Autowired
@@ -27,8 +25,7 @@ public class History extends AbstractServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("USER")) {
-            transactions = paymentManager.findTransactionsForUsername(req.getSession().getAttribute("user").toString());
-            req.setAttribute("transactions", transactions);
+            req.setAttribute("transactions", paymentManager.findTransactionsForUsername(req.getSession().getAttribute("user").toString()));
             req.getRequestDispatcher("/WEB-INF/pages/banking/history.jsp").forward(req, resp);
         } else {
             // User is not authorised to do the action.

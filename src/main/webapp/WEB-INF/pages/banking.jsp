@@ -62,7 +62,8 @@
     <div class="container-fluid max-width-1300">
 
         <div  class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="col-xs-12 col-sm-12 col-md-4 disable-padding">
+
                 <div id="accountInfo">
                     <h2>Your current account</h2>
                     <table class="table box-background max-width-460">
@@ -74,8 +75,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1257725029/3031</td>
-                                <td>6435 CZK</td>
+                                <td>${requestScope.accountNumber}</td>
+                                <td>${requestScope.balance}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -95,6 +96,7 @@
             </div>
 
             <div id="showPasswordUpdateForm" style="display: none" class="col-xs-12 col-sm-12 col-md-8">
+
                 <div class="container max-width-330">
                     <h2>Change password</h2>
                     <form action="banking" method="post" class="form-horizontal">
@@ -124,14 +126,16 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                                <button class="btn btn-default" type="submit" value="change">Update PIN</button>
+                                <button class="btn btn-default" type="submit" name="updatePsw" value="updatePsw">Update PIN</button>
                             </div>
                         </div>
                     </form>
                 </div>
+
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-8 row" id="showUserInfoUpdateForm" style="display: none">
+
                 <div class="container max-width-600">
                     <h2>Change user information</h2>
                     <form action="banking" method="post" class="form-horizontal">
@@ -183,73 +187,27 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="captcha">*Six plus one</label>
+                                    <label class="control-label" for="captchaUser">*Six plus one</label>
                                     <div class="disable-padding">
-                                        <input class="form-control" type="text" id="captcha" name="captcha"/>
+                                        <input class="form-control" type="text" id="captchaUser" name="captchaUser"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                                    <button class="btn btn-default" type="submit" value="change">Update information</button>
+                                    <button class="btn btn-default" type="submit" name="updateUser" value="updateUser">Update information</button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+
         </div>
 
         <div class="row" id="transactions">
             <h2>Latest transactions</h2>
-            <table class="table box-background">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">In/Out</th>
-                    <th scope="col">Account</th>
-                    <th scope="col">Amount</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>21-10-2018</td>
-                    <td>In</td>
-                    <td>1257725423/3031</td>
-                    <td>6435 CZK</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>17-10-2018</td>
-                    <td>Out</td>
-                    <td>1257725422/3031</td>
-                    <td>65 CZK</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>15-10-2018</td>
-                    <td>Out</td>
-                    <td>1257725421/3031</td>
-                    <td>635 CZK</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>21-10-2018</td>
-                    <td>In</td>
-                    <td>1257725423/3031</td>
-                    <td>6435 CZK</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>17-10-2018</td>
-                    <td>Out</td>
-                    <td>1257725422/3031</td>
-                    <td>65 CZK</td>
-                </tr>
-                </tbody>
-            </table>
+            <jsp:include page="generic/transactionsTable.jsp"/>
         </div>
 
 

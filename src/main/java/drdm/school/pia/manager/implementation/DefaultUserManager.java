@@ -123,4 +123,19 @@ public class DefaultUserManager implements UserManager {
         userDao.save(newUser);
         logger.info("User saved: " + newUser.toString());
     }
+
+    @Override
+    public void updatePassword(String oldPwd, String newPwd, String username) throws UserValidationException {
+        logger.info("Changing password started...");
+        User user = userDao.findByUsername(username);
+
+        if (!encoder.validate(oldPwd, user.getPassword())) {
+            throw new UserValidationException("Incorrect old PIN entered!");
+        } else if(encoder.validate(newPwd, user.getPassword())) {
+            throw new UserValidationException("New PIN entered is the same as current PIN used!");
+        } else {
+            user.setPassword(encoder.encode(newPwd));
+        }
+    }
+
 }

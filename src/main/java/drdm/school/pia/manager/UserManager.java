@@ -26,6 +26,8 @@ public interface UserManager {
      */
     void register(User newUser, String username) throws UserValidationException;
 
+    void updatePassword(String oldPwd, String newPwd, String username) throws UserValidationException;
+
 
 /*    Role userRole(String username);*/
 

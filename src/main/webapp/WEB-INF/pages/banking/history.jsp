@@ -71,7 +71,7 @@
         </div>
         <div  class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <table id="transactions" class="table box-background max-width-1300">
+<%--                <table id="transactions" class="table box-background max-width-1300">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -102,7 +102,10 @@
                         </tr>
                     </c:forEach>
                     </tbody>
-                </table>
+                </table>--%>
+
+                <jsp:include page="../generic/transactionsTable.jsp"/>
+
             </div>
         </div>
     </div>
