@@ -81,7 +81,7 @@
                     </table>
                 </div>
 
-                <div class="row">
+                <div class="row" id="changeButtons">
                     <div class="max-width-460">
                         <div class="row button-menu">
                             <button class="btn btn-default" onclick="showPasswordUpdateForm()">Toggle change password</button>
@@ -93,165 +93,169 @@
                 </div>
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-8">
-                <h2>Latest transactions</h2>
-                <table class="table box-background max-width-1300">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">In/Out</th>
-                            <th scope="col">Account</th>
-                            <th scope="col">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>21-10-2018</td>
-                            <td>In</td>
-                            <td>1257725423/3031</td>
-                            <td>6435 CZK</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>17-10-2018</td>
-                            <td>Out</td>
-                            <td>1257725422/3031</td>
-                            <td>65 CZK</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>15-10-2018</td>
-                            <td>Out</td>
-                            <td>1257725421/3031</td>
-                            <td>635 CZK</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>21-10-2018</td>
-                            <td>In</td>
-                            <td>1257725423/3031</td>
-                            <td>6435 CZK</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>17-10-2018</td>
-                            <td>Out</td>
-                            <td>1257725422/3031</td>
-                            <td>65 CZK</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-        <div id="showPasswordUpdateForm" style="display: none">
-            <div class="container max-width-330">
-                <h2>Change password</h2>
-                <form action="banking" method="post" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="control-label" for="oldPwd">*Old PIN</label>
-                        <div class="disable-padding">
-                            <input class="form-control" type="password" id="oldPwd" name="oldPwd"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="newPwd">*New PIN</label>
-                        <div class="disable-padding">
-                            <input class="form-control" type="password" id="newPwd" name="newPwd"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="confirmPwd">*Confirm PIN</label>
-                        <div class="disable-padding">
-                            <input class="form-control" type="password" id="confirmPwd" name="confirmPwd"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="captchaPwd">*Five minus two</label>
-                        <div class="disable-padding">
-                            <input class="form-control" type="text" id="captchaPwd" name="captchaPwd"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                            <button class="btn btn-default" type="submit" value="change">Update PIN</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="row" id="showUserInfoUpdateForm" style="display: none">
-            <div class="container max-width-600">
-                <h2>Change user information</h2>
-                <form action="banking" method="post" class="form-horizontal">
-                    <div class="container-fluid disable-padding">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="firstname">*First name</label>
-                                <div class="disable-padding">
-                                    <input class="form-control" type="text" id="firstname" name="firstname" value="<c:out value="${requestScope.firstname}"/>"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="lastname">*Last name</label>
-                                <div class="disable-padding">
-                                    <input class="form-control" type="text" id="lastname" name="lastname" value="<c:out value="${requestScope.lastname}"/>"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="email">*E-mail</label>
-                                <div class="disable-padding">
-                                    <input class="form-control" type="text" id="email" name="email" value="<c:out value="${requestScope.email}"/>"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="gender">*Gender</label>
-                                <div class="disable-padding">
-                                    <label class="radio-inline"><input type="radio" name="gender" id="gender" value="male" <c:if test="${requestScope.gender eq 'male'}">checked="checked"</c:if>> Male</label>
-                                    <label class="radio-inline"><input type="radio" name="gender" value="female" <c:if test="${requestScope.gender eq 'female'}">checked="checked"</c:if>> Female</label>
-                                </div>
+            <div id="showPasswordUpdateForm" style="display: none" class="col-xs-12 col-sm-12 col-md-8">
+                <div class="container max-width-330">
+                    <h2>Change password</h2>
+                    <form action="banking" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label" for="oldPwd">*Old PIN</label>
+                            <div class="disable-padding">
+                                <input class="form-control" type="password" id="oldPwd" name="oldPwd"/>
                             </div>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="address">Address</label>
-                                <div class="disable-padding">
-                                    <input class="form-control" type="text" id="address" name="address" value="<c:out value="${requestScope.address}"/>"/>
-                                </div>
+                        <div class="form-group">
+                            <label class="control-label" for="newPwd">*New PIN</label>
+                            <div class="disable-padding">
+                                <input class="form-control" type="password" id="newPwd" name="newPwd"/>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label" for="address">City</label>
-                                <div class="disable-padding">
-                                    <input class="form-control" type="text" id="city" name="city" value="<c:out value="${requestScope.city}"/>"/>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="confirmPwd">*Confirm PIN</label>
+                            <div class="disable-padding">
+                                <input class="form-control" type="password" id="confirmPwd" name="confirmPwd"/>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label" for="zip">Zip code</label>
-                                <div class="disable-padding">
-                                    <input class="form-control" type="text" id="zip" name="zip" value="<c:out value="${requestScope.zip}"/>"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="captcha">*Six plus one</label>
-                                <div class="disable-padding">
-                                    <input class="form-control" type="text" id="captcha" name="captcha"/>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="captchaPwd">*Five minus two</label>
+                            <div class="disable-padding">
+                                <input class="form-control" type="text" id="captchaPwd" name="captchaPwd"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                                <button class="btn btn-default" type="submit" value="change">Update information</button>
+                                <button class="btn btn-default" type="submit" value="change">Update PIN</button>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-8 row" id="showUserInfoUpdateForm" style="display: none">
+                <div class="container max-width-600">
+                    <h2>Change user information</h2>
+                    <form action="banking" method="post" class="form-horizontal">
+                        <div class="container-fluid disable-padding">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="firstname">*First name</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="firstname" name="firstname" value="<c:out value="${requestScope.firstname}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="lastname">*Last name</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="lastname" name="lastname" value="<c:out value="${requestScope.lastname}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="email">*E-mail</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="email" name="email" value="<c:out value="${requestScope.email}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="gender">*Gender</label>
+                                    <div class="disable-padding">
+                                        <label class="radio-inline"><input type="radio" name="gender" id="gender" value="male" <c:if test="${requestScope.gender eq 'male'}">checked="checked"</c:if>> Male</label>
+                                        <label class="radio-inline"><input type="radio" name="gender" value="female" <c:if test="${requestScope.gender eq 'female'}">checked="checked"</c:if>> Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="address">Address</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="address" name="address" value="<c:out value="${requestScope.address}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="address">City</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="city" name="city" value="<c:out value="${requestScope.city}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="zip">Zip code</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="zip" name="zip" value="<c:out value="${requestScope.zip}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="captcha">*Six plus one</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="captcha" name="captcha"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
+                                    <button class="btn btn-default" type="submit" value="change">Update information</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
+        <div class="row" id="transactions">
+            <h2>Latest transactions</h2>
+            <table class="table box-background">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">In/Out</th>
+                    <th scope="col">Account</th>
+                    <th scope="col">Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>21-10-2018</td>
+                    <td>In</td>
+                    <td>1257725423/3031</td>
+                    <td>6435 CZK</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>17-10-2018</td>
+                    <td>Out</td>
+                    <td>1257725422/3031</td>
+                    <td>65 CZK</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>15-10-2018</td>
+                    <td>Out</td>
+                    <td>1257725421/3031</td>
+                    <td>635 CZK</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>21-10-2018</td>
+                    <td>In</td>
+                    <td>1257725423/3031</td>
+                    <td>6435 CZK</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>17-10-2018</td>
+                    <td>Out</td>
+                    <td>1257725422/3031</td>
+                    <td>65 CZK</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
     </div>
+
     <jsp:include page="generic/footer.jsp"/>
+
 </body>
 </html>

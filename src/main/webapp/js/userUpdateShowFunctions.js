@@ -1,21 +1,27 @@
 function showUserInfoUpdateForm() {
     var a = document.getElementById("showUserInfoUpdateForm");
+    var b = document.getElementById("showPasswordUpdateForm");
 
-    if (a.style.display === "block") {
-        a.style.display = "none";
+    if (a.style.display === "none") {
+        a.style.display = "block";
+        b.style.display = "none";
     }
     else {
-        a.style.display = "block";
+        a.style.display = "none";
+        b.style.display = "none";
     }
 }
 
 function showPasswordUpdateForm() {
+    var a = document.getElementById("showUserInfoUpdateForm");
     var b = document.getElementById("showPasswordUpdateForm");
 
-    if (b.style.display === "block") {
-        b.style.display = "none";
+    if (b.style.display === "none") {
+        a.style.display = "none";
+        b.style.display = "block";
     }
     else {
-        b.style.display = "block";
+        a.style.display = "none";
+        b.style.display = "none";
     }
 }
