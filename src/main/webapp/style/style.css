@@ -61,20 +61,11 @@ Author: Michal Drda
 		.navbar-default .navbar-toggle:hover .icon-bar {
 			background-color: #808080;
 		}
-
-		.p-basic-white {
-			color: #ffffff;
-		}
 		
 		.p-bigger-white {
 			padding-top: 10px;
 			font-size: 15px;
 			color: #ffffff;
-		}
-		
-		.container-border-1px {
-			border: 1px solid #ffb84d;
-			margin-bottom: 5px;
 		}
 
 		.row {
@@ -85,14 +76,6 @@ Author: Michal Drda
 		p {
 			font-size: 14px;
 			color: #808080;
-		}
-		
-		.p-small-text {
-			font-size: 10px;
-		}
-		
-		.box-text-a {
-			margin-top: 10px;
 		}
 
 		h1 {
@@ -133,11 +116,6 @@ Author: Michal Drda
 			/* Margin bottom by footer height */
 			margin-bottom: 60px;
 			background-color: #e5e5e5;
-		}
-
-		.clear {
-			clear: both;
-			height: 60px;
 		}
 
 		#footer {
@@ -193,13 +171,17 @@ Author: Michal Drda
 			max-width: 920px;
 		}
 
-		.max-width-700 {
-			max-width: 700px;
+		.max-width-600 {
+			max-width: 600px;
 		}
 
 		.max-width-460 {
 			max-width: 460px;
 		}
+
+		.max-width-330 {
+			 max-width: 330px;
+		 }
 
 		.max-width-1300 {
 			max-width: 1300px;
@@ -224,6 +206,10 @@ Author: Michal Drda
 		
 		.form-border {
 			margin-bottom: 20px;
+		}
+
+		.button-menu {
+			margin-bottom: 10px;
 		}
 
 		.form-h1-paddings {
@@ -255,20 +241,12 @@ Author: Michal Drda
             background-color: #808080;
         }
 
-		.alert-placeholder {
-			min-height: 52px;
-			margin-bottom: 20px;
-		}
-
 		/* Payment special */
 
 		.message-payment {
 			padding-right: 45px;
 		}
 
-		.center {
-			text-align: center;
-		}
 
 		/* Styling of table pagination */
 

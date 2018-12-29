@@ -111,7 +111,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="zip">Zip Code</label>
+								<label class="col-xs-12 col-sm-6 col-md-6 control-label" for="zip">Zip code</label>
 								<div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
 									<input class="form-control" type="text" id="zip" name="zip" value="<c:out value="${requestScope.zip}"/>"/>
 								</div>

@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7f202ae-61ac-4c75-89b5-10c986ec8825" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dto/TransferObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/paging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/PaymentDaoJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/PaymentDaoJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/NonEntityObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/modules/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/dto/implementation/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultPaymentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultPaymentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/paymentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/paymentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/History.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/history.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/history.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/managing/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/managing/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/style/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -41,56 +34,60 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultPaymentManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="189" column="9" selection-start-line="189" selection-start-column="9" selection-end-line="189" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1267#1292#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/PaymentDaoJpa.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="180" selection-start-line="180" selection-end-line="180" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Banking.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+              <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="57" lean-forward="true" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+            <state relative-caret-position="190">
+              <caret line="186" column="47" selection-start-line="186" selection-start-column="34" selection-end-line="186" selection-end-column="47" />
+              <folding>
+                <element signature="n#style#0;n#li#0;n#ul#1;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/userUpdateShowFunctions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/onBtnClickShow.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/pay.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/managing/register.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="138" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -110,17 +107,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/history.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="215">
+              <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/style/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+            <state relative-caret-position="-6">
+              <caret line="248" selection-start-line="248" selection-end-line="248" />
             </state>
           </provider>
         </entry>
@@ -148,21 +145,13 @@
       <list>
         <option value="Jsp File" />
         <option value="Class" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get</find>
-      <find>persistence</find>
-      <find>c3po</find>
-      <find>hibernateVendorAdapter</find>
-      <find>transactionManager</find>
-      <find>hibernateP</find>
-      <find>connection.provider_class</find>
-      <find>stringgeneratorl</find>
       <find>getUsername</find>
       <find>name</find>
       <find>disable-padding</find>
@@ -177,14 +166,22 @@
       <find>card</find>
       <find>isNew</find>
       <find>data</find>
-      <find>max-width</find>
       <find>getPayment</find>
-      <find>center</find>
       <find>css</find>
       <find>sPageButton</find>
       <find>btn</find>
       <find>active</find>
       <find>toggle</find>
+      <find>background</find>
+      <find>Code</find>
+      <find>max-width</find>
+      <find>margin-top</find>
+      <find>margin-bottom</find>
+      <find>showPasswordUpdateForm</find>
+      <find>showUserInfoUpdateForm</find>
+      <find>max</find>
+      <find>center</find>
+      <find>max-width-600</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,9 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/managing/register.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/RoleDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/CardManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/GenerateNumber.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/StringValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/dao/implementation/CardDaoJpa.java" />
@@ -220,7 +214,6 @@
         <option value="$PROJECT_DIR$/src/test/java/drdm/school/pia/manager/DefaultUserManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/pay.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/entities/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/domain/AbstractEntity.java" />
@@ -243,8 +236,12 @@
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultPaymentManager.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/paging.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/history.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/style/style.css" />
         <option value="$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/History.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/managing/register.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/showPasswordUpdateForm.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/userUpdateShowFunctions.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/style/style.css" />
       </list>
     </option>
   </component>
@@ -595,7 +592,7 @@
     <property name="SearchEverywhereHistoryKey" value="main&#9;FILE&#9;file://C:/user/git/semestralka_pia/src/main&#10;setSecretManager&#9;PSI&#9;JAVA://drdm.school.pia.web.servlet.spring.Main#setSecretManager&#10;security&#9;PSI&#9;JAVA://java.security.Security&#10;userDao&#9;FILE&#9;file://C:/user/Private/PIA/semestralka_pia/src/main/java/drdm/school/pia/dao/UserDaoJDBC.java&#10;userDaoMemorySmarter&#9;null&#9;null&#10;userDaoSmarter&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546023431310" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546045093727" />
     <property name="last_opened_file_path" value="$USER_HOME$/OneDrive - AIMTEC a. s/Documents/School/PIA/cv06_02_jpa1_complete" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -763,7 +760,7 @@
       <workItem from="1545063476465" duration="38468000" />
       <workItem from="1545479886074" duration="28870000" />
       <workItem from="1545579211701" duration="21761000" />
-      <workItem from="1545734839906" duration="58028000" />
+      <workItem from="1545734839906" duration="70021000" />
     </task>
     <servers />
   </component>
@@ -800,7 +797,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="394510000" />
+    <option name="totallyTimeSpent" value="406503000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -813,9 +810,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.59914255" visible="true" weight="0.17430703" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.59914255" visible="true" weight="0.17430703" />
       <window_info id="Structure" order="1" sideWeight="0.40085745" side_tool="true" weight="0.17270789" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -825,8 +821,8 @@
       <window_info id="Web" order="7" sideWeight="0.25050917" side_tool="true" weight="0.17217484" />
       <window_info id="Persistence" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.326324" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.30546623" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32583067" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.30546623" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4726688" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1028,15 +1024,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/implementation/HtmlDateParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/utils/DateParser.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.17.Final/hibernate-core-5.2.17.Final-sources.jar!/org/hibernate/tool/schema/internal/SchemaDropperImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="374" selection-start-line="374" selection-end-line="374" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/manager/implementation/DefaultCardManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="727">
@@ -1148,11 +1135,6 @@
             <element signature="imports" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/managing/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
@@ -1382,24 +1364,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/history.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="403">
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/pay.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/showTemplateForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="80" column="26" lean-forward="true" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/style/style.css">
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Banking.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        <state relative-caret-position="238">
+          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/managing/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="138" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/History.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1417,37 +1419,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Pay.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/onBtnClickShow.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="180" selection-start-line="180" selection-end-line="180" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/History.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/userUpdateShowFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/drdm/school/pia/web/servlet/spring/Banking.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/pay.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        <state relative-caret-position="215">
+          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking/history.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/banking.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="57" lean-forward="true" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+        <state relative-caret-position="190">
+          <caret line="186" column="47" selection-start-line="186" selection-start-column="34" selection-end-line="186" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#ul#1;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/style/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="248" selection-start-line="248" selection-end-line="248" />
         </state>
       </provider>
     </entry>
