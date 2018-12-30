@@ -46,6 +46,7 @@
                     <li><a id="selected-page-item" href="${location.reload(true)}">User management</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li id="logged-user"><div class="logged-user"><p>Logged as: ${sessionScope.user}</p></div></li>
                     <li id="login" style="display: none"><a href="/login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li id="logout"><a href="/logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>

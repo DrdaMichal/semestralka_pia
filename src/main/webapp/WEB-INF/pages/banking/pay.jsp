@@ -48,7 +48,7 @@
                     <li><a href="history">Transaction history</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="register" style="display: none"><a href="/register" onclick="loginFunction()"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                    <li id="logged-user"><div class="logged-user"><p>Logged as: ${sessionScope.user}</p></div></li>
                     <li id="login" style="display: none"><a href="/login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li id="logout"><a href="/logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
@@ -94,7 +94,7 @@
                         <div class="form-group">
                             <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="sendto">*Send to</label>
                             <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                <input class="form-control" type="text" id="sendto" name="sendto"  value="<c:out value="${requestScope.sendto}"/>"/>
+                                <input class="form-control" type="text" id="sendto" name="sendto" placeholder="In case of prefix use '-'" value="<c:out value="${requestScope.sendto}"/>"/>
                             </div>
                         </div>
                     </div>

@@ -2,11 +2,14 @@ package drdm.school.pia.web.servlet.spring;
 
 
 import drdm.school.pia.domain.entities.Account;
+import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.domain.exceptions.UserValidationException;
 import drdm.school.pia.dto.implementation.Transaction;
 import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.manager.PaymentManager;
 import drdm.school.pia.manager.UserManager;
+import drdm.school.pia.utils.Validator;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -43,6 +46,8 @@ public class Banking extends AbstractServlet {
     private AccountManager accountManager;
     private UserManager userManager;
     private Account account;
+    private User user;
+    private Validator stringValidator;
 
     @Value("${default.currency}")
     private String currency;
@@ -50,6 +55,15 @@ public class Banking extends AbstractServlet {
     private String captchaPwdValue;
     @Value("${captcha.banking.updateUser}")
     private String captchaUserValue;
+    @Value("${regex.email}")
+    private String emailRegex;
+
+    private final static Logger logger = Logger.getLogger(Login.class);
+
+    @Autowired
+    public void setStringValidator(Validator stringValidator) {
+        this.stringValidator = stringValidator;
+    }
 
     @Autowired
     public void setPaymentManager(PaymentManager paymentManager) {
@@ -75,9 +89,11 @@ public class Banking extends AbstractServlet {
                 // Transaction list is less than 10, no changes needed..
             }
             account = accountManager.findAccountByUsername(req.getSession().getAttribute("user").toString());
-            req.setAttribute("transactions", transactions);
-            req.setAttribute("accountNumber", account.getNumber() + "/" + account.getBank());
-            req.setAttribute("balance", account.getBalance() + " " + currency);
+            user = userManager.findUserByUsername(req.getSession().getAttribute("user").toString());
+
+            setDefaultUserAttributes(req, user);
+            setDefaultAccountAttributes(req, account);
+            setDefaultTransactionsAttributes(req, transactions);
             req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
         } else {
             // User is not authorised to do the action.
@@ -141,40 +157,98 @@ public class Banking extends AbstractServlet {
             String city = req.getParameter(CITY_ATTRIBUTE);
             String zip = req.getParameter(ZIP_ATTRIBUTE);
             String captchaUser = req.getParameter(CAPTCHA_USER_ATTRIBUTE);
+
+            if(firstname.isEmpty()) {
+                errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"First name is mandatory!", req, resp);
+                return;
+            }
+
+            if(lastname.isEmpty()) {
+                errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"Last name is mandatory!", req, resp);
+                return;
+            }
+
+            if(email.isEmpty()) {
+                errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"E-mail is mandatory!", req, resp);
+                return;
+            }
+
+            if(gender.isEmpty()) {
+                errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"Gender is mandatory!", req, resp);
+                return;
+            }
+
+            if(captchaUser.isEmpty()) {
+                errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"Captcha answer is incorrect!", req, resp);
+                return;
+            }
+
+            if(!stringValidator.isValid(email, emailRegex)) {
+                errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"Email is in invalid format!", req, resp);
+                return;
+            }
+
+            try {
+                userManager.updateUserInfo(firstname, lastname, email, gender, address, city,zip, user);
+                succsessDispatch("Usef information successfully updated!", req, resp);
+            } catch (UserValidationException e) {
+                errorDispatchPsw("User information could not be updated!", req, resp);
+            }
+
         }
 
     }
 
     private void succsessDispatch(String suc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SUCCESS_ATTRIBUTE, suc);
-        req.setAttribute("transactions", transactions);
-        req.setAttribute("accountNumber", account.getNumber() + "/" + account.getBank());
-        req.setAttribute("balance", account.getBalance() + " " + currency);
+        setDefaultUserAttributes(req, user);
+        setDefaultAccountAttributes(req, account);
+        setDefaultTransactionsAttributes(req, transactions);
         req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
     }
 
     private void errorDispatchPsw(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
-        req.setAttribute("transactions", transactions);
-        req.setAttribute("accountNumber", account.getNumber() + "/" + account.getBank());
-        req.setAttribute("balance", account.getBalance() + " " + currency);
+        setDefaultUserAttributes(req, user);
+        setDefaultAccountAttributes(req, account);
+        setDefaultTransactionsAttributes(req, transactions);
         req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
     }
 
     private void errorDispatchUser(String firstname, String lastname, String email, String gender, String address, String city, String zip, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
-        req.setAttribute("transactions", transactions);
-        req.setAttribute("accountNumber", account.getNumber() + "/" + account.getBank());
-        req.setAttribute("balance", account.getBalance() + " " + currency);
+        setDefaultUserAttributes(req, user);
+        setDefaultAccountAttributes(req, account);
+        setDefaultTransactionsAttributes(req, transactions);
         req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
     }
 
     private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
-        req.setAttribute("transactions", transactions);
-        req.setAttribute("accountNumber", account.getNumber() + "/" + account.getBank());
-        req.setAttribute("balance", account.getBalance() + " " + currency);
+        setDefaultUserAttributes(req, user);
+        setDefaultAccountAttributes(req, account);
+        setDefaultTransactionsAttributes(req, transactions);
         req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
     }
+
+    private void setDefaultUserAttributes(HttpServletRequest req, User user) throws ServletException, IOException {
+        req.setAttribute(FIRSTNAME_ATTRIBUTE, user.getFirstname());
+        req.setAttribute(LASTNAME_ATTRIBUTE, user.getLastname());
+        req.setAttribute(EMAIL_ATTRIBUTE, user.getEmail());
+        req.setAttribute(GENDER_ATTRIBUTE, user.getGender());
+        req.setAttribute(ADDRESS_ATTRIBUTE, user.getAddress());
+        req.setAttribute(CITY_ATTRIBUTE, user.getCity());
+        req.setAttribute(ZIP_ATTRIBUTE, user.getZip());
+    }
+
+    private void setDefaultAccountAttributes(HttpServletRequest req, Account account) throws ServletException, IOException {
+        req.setAttribute("accountNumber", account.getNumber() + "/" + account.getBank());
+        req.setAttribute("balance", account.getBalance() + " " + currency);
+    }
+
+    private void setDefaultTransactionsAttributes(HttpServletRequest req, List<Transaction> transactions) throws ServletException, IOException {
+        req.setAttribute("transactions", transactions);
+    }
+
 
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
@@ -43,6 +44,7 @@
 						<li><a id="selected-page-item" href="${location.reload(true)}">About</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
+						<c:if test="${not empty sessionScope.user}"><li id="logged-user"><div class="logged-user"><p>Logged as: ${sessionScope.user}</p></div></li></c:if>
 						<li id="login"><a href="login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						<li id="logout" style="display: none"><a href="logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 					</ul>

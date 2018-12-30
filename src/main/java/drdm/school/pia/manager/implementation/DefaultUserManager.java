@@ -138,4 +138,24 @@ public class DefaultUserManager implements UserManager {
         }
     }
 
+    @Override
+    public void updateUserInfo(String firstname, String lastname, String email, String gender, String address, String city, String zip, User user) throws UserValidationException {
+        try {
+            user.setFirstname(firstname);
+            user.setLastname(lastname);
+            user.setEmail(email);
+            user.setGender(gender);
+            user.setAddress(address);
+            user.setCity(city);
+            user.setZip(zip);
+        } catch (Exception e) {
+            throw new UserValidationException("Something went wrong while updating user!");
+        }
+    }
+
+    @Override
+    public User findUserByUsername(String username) {
+        return userDao.findByUsername(username);
+    }
+
 }

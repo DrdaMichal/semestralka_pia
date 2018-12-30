@@ -94,7 +94,7 @@ Author: Michal Drda
 			margin-bottom: 10px;			
 		}
 
-		li a {
+		li a{
 			color: #ffb84d;
 			padding: 8px 16px;
 			display: block;
@@ -245,6 +245,22 @@ Author: Michal Drda
 
 		.message-payment {
 			padding-right: 45px;
+		}
+
+		.logged-user {
+			background-color: #ffffff;
+			border-radius: 7px;
+		}
+
+		li p {
+			color: #ffb84d;
+			padding: 8px 16px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			display: block;
+			text-align: left;
 		}
 
 

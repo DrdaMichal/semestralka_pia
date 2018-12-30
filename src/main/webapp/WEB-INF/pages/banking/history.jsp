@@ -53,6 +53,7 @@
                     <li><a id="selected-page-item" href="${location.reload(true)}">Transaction history</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li id="logged-user"><div class="logged-user"><p>Logged as: ${sessionScope.user}</p></div></li>
                     <li id="login" style="display: none"><a href="/login" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li id="logout"><a href="/logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
@@ -71,41 +72,7 @@
         </div>
         <div  class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-<%--                <table id="transactions" class="table box-background max-width-1300">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">In/Out</th>
-                            <th scope="col">Account</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Vs</th>
-                            <th scope="col">Cs</th>
-                            <th scope="col" class="hidden-xs">Ss</th>
-                            <th scope="col" class="hidden-xs">Your message</th>
-                            <th scope="col" class="hidden-xs">Their message</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${transactions}" var="transaction">
-                        <tr>
-                            <th scope="row">${transaction.id}</th>
-                            <td>${transaction.date}</td>
-                            <td>${transaction.direction}</td>
-                            <td>${transaction.account}</td>
-                            <td>${transaction.amount}</td>
-                            <td>${transaction.vs}</td>
-                            <td>${transaction.cs}</td>
-                            <td class="hidden-xs">${transaction.ss}</td>
-                            <td class="hidden-xs">${transaction.yourMessage}</td>
-                            <td class="hidden-xs">${transaction.theirMessage}</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>--%>
-
                 <jsp:include page="../generic/transactionsTable.jsp"/>
-
             </div>
         </div>
     </div>

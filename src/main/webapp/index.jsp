@@ -56,6 +56,7 @@
                     </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <c:if test="${not empty sessionScope.user}"><li id="logged-user"><div class="logged-user"><p>Logged as: ${sessionScope.user}</p></div></li></c:if>
                     <c:if test="${sessionScope.role == 'NOTSET' || empty sessionScope.role}">
                         <li id="login"><a href="${location.reload(true)}" onclick="loginFunction()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </c:if>
