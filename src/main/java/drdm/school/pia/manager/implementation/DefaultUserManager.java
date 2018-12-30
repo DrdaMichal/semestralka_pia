@@ -148,6 +148,7 @@ public class DefaultUserManager implements UserManager {
             user.setAddress(address);
             user.setCity(city);
             user.setZip(zip);
+            userDao.save(user);
         } catch (Exception e) {
             throw new UserValidationException("Something went wrong while updating user!");
         }
@@ -161,6 +162,7 @@ public class DefaultUserManager implements UserManager {
     @Override
     public void removeUser(String username) {
         userDao.delete(username);
+        logger.info("User " + username + " deleted!");
     }
 
 }

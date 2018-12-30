@@ -58,7 +58,7 @@ public class Banking extends AbstractServlet {
     @Value("${regex.email}")
     private String emailRegex;
 
-    private final static Logger logger = Logger.getLogger(Login.class);
+    private final static Logger logger = Logger.getLogger(Banking.class);
 
     @Autowired
     public void setStringValidator(Validator stringValidator) {
@@ -83,7 +83,7 @@ public class Banking extends AbstractServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("USER")) {
             transactions = paymentManager.findTransactionsForUsername(req.getSession().getAttribute("user").toString());
-            if (transactions.size() > 10) {
+            if (transactions != null && transactions.size() > 10) {
                 transactions = transactions.subList(0,10);
             } else {
                 // Transaction list is less than 10, no changes needed..
@@ -113,29 +113,29 @@ public class Banking extends AbstractServlet {
             String captchaPwd = req.getParameter(CAPTCHA_PWD_ATTRIBUTE);
 
             if(oldPwd.isEmpty() && newPwd.isEmpty() && confirmPwd.isEmpty()) {
-                errorDispatchPsw("PIN fields must be filled!", req, resp);
+                errorDispatch("PIN fields must be filled!", req, resp);
                 return;
             }
             if(oldPwd.isEmpty()) {
-                errorDispatchPsw("Old PIN must be filled!", req, resp);
+                errorDispatch("Old PIN must be filled!", req, resp);
                 return;
             }
             if(newPwd.isEmpty()) {
-                errorDispatchPsw("New PIN must be filled!", req, resp);
+                errorDispatch("New PIN must be filled!", req, resp);
                 return;
             }
             if(confirmPwd.isEmpty()) {
-                errorDispatchPsw("Confirm PIN must be filled!", req, resp);
+                errorDispatch("Confirm PIN must be filled!", req, resp);
                 return;
             }
 
             if(!Objects.equals(newPwd, confirmPwd)) {
-                errorDispatchPsw("The PIN and confirm PIN fields do not match!", req, resp);
+                errorDispatch("The PIN and confirm PIN fields do not match!", req, resp);
                 return;
             }
 
             if(!captchaPwd.equals(captchaPwdValue)) {
-                errorDispatchPsw("Captcha answer is incorrect!", req, resp);
+                errorDispatch("Captcha answer is incorrect!", req, resp);
                 return;
             }
 
@@ -143,7 +143,7 @@ public class Banking extends AbstractServlet {
                 userManager.updatePassword(oldPwd, newPwd, username);
                 succsessDispatch("PIN successfully changed!", req, resp);
             } catch (UserValidationException e) {
-                errorDispatchPsw("PIN could not be changed! PINs does not match!", req, resp);
+                errorDispatch("PIN could not be changed! PINs does not match!", req, resp);
             }
 
         }
@@ -192,7 +192,7 @@ public class Banking extends AbstractServlet {
                 userManager.updateUserInfo(firstname, lastname, email, gender, address, city,zip, user);
                 succsessDispatch("Usef information successfully updated!", req, resp);
             } catch (UserValidationException e) {
-                errorDispatchPsw("User information could not be updated!", req, resp);
+                errorDispatch("User information could not be updated!", req, resp);
             }
 
         }
@@ -207,7 +207,7 @@ public class Banking extends AbstractServlet {
         req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
     }
 
-    private void errorDispatchPsw(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
         setDefaultUserAttributes(req, user);
         setDefaultAccountAttributes(req, account);
@@ -216,14 +216,6 @@ public class Banking extends AbstractServlet {
     }
 
     private void errorDispatchUser(String firstname, String lastname, String email, String gender, String address, String city, String zip, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute(ERROR_ATTRIBUTE, err);
-        setDefaultUserAttributes(req, user);
-        setDefaultAccountAttributes(req, account);
-        setDefaultTransactionsAttributes(req, transactions);
-        req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
-    }
-
-    private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
         setDefaultUserAttributes(req, user);
         setDefaultAccountAttributes(req, account);

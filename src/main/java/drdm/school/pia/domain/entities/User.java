@@ -142,7 +142,7 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
      * thus the ManyToOne
      * @return
      */
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     public Role getRole() {
         return role; }
@@ -153,7 +153,7 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
         this.role = new Role(roleName);
     }
 
-    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     public Account getAccount() {
         return account;

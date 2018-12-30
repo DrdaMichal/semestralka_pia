@@ -50,7 +50,7 @@ public class Card extends BaseObject implements IEntity<Long>, Serializable {
         return user;
     }*/
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     public Account getAccount() {
         return account;

@@ -49,7 +49,7 @@ public class Role extends BaseObject implements IEntity<Long>, Serializable {
 
     public void setName(String name) { this.name = name; }
 
-    @OneToMany(targetEntity = User.class, cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "role")
+    @OneToMany(targetEntity = User.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "role")
     public Set<User> getUsers() {return users; }
 
     public void setUsers(Set<User> users) {this.users = users;}

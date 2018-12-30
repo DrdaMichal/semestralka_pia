@@ -150,7 +150,7 @@ public class DefaultPaymentManager implements PaymentManager {
         // Get Account for matching username parameter
         Account account = accountManager.findAccountByUsername(username);
         // Load Payments for matching username parameter
-        List<Payment> payments = paymentDao.findTransactionsByAccount(account.getNumber(), account.getBank());
+        ArrayList<Payment> payments = (ArrayList) paymentDao.findTransactionsByAccount(account.getNumber(), account.getBank());
         // Initialize transactions ArrayList
         ArrayList<Transaction> transactions = new ArrayList<>();
         // Define date format
@@ -158,7 +158,7 @@ public class DefaultPaymentManager implements PaymentManager {
 
         if (payments.size() > 1) {
             // Fill ArrayList with transactions for the user matching username parameter
-            for (int i = 0; i < payments.size(); i++) {
+            for (int i = 0; i < (payments.size()-1); i++) {
                 Transaction transaction = new Transaction();
                 transaction.setId(Integer.toString(i + 1));
                 transaction.setDate(dateFormat.format(payments.get(i).getTransactionDate()));
@@ -183,7 +183,7 @@ public class DefaultPaymentManager implements PaymentManager {
             logger.info("No transactions for account " + account.getNumber() + "/" + account.getBank());
         }
 
-        if (transactions.size() > 1) {
+        if (transactions.size() > 0) {
             return transactions;
         } else {
             return null;

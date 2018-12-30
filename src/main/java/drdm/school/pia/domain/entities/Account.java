@@ -76,7 +76,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
         this.blocked = blocked;
     }
 
-    @OneToMany(targetEntity = Card.class, cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
+    @OneToMany(targetEntity = Card.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "account")
     public Set<Card> getCards() {
         return cards;
     }
@@ -85,7 +85,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
         this.cards = cards;
     }
 
-    @OneToMany(targetEntity = Payment.class, cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
+    @OneToMany(targetEntity = Payment.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "account")
     public Set<Payment> getPayments() {
         return payments;
     }

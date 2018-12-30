@@ -158,7 +158,7 @@
                         <h2>Surely remove user <strong>${requestScope.username}</strong>?</h2>
                         <div class="form-group">
                             <div class="disable-padding">
-                                <label><input type="checkbox" id="justDisable" name="justDisable"/> Just disable</label>
+                                <label><input type="checkbox" id="deactivate" name="deactivate"/> Just deactivate</label>
                             </div>
                         </div>
                         <div class="form-group">

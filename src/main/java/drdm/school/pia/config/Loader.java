@@ -52,7 +52,7 @@ public class Loader implements ApplicationListener<ContextRefreshedEvent> {
         }
         if (null == userDao.findByUsername("User0002")) {
             try {
-                userManager.register(new User("0001", "USER", "Second", "User", "user2@email.com", "User street 1", "Usertown", "111111", "1234567890", "female"), "User0002");
+                userManager.register(new User("0002", "USER", "Second", "User", "user2@email.com", "User street 1", "Usertown", "111111", "1234567890", "female"), "User0002");
             } catch (UserValidationException e) {
                 e.printStackTrace();
             }

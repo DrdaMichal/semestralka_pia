@@ -91,7 +91,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     public Account getAccount() {
         return account;
