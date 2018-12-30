@@ -36,7 +36,7 @@
 					<ul class="nav navbar-nav underline-menu">
 						<li><a href="/managing">Managing</a></li>
 						<li><a id="selected-page-item" href="${location.reload(true)}" class="selected">Register</a></li>
-						<li><a href="manage_user">User management</a></li>
+						<%--<li><a href="manage_user">User management</a></li>--%>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li id="logged-user"><div class="logged-user"><p>Logged as: ${sessionScope.user}</p></div></li>
@@ -161,5 +161,6 @@
 		</div>
 
 		<jsp:include page="../generic/footer.jsp"/>
+
 	</body>
 </html>

@@ -56,4 +56,7 @@ public interface UserManager {
      */
     User findUserByUsername(String username);
 
+
+    void removeUser(String username);
+
 }

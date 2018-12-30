@@ -42,7 +42,7 @@
                 <ul class="nav navbar-nav underline-menu">
                     <li><a id="selected-page-item" href="${location.reload(true)}">Managing</a></li>
                     <li><a href="managing/register">Register</a></li>
-                    <li><a href="managing/manage_user">User management</a></li>
+                    <%--<li><a href="managing/manage_user">User management</a></li>--%>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="logged-user"><div class="logged-user"><p>Logged as: ${sessionScope.user}</p></div></li>
@@ -58,9 +58,139 @@
         <jsp:param name="suc" value="${requestScope.suc}"/>
     </jsp:include>
 
-    <div class="container-fluid">
-        <h1 class="">Welcome to CoolBank Manage!</h1>
+
+    <div class="container max-width-1300">
+        <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 max-width-460 row">
+            <form action="managing" method="post" class="form-horizontal">
+                <div class="row button-menu">
+                    <div class="form-group form-input-170 disable-padding">
+                        <label class="control-label" for="username">*Username</label>
+                        <input class="form-control" type="text" id="username" name="username" value="<c:out value="${requestScope.username}"/>"/>
+                    </div>
+                    <div class="row button-menu">
+                        <button class="btn btn-default toggle-button" name="removeAction" value="remove" type="submit">Remove user</button>
+                    </div>
+                    <div class="row button-menu">
+                        <button class="btn btn-default toggle-button" name="updateAction" value="update" type="submit">Update user</button>
+                    </div>
+                    <div class="row button-menu">
+                        <button class="btn btn-default toggle-button" name="activateAction" value="activate" type="submit">Re-Activate user</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <c:if test="${(not empty requestScope.username) and (requestScope.updateAction eq 'update')}">
+            <div class="col-xs-12 col-sm-12 col-md-8 row">
+                <form action="managing" method="post" class="form-horizontal">
+                    <div class="container max-width-600">
+                        <h2>Update user <strong>${requestScope.username}</strong></h2>
+                        <div class="container-fluid disable-padding">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="firstname">*First name</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="firstname" name="firstname" value="<c:out value="${requestScope.firstname}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="lastname">*Last name</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="lastname" name="lastname" value="<c:out value="${requestScope.lastname}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="email">*E-mail</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="email" name="email" value="<c:out value="${requestScope.email}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="gender">*Gender</label>
+                                    <div class="disable-padding">
+                                        <label class="radio-inline"><input type="radio" name="gender" id="gender" value="male" <c:if test="${requestScope.gender eq 'male'}">checked="checked"</c:if>> Male</label>
+                                        <label class="radio-inline"><input type="radio" name="gender" value="female" <c:if test="${requestScope.gender eq 'female'}">checked="checked"</c:if>> Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="address">Address</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="address" name="address" value="<c:out value="${requestScope.address}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="address">City</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="city" name="city" value="<c:out value="${requestScope.city}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="zip">Zip code</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="zip" name="zip" value="<c:out value="${requestScope.zip}"/>"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="captchaUser">*Two minus one</label>
+                                    <div class="disable-padding">
+                                        <input class="form-control" type="text" id="captchaUser" name="captchaUser"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
+                                    <button class="btn btn-default" type="submit" name="updateUser" value="updateUser">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </c:if>
+
+        <c:if test="${(not empty requestScope.username) and (requestScope.removeAction eq 'remove')}">
+            <div class="col-xs-12 col-sm-12 col-md-8 row">
+                <div class="container max-width-600">
+                    <form action="managing" method="post" class="form-horizontal form-border box-border">
+                        <h2>Surely remove user <strong>${requestScope.username}</strong>?</h2>
+                        <div class="form-group">
+                            <div class="disable-padding">
+                                <label><input type="checkbox" id="justDisable" name="justDisable"/> Just disable</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
+                                <button class="btn btn-default" type="submit" name="removeUser" value="removeUser">Proceed</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </c:if>
+
+            <c:if test="${(not empty requestScope.username) and (requestScope.activateAction eq 'activate')}">
+                <div class="col-xs-12 col-sm-12 col-md-8 row">
+                    <div class="container max-width-600">
+                        <form action="managing" method="post" class="form-horizontal form-border box-border">
+                            <h2>Surely activate user <strong>${requestScope.username}</strong>?</h2>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
+                                    <button class="btn btn-default" type="submit" name="activateUser" value="activateUser">Activate</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </c:if>
+
+
+
+        </div>
     </div>
+
 
     <jsp:include page="generic/footer.jsp"/>
 </body>

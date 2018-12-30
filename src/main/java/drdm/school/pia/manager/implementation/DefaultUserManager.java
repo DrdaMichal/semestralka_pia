@@ -158,4 +158,9 @@ public class DefaultUserManager implements UserManager {
         return userDao.findByUsername(username);
     }
 
+    @Override
+    public void removeUser(String username) {
+        userDao.delete(username);
+    }
+
 }

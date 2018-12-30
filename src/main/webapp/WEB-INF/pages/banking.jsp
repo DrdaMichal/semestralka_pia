@@ -66,7 +66,7 @@
             <div class="col-xs-12 col-sm-12 col-md-4 disable-padding">
 
                 <div id="accountInfo">
-                    <h2>Your current account</h2>
+                    <h2>Your banking account</h2>
                     <table class="table box-background max-width-460">
                         <thead>
                         <tr>
@@ -86,10 +86,10 @@
                 <div class="row" id="changeButtons">
                     <div class="max-width-460">
                         <div class="row button-menu">
-                            <button class="btn btn-default" onclick="showPasswordUpdateForm()">Toggle change password</button>
+                            <button class="btn btn-default toggle-button" onclick="showPasswordUpdateForm()">Change password</button>
                         </div>
                         <div class="row button-menu">
-                            <button class="btn btn-default" onclick="showUserInfoUpdateForm()">Toggle change user info</button>
+                            <button class="btn btn-default toggle-button" onclick="showUserInfoUpdateForm()">Change user info</button>
                         </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
             <div class="col-xs-12 col-sm-12 col-md-8 row" id="showUserInfoUpdateForm" style="display: none">
 
                 <div class="container max-width-600">
-                    <h2>Change user information</h2>
+                    <h2>Change account information</h2>
                     <form action="banking" method="post" class="form-horizontal">
                         <div class="container-fluid disable-padding">
                             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -196,7 +196,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
-                                    <button class="btn btn-default" type="submit" name="updateUser" value="updateUser">Update information</button>
+                                    <button class="btn btn-default" type="submit" name="updateUser" value="updateUser">Update</button>
                                 </div>
                             </div>
                         </div>

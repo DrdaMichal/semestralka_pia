@@ -103,6 +103,13 @@
         </div>
     </c:if>
 
+    <c:if test="${sessionScope.role eq 'USER'}">
+        <c:redirect url="banking"/>
+    </c:if>
+    <c:if test="${sessionScope.role eq 'ADMIN'}">
+        <c:redirect url="managing"/>
+    </c:if>
+
     <jsp:include page="WEB-INF/pages/generic/footer.jsp"/>
 </body>
 </html>
