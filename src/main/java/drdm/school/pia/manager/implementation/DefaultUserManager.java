@@ -160,6 +160,12 @@ public class DefaultUserManager implements UserManager {
     }
 
     @Override
+    public User findUserByAccount(String accountNumber) {
+        return userDao.findByAccountNo(accountNumber);
+    }
+
+
+    @Override
     public void removeUser(String username) {
         userDao.delete(username);
         logger.info("User " + username + " deleted!");

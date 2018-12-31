@@ -23,10 +23,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
     private Long balance;
     private String number;
     private String bank;
-    private boolean blocked;
     private Set<Card> cards = new LinkedHashSet<>();
-    private Set<Payment> payments = new LinkedHashSet<>();
-    private User user;
 
 
     public Account() {
@@ -68,15 +65,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
         this.balance = balance;
     }
 
-    public boolean isBlocked() {
-        return blocked;
-    }
-
-    public void setBlocked(boolean blocked) {
-        this.blocked = blocked;
-    }
-
-    @OneToMany(targetEntity = Card.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "account")
+    @OneToMany(targetEntity = Card.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
     public Set<Card> getCards() {
         return cards;
     }
@@ -85,33 +74,21 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
         this.cards = cards;
     }
 
-    @OneToMany(targetEntity = Payment.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "account")
-    public Set<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(Set<Payment> payments) {
-        this.payments = payments;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return blocked == account.blocked &&
-                Objects.equals(id, account.id) &&
+        return id.equals(account.id) &&
                 Objects.equals(balance, account.balance) &&
                 Objects.equals(number, account.number) &&
                 Objects.equals(bank, account.bank) &&
-                Objects.equals(cards, account.cards) &&
-                Objects.equals(payments, account.payments) &&
-                Objects.equals(user, account.user);
+                Objects.equals(cards, account.cards);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, balance, number, bank, blocked, cards, payments, user);
+        return Objects.hash(id, balance, number, bank, cards);
     }
 
     @Override
@@ -120,9 +97,8 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
                 "id=" + id +
                 ", balance=" + balance +
                 ", number='" + number + '\'' +
-                ", bank code='" + bank + '\'' +
-                ", blocked=" + blocked +
+                ", bank='" + bank + '\'' +
+                ", cards=" + cards +
                 '}';
     }
-
 }

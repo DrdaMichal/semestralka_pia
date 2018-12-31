@@ -100,7 +100,4 @@ public class DefaultCardManager implements CardManager {
         logger.info("Card created for user< " + user.getUsername() + ">: " + user.getAccount().getCards().toString());
     }
 
-    public Card findByUsername(String username) {
-        return cardDao.findByUsername(username);
-    }
 }

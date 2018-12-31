@@ -25,10 +25,8 @@ public class Managing extends AbstractServlet {
 
     private static final String REMOVE_ACTION_PARAMETER = "removeAction";
     private static final String UPDATE_ACTION_PARAMETER = "updateAction";
-    private static final String ACTIVATE_ACTION_PARAMETER = "activateAction";
     private static final String REMOVE_USER_PARAMETER = "removeUser";
     private static final String UPDATE_USER_PARAMETER = "updateUser";
-    private static final String ACTIVATE_USER_PARAMETER = "activateUser";
 
     private static final String FIRSTNAME_ATTRIBUTE = "firstname";
     private static final String LASTNAME_ATTRIBUTE = "lastname";
@@ -38,8 +36,6 @@ public class Managing extends AbstractServlet {
     private static final String CITY_ATTRIBUTE = "city";
     private static final String ZIP_ATTRIBUTE = "zip";
     private static final String CAPTCHA_USER_ATTRIBUTE = "captchaUser";
-    private static final String DEACTIVATE_ATTRIBUTE = "deactivate";
-    private static final String ACTIVATE_ATTRIBUTE = "activate";
 
 
 
@@ -78,27 +74,22 @@ public class Managing extends AbstractServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException  {
 
         String username = req.getParameter(USERNAME_PARAMETER);
-
         String updateAction = req.getParameter(UPDATE_ACTION_PARAMETER);
         String removeAction = req.getParameter(REMOVE_ACTION_PARAMETER);
-        String activateAction = req.getParameter(ACTIVATE_ACTION_PARAMETER);
-
-
         String updateUser = req.getParameter(UPDATE_USER_PARAMETER);
         String removeUser = req.getParameter(REMOVE_USER_PARAMETER);
-        String activateUser = req.getParameter(ACTIVATE_USER_PARAMETER);
 
 
-        if (updateAction != null || removeAction != null || activateAction != null) {
+        if (updateAction != null || removeAction != null) {
             if (username.isEmpty()) {
-                errorDispatch("Username is a mandatory field!", req, resp);
+                errorDispatch("Username is mandatory!", req, resp);
                 return;
             } else {
                 if (null == user || !username.equals(user.getUsername())) {
                     user = userManager.findUserByUsername(username);
                 }
                 if (null == user) {
-                    errorDispatch("User with username <strong>" + username + "</strong> does not exist!", req, resp);
+                    errorDispatch(("User with username <strong>" + username + "</strong> does not exist!"), req, resp);
                     return;
                 }
             }
@@ -116,12 +107,10 @@ public class Managing extends AbstractServlet {
             req.setAttribute(USERNAME_PARAMETER, username);
             req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
         }
-        else if (activateAction != null) {
-            req.setAttribute(ACTIVATE_ACTION_PARAMETER, activateAction);
-            req.setAttribute(USERNAME_PARAMETER, username);
-            req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
-        }
         else if (updateUser != null) {
+            if (null == username) {
+                username = user.getUsername();
+            }
             String firstname = req.getParameter(FIRSTNAME_ATTRIBUTE);
             String lastname = req.getParameter(LASTNAME_ATTRIBUTE);
             String email = req.getParameter(EMAIL_ATTRIBUTE);
@@ -163,18 +152,17 @@ public class Managing extends AbstractServlet {
 
             try {
                 userManager.updateUserInfo(firstname, lastname, email, gender, address, city,zip, user);
-                succsessDispatch("Usef information successfully updated!", user, req, resp);
+                succsessDispatch(("User <strong>" + username + "</strong> information successfully updated!"), req, resp);
             } catch (UserValidationException e) {
-                errorDispatch("User information could not be updated!", req, resp);
+                errorDispatch(("User information could for user <strong>" + username + "</strong> not be updated!"), req, resp);
             }
         }
         else if (removeUser != null) {
-            String deactivate = req.getParameter(DEACTIVATE_ATTRIBUTE);
-
-            if (null != deactivate) {
-                logger.info("Deactivating user " + user.getUsername() + "...");
-            } else {
+            try {
                 userManager.removeUser(user.getUsername());
+                succsessDispatch(("User <strong>" + user.getUsername() + "</strong was successfully deleted along with it's account and card!"), req, resp);
+            } catch (Exception e) {
+                errorDispatch(("User <strong>" + user.getUsername() + "</strong> could not be deleted!"), req, resp);
             }
         }
         else {
@@ -204,7 +192,7 @@ public class Managing extends AbstractServlet {
         req.setAttribute(ZIP_ATTRIBUTE, user.getZip());
     }
 
-    private void succsessDispatch(String suc, User user, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void succsessDispatch(String suc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SUCCESS_ATTRIBUTE, suc);
         req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
     }

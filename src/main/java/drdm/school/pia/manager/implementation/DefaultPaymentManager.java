@@ -9,7 +9,7 @@ import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.dto.implementation.Transaction;
 import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.manager.PaymentManager;
-import drdm.school.pia.web.servlet.spring.Pay;
+import drdm.school.pia.manager.UserManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,6 +31,7 @@ public class DefaultPaymentManager implements PaymentManager {
     private PaymentDao paymentDao;
     private UserDao userDao;
     private AccountManager accountManager;
+    private UserManager userManager;
     @Value("${bankcode}")
     private String bankcode;
     @Value("${accountNo.length}")
@@ -73,13 +74,25 @@ public class DefaultPaymentManager implements PaymentManager {
         return accountManager;
     }
 
+    @Autowired
+    public void setUserManager(UserManager userManager) { this.userManager = userManager; }
+
+    public UserManager getUserManager() {
+        return userManager;
+    }
+
     public void createPayment(Payment newPayment, String username) throws PaymentValidationException {
         logger.info("Payment creation started...");
-        User user = userDao.findByUsername(username);
+        User user = userManager.findUserByUsername(username);
         // Check that receiving user exists in the bank
-        User receivingUser = userDao.findByAccountNo(newPayment.getSendTo());
+        User receivingUser = null;
+        if (newPayment.getRecipientBankCode().equals(bankcode) && newPayment.getRecipientPreAccountNumber().isEmpty()) {
+            receivingUser = userManager.findUserByAccount(newPayment.getRecipientAccount());
+        }
         newPayment.setCreated(new java.util.Date());
-        newPayment.setAccount(user.getAccount());
+        newPayment.setSenderAccount(user.getAccount().getNumber());
+        newPayment.setSenderBankCode(user.getAccount().getBank());
+        newPayment.setSenderPreAccountNumber("");
 
         Calendar c = Calendar.getInstance();
 
@@ -90,7 +103,7 @@ public class DefaultPaymentManager implements PaymentManager {
 
         Date test = c.getTime();
 
-        if (newPayment.getBankCode().equals(bankcode) && newPayment.getSendTo().equals(user.getAccount().getNumber())) {
+        if (newPayment.getRecipientBankCode().equals(bankcode) && newPayment.getRecipientAccount().equals(user.getAccount().getNumber())) {
             logger.info("Receiving account can't be equal to senders account!");
             throw new PaymentValidationException("Receiving account can't be equal to senders account!");
         }
@@ -113,7 +126,7 @@ public class DefaultPaymentManager implements PaymentManager {
         newPayment.validate();
         accountManager.updateBallance(user.getAccount(), -1 * (newPayment.getAmount()));
 
-        if (newPayment.getBankCode().equals(bankcode) && newPayment.getSendTo().length() == accountNoLength && receivingUser != null) {
+        if (newPayment.getRecipientBankCode().equals(bankcode) && newPayment.getRecipientAccount().length() == accountNoLength && newPayment.getRecipientPreAccountNumber().isEmpty() && receivingUser != null) {
             accountManager.updateBallance(receivingUser.getAccount(), newPayment.getAmount());
         }
 
@@ -151,24 +164,28 @@ public class DefaultPaymentManager implements PaymentManager {
         Account account = accountManager.findAccountByUsername(username);
         // Load Payments for matching username parameter
         ArrayList<Payment> payments = (ArrayList) paymentDao.findTransactionsByAccount(account.getNumber(), account.getBank());
+        // Remove null values fetched
+        while(payments.remove(null)) {
+            logger.info("removed null");
+        }
         // Initialize transactions ArrayList
         ArrayList<Transaction> transactions = new ArrayList<>();
         // Define date format
         SimpleDateFormat dateFormat = new SimpleDateFormat(transactionDatePattern);
 
-        if (payments.size() > 1) {
+        if (payments.size() > 0) {
             // Fill ArrayList with transactions for the user matching username parameter
-            for (int i = 0; i < (payments.size()-1); i++) {
+            for (int i = 0; i < (payments.size()); i++) {
                 Transaction transaction = new Transaction();
                 transaction.setId(Integer.toString(i + 1));
                 transaction.setDate(dateFormat.format(payments.get(i).getTransactionDate()));
-                if ((payments.get(i).getAccount().equals(account))) {
+                if ((payments.get(i).getSenderAccount().equals(account.getNumber())) && payments.get(i).getSenderBankCode().equals(account.getBank())) {
                     transaction.setDirection("Out");
-                    transaction.setAccount(payments.get(i).getSendTo() + "/" + payments.get(i).getBankCode());
-                    transaction.setYourMessage(!payments.get(i).getMyMessage().isEmpty() ? payments.get(i).getMyMessage() : "-");
+                    transaction.setAccount(((!payments.get(i).getRecipientPreAccountNumber().isEmpty() && "" != payments.get(i).getRecipientPreAccountNumber()) ? (payments.get(i).getRecipientPreAccountNumber() + "-" ) :"") + payments.get(i).getRecipientAccount() + "/" + payments.get(i).getRecipientBankCode());
+                    transaction.setYourMessage(!payments.get(i).getSenderMessage().isEmpty() ? payments.get(i).getSenderMessage() : "-");
                 } else {
                     transaction.setDirection("In");
-                    transaction.setAccount(payments.get(i).getAccount().getNumber() + "/" + payments.get(i).getAccount().getBank());
+                    transaction.setAccount(((!payments.get(i).getSenderPreAccountNumber().isEmpty() && "" != payments.get(i).getSenderPreAccountNumber()) ? (payments.get(i).getSenderPreAccountNumber() + "-" ) :"") + payments.get(i).getSenderAccount() + "/" + payments.get(i).getSenderBankCode());
                     transaction.setYourMessage("-");
                 }
                 transaction.setAmount(payments.get(i).getAmount() + " " + payments.get(i).getCurrency());

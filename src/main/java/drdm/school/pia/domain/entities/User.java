@@ -153,7 +153,7 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
         this.role = new Role(roleName);
     }
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     public Account getAccount() {
         return account;

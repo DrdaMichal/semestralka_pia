@@ -62,7 +62,6 @@ public class DefaultAccountManager implements AccountManager {
         Account newAccount = new Account();
         newAccount.setNumber(Long.toString(numberGenerator.generate(accountNoLength)));
         newAccount.setBank(bankcode);
-        newAccount.setBlocked(false);
         newAccount.setBalance(defaultBalance);
 
         // No need to check for bank code as it's always the same

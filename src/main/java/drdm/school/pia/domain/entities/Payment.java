@@ -19,18 +19,21 @@ import java.util.Objects;
 public class Payment extends BaseObject implements IEntity<Long>, Serializable {
 
     private String selectedTemplate;
-    private String sendTo;
-    private String bankCode;
+    private String recipientPreAccountNumber;
+    private String recipientAccount;
+    private String recipientBankCode;
     private String vs;
     private String cs;
     private String ss;
     private String recipientMessage;
-    private String myMessage;
+    private String senderMessage;
     private Long amount;
     private String currency;
     private Date transactionDate;
     private String template;
-    private Account account;
+    private String senderPreAccountNumber;
+    private String senderAccount;
+    private String senderBankCode;
     /**
      * A generated ID of the entity
      */
@@ -46,28 +49,37 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     }
 
     /**
-     * Main constructor.
-     * @param sendTo
-     * @param bankCode
-     * @param vs
-     * @param cs
-     * @param ss
-     * @param recipientMessage
-     * @param myMessage
-     * @param amount
-     * @param currency
-     * @param transactionDate provided in format dd-MM-yyyy
+     * Main constructor used for creating new Payment
+     * @param selectedTemplate provided selected template to be used
+     * @param recipientAccount provided recipient account number
+     * @param recipientBankCode provided recipient bank code number
+     * @param recPreAccountNumber provided recipient pre account number
+     * @param senderAccount provided sender account number
+     * @param senderBankCode provided sender bank code number
+     * @param sndPreAccountNumber provided sender pre account number
+     * @param vs provided variable symbol
+     * @param cs provided constant symbol
+     * @param ss provided specific symbol
+     * @param recipientMessage provided receiver message attached to the payment
+     * @param senderMessage provided sender message attached to the payment
+     * @param amount provided money amount
+     * @param currency provided currency code
+     * @param transactionDate  provided in format dd-MM-yyyy
+     * @param template provided template name
      */
-    public Payment(String selectedTemplate, String sendTo, String bankCode, String vs, String cs, String ss, String recipientMessage, String myMessage, String amount, String currency, Date transactionDate, String  template) {
+    public Payment(String selectedTemplate, String recipientAccount, String recipientBankCode, String recPreAccountNumber, String senderAccount, String senderBankCode, String sndPreAccountNumber, String vs, String cs, String ss, String recipientMessage, String senderMessage, String amount, String currency, Date transactionDate, String  template) {
         this.selectedTemplate = selectedTemplate;
-        this.sendTo = sendTo;
-        this.bankCode = bankCode;
-        this.bankCode = bankCode;
+        this.recipientAccount = recipientAccount;
+        this.recipientBankCode = recipientBankCode;
+        this.recipientPreAccountNumber = recPreAccountNumber;
+        this.senderAccount = senderAccount;
+        this.senderBankCode = senderBankCode;
+        this.senderPreAccountNumber = sndPreAccountNumber;
         this.vs = vs;
         this.cs = cs;
         this.ss = ss;
         this.recipientMessage = recipientMessage;
-        this.myMessage = myMessage;
+        this.senderMessage = senderMessage;
         this.amount = Long.parseLong(amount);
         this.currency = "CZK";
         this.transactionDate = transactionDate;
@@ -91,16 +103,6 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     @Transient
     public String getSelectedTemplate() {
         return selectedTemplate;
@@ -108,22 +110,6 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
 
     public void setSelectedTemplate(String selectedTemplate) {
         this.selectedTemplate = selectedTemplate;
-    }
-
-    public String getSendTo() {
-        return sendTo;
-    }
-
-    public void setSendTo(String sendTo) {
-        this.sendTo = sendTo;
-    }
-
-    public String getBankCode() {
-        return bankCode;
-    }
-
-    public void setBankCode(String bankCode) {
-        this.bankCode = bankCode;
     }
 
     public String getVs() {
@@ -136,6 +122,62 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
 
     public String getCs() {
         return cs;
+    }
+
+    public String getRecipientPreAccountNumber() {
+        return recipientPreAccountNumber;
+    }
+
+    public void setRecipientPreAccountNumber(String recipientPreAccountNumber) {
+        this.recipientPreAccountNumber = recipientPreAccountNumber;
+    }
+
+    public String getRecipientAccount() {
+        return recipientAccount;
+    }
+
+    public void setRecipientAccount(String recipientAccount) {
+        this.recipientAccount = recipientAccount;
+    }
+
+    public String getRecipientBankCode() {
+        return recipientBankCode;
+    }
+
+    public void setRecipientBankCode(String recipientBankCode) {
+        this.recipientBankCode = recipientBankCode;
+    }
+
+    public String getSenderMessage() {
+        return senderMessage;
+    }
+
+    public void setSenderMessage(String senderMessage) {
+        this.senderMessage = senderMessage;
+    }
+
+    public String getSenderPreAccountNumber() {
+        return senderPreAccountNumber;
+    }
+
+    public void setSenderPreAccountNumber(String senderPreAccountNumber) {
+        this.senderPreAccountNumber = senderPreAccountNumber;
+    }
+
+    public String getSenderAccount() {
+        return senderAccount;
+    }
+
+    public void setSenderAccount(String senderAccount) {
+        this.senderAccount = senderAccount;
+    }
+
+    public String getSenderBankCode() {
+        return senderBankCode;
+    }
+
+    public void setSenderBankCode(String senderBankCode) {
+        this.senderBankCode = senderBankCode;
     }
 
     public void setCs(String cs) {
@@ -158,13 +200,6 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.recipientMessage = recipientMessage;
     }
 
-    public String getMyMessage() {
-        return myMessage;
-    }
-
-    public void setMyMessage(String myMessage) {
-        this.myMessage = myMessage;
-    }
 
     public Long getAmount() { return amount; }
 
@@ -210,8 +245,8 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
      */
     public void validate() throws PaymentValidationException {
         if(amount <= 0) throw new PaymentValidationException("Amount can't be zero or less!");
-        if(StringUtils.isBlank(bankCode)) throw new PaymentValidationException("Bank code is a required field!");
-        if(StringUtils.isBlank(sendTo)) throw new PaymentValidationException("Receiving account is a required field!");
+        if(StringUtils.isBlank(recipientBankCode)) throw new PaymentValidationException("Bank code is a required field!");
+        if(StringUtils.isBlank(recipientAccount)) throw new PaymentValidationException("Receiving account is a required field!");
         if(null == (transactionDate)) throw new PaymentValidationException("Transaction date is a required field!");
     }
 
@@ -220,42 +255,52 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Payment payment = (Payment) o;
-        return sendTo.equals(payment.sendTo) &&
-                bankCode.equals(payment.bankCode) &&
+        return Objects.equals(selectedTemplate, payment.selectedTemplate) &&
+                Objects.equals(recipientPreAccountNumber, payment.recipientPreAccountNumber) &&
+                Objects.equals(recipientAccount, payment.recipientAccount) &&
+                Objects.equals(recipientBankCode, payment.recipientBankCode) &&
                 Objects.equals(vs, payment.vs) &&
                 Objects.equals(cs, payment.cs) &&
                 Objects.equals(ss, payment.ss) &&
                 Objects.equals(recipientMessage, payment.recipientMessage) &&
-                Objects.equals(myMessage, payment.myMessage) &&
-                amount.equals(payment.amount) &&
+                Objects.equals(senderMessage, payment.senderMessage) &&
+                Objects.equals(amount, payment.amount) &&
                 Objects.equals(currency, payment.currency) &&
-                transactionDate.equals(payment.transactionDate) &&
+                Objects.equals(transactionDate, payment.transactionDate) &&
                 Objects.equals(template, payment.template) &&
-                id.equals(payment.id);
+                Objects.equals(senderPreAccountNumber, payment.senderPreAccountNumber) &&
+                Objects.equals(senderAccount, payment.senderAccount) &&
+                Objects.equals(senderBankCode, payment.senderBankCode) &&
+                Objects.equals(id, payment.id) &&
+                Objects.equals(created, payment.created);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, amount, currency, transactionDate, template, id);
+        return Objects.hash(selectedTemplate, recipientPreAccountNumber, recipientAccount, recipientBankCode, vs, cs, ss, recipientMessage, senderMessage, amount, currency, transactionDate, template, senderPreAccountNumber, senderAccount, senderBankCode, id, created);
     }
 
     @Override
     public String toString() {
         return "Payment{" +
                 "selectedTemplate='" + selectedTemplate + '\'' +
-                ", sendTo='" + sendTo + '\'' +
-                ", bankCode='" + bankCode + '\'' +
+                ", recipientPreAccountNumber='" + recipientPreAccountNumber + '\'' +
+                ", recipientAccount='" + recipientAccount + '\'' +
+                ", recipientBankCode='" + recipientBankCode + '\'' +
                 ", vs='" + vs + '\'' +
                 ", cs='" + cs + '\'' +
                 ", ss='" + ss + '\'' +
                 ", recipientMessage='" + recipientMessage + '\'' +
-                ", myMessage='" + myMessage + '\'' +
-                ", amount='" + amount + '\'' +
+                ", senderMessage='" + senderMessage + '\'' +
+                ", amount=" + amount +
                 ", currency='" + currency + '\'' +
-                ", transactionDate='" + transactionDate + '\'' +
+                ", transactionDate=" + transactionDate +
                 ", template='" + template + '\'' +
+                ", senderPreAccountNumber='" + senderPreAccountNumber + '\'' +
+                ", senderAccount='" + senderAccount + '\'' +
+                ", senderBankCode='" + senderBankCode + '\'' +
                 ", id=" + id +
+                ", created=" + created +
                 '}';
     }
-
 }

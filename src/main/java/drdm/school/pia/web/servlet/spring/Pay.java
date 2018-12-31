@@ -1,6 +1,8 @@
 package drdm.school.pia.web.servlet.spring;
 
+import drdm.school.pia.domain.entities.Account;
 import drdm.school.pia.domain.entities.Payment;
+import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.manager.PaymentManager;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.Validator;
@@ -41,6 +43,8 @@ public class Pay extends AbstractServlet {
 
     private UserManager userManager;
     private PaymentManager paymentManager;
+    private AccountManager accountManager;
+    private Account account;
     @Value("${captcha.payment.value}")
     private String paymentCaptcha;
     @Value("#{'${bank.codes}'.split(',')}")
@@ -57,6 +61,9 @@ public class Pay extends AbstractServlet {
 
     @Autowired
     public void setUserManager(UserManager userManager) { this.userManager = userManager; }
+
+    @Autowired
+    public void setAccountManager(AccountManager accountManager) { this.accountManager = accountManager; }
 
     @Autowired
     public void setPaymentManager(PaymentManager paymentManager) {
@@ -78,7 +85,12 @@ public class Pay extends AbstractServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String selectedTemplate = req.getParameter(SELECTEDTEMPLATE_PARAMETER);
-        String sendTo = req.getParameter(SENDTO_PARAMETER);
+        String sendTo = "";
+        String recPreAccount = "";
+        if (selectedTemplate == null && !req.getParameter(SENDTO_PARAMETER).isEmpty()) {
+            sendTo = req.getParameter(SENDTO_PARAMETER).split("-")[(req.getParameter(SENDTO_PARAMETER).split("-").length == 2 ? 1 : 0)];
+            recPreAccount = req.getParameter(SENDTO_PARAMETER).split("-").length == 2 ? req.getParameter(SENDTO_PARAMETER).split("-")[0] : "";
+        }
         String bankCode = req.getParameter(BANKCODE_PARAMETER);
         String vs = req.getParameter(VS_PARAMETER);
         String cs = req.getParameter(CS_PARAMETER);
@@ -95,21 +107,21 @@ public class Pay extends AbstractServlet {
 
 
         if (req.getParameter("loadtemplate") != null) {
-            if (null != selectedTemplate) {
+            if ("" != selectedTemplate) {
                 Payment loadedTemplatePayment = paymentManager.loadPaymentByTemplate(req.getSession().getAttribute("user").toString(), selectedTemplate);
 
-                req.setAttribute(SELECTEDTEMPLATE_PARAMETER, selectedTemplate);
-                req.setAttribute(SENDTO_PARAMETER, loadedTemplatePayment.getSendTo());
-                req.setAttribute(BANKCODE_PARAMETER, loadedTemplatePayment.getBankCode());
+                req.setAttribute(SELECTEDTEMPLATE_PARAMETER, loadedTemplatePayment.getTemplate());
+                req.setAttribute(SENDTO_PARAMETER, ((!loadedTemplatePayment.getRecipientPreAccountNumber().isEmpty() ? (loadedTemplatePayment.getRecipientPreAccountNumber() + "-") : "") + loadedTemplatePayment.getRecipientAccount()));
+                req.setAttribute(BANKCODE_PARAMETER, loadedTemplatePayment.getRecipientBankCode());
                 req.setAttribute(VS_PARAMETER, loadedTemplatePayment.getVs());
                 req.setAttribute(CS_PARAMETER, loadedTemplatePayment.getCs());
                 req.setAttribute(SS_PARAMETER, loadedTemplatePayment.getSs());
                 req.setAttribute(RECIPIENTMESSAGE_PARAMETER, loadedTemplatePayment.getRecipientMessage());
-                req.setAttribute(MYMESSAGE_PARAMETER, loadedTemplatePayment.getMyMessage());
-                req.setAttribute(AMOUNT_PARAMETER, loadedTemplatePayment.getAccount());
+                req.setAttribute(MYMESSAGE_PARAMETER, loadedTemplatePayment.getSenderMessage());
+                req.setAttribute(AMOUNT_PARAMETER, loadedTemplatePayment.getAmount());
                 req.setAttribute(TRANSACTIONDATE_PARAMETER, loadedTemplatePayment.getTransactionDate());
                 req.setAttribute(ISTEMPLATE_PARAMETER, "on");
-                req.setAttribute(TEMPLATE_PARAMETER, selectedTemplate);
+                req.setAttribute(TEMPLATE_PARAMETER, loadedTemplatePayment.getTemplate());
 
                 logger.debug("Selected template: [" + selectedTemplate + "]");
 
@@ -127,6 +139,8 @@ public class Pay extends AbstractServlet {
         }
 
         else if (req.getParameter("pay") != null) {
+
+            account = accountManager.findAccountByUsername(req.getSession().getAttribute("user").toString());
 
             Date transactionDateDate = null;
             try {
@@ -170,7 +184,7 @@ public class Pay extends AbstractServlet {
 
             try {
                 logger.info("New payment created!");
-                paymentManager.createPayment(new Payment(selectedTemplate, sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, amount, currency, transactionDateDate, template), req.getSession().getAttribute("user").toString());
+                paymentManager.createPayment(new Payment(selectedTemplate, sendTo, bankCode, recPreAccount, account.getNumber(), account.getBank(), "", vs, cs, ss, recipientMessage, myMessage, amount, currency, transactionDateDate, template), req.getSession().getAttribute("user").toString());
                 succsessDispatch("Payment was successfully created!", req, resp);
             } catch(Exception e) {
                 errorDispatch(selectedTemplate, sendTo, bankCode, vs, cs, ss, recipientMessage, myMessage, transactionDate, amount, isTemplate, template, e.getMessage(), req, resp);
@@ -188,7 +202,7 @@ public class Pay extends AbstractServlet {
 
     private void errorDispatch(String selectedTemplate, String sendTo, String bankCode, String vs, String cs, String ss, String recipientMessage, String myMessage, String transactionDate, String amount, String isTemplate, String template, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SELECTEDTEMPLATE_PARAMETER, selectedTemplate);
-        req.setAttribute(SENDTO_PARAMETER, sendTo);
+        req.setAttribute(   SENDTO_PARAMETER, sendTo);
         req.setAttribute(BANKCODE_PARAMETER, bankCode);
         req.setAttribute(VS_PARAMETER, vs);
         req.setAttribute(CS_PARAMETER, cs);
