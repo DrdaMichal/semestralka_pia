@@ -18,22 +18,6 @@ public class CardDaoJpa extends GenericDaoJpa<Card, Long> implements CardDao {
     }
 
     /**
-     * Find a card by it's user - implementation
-     * @param username
-     * @return
-     */
-    @Override
-    public Card findByUsername(String username) {
-        TypedQuery<Card> q = entityManager.createQuery("SELECT c FROM Card c WHERE c.user = :username_id", Card.class);
-        q.setParameter("username_id", username);
-        try {
-            return q.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
-
-    /**
      * Find a card by it's number - implementation
      * @param cardnumber
      * @return
@@ -47,13 +31,6 @@ public class CardDaoJpa extends GenericDaoJpa<Card, Long> implements CardDao {
         } catch (NoResultException e) {
             return null;
         }
-    }
-
-    @Override
-    public Card merge(Card card) {
-        entityManager.merge(card);
-        return card;
-        //throw new UnsupportedOperationException("Not implemented yet.");
     }
 
 }

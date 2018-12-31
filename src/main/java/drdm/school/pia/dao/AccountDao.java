@@ -22,11 +22,4 @@ public interface AccountDao extends GenericDao<Account, Long> {
      */
     Account findByAccountNumber(String accountNumber);
 
-    /**
-     * Merge account with the existing one
-     * @param account provided account object
-     * @return merged account
-     */
-    Account merge(Account account);
-
 }

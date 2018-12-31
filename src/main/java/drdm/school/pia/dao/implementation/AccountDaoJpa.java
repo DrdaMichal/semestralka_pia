@@ -37,10 +37,4 @@ public class AccountDaoJpa extends GenericDaoJpa<Account, Long> implements Accou
         }
     }
 
-    @Override
-    public Account merge(Account account) {
-        entityManager.merge(account);
-        return account;
-        //throw new UnsupportedOperationException("Not implemented yet.");
-    }
 }

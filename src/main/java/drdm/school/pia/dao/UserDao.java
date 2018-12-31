@@ -16,8 +16,4 @@ public interface UserDao extends GenericDao<User, String> {
 
     User findByAccountNo(String accountNo);
 
-    User checkUniqueness(String accountNo, String username);
-
-    User create(User user);
-
 }
