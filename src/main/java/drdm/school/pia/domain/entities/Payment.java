@@ -12,6 +12,7 @@ import java.util.Objects;
 
 /**
  * Entity representing a payment
+ *
  * @author Michal Drda
  */
 @Entity
@@ -27,7 +28,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     private String ss;
     private String recipientMessage;
     private String senderMessage;
-    private Long amount;
+    private double amount;
     private String currency;
     private Date transactionDate;
     private String template;
@@ -80,8 +81,8 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.ss = ss;
         this.recipientMessage = recipientMessage;
         this.senderMessage = senderMessage;
-        this.amount = Long.parseLong(amount);
-        this.currency = "CZK";
+        this.amount = Double.parseDouble(amount.replace(",", "."));
+        this.currency = currency;
         this.transactionDate = transactionDate;
         this.template = template;
     }
@@ -201,9 +202,9 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     }
 
 
-    public Long getAmount() { return amount; }
+    public double getAmount() { return amount; }
 
-    public void setAmount(Long amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

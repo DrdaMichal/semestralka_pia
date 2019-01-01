@@ -17,7 +17,7 @@ public interface AccountManager {
      * @param account account which balance to be adjusted
      * @param valueOfChange valueOfChange provided as an addition or a substraction from the current account balance
      */
-    void updateBallance(Account account, Long valueOfChange) throws PaymentValidationException;
+    void updateBallance(Account account, double valueOfChange) throws PaymentValidationException;
 
     Account findAccountByUsername(String username);
 

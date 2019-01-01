@@ -20,7 +20,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
      * A generated ID of the entity
      */
     private Long id;
-    private Long balance;
+    private double balance;
     private String number;
     private String bank;
     private Set<Card> cards = new LinkedHashSet<>();
@@ -57,11 +57,11 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
         this.bank = bank;
     }
 
-    public Long getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 

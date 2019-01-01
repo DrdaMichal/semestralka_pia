@@ -16,4 +16,6 @@ public interface PaymentDao extends GenericDao<Payment, Long> {
 
     List<Payment> findTransactionsByAccount(String account, String bankCode);
 
+    List<Payment> findPaymentsByUsername(String username);
+
 }

@@ -162,13 +162,28 @@
                             <div class="form-group">
                                 <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="amount">*Amount</label>
                                 <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                    <input class="form-control" type="number" id="amount" name="amount" value="<c:out value="${requestScope.amount}"/>"/>
+                                    <input class="form-control" type="text" id="amount" name="amount" value="<c:out value="${requestScope.amount}"/>"/>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-5 col-md-4">
+                            <div class="form-group">
+                                <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="currency">*Currency</label>
+                                <div class="col-xs-5 col-sm-4 col-md-4 disable-padding">
+                                    <select class="form-control" id="currency" name="currency">
+                                        <option value="CZK" <c:if test="${requestScope.currency eq 'CZK'}">selected="selected"</c:if>>CZK</option>
+                                        <option value="EUR" <c:if test="${requestScope.currency eq 'EUR'}">selected="selected"</c:if>>EUR</option>
+                                        <option value="USD" <c:if test="${requestScope.currency eq 'USD'}">selected="selected"</c:if>>USD</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <label class="col-xs-12 col-sm-6 col-md-6 control-label" for="transactiondate">*Valid on</label>
                                 <div class="col-xs-12 col-sm-6 col-md-6 disable-padding">
-                                    <input class="form-control" type="date" placeholder="yyyy-MM-dd" id="transactiondate" name="transactiondate"/>
+                                    <input class="form-control" type="date" placeholder="yyyy-MM-dd" value="<c:out value="${requestScope.transactiondate}"/>" id="transactiondate" name="transactiondate"/>
                                 </div>
                             </div>
                             <div class="form-group">

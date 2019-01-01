@@ -43,6 +43,10 @@ public class Managing extends AbstractServlet {
     private String captchaUserValue;
     @Value("${regex.email}")
     private String emailRegex;
+    @Value("${regex.default.multipleAlphabeticWords}")
+    private String alphabeticWordsRegex;
+    @Value("${regex.alphanumericEnglish}")
+    private String alphanumericEnglishRegex;
 
     private UserManager userManager;
     private User user;
@@ -83,6 +87,10 @@ public class Managing extends AbstractServlet {
         if (updateAction != null || removeAction != null) {
             if (username.isEmpty()) {
                 errorDispatch("Username is mandatory!", req, resp);
+                return;
+            } else if(!stringValidator.isValid(username, alphanumericEnglishRegex)) {
+                req.setAttribute(USERNAME_PARAMETER, username);
+                errorDispatch("Username in invalid format!", req, resp);
                 return;
             } else {
                 if (null == user || !username.equals(user.getUsername())) {
@@ -140,13 +148,24 @@ public class Managing extends AbstractServlet {
                 return;
             }
 
-            if(captchaUser.isEmpty()) {
-                errorDispatchUpdateUser(firstname, lastname, email, gender, address, city, zip,"Captcha answer is incorrect!", req, resp);
+            // Validate firstname and lastname
+            if(!firstname.isEmpty() && !stringValidator.isValid(firstname, alphabeticWordsRegex)) {
+                errorDispatchUpdateUser(firstname, lastname, email, gender, address, city, zip,"First name is in invalid format, only letters are supported!", req, resp);
+                return;
+            }
+
+            if(!lastname.isEmpty() && !stringValidator.isValid(lastname, alphabeticWordsRegex)) {
+                errorDispatchUpdateUser(firstname, lastname, email, gender, address, city, zip, "Last name is in invalid format, only letters are supported!", req, resp);
                 return;
             }
 
             if(!stringValidator.isValid(email, emailRegex)) {
                 errorDispatchUpdateUser(firstname, lastname, email, gender, address, city, zip,"Email is in invalid format!", req, resp);
+                return;
+            }
+
+            if(captchaUser.isEmpty()) {
+                errorDispatchUpdateUser(firstname, lastname, email, gender, address, city, zip,"Captcha answer is incorrect!", req, resp);
                 return;
             }
 
@@ -172,6 +191,7 @@ public class Managing extends AbstractServlet {
     }
 
     private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute(USERNAME_PARAMETER, user.getUsername());
         req.setAttribute(ERROR_ATTRIBUTE, err);
         req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
     }
@@ -183,6 +203,7 @@ public class Managing extends AbstractServlet {
     }
 
     private void setDefaultUserAttributes(HttpServletRequest req, User user) throws ServletException, IOException {
+        req.setAttribute(USERNAME_PARAMETER, user.getUsername());
         req.setAttribute(FIRSTNAME_ATTRIBUTE, user.getFirstname());
         req.setAttribute(LASTNAME_ATTRIBUTE, user.getLastname());
         req.setAttribute(EMAIL_ATTRIBUTE, user.getEmail());

@@ -77,7 +77,7 @@ public class DefaultAccountManager implements AccountManager {
     }
 
     @Override
-    public void updateBallance(Account account, Long valueOfChange) throws PaymentValidationException {
+    public void updateBallance(Account account, double valueOfChange) throws PaymentValidationException {
         if(valueOfChange < 0 && account.getBalance() < valueOfChange) {
             logger.info("Not enough money on the account " + account.getNumber() + "/" + account.getBank() + "!");
             throw new PaymentValidationException("On the account " + account.getNumber() + "/" + account.getBank() + " is not enough money!");

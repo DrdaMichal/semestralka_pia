@@ -43,10 +43,14 @@ public class Register extends AbstractServlet {
     private static final String SUCCESS_ATTRIBUTE = "suc";
 
     private UserManager userManager;
-    @Value("${captcha.value}")
+    @Value("${captcha.register.value}")
     private String captchaValue;
     @Value("${regex.email}")
     private String emailRegex;
+    @Value("${regex.default.multipleAlphabeticWords}")
+    private String alphabeticWordsRegex;
+    @Value("${regex.default.password}")
+    private String passwordRegex;
 
     private final static Logger logger = Logger.getLogger(Login.class);
     private Validator stringValidator;
@@ -63,12 +67,12 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("ADMIN")) {
+        if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("ADMIN")) {
             req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
-        //} else {
+        } else {
             // User is not authorised to do the action.
-        //    resp.sendError(401, "You are not authorised to access this page.");
-        //}
+            resp.sendError(401, "You are not authorised to access this page.");
+        }
     }
 
     @Override
@@ -88,17 +92,10 @@ public class Register extends AbstractServlet {
         String captcha = req.getParameter(CAPTCHA_PARAMETER);
         String terms = req.getParameter(TERMS_PARAMETER);
 
-
         logger.debug("Password [" + password + "]");
-
 
         if(!Objects.equals(password, confirmPwd)) {
             errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "The password and confirm password fields do not match!", req, resp);
-            return;
-        }
-
-        if(!captcha.equals(captchaValue)) {
-            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Captcha answer is incorrect!", req, resp);
             return;
         }
 
@@ -107,8 +104,30 @@ public class Register extends AbstractServlet {
             return;
         }
 
+        // Validate firstname and lastname
+        if(!firstname.isEmpty() && !stringValidator.isValid(firstname, alphabeticWordsRegex)) {
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "First name is in invalid format, only letters are supported!", req, resp);
+            return;
+        }
+        if(!lastname.isEmpty() && !stringValidator.isValid(lastname, alphabeticWordsRegex)) {
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Last name is in invalid format, only letters are supported!", req, resp);
+            return;
+        }
+
+        // Validate email
         if(!stringValidator.isValid(email, emailRegex)) {
             errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Email is in invalid format!", req, resp);
+            return;
+        }
+
+        // Validate password
+        if(!stringValidator.isValid(password, passwordRegex)) {
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Password is in invalid format, only alpha-numeric chars and !@#$%^&* are supported!", req, resp);
+            return;
+        }
+
+        if(!captcha.equals(captchaValue)) {
+            errorDispatch(firstname, lastname, email, role, address, city, zip, birthid, gender, terms, "Captcha answer is incorrect!", req, resp);
             return;
         }
 

@@ -38,6 +38,10 @@ public class DefaultPaymentManager implements PaymentManager {
     private int accountNoLength;
     @Value("${default.pattern.date}")
     private String transactionDatePattern;
+    @Value("${default.currency}")
+    private String defaultCurrency;
+    @Value("#{'${currency.couses}'.split(',')}")
+    private List<String> currenciesCourses;
 
     final static Logger logger = Logger.getLogger(DefaultPaymentManager.class);
 
@@ -93,6 +97,18 @@ public class DefaultPaymentManager implements PaymentManager {
         newPayment.setSenderAccount(user.getAccount().getNumber());
         newPayment.setSenderBankCode(user.getAccount().getBank());
         newPayment.setSenderPreAccountNumber("");
+
+        double course = 1;
+
+        if (!newPayment.getCurrency().equals(defaultCurrency)) {
+            for (int i = 0; i<currenciesCourses.size(); i++ ) {
+                if (currenciesCourses.get(i).split(":")[0].equals(newPayment.getCurrency())) {
+                    course = Double.parseDouble(currenciesCourses.get(i).split(":")[1]);
+                }
+            }
+        }
+        newPayment.setAmount(course*newPayment.getAmount());
+        newPayment.setCurrency(defaultCurrency);
 
         Calendar c = Calendar.getInstance();
 
@@ -188,7 +204,7 @@ public class DefaultPaymentManager implements PaymentManager {
                     transaction.setAccount(((!payments.get(i).getSenderPreAccountNumber().isEmpty() && "" != payments.get(i).getSenderPreAccountNumber()) ? (payments.get(i).getSenderPreAccountNumber() + "-" ) :"") + payments.get(i).getSenderAccount() + "/" + payments.get(i).getSenderBankCode());
                     transaction.setYourMessage("-");
                 }
-                transaction.setAmount(payments.get(i).getAmount() + " " + payments.get(i).getCurrency());
+                transaction.setAmount(String.format("%.3f", payments.get(i).getAmount()) + " " + payments.get(i).getCurrency());
                 transaction.setVs(!payments.get(i).getVs().isEmpty() ? payments.get(i).getVs() : "-");
                 transaction.setCs(!payments.get(i).getCs().isEmpty() ? payments.get(i).getCs() : "-");
                 transaction.setSs(!payments.get(i).getSs().isEmpty() ? payments.get(i).getSs() : "-");

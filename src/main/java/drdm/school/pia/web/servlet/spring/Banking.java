@@ -57,6 +57,10 @@ public class Banking extends AbstractServlet {
     private String captchaUserValue;
     @Value("${regex.email}")
     private String emailRegex;
+    @Value("${regex.default.multipleAlphabeticWords}")
+    private String alphabeticWordsRegex;
+    @Value("${regex.default.password}")
+    private String passwordRegex;
 
     private final static Logger logger = Logger.getLogger(Banking.class);
 
@@ -129,8 +133,23 @@ public class Banking extends AbstractServlet {
                 return;
             }
 
+            if(!newPwd.isEmpty() && !stringValidator.isValid(newPwd, passwordRegex)) {
+                errorDispatch("New PIN in invalid format!", req, resp);
+                return;
+            }
+
+            if(!oldPwd.isEmpty() && !stringValidator.isValid(newPwd, passwordRegex)) {
+                errorDispatch("Old PIN in invalid format!", req, resp);
+                return;
+            }
+
+            if(!confirmPwd.isEmpty() && !stringValidator.isValid(newPwd, passwordRegex)) {
+                errorDispatch("Confirm PIN in invalid format!", req, resp);
+                return;
+            }
+
             if(!Objects.equals(newPwd, confirmPwd)) {
-                errorDispatch("The PIN and confirm PIN fields do not match!", req, resp);
+                errorDispatch("The PIN and confirm PIN fields does not match!", req, resp);
                 return;
             }
 
@@ -178,13 +197,23 @@ public class Banking extends AbstractServlet {
                 return;
             }
 
-            if(captchaUser.isEmpty()) {
-                errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"Captcha answer is incorrect!", req, resp);
+            if(!firstname.isEmpty() && !stringValidator.isValid(firstname, alphabeticWordsRegex)) {
+                errorDispatch("First name in invalid format!", req, resp);
                 return;
             }
 
-            if(!stringValidator.isValid(email, emailRegex)) {
+            if(!lastname.isEmpty() && !stringValidator.isValid(lastname, alphabeticWordsRegex)) {
+                errorDispatch("Last name in invalid format!", req, resp);
+                return;
+            }
+
+            if(!email.isEmpty() && !stringValidator.isValid(email, emailRegex)) {
                 errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"Email is in invalid format!", req, resp);
+                return;
+            }
+
+            if(captchaUser.isEmpty()) {
+                errorDispatchUser(firstname, lastname, email, gender, address, city, zip,"Captcha answer is incorrect!", req, resp);
                 return;
             }
 
@@ -235,7 +264,7 @@ public class Banking extends AbstractServlet {
 
     private void setDefaultAccountAttributes(HttpServletRequest req, Account account) throws ServletException, IOException {
         req.setAttribute("accountNumber", account.getNumber() + "/" + account.getBank());
-        req.setAttribute("balance", account.getBalance() + " " + currency);
+        req.setAttribute("balance", String.format("%.3f",account.getBalance()) + " " + currency);
     }
 
     private void setDefaultTransactionsAttributes(HttpServletRequest req, List<Transaction> transactions) throws ServletException, IOException {
