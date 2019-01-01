@@ -73,6 +73,7 @@ public class Register extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String firstname = req.getParameter(FIRSTNAME_PARAMETER);
         String lastname = req.getParameter(LASTNAME_PARAMETER);
         String email = req.getParameter(EMAIL_PARAMETER);

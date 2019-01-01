@@ -25,6 +25,7 @@ public class History extends AbstractServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("USER")) {
+            req.setAttribute("paging", true);
             req.setAttribute("transactions", paymentManager.findTransactionsForUsername(req.getSession().getAttribute("user").toString()));
             req.getRequestDispatcher("/WEB-INF/pages/banking/history.jsp").forward(req, resp);
         } else {

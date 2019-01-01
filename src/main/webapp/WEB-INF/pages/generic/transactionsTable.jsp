@@ -39,6 +39,11 @@
                 <td class="hidden-xs">${transaction.theirMessage}</td>
             </tr>
         </c:forEach>
+        <c:if test="${empty requestScope.transactions and empty requestScope.paging}">
+            <tr>
+                <td valign="top" colspan="10" class="center-text">No data available in table</td>
+            </tr>
+        </c:if>
     </tbody>
 
 </table>

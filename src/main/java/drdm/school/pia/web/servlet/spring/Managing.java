@@ -72,7 +72,7 @@ public class Managing extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException  {
-
+        req.setCharacterEncoding("UTF-8");
         String username = req.getParameter(USERNAME_PARAMETER);
         String updateAction = req.getParameter(UPDATE_ACTION_PARAMETER);
         String removeAction = req.getParameter(REMOVE_ACTION_PARAMETER);

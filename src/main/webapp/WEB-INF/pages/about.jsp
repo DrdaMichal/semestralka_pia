@@ -66,11 +66,11 @@
 		</jsp:include>
 
 		<div class="container-fluid">
-			<div class="container about about-center">
+			<div class="container about center-text">
 
-				<h1 class="about-center">About the CoolBank ...</h1>
+				<h1 class="center-text">About the CoolBank ...</h1>
 				<p >CoolBank is a web application that has been created during winter semester of university year 2018/2019. It has to be some kind of website like internet banking, so students will learn how to work with various technologies used for developing web applications.</p>
-				<h1 class="about-center">You would like an account too?</h1>
+				<h1 class="center-text">You would like an account too?</h1>
 				<button id="hideBtn" class="btn btn-default" onclick="hideBtn()">Yes!</button>
 				<div id="showText" style="display: none">
 					<p>For account creation, please contact administrator on <a href="mailto:drdam@students.zcu.cz">drdam@students.zcu.cz</a></p>

@@ -84,6 +84,7 @@ public class Pay extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String selectedTemplate = req.getParameter(SELECTEDTEMPLATE_PARAMETER);
         String sendTo = "";
         String recPreAccount = "";
