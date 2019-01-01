@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
+/**
+ * Data access object for Account entity
+ * @author Michal Drda
+ */
 @Repository
 public class AccountDaoJpa extends GenericDaoJpa<Account, Long> implements AccountDao {
 
@@ -15,6 +19,11 @@ public class AccountDaoJpa extends GenericDaoJpa<Account, Long> implements Accou
         super(Account.class);
     }
 
+    /**
+     * @inheritDoc
+     *
+     * This is an implementation of findByAccountNumber method in AccountDao interface
+     */
     @Override
     public Account findByUserName(String username) {
         TypedQuery<Account> q = entityManager.createQuery("SELECT a FROM Account a LEFT JOIN User u ON a.id = u.account.id WHERE u.username = :username ", Account.class);
@@ -26,6 +35,11 @@ public class AccountDaoJpa extends GenericDaoJpa<Account, Long> implements Accou
         }
     }
 
+    /**
+     * @inheritDoc
+     *
+     * This is an implementation of findByAccountNumber in AccountDao interface
+     */
     @Override
     public Account findByAccountNumber(String accountNumber) {
         TypedQuery<Account> q = entityManager.createQuery("SELECT a FROM Account a WHERE a.number = :accountNumber", Account.class);

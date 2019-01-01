@@ -140,10 +140,10 @@ public class DefaultPaymentManager implements PaymentManager {
         }
 
         newPayment.validate();
-        accountManager.updateBallance(user.getAccount(), -1 * (newPayment.getAmount()));
+        accountManager.updateBalance(user.getAccount(), -1 * (newPayment.getAmount()));
 
         if (newPayment.getRecipientBankCode().equals(bankcode) && newPayment.getRecipientAccount().length() == accountNoLength && newPayment.getRecipientPreAccountNumber().isEmpty() && receivingUser != null) {
-            accountManager.updateBallance(receivingUser.getAccount(), newPayment.getAmount());
+            accountManager.updateBalance(receivingUser.getAccount(), newPayment.getAmount());
         }
 
         // Remove template from the old payment in case that new one with the same name to be created
