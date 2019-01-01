@@ -9,28 +9,35 @@
 --%>
  
 <html lang="en">
+
 	<head>
+
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>About CoolBank</title>
-		<link rel="icon" href="../img/icon-c.jpg">
+		<title>CoolBank - about</title>
+		<link rel="icon" href="../../img/icon-c.jpg">
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../style/style.css">
+		<!-- Pages general style sheet -->
+		<link rel="stylesheet" type="text/css" href="../../style/style.css">
 		
 		<!-- Used for hiding menu - small screens -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- Used for hiding menu - small screens -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		<!-- Function used for hiding login/logout button -->
-		<script src="../js/loginFunction.js"></script>
+		<script src="../../js/loginFunction.js"></script>
 		<!-- show text to contact admin on click -->
-		<script src="../js/onBtnClickShow.js"></script>
+		<script src="../../js/onBtnClickShow.js"></script>
+
 	</head>
+
 	<body>
+
 	    <nav class="navbar navbar-default navbar-static-top">
 			<div class="container-fluid">
+
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class="icon-bar"></span>
@@ -49,6 +56,7 @@
 						<li id="logout" style="display: none"><a href="logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 					</ul>
 				</div>
+
 			</div>
 		</nav>
 
@@ -59,6 +67,7 @@
 
 		<div class="container-fluid">
 			<div class="container about about-center">
+
 				<h1 class="about-center">About the CoolBank ...</h1>
 				<p >CoolBank is a web application that has been created during winter semester of university year 2018/2019. It has to be some kind of website like internet banking, so students will learn how to work with various technologies used for developing web applications.</p>
 				<h1 class="about-center">You would like an account too?</h1>
@@ -66,9 +75,12 @@
 				<div id="showText" style="display: none">
 					<p>For account creation, please contact administrator on <a href="mailto:drdam@students.zcu.cz">drdam@students.zcu.cz</a></p>
 				</div>
+
 			</div>
 		</div>
 
 		<jsp:include page="generic/footer.jsp"/>
+
 	</body>
+
 </html>

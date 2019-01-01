@@ -7,7 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer id="footer">
+
     <div class="container-fluid">
         <p class="p-bigger-white">Created by Michal Drda in 2018.</p>
     </div>
+
 </footer>

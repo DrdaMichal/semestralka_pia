@@ -16,6 +16,8 @@ public class Logout extends AbstractServlet {
     private UserManager userManager;
     @Value("#{'${user.roles}'.split(',')}")
     private List<String> permittedRoles;
+    @Value("${redirect.logout.interval}")
+    private String redirectInterval;
 
     @Autowired
     public void setUserManager(UserManager userManager) {
@@ -24,6 +26,7 @@ public class Logout extends AbstractServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && permittedRoles.contains(req.getSession().getAttribute("role"))) {
+            req.setAttribute("redirectInterval", redirectInterval);
             System.out.println("User[" + req.getSession().getAttribute("user") + "], role[" + req.getSession().getAttribute("role") + "], session[" + req.getSession().getId() + "] successfully logged out.");
             req.getSession().invalidate();
             req.getRequestDispatcher("/WEB-INF/pages/logout.jsp").forward(req, resp);

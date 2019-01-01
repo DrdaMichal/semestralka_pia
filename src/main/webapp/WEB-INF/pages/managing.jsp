@@ -10,26 +10,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang="en">
+
     <head>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Manage CoolBank</title>
-        <link rel="icon" href="../img/icon-c.jpg">
+        <title>CoolBank - administrative</title>
+        <link rel="icon" href="../../img/icon-c.jpg">
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../style/style.css">
+        <!-- Pages general style sheet -->
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
 
         <!-- Used for hiding menu - small screens -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Used for hiding menu - small screens -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <!-- Function used for hiding login/logout button -->
-        <script src="../js/loginFunction.js"></script>
+        <script src="../../js/loginFunction.js"></script>
+
     </head>
+
     <body>
+
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container-fluid">
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
@@ -49,6 +56,7 @@
                         <li id="logout"><a href="logout" onclick="loginFunction()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
                 </div>
+
             </div>
         </nav>
 
@@ -82,8 +90,10 @@
                     <div class="col-xs-12 col-sm-12 col-md-8 row">
                         <form action="managing" method="post" class="form-horizontal">
                             <div class="container max-width-600">
+
                                 <h2>Update user <strong>${requestScope.username}</strong></h2>
                                 <div class="container-fluid disable-padding">
+
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label class="control-label" for="firstname">*First name</label>
@@ -111,6 +121,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label class="control-label" for="address">Address</label>
@@ -143,6 +154,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -151,6 +163,7 @@
                 <c:if test="${(not empty requestScope.username) and (requestScope.removeAction eq 'remove')}">
                     <div class="col-xs-12 col-sm-12 col-md-8 row">
                         <div class="container max-width-600">
+
                             <form action="managing" method="post" class="form-horizontal form-border box-border">
                                 <h2>Surely remove user <strong>${requestScope.username}</strong>?</h2>
                                 <div class="form-group">
@@ -159,6 +172,7 @@
                                     </div>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </c:if>
@@ -169,4 +183,5 @@
         <jsp:include page="generic/footer.jsp"/>
 
     </body>
+
 </html>

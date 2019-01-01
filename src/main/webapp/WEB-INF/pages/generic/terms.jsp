@@ -7,8 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <label class="col-xs-12 col-sm-3 col-md-3 control-label">Terms and Conditions</label>
 <div class="col-xs-12 col-sm-9 col-md-9 terms">
+
     <h1 class="disable-margin-top h1-terms-smaller">Introduction</h1>
     <p>These Website Standard Terms and Conditions written on this webpage shall manage your use of our website, coolbank.com accessible at cool-bank.com.</p>
     <p>These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions. These terms and conditions have been <a href="https://termsandcondiitionssample.com">generated at Terms And Conditions Sample.com</a></p>
@@ -59,4 +61,5 @@
 
     <h2 class="h2-terms-smaller">Governing Law & Jurisdiction</h2>
     <p>These Terms will be governed by and interpreted in accordance with the laws of the State of cz, and you submit to the non-exclusive jurisdiction of the state and federal courts located in cz for the resolution of any disputes.</p>
+
 </div>
