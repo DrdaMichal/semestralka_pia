@@ -6,6 +6,10 @@ package drdm.school.pia.domain.exceptions;
  */
 public class UserValidationException extends Exception {
 
+    /**
+     * Constructor
+     * @param message provided message to show with the exception
+     */
     public UserValidationException(String message) {
         super(message);
     }

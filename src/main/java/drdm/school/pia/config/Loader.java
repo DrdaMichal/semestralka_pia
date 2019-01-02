@@ -29,12 +29,18 @@ import java.util.Date;
 public class Loader implements ApplicationListener<ContextRefreshedEvent> {
 
     /**
-     * Attribute used for setting DB (create == fillup, update == no action)
+     * Used for setting DB (create == fillup, update == no action)
      */
     @Value("${db.state}")
     private String fillup;
+    /**
+     * Delay set for creating artificial payments
+     */
     @Value("${payments.delay}")
     private int delay;
+    /**
+     * Count of payments to be created per user
+     */
     @Value("${payments.count.created.per.user}")
     private int paymentsCreated;
 
@@ -47,14 +53,17 @@ public class Loader implements ApplicationListener<ContextRefreshedEvent> {
      * UserDao initialisation
      */
     private UserDao userDao;
+
     /**
      * UserManager initialisation
      */
     private UserManager userManager;
+
     /**
      * PaymentDao initialisation
      */
     private PaymentDao paymentDao;
+
     /**
      * PaymentManager initialisation
      */
