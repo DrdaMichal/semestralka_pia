@@ -4,13 +4,13 @@ import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.domain.exceptions.UserValidationException;
 
 /**
+ * User manager interface - used for managing of users
  * @author Michal Drda
  */
 public interface UserManager {
 
     /**
      * Method for authentication of user's credentials.
-     *
      * @param username provided login
      * @param password provided password
      * @return true if username and password are a match, false otherwise
@@ -56,8 +56,18 @@ public interface UserManager {
      */
     User findUserByUsername(String username);
 
+    /**
+     * Method finds user by it's account number
+     * @param accountNumber account number of the account associated with the user
+     * @param bankCode bank code of the account associated with the user
+     * @return user instance if user was found or null in case that not
+     */
     User findUserByAccount(String accountNumber, String bankCode);
 
+    /**
+     * Used for removal of the user
+     * @param username provided user name
+     */
     void removeUser(String username);
 
 }

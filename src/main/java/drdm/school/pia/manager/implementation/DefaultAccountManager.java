@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 /**
  * @inheritDoc
  * Implementation of AccountManager interface
+ * @author Michal Drda
  */
 @Service
 @Transactional
@@ -158,7 +159,7 @@ public class DefaultAccountManager implements AccountManager {
     }
 
     /**
-     * @InheritDoc
+     * @inheritDoc
      * Implementation of findAccountByUsername method of AccountManager interface
      * Used for getting account assigned to User with given username
      */

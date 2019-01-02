@@ -22,70 +22,145 @@ import java.util.*;
 
 
 /**
+ * @inheritDoc
+ * Implementation of PaymentManager interface
  * @author Michal Drda
  */
 @Service
-//@Scope(proxyMode = ScopedProxyMode.INTERFACES)
 @Transactional
 public class DefaultPaymentManager implements PaymentManager {
 
+    /**
+     * Initialization of PaymentDao
+     */
     private PaymentDao paymentDao;
+    /**
+     * Initialization of userDao
+     */
     private UserDao userDao;
+    /**
+     * Initialization of accountManager
+     */
     private AccountManager accountManager;
+    /**
+     * Initialization of the user Manager
+     */
     private UserManager userManager;
+    /**
+     * Current bankCode of the bank to check if the user account is from this bank
+     */
     @Value("${bankcode}")
     private String bankcode;
+    /**
+     * Account number length of the user to check if the user account has valid length
+     */
     @Value("${accountNo.length}")
     private int accountNoLength;
+    /**
+     * Format of date of the payment
+     */
     @Value("${default.pattern.date}")
     private String transactionDatePattern;
+    /**
+     * Default currency to be set in payment processing
+     */
     @Value("${default.currency}")
     private String defaultCurrency;
+    /**
+     * Current exchange courses for listed currencies in the properties file
+     */
     @Value("#{'${currency.couses}'.split(',')}")
     private List<String> currenciesCourses;
 
+    /**
+     * Logger used for logging of important events
+     */
     final static Logger logger = Logger.getLogger(DefaultPaymentManager.class);
 
+    /**
+     * Default constructor
+     */
     public DefaultPaymentManager() {
 
     }
 
+    /**
+     * Constructor
+     * @param paymentDao provided paymentDao
+     */
     public DefaultPaymentManager(PaymentDao paymentDao) {
         this.paymentDao = paymentDao;
     }
 
+    /**
+     * Getter of PaymentDao
+     * @return paymentDao
+     */
     public PaymentDao getPaymentDao() {
         return paymentDao;
     }
 
+    /**
+     * Getter of the userDao
+     * @return userDao
+     */
     public UserDao getUserDao() {
         return userDao;
     }
 
+    /**
+     * Setter of the userDao
+     * @param userDao provided userDao
+     */
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
 
+    /**
+     * Setter of the paymentDao
+     * @param paymentDao provided paymentDao
+     */
     @Autowired
     public void setPaymentDao(PaymentDao paymentDao) {
         this.paymentDao = paymentDao;
     }
 
+    /**
+     * Setter of the accountManager
+     * @param accountManager provided account manager
+     */
     @Autowired
     public void setAccountManager(AccountManager accountManager) { this.accountManager = accountManager; }
 
+    /**
+     * Getter of the account manager
+     * @return account manager
+     */
     public AccountManager getAccountManager() {
         return accountManager;
     }
 
+    /**
+     * Setter of the userManager
+     * @param userManager provided userManager
+     */
     @Autowired
     public void setUserManager(UserManager userManager) { this.userManager = userManager; }
 
+    /**
+     * Getter for the userManager
+     * @return user manager
+     */
     public UserManager getUserManager() {
         return userManager;
     }
 
+    /**
+     * @inheritDoc
+     * Method used for creation of the new payment with all it's complexity
+     */
+    @Override
     public void createPayment(Payment newPayment, String username) throws PaymentValidationException {
         logger.info("Payment creation started...");
         User user = userManager.findUserByUsername(username);
@@ -161,6 +236,11 @@ public class DefaultPaymentManager implements PaymentManager {
         /*}*/
     }
 
+    /**
+     * @inheritDoc
+     * Method used for loading paymentTemplates for a user
+     */
+    @Override
     public ArrayList<String> loadPaymentTemplate(String username) {
         ArrayList<Payment> paymentTemplates =(ArrayList) paymentDao.findTemplatesByUsername(username);
         ArrayList<String> templates = new ArrayList<>();
@@ -171,10 +251,18 @@ public class DefaultPaymentManager implements PaymentManager {
         return templates;
     }
 
+    /**
+     * @inheritDoc
+     * Method used for loading paymentsByTemplate after template selection
+     */
     public Payment loadPaymentByTemplate(String username, String template) {
         return paymentDao.findPaymentByTemplate(username, template);
     }
 
+    /**
+     * @inheritDoc
+     * Method used for finding all transactions associated with provided username, and creating list of the transactions
+     */
     @Override
     public ArrayList<Transaction> findTransactionsForUsername(String username) {
         // Get Account for matching username parameter
@@ -183,7 +271,7 @@ public class DefaultPaymentManager implements PaymentManager {
         ArrayList<Payment> payments = (ArrayList) paymentDao.findTransactionsByAccount(account.getNumber(), account.getBank());
         // Remove null values fetched
         while(payments.remove(null)) {
-            logger.info("removed null");
+            logger.debug("removed null");
         }
         // Initialize transactions ArrayList
         ArrayList<Transaction> transactions = new ArrayList<>();

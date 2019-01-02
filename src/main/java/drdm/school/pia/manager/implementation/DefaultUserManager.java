@@ -17,78 +17,167 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 /**
+ * @inheritDoc
+ * Implementation of UserManager interface
  * @author Michal Drda
  */
 @Service
-//@Scope(proxyMode = ScopedProxyMode.INTERFACES)
 @Transactional
 public class DefaultUserManager implements UserManager {
 
+    /**
+     * Initialization of userDao
+     */
     private UserDao userDao;
+    /**
+     * Initialization of encoder used for encoding passwords
+     */
     private Encoder encoder;
+    /**
+     * Initialization of roleManager to operate roles of user
+     */
     private RoleManager roleManager;
+    /**
+     * Initialization of cardManager to operate cards of user
+     */
     private CardManager cardManager;
+    /**
+     * Initialization of accountManager to operate account of the user
+     */
     private AccountManager accountManager;
+    /**
+     * Initialization of the stringGenerator to generate username
+     */
     private StringGenerator stringGenerator;
-
+    /**
+     * Logger used for logging of important events
+     */
     final static Logger logger = Logger.getLogger(DefaultUserManager.class);
-
+    /**
+     * Defined length of user name
+     */
     @Value("${username.length}")
     private int usernameLength;
 
+    /**
+     * Default constructor
+     */
     public DefaultUserManager(){
 
     }
 
+    /**
+     * Constructor of the class
+     * @param userDao provided userDao
+     * @param encoder provided encoder
+     */
     public DefaultUserManager(UserDao userDao, Encoder encoder) {
         this.userDao = userDao;
         this.encoder = encoder;
     }
 
+    /**
+     * Getter for a roleManager
+     * @return
+     */
     public RoleManager getRoleManager() { return roleManager; }
 
+    /**
+     * Setter for a RoleManager
+     * @param roleManager provided roleManager
+     */
     @Autowired
     public void setRoleManager(RoleManager roleManager) { this.roleManager = roleManager; }
 
+    /**
+     * Setter for an accountManager
+     * @param accountManager provided accountManager
+     */
     @Autowired
     public void setAccountManager(AccountManager accountManager) { this.accountManager = accountManager; }
 
+    /**
+     * Getter for an accountManager
+     * @return accountManager
+     */
     public AccountManager getAccountManager() {
         return accountManager;
     }
 
+    /**
+     * Getter for a card manager
+     * @return card manager
+     */
     public CardManager getCardManager() { return cardManager; }
 
+    /**
+     * Setter for a card manager
+     * @param cardManager provided card manager
+     */
     @Autowired
     public void setCardManager(CardManager cardManager) { this.cardManager = cardManager; }
 
+    /**
+     * Getter for an user dao
+     * @return user dao
+     */
     public UserDao getUserDao() {
         return userDao;
     }
 
+    /**
+     * Setter for an user dao
+     * @param userDao provided user dao
+     */
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
 
+    /**
+     * Getter for an encoder
+     * @return encoder
+     */
     public Encoder getEncoder() {
         return encoder;
     }
+
+    /**
+     * Setter for an encoder
+     * @param encoder provided encoder
+     */
     @Autowired
     public void setEncoder(Encoder encoder) {
         this.encoder = encoder;
     }
 
+    /**
+     * Getter for an string Generator
+     * @return string generator
+     */
     public StringGenerator getStringGenerator() { return stringGenerator; }
+
+    /**
+     * Setter of the String generator
+     * @param generator provided string generator
+     */
     @Autowired
     public void setStringGenerator(StringGenerator generator) { this.stringGenerator = generator; }
 
+    /**
+     * @inheritDoc
+     * Method used for authentication of the user with it's username and password
+     */
     @Override
     public boolean authenticate(String username, String password) {
         User u = userDao.findByUsername(username);
         return u != null && encoder.validate(password, u.getPassword());
     }
 
+    /**
+     * @inheritDoc
+     * Method used for registering of the user to the system
+     */
     @Override
     public void register(User newUser, String username) throws UserValidationException {
         logger.info("User register started...");
@@ -124,6 +213,10 @@ public class DefaultUserManager implements UserManager {
         logger.info("User saved: " + newUser.toString());
     }
 
+    /**
+     * @inheritDoc
+     * Method used for updating of the password of the user
+     */
     @Override
     public void updatePassword(String oldPwd, String newPwd, String username) throws UserValidationException {
         logger.info("Changing password started...");
@@ -138,6 +231,10 @@ public class DefaultUserManager implements UserManager {
         }
     }
 
+    /**
+     * @inheritDoc
+     * Method used for updating of the information for the user
+     */
     @Override
     public void updateUserInfo(String firstname, String lastname, String email, String gender, String address, String city, String zip, User user) throws UserValidationException {
         try {
@@ -154,16 +251,28 @@ public class DefaultUserManager implements UserManager {
         }
     }
 
+    /**
+     * @inheritDoc
+     * Method used for accessing userDao to find a user by it's username
+     */
     @Override
     public User findUserByUsername(String username) {
         return userDao.findByUsername(username);
     }
 
+    /**
+     * @inheritDoc
+     * Method used for accessing userDao to find a user by his account number and bank code
+     */
     @Override
     public User findUserByAccount(String accountNumber, String bankCode) {
         return userDao.findByAccountNo(accountNumber, bankCode);
     }
 
+    /**
+     * @inheritDoc
+     * Method used for removal of the user
+     */
     @Override
     public void removeUser(String username) {
         userDao.delete(username);

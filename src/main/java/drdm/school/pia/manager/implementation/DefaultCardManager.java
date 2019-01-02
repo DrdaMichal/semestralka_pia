@@ -17,26 +17,58 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 /**
+ * @inheritDoc
+ * Implementation of AccountManager interface
  * @author Michal Drda
  */
 @Service
-//@Scope(proxyMode = ScopedProxyMode.INTERFACES)
 @Transactional
 public class DefaultCardManager implements CardManager {
 
+    /**
+     * CardDao initialization
+     * used for accessing card objects
+     */
     private CardDao cardDao;
+    /**
+     * StringGenerator initialization
+     * used for generating strings
+     */
     private StringGenerator stringGenerator;
+    /**
+     * LongGenerator initialization
+     * used for generating numbers
+     */
     private LongGenerator numberGenerator;
+    /**
+     * ExpirationGenerator initialization
+     * used for creating card expirations from current date
+     */
     private ExpirationGenerator cardExpirationGenerator;
 
-    final static Logger logger = Logger.getLogger(Login.class);
+    /**
+     * Logger used for loging of important events
+     */
+    final static Logger logger = Logger.getLogger(DefaultCardManager.class);
 
+    /**
+     * Length of card number to be generated
+     */
     @Value("${cardNo.length}")
     private int cardNoLength;
+    /**
+     * Length of cvc code to be generated
+     */
     @Value("${cvcNo.length}")
     private int cvcNoLength;
+    /**
+     * Length of pin code to be generated
+     */
     @Value("${pin.length}")
     private int pinLength;
+    /**
+     * Months count of the period to be added to the current date to create card expiration
+     */
     @Value("${cardExpiration.months}")
     private int cardExpirationInMonthsLength;
 
@@ -55,30 +87,65 @@ public class DefaultCardManager implements CardManager {
         this.cardDao = cardDao;
     }
 
+    /**
+     * Getter of the card Dao
+     * @return cardDao
+     */
     public CardDao getCardDao() {
         return cardDao;
     }
 
+    /**
+     * Setter of the card dao
+     * @param cardDao provided card dao
+     */
     @Autowired
     public void setCardDao(CardDao cardDao) {
         this.cardDao = cardDao;
     }
 
+    /**
+     * Getter of the string generator
+     * @return string generator
+     */
     public StringGenerator getStringGenerator() { return stringGenerator; }
+
+    /**
+     * Setter of the string generator
+     * @param generator provided string generator
+     */
     @Autowired
     public void setStringGenerator(StringGenerator generator) { this.stringGenerator = generator; }
 
-    public LongGenerator getIntGenerator() { return numberGenerator; }
-    @Autowired
-    public void setIntGenerator(LongGenerator generator) { this.numberGenerator = generator; }
+    /**
+     * Getter for a number generator
+     * @return number generator
+     */
+    public LongGenerator getNumberGenerator() { return numberGenerator; }
 
+    /**
+     * Setter for a number generator
+     * @param generator provided number generator
+     */
+    @Autowired
+    public void setNumberGenerator(LongGenerator generator) { this.numberGenerator = generator; }
+
+    /**
+     * Getter for an expiration generator (card)
+     * @return card expiration generator
+     */
     public ExpirationGenerator getCardExpirationGenerator() { return cardExpirationGenerator; }
+
+    /**
+     * Setter for a card expiration generator
+     * @param generator provided card expiration generator
+     */
     @Autowired
     public void setcardExpirationGenerator(ExpirationGenerator generator) { this.cardExpirationGenerator = generator; }
 
     /**
-     * Creates a card for user - implementation
-     * @param user user to own the card created
+     * @inheritDoc
+     * creates a new card with provided user and account
      */
     @Override
     public void createCard(User user, Account account) {

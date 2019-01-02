@@ -5,6 +5,7 @@ import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.domain.exceptions.UserValidationException;
 
 /**
+ * Role manager - user for managing of the roles for users
  * @author Michal Drda
  */
 public interface RoleManager {

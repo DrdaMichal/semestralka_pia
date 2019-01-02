@@ -122,7 +122,7 @@ public class Role extends BaseObject implements IEntity<Long>, Serializable {
 
     /**
      * Generated toString method
-     * @return Card printed to string
+     * @return Role printed to string
      */
     @Override
     public String toString() {
