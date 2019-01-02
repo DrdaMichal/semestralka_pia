@@ -8,20 +8,21 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 /**
- * Data access object for Account entity
+ * JPA implementation of data access object for Account entity
  * @author Michal Drda
  */
 @Repository
 public class AccountDaoJpa extends GenericDaoJpa<Account, Long> implements AccountDao {
 
-
+    /**
+     * Constructor
+     */
     public AccountDaoJpa() {
         super(Account.class);
     }
 
     /**
      * @inheritDoc
-     *
      * This is an implementation of findByAccountNumber method in AccountDao interface
      */
     @Override
@@ -37,7 +38,6 @@ public class AccountDaoJpa extends GenericDaoJpa<Account, Long> implements Accou
 
     /**
      * @inheritDoc
-     *
      * This is an implementation of findByAccountNumber in AccountDao interface
      */
     @Override

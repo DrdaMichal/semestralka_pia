@@ -70,6 +70,7 @@
             <div class="row">
 
                 <div class="col-xs-12 col-sm-12 col-md-4 max-width-460 row">
+                    <h2>Manage a user</h2>
                     <form action="managing" method="post" class="form-horizontal">
                         <div class="row button-menu">
                             <div class="form-group form-input-170 disable-padding">

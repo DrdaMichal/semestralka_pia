@@ -134,6 +134,7 @@ public class Loader implements ApplicationListener<ContextRefreshedEvent> {
      * Should not be part of this application, used just for creating data in database, so the lecturer can easily test the application.
      * @param event provided by spring
      */
+    @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (fillup.equals("create")) {
             try {

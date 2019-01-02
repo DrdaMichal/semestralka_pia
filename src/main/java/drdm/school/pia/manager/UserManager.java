@@ -56,7 +56,7 @@ public interface UserManager {
      */
     User findUserByUsername(String username);
 
-    User findUserByAccount(String accountNumber);
+    User findUserByAccount(String accountNumber, String bankCode);
 
     void removeUser(String username);
 

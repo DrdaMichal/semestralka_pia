@@ -91,7 +91,7 @@ public class DefaultPaymentManager implements PaymentManager {
         // Check that receiving user exists in the bank
         User receivingUser = null;
         if (newPayment.getRecipientBankCode().equals(bankcode) && newPayment.getRecipientPreAccountNumber().isEmpty()) {
-            receivingUser = userManager.findUserByAccount(newPayment.getRecipientAccount());
+            receivingUser = userManager.findUserByAccount(newPayment.getRecipientAccount(), newPayment.getRecipientBankCode());
         }
         newPayment.setCreated(new java.util.Date());
         newPayment.setSenderAccount(user.getAccount().getNumber());

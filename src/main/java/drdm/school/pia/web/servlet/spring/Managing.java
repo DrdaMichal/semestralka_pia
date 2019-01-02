@@ -86,18 +86,18 @@ public class Managing extends AbstractServlet {
 
         if (updateAction != null || removeAction != null) {
             if (username.isEmpty()) {
-                errorDispatch("Username is mandatory!", req, resp);
+                errorDispatch(username, "Username is mandatory!", req, resp);
                 return;
             } else if(!stringValidator.isValid(username, alphanumericEnglishRegex)) {
                 req.setAttribute(USERNAME_PARAMETER, username);
-                errorDispatch("Username in invalid format!", req, resp);
+                errorDispatch(username,"Username in invalid format!", req, resp);
                 return;
             } else {
                 if (null == user || !username.equals(user.getUsername())) {
                     user = userManager.findUserByUsername(username);
                 }
                 if (null == user) {
-                    errorDispatch(("User with username <strong>" + username + "</strong> does not exist!"), req, resp);
+                    errorDispatch(username, ("User does not exist!"), req, resp);
                     return;
                 }
             }
@@ -171,9 +171,9 @@ public class Managing extends AbstractServlet {
 
             try {
                 userManager.updateUserInfo(firstname, lastname, email, gender, address, city,zip, user);
-                succsessDispatch(("User <strong>" + username + "</strong> information successfully updated!"), req, resp);
+                succsessDispatch(("User information successfully updated!"), req, resp);
             } catch (UserValidationException e) {
-                errorDispatch(("User information could for user <strong>" + username + "</strong> not be updated!"), req, resp);
+                errorDispatch(username, ("User information could  not be updated!"), req, resp);
             }
         }
         else if (removeUser != null) {
@@ -181,7 +181,7 @@ public class Managing extends AbstractServlet {
                 userManager.removeUser(user.getUsername());
                 succsessDispatch(("User <strong>" + user.getUsername() + "</strong was successfully deleted along with it's account and card!"), req, resp);
             } catch (Exception e) {
-                errorDispatch(("User <strong>" + user.getUsername() + "</strong> could not be deleted!"), req, resp);
+                errorDispatch(user.getUsername(), ("User could not be deleted!"), req, resp);
             }
         }
         else {
@@ -190,8 +190,10 @@ public class Managing extends AbstractServlet {
         }
     }
 
-    private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute(USERNAME_PARAMETER, user.getUsername());
+    private void errorDispatch(String username, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (!username.isEmpty()) {
+            req.setAttribute(USERNAME_PARAMETER, username);
+        }
         req.setAttribute(ERROR_ATTRIBUTE, err);
         req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
     }

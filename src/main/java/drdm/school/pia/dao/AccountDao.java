@@ -9,16 +9,16 @@ import drdm.school.pia.domain.entities.Account;
 public interface AccountDao extends GenericDao<Account, Long> {
 
     /**
-     * Find role associated with a given user name
+     * Find account associated with a given user name
      * @param username user name of the user provided
-     * @return role associated with a user with given user name
+     * @return account associated with a user with given user name or null
      */
     Account findByUserName(String username);
 
     /**
      * Find account with given account number
      * @param accountNumber account number provided
-     * @return account object with given account number
+     * @return account object with given account number or null
      */
     Account findByAccountNumber(String accountNumber);
 

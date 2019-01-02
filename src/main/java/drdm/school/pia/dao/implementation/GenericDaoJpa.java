@@ -13,20 +13,28 @@ import java.io.Serializable;
  */
 public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> implements GenericDao<E, PK> {
 
+    /**
+     * Entity manager used
+     */
     @PersistenceContext
     protected EntityManager entityManager;
+    /**
+     * Used for wiring by Spring framework
+     */
     protected Class<E> persistedClass;
 
     /**
-     *
-     *
-     * @param persistedClass entity type to be persisted by this instance
+     * Constructor
      */
     public GenericDaoJpa(Class<E> persistedClass) {
         this.entityManager = entityManager;
         this.persistedClass = persistedClass;
     }
 
+    /**
+     * @inheritDoc
+     * This is an implementation of save method in GenericDao interface
+     */
     @Override
     public E save(E instance) {
         if (instance.getPK() == null) {
@@ -39,11 +47,19 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
         }
     }
 
+    /**
+     * @inheritDoc
+     * This is an implementation of findOne method in GenericDao interface
+     */
     @Override
     public E findOne(PK id) {
         return entityManager.find(persistedClass, id);
     }
 
+    /**
+     * @inheritDoc
+     * This is an implementation of delete method in GenericDao interface
+     */
     @Override
     public void delete(PK id) {
         E en = entityManager.find(persistedClass, id);

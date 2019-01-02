@@ -160,10 +160,9 @@ public class DefaultUserManager implements UserManager {
     }
 
     @Override
-    public User findUserByAccount(String accountNumber) {
-        return userDao.findByAccountNo(accountNumber);
+    public User findUserByAccount(String accountNumber, String bankCode) {
+        return userDao.findByAccountNo(accountNumber, bankCode);
     }
-
 
     @Override
     public void removeUser(String username) {

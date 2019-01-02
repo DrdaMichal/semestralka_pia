@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
+/**
+ * JPA implementation of data access object for Card entity
+ * @author Michal Drda
+ */
 @Repository
 public class CardDaoJpa extends GenericDaoJpa<Card, Long> implements CardDao {
 
@@ -18,9 +22,8 @@ public class CardDaoJpa extends GenericDaoJpa<Card, Long> implements CardDao {
     }
 
     /**
-     * Find a card by it's number - implementation
-     * @param cardnumber
-     * @return
+     * @inheritDoc
+     * This is an implementation of findByCardnumber method in CardDao interface
      */
     @Override
     public Card findByCardnumber(String cardnumber) {
