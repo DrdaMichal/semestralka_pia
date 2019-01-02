@@ -195,7 +195,7 @@ public class Card extends BaseObject implements IEntity<Long>, Serializable {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, cardNumber, cvc, cardExpiration, pin, account);
+        return Objects.hash(id, cardNumber, cvc, cardExpiration, pin);
     }
 
     /**
@@ -209,8 +209,7 @@ public class Card extends BaseObject implements IEntity<Long>, Serializable {
                 ", cardNumber='" + cardNumber + '\'' +
                 ", cvc='" + cvc + '\'' +
                 ", cardExpiration='" + cardExpiration + '\'' +
-                ", pin='" + pin + '\'' +
-                ", account=" + account +
+                ", pin='" + pin +
                 '}';
     }
 

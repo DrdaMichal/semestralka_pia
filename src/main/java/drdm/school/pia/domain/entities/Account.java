@@ -161,7 +161,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, balance, number, bank, cards);
+        return Objects.hash(id, balance, number, bank);
     }
 
     /**
@@ -174,8 +174,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
                 "id=" + id +
                 ", balance=" + balance +
                 ", number='" + number + '\'' +
-                ", bank='" + bank + '\'' +
-                ", cards=" + cards +
+                ", bank='" + bank +
                 '}';
     }
 
