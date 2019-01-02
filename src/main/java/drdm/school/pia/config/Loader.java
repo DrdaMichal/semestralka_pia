@@ -33,6 +33,10 @@ public class Loader implements ApplicationListener<ContextRefreshedEvent> {
      */
     @Value("${db.state}")
     private String fillup;
+    @Value("${payments.delay}")
+    private int delay;
+    @Value("${payments.count.created.per.user}")
+    private int paymentsCreated;
 
     /**
      * Logger used for logging of the events while necessary.
@@ -154,15 +158,28 @@ public class Loader implements ApplicationListener<ContextRefreshedEvent> {
             }
             User user0001 = userManager.findUserByUsername("User0001");
             User user0002 = userManager.findUserByUsername("User0002");
-            for (int i = 0; i < 13; i++) {
+            for (int i = 0; i < paymentsCreated; i++) {
                 //new Payment(selectedTemplate, sendTo, bankCode, recPreAccount, account.getNumber(), account.getBank(), "", vs, cs, ss, recipientMessage, myMessage, amount, currency, transactionDateDate, template), req.getSession().getAttribute("user").toString()
                 try {
                     paymentManager.createPayment(new Payment("", user0002.getAccount().getNumber(), user0002.getAccount().getBank(), "", user0001.getAccount().getNumber(), user0001.getAccount().getBank(), "", Integer.toString(i), Integer.toString(i), Integer.toString(i), ("Recipient note " + i), ("My note " + i), Integer.toString(i + 1), (i % 2 == 1 ? "CZK" : "EUR"), new Date(), (i % 5 == 1 ? ("template " + i) : null)), "User0001");
+                    // Add sleep so payments ordering seem to be more realistic in history of transactions (ordered by transactionDate, created, id - all desc)
+                    try {
+                        Thread.sleep(delay);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 } catch (PaymentValidationException e) {
                     logger.warn("Payment [" + i + "]could not been created!");
+
                 }
                 try {
-                    paymentManager.createPayment(new Payment("", user0001.getAccount().getNumber(), user0001.getAccount().getBank(), "", user0002.getAccount().getNumber(), user0002.getAccount().getBank(), "", Integer.toString(i), Integer.toString(i), Integer.toString(i), ("Recipient note " + i), ("My note " + i), Integer.toString(i + 1), (i % 2 == 1 ? "CZK" : "EUR"), new Date(), (i % 4 == 1 ? ("template " + i) : null)), "User0002");
+                    paymentManager.createPayment(new Payment("", user0001.getAccount().getNumber(), user0001.getAccount().getBank(), "", user0002.getAccount().getNumber(), user0002.getAccount().getBank(), "", Integer.toString(i), Integer.toString(i), Integer.toString(i), ("Recipient note " + i), ("My note " + i), Integer.toString(paymentsCreated - i), (i % 2 == 1 ? "CZK" : "EUR"), new Date(), (i % 4 == 1 ? ("template " + i) : null)), "User0002");
+                    // Add sleep so payments ordering seem to be more realistic in history of transactions (ordered by transactionDate, created, id - all desc)
+                    try {
+                        Thread.sleep(delay*2);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 } catch (PaymentValidationException e) {
                     logger.warn("Payment [" + i + "]could not been created!");
                 }

@@ -5,6 +5,7 @@ import drdm.school.pia.domain.IEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
      * A generated ID of the entity
      */
     private Long id;
-    private double balance;
+    private BigDecimal balance;
     private String number;
     private String bank;
     private Set<Card> cards = new LinkedHashSet<>();
@@ -57,11 +58,11 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
         this.bank = bank;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 
 /**
  * @inheritDoc
@@ -60,7 +61,7 @@ public class DefaultAccountManager implements AccountManager {
      * Taken from properties
      */
     @Value("${default.balance}")
-    private Long defaultBalance;
+    private BigDecimal defaultBalance;
 
     /**
      * Default constructor for DefaultAccountManager
@@ -143,14 +144,16 @@ public class DefaultAccountManager implements AccountManager {
      * Used for updating of balance of provided account
      */
     @Override
-    public void updateBalance(Account account, double valueOfChange) throws PaymentValidationException {
-        if(valueOfChange < 0 && account.getBalance() < valueOfChange) {
+    public void updateBalance(Account account, BigDecimal valueOfChange) throws PaymentValidationException {
+        if(valueOfChange.compareTo(new BigDecimal(0)) < 0 && account.getBalance().compareTo(valueOfChange) < 0) {
             logger.info("Not enough money on the account " + account.getNumber() + "/" + account.getBank() + "!");
             throw new PaymentValidationException("On the account " + account.getNumber() + "/" + account.getBank() + " is not enough money!");
-        } else if (valueOfChange != 0) {
+        } else if (valueOfChange.compareTo(new BigDecimal(0)) != 0) {
             // Value to be added or substracted (as the valueOfChange has + or - sign, it's always balance + valueOfChange
             logger.info("Current account " + account.getNumber() + "/" + account.getBank() + " balance: " + account.getBalance());
-            account.setBalance(account.getBalance() + valueOfChange);
+            account.setBalance(account.getBalance().add(valueOfChange));
+        } else {
+            throw new RuntimeException("Something went wrong with balance update!");
         }
     }
 

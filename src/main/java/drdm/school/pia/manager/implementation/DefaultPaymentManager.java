@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -98,16 +99,16 @@ public class DefaultPaymentManager implements PaymentManager {
         newPayment.setSenderBankCode(user.getAccount().getBank());
         newPayment.setSenderPreAccountNumber("");
 
-        double course = 1;
+        BigDecimal course = new BigDecimal(1);
 
         if (!newPayment.getCurrency().equals(defaultCurrency)) {
             for (int i = 0; i<currenciesCourses.size(); i++ ) {
                 if (currenciesCourses.get(i).split(":")[0].equals(newPayment.getCurrency())) {
-                    course = Double.parseDouble(currenciesCourses.get(i).split(":")[1]);
+                    course = new BigDecimal(currenciesCourses.get(i).split(":")[1]);
                 }
             }
         }
-        newPayment.setAmount(course*newPayment.getAmount());
+        newPayment.setAmount(course.multiply(newPayment.getAmount()));
         newPayment.setCurrency(defaultCurrency);
 
         Calendar c = Calendar.getInstance();
@@ -134,13 +135,13 @@ public class DefaultPaymentManager implements PaymentManager {
             // Some logic here..
         } else {*/
 
-        if (newPayment.getAmount() > user.getAccount().getBalance()) {
+        if (newPayment.getAmount().compareTo(user.getAccount().getBalance()) > 0) {
             logger.info("Not enough money on the account " + user.getAccount().getNumber() + "/" + user.getAccount().getBank() + "!");
             throw new PaymentValidationException("Not enough money on the account " + user.getAccount().getNumber() + "/" + user.getAccount().getBank() + "!");
         }
 
         newPayment.validate();
-        accountManager.updateBalance(user.getAccount(), -1 * (newPayment.getAmount()));
+        accountManager.updateBalance(user.getAccount(), newPayment.getAmount().multiply(new BigDecimal(-1)));
 
         if (newPayment.getRecipientBankCode().equals(bankcode) && newPayment.getRecipientAccount().length() == accountNoLength && newPayment.getRecipientPreAccountNumber().isEmpty() && receivingUser != null) {
             accountManager.updateBalance(receivingUser.getAccount(), newPayment.getAmount());

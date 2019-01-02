@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
@@ -28,7 +29,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     private String ss;
     private String recipientMessage;
     private String senderMessage;
-    private double amount;
+    private BigDecimal amount;
     private String currency;
     private Date transactionDate;
     private String template;
@@ -81,7 +82,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
         this.ss = ss;
         this.recipientMessage = recipientMessage;
         this.senderMessage = senderMessage;
-        this.amount = Double.parseDouble(amount.replace(",", "."));
+        this.amount = new BigDecimal(amount.replace(",", "."));
         this.currency = currency;
         this.transactionDate = transactionDate;
         this.template = template;
@@ -202,9 +203,9 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     }
 
 
-    public double getAmount() { return amount; }
+    public BigDecimal getAmount() { return amount; }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -245,7 +246,8 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
      * @throws PaymentValidationException in case the instance is not in valid state.
      */
     public void validate() throws PaymentValidationException {
-        if(amount <= 0) throw new PaymentValidationException("Amount can't be zero or less!");
+        // BigDecimal comparison a>b --> a.compareTo(b) > 0
+        if(!(amount.compareTo(new BigDecimal(0)) > 0)) throw new PaymentValidationException("Amount can't be zero or less!");
         if(StringUtils.isBlank(recipientBankCode)) throw new PaymentValidationException("Bank code is a required field!");
         if(StringUtils.isBlank(recipientAccount)) throw new PaymentValidationException("Receiving account is a required field!");
         if(null == (transactionDate)) throw new PaymentValidationException("Transaction date is a required field!");

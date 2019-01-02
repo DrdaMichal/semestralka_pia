@@ -4,6 +4,8 @@ import drdm.school.pia.domain.entities.Account;
 import drdm.school.pia.domain.exceptions.PaymentValidationException;
 import drdm.school.pia.domain.entities.User;
 
+import java.math.BigDecimal;
+
 /**
  * Account manager
  * @author Michal Drda
@@ -21,7 +23,7 @@ public interface AccountManager {
      * @param account account which balance to be adjusted
      * @param valueOfChange valueOfChange provided as an addition or a substraction from the current account balance
      */
-    void updateBalance(Account account, double valueOfChange) throws PaymentValidationException;
+    void updateBalance(Account account, BigDecimal valueOfChange) throws PaymentValidationException;
 
     /**
      * Finds an account by given user name
