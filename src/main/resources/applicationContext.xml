@@ -41,6 +41,10 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
             <props>
                 <prop key="hibernate.hbm2ddl.auto">${db.state}</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</prop>
+                <prop key="hibernate.connection.CharSet">utf8mb4</prop>
+                <prop key="hibernate.connection.characterEncoding">utf8mb4</prop>
+                <prop key="hibernate.connection.useUnicode">true</prop>
+                <prop key="hibernate.connection.defaultNChar">true</prop>
             </props>
         </property>
     </bean>

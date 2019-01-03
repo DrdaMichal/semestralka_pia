@@ -1,6 +1,5 @@
 package drdm.school.pia.web.servlet.spring;
 
-import drdm.school.pia.dto.implementation.Transaction;
 import drdm.school.pia.manager.PaymentManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,22 +8,41 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * History of transactions page Servlet
+ * @author Michal Drda
+ */
 @WebServlet("/banking/history")
 public class History extends AbstractServlet {
 
+    /**
+     * Payment manager initialization
+     */
     private PaymentManager paymentManager;
 
+    /**
+     * Setter for a payment manager
+     * @param paymentManager provided payment manager
+     */
     @Autowired
     public void setPaymentManager(PaymentManager paymentManager) {
         this.paymentManager = paymentManager;
     }
 
+    /**
+     * @inheritDoc
+     * Get method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("USER")) {
+            req.setCharacterEncoding("UTF-8");
+            resp.setCharacterEncoding("UTF-8");
             req.setAttribute("paging", true);
             req.setAttribute("transactions", paymentManager.findTransactionsForUsername(req.getSession().getAttribute("user").toString()));
             req.getRequestDispatcher("/WEB-INF/pages/banking/history.jsp").forward(req, resp);
@@ -33,4 +51,5 @@ public class History extends AbstractServlet {
             resp.sendError(401, "You are not authorised to access this page.");
         }
     }
+
 }

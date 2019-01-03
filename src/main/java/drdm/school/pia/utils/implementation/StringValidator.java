@@ -9,12 +9,26 @@ import org.springframework.stereotype.Component;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @inheritDoc
+ * Implementation of Validator interface, used for validation of strings by patterns
+ * @author Michal Drda
+ */
 @Component
 public class StringValidator implements Validator {
 
+    /**
+     * Pattern initialization
+     */
     private static Pattern pattern;
+    /**
+     * Matcher initialization
+     */
     private static Matcher matcher;
-    final static Logger logger = Logger.getLogger(Login.class);
+    /**
+     * Logger initialization used for logging
+     */
+    final static Logger logger = Logger.getLogger(StringValidator.class);
 
     /**
      * Default constructor.
@@ -24,10 +38,8 @@ public class StringValidator implements Validator {
     }
 
     /**
-     * Validates stringToValidate with regex provided.
-     * @param stringToValidate
-     * @param regex
-     * @return
+     * @inheritDoc
+     * Validates stringToValidate against regex provided.
      */
     @Override
         public Boolean isValid(String stringToValidate, String regex) {

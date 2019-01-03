@@ -17,57 +17,138 @@ import java.util.Objects;
 
 /**
  * Servlet handling user registration requests.
- *
- * Date: 22.10.18
- *
  * @author Michal Drda
  */
 @WebServlet("/managing/register")
 public class Register extends AbstractServlet {
 
+    /**
+     * First name attriute
+     */
     private static final String FIRSTNAME_PARAMETER = "firstname";
+    /**
+     * Last name attribute
+     */
     private static final String LASTNAME_PARAMETER = "lastname";
+    /**
+     * E-mail attribute
+     */
     private static final String EMAIL_PARAMETER = "email";
+    /**
+     * Password attribute
+     */
     private static final String PASSWORD_PARAMETER = "password";
+    /**
+     * Password confirm attribute
+     */
     private static final String CONFIRM_PWD_PARAMETER = "confirmPwd";
+    /**
+     * Role attribute
+     */
     private static final String ROLE_PARAMETER = "role";
+    /**
+     * Address attribute
+     */
     private static final String ADDRESS_PARAMETER = "address";
+    /**
+     * City attribute
+     */
     private static final String CITY_PARAMETER = "city";
+    /**
+     * Zip code attribute
+     */
     private static final String ZIP_PARAMETER = "zip";
+    /**
+     * Birth id attribute
+     */
     private static final String BIRTHID_PARAMETER = "birthId";
+    /**
+     * Gender attribute
+     */
     private static final String GENDER_PARAMETER = "gender";
+    /**
+     * Captcha attribute
+     */
     private static final String CAPTCHA_PARAMETER = "captcha";
+    /**
+     * Terms of use accept attribute
+     */
     private static final String TERMS_PARAMETER = "terms";
-
+    /**
+     * Error message attribute
+     */
     private static final String ERROR_ATTRIBUTE = "err";
+    /**
+     * Success message attribute
+     */
     private static final String SUCCESS_ATTRIBUTE = "suc";
 
+    /**
+     * Validator initialization
+     */
+    private Validator stringValidator;
+    /**
+     * User manager initialization
+     */
     private UserManager userManager;
+    /**
+     * Properties value of the captcha
+     */
     @Value("${captcha.register.value}")
     private String captchaValue;
+    /**
+     * Properties value of the email regex validation pattern
+     */
     @Value("${regex.email}")
     private String emailRegex;
+    /**
+     * Properties value of the alphabetic words validation regex pattern
+     */
     @Value("${regex.default.multipleAlphabeticWords}")
     private String alphabeticWordsRegex;
+    /**
+     * Properties value of the password regex validation pattern
+     */
     @Value("${regex.default.password}")
     private String passwordRegex;
 
-    private final static Logger logger = Logger.getLogger(Login.class);
-    private Validator stringValidator;
+    /**
+     * Logger for logging useful information
+     */
+    private final static Logger logger = Logger.getLogger(Register.class);
 
+    /**
+     * Setter for a string validator
+     * @param stringValidator provided string validator
+     */
     @Autowired
     public void setStringValidator(Validator stringValidator) {
         this.stringValidator = stringValidator;
     }
 
+    /**
+     * Setter for a user manager
+     * @param userManager provided user manager
+     */
     @Autowired
     public void setUserManager(UserManager userManager) {
         this.userManager = userManager;
     }
 
+
+    /**
+     * @inheritDoc
+     * Get method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("ADMIN")) {
+            req.setCharacterEncoding("UTF-8");
+            resp.setCharacterEncoding("UTF-8");
             req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
         } else {
             // User is not authorised to do the action.
@@ -75,9 +156,19 @@ public class Register extends AbstractServlet {
         }
     }
 
+    /**
+     * @inheritDoc
+     * Post method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+
         String firstname = req.getParameter(FIRSTNAME_PARAMETER);
         String lastname = req.getParameter(LASTNAME_PARAMETER);
         String email = req.getParameter(EMAIL_PARAMETER);
@@ -139,11 +230,37 @@ public class Register extends AbstractServlet {
         }
     }
 
+    /**
+     * Dispatcher method used for success dispatch
+     * @param suc success message provided
+     * @param req provided request
+     * @param resp provided response
+     * @throws ServletException in case of error thrown
+     * @throws IOException in case of error thrown
+     */
     private void succsessDispatch(String suc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SUCCESS_ATTRIBUTE, suc);
         req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
     }
 
+    /**
+     * Dispatcher method used for error dispatch
+     * @param firstname provided first name value
+     * @param lastname provided last name value
+     * @param email provided e-mail value
+     * @param role provided role value
+     * @param address provided address value
+     * @param city provided city value
+     * @param zip provided zip code value
+     * @param birthId provided birth id value
+     * @param gender provided gender value
+     * @param terms provided terms of use checkbox value
+     * @param err provided error message
+     * @param req provided request
+     * @param resp provided response
+     * @throws ServletException in case of the error
+     * @throws IOException in case of the error
+     */
     private void errorDispatch(String firstname, String lastname, String email, String role, String address, String city, String zip, String birthId, String gender, String terms, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(FIRSTNAME_PARAMETER, firstname);
         req.setAttribute(LASTNAME_PARAMETER, lastname);
@@ -159,8 +276,4 @@ public class Register extends AbstractServlet {
         req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
     }
 
-    private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute(ERROR_ATTRIBUTE, err);
-        req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
-    }
 }

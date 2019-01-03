@@ -10,17 +10,34 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Wrapper around HttpSession providing authentication functionality.
+ * Used for security
  * @author Michal Drda
  */
 @Service
 public class AuthenticationService {
 
+    /**
+     * User parameter
+     */
     private static final String USER = "user";
+    /**
+     * Role parameter
+     */
     private static final String ROLE = "role";
-
+    /**
+     * Initialization of the user manager
+     */
     private UserManager userManager;
+    /**
+     * Initialization of the role manager
+     */
     private RoleManager roleManager;
 
+    /**
+     * Constructor used for spring linking of sources
+     * @param userManager
+     * @param roleManager
+     */
     @Autowired
     public AuthenticationService(UserManager userManager, RoleManager roleManager) {
         this.userManager = userManager;
@@ -38,20 +55,17 @@ public class AuthenticationService {
     public boolean authenticate(HttpSession session, String username, String password) {
         boolean authenticated = userManager.authenticate(username, password);
 
-
-
         if(authenticated) {
             Role userRole = roleManager.getUserRoleByUsername(username);
             session.setAttribute(USER, username);
             session.setAttribute(ROLE, userRole.getName());
             return true;
         }
-
         return false;
     }
 
     /**
-     *
+     * Method used for checking if user is logged or not
      * @param session session associated with the request
      * @return true if there is a user currently logged in within this session.
      */

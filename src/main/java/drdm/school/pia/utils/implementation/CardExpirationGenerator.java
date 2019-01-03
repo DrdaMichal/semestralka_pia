@@ -1,6 +1,7 @@
 package drdm.school.pia.utils.implementation;
 
 import drdm.school.pia.utils.ExpirationGenerator;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
@@ -9,35 +10,34 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Used for generation of Expiration Date for a Credit Card
+ * @inheritDoc
+ * Used for card expiration generation
  * @author Michal Drda
  */
 @Component
 public class CardExpirationGenerator implements ExpirationGenerator {
 
-    private final Date currentDate = new Date();
-    private final Calendar c = Calendar.getInstance();
-    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-
     /**
-     * Adds months to date in parameter (not implemented) yet)
-     * @param startDate date of period start (yyyy/MM/dd)
-     * @param monthsToAdd months to be added
-     * @return expirationDate in format MM/yy
+     * Initialization of the date with current date value
      */
-    @Override
-    public String generateExpiration(Date startDate, int monthsToAdd) {
-        return null;
-        //Not implemented
-    }
+    private final Date currentDate = new Date();
+    /**
+     * Initialization of the calendar instance
+     */
+    private final Calendar c = Calendar.getInstance();
+    /**
+     * Validation pattern link
+     */
+    @Value("${expiration.pattern.date}")
+    String validationPattern;
 
     /**
-     * Adds months to current date
-     * @param monthsToAdd months to be added
-     * @return expirationDate in format MM/yy
+     * @inheritDoc
+     * Used for expiration generation
      */
     @Override
     public String generateExpiration(int monthsToAdd) {
+        DateFormat dateFormat = new SimpleDateFormat(validationPattern);
         c.setTime(currentDate);
         c.add(Calendar.MONTH, monthsToAdd);
         Date exactExpirationDate = c.getTime();

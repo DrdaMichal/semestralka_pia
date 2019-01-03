@@ -34,4 +34,5 @@ public class BaseObject extends AbstractEntity {
     public void setId(Long id) {
         this.id = id;
     }
+
 }

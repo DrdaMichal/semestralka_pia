@@ -20,69 +20,185 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Servlet user for a pay page
+ * @author Michal Drda
+ */
 @WebServlet("/banking/pay")
 public class Pay extends AbstractServlet {
 
+    /**
+     * Selected template attribute (in case that user want's to load exisitng template)
+     */
     private static final String SELECTEDTEMPLATE_PARAMETER = "selecttemplate";
+    /**
+     * Recipient of the payment attribute
+     */
     private static final String SENDTO_PARAMETER = "sendto";
+    /**
+     * Recipient's bank code attribute
+     */
     private static final String BANKCODE_PARAMETER = "bankcode";
+    /**
+     * Variable symbol attribute
+     */
     private static final String VS_PARAMETER = "vs";
+    /**
+     * Constant symbol attribute
+     */
     private static final String CS_PARAMETER = "cs";
+    /**
+     * Specific symbol attribute
+     */
     private static final String SS_PARAMETER = "ss";
+    /**
+     * Recipient message note attribute
+     */
     private static final String RECIPIENTMESSAGE_PARAMETER = "msgrec";
+    /**
+     * Sender message note attribute
+     */
     private static final String MYMESSAGE_PARAMETER = "msgme";
+    /**
+     * Amount attribute
+     */
     private static final String AMOUNT_PARAMETER = "amount";
+    /**
+     * Currency attribute
+     */
     private static final String CURRENCY_PARAMETER = "currency";
+    /**
+     * Transaction date attribute
+     */
     private static final String TRANSACTIONDATE_PARAMETER = "transactiondate";
+    /**
+     * Template true/false attribute
+     */
     private static final String ISTEMPLATE_PARAMETER = "istemplate";
+    /**
+     * Template name attribute
+     */
     private static final String TEMPLATE_PARAMETER = "template";
+    /**
+     * Captcha for payment attribute
+     */
     private static final String CAPTCHA_PARAMETER = "captcha";
-
+    /**
+     * Success message attribute
+     */
     private static final String ERROR_ATTRIBUTE = "err";
+    /**
+     * Error message attribute
+     */
     private static final String SUCCESS_ATTRIBUTE = "suc";
 
+    /**
+     * User manager initialization
+     */
     private UserManager userManager;
+    /**
+     * Payment manager initialization
+     */
     private PaymentManager paymentManager;
+    /**
+     * Account manager initialization
+     */
     private AccountManager accountManager;
+    /**
+     * Account instance initialization
+     */
     private Account account;
+    /**
+     * Properties value for regex for symbols validation
+     */
     @Value("${regex.symbol}")
     private String symbolRegex;
+    /**
+     * Properties value for numbers validation
+     */
     @Value("${regex.default.numeric}")
     private String numberRegex;
+    /**
+     * Properties value for captcha value
+     */
     @Value("${captcha.payment.value}")
     private String paymentCaptcha;
+    /**
+     * Properties value bank codes list
+     */
     @Value("#{'${bank.codes}'.split(',')}")
     private List<String> bankCodes;
+    /**
+     * Properties value for number with decimals validation
+     */
     @Value("${regex.numberWithDecimals}")
     private String numberWithDecimalsRegex;
+    /**
+     * Properties value for pre account number validation
+     */
     @Value("${regex.preAccountNumber}")
     private String preAccountRegex;
+    /**
+     * Properties value for account number validation
+     */
     @Value("${regex.account}")
     private String accountRegex;
 
+    /**
+     * Logger class used for logging of useful info
+     */
     private final static Logger logger = Logger.getLogger(Pay.class);
 
+    /**
+     * Validator initialization
+     */
     private Validator stringValidator;
 
+    /**
+     * Setter for a string validator
+     * @param stringValidator provided string validator
+     */
     @Autowired
     public void setStringValidator(Validator stringValidator) {
         this.stringValidator = stringValidator;
     }
 
+    /**
+     * Setter for a user manager
+     * @param userManager provided user manager
+     */
     @Autowired
     public void setUserManager(UserManager userManager) { this.userManager = userManager; }
 
+    /**
+     * Setter for an account manager
+     * @param accountManager provided account manager
+     */
     @Autowired
     public void setAccountManager(AccountManager accountManager) { this.accountManager = accountManager; }
 
+    /**
+     * Setter for a payment manager
+     * @param paymentManager provided payment manager
+     */
     @Autowired
     public void setPaymentManager(PaymentManager paymentManager) {
         this.paymentManager = paymentManager;
     }
 
+    /**
+     * @inheritDoc
+     * Get method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("USER")) {
+            req.setCharacterEncoding("UTF-8");
+            resp.setCharacterEncoding("UTF-8");
             req.setAttribute("templates", paymentManager.loadPaymentTemplate(req.getSession().getAttribute("user").toString()));
             req.setAttribute("bankcodes", bankCodes);
             req.getRequestDispatcher("/WEB-INF/pages/banking/pay.jsp").forward(req, resp);
@@ -92,9 +208,18 @@ public class Pay extends AbstractServlet {
         }
     }
 
+    /**
+     * @inheritDoc
+     * Post method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         String selectedTemplate = req.getParameter(SELECTEDTEMPLATE_PARAMETER);
         String sendTo = "";
         String recPreAccount = "";
@@ -114,8 +239,6 @@ public class Pay extends AbstractServlet {
         String isTemplate = req.getParameter(ISTEMPLATE_PARAMETER);
         String template = req.getParameter(TEMPLATE_PARAMETER);
         String captcha = req.getParameter(CAPTCHA_PARAMETER);
-
-
 
         if (req.getParameter("loadtemplate") != null) {
             if ("" != selectedTemplate) {
@@ -243,6 +366,14 @@ public class Pay extends AbstractServlet {
 
     }
 
+    /**
+     * Dispatcher method used for success dispatch
+     * @param suc success message provided
+     * @param req provided request
+     * @param resp provided response
+     * @throws ServletException in case of error thrown
+     * @throws IOException in case of error thrown
+     */
     private void succsessDispatch(String suc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SUCCESS_ATTRIBUTE, suc);
         req.setAttribute("templates", paymentManager.loadPaymentTemplate(req.getSession().getAttribute("user").toString()));
@@ -250,6 +381,28 @@ public class Pay extends AbstractServlet {
         req.getRequestDispatcher("/WEB-INF/pages/banking/pay.jsp").forward(req, resp);
     }
 
+    /**
+     * Dispatcher method used for error dispatch
+     * @param selectedTemplate provided template selected to be loaded for recipient
+     * @param sendTo provided account number for recipient
+     * @param bankCode provided bank code for recipient
+     * @param recPreAccount provided pre account number for recipient
+     * @param vs provided variable symbol
+     * @param cs provided constant symbol
+     * @param ss provided specific symbol
+     * @param recipientMessage provided message note for recipient
+     * @param myMessage provided message note for sender
+     * @param transactionDate provided transaction date
+     * @param amount provided amount code
+     * @param currency provided currency code
+     * @param isTemplate provided boolean value if template should be saved or not
+     * @param template provided template name
+     * @param err provided error message
+     * @param req provided request
+     * @param resp provided response
+     * @throws ServletException in case of the error
+     * @throws IOException in case of the error
+     */
     private void errorDispatch(String selectedTemplate, String sendTo, String bankCode, String recPreAccount, String vs, String cs, String ss, String recipientMessage, String myMessage, String transactionDate, String amount, String currency, String isTemplate, String template, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SELECTEDTEMPLATE_PARAMETER, selectedTemplate);
         req.setAttribute(SENDTO_PARAMETER, (!recPreAccount.isEmpty() ? (recPreAccount + "-") : "" ) + sendTo);

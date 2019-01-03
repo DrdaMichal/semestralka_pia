@@ -1,14 +1,15 @@
 package drdm.school.pia.utils;
 
 /**
+ * Encoder interface used for encoding secret values
  * @author Michal Drda
  */
 public interface Encoder {
 
     /**
      * Returns hash of the passed text.
-     * @param text
-     * @return
+     * @param text to be encoded
+     * @return hashed text
      */
     String encode(String text);
 

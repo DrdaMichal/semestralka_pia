@@ -9,22 +9,28 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
+ * @inheritDoc
  * Class used for generating numbers.
  * @author Michal Drda
  */
 @Component
 public class GenerateNumber implements LongGenerator {
 
-    final static Logger logger = Logger.getLogger(Login.class);
+    /**
+     * Logger used for the GenerateNumber class
+     */
+    final static Logger logger = Logger.getLogger(GenerateNumber.class);
 
+    /**
+     * Constructor
+     */
     public GenerateNumber() {
 
     }
 
     /**
+     * @inheritDoc
      * Generates a random number of positive value
-     * @param numberLength number of digits
-     * @return positive number of desired length
      */
     public long generate(int numberLength) {
         Random rnd = new Random();
@@ -47,16 +53,6 @@ public class GenerateNumber implements LongGenerator {
 
         return randomNumber;
 
-    }
-
-    /**
-     * Generates a bank account from number count before "/" and bankcode
-     * @param numberlength count of digits
-     * @param bankcode 4digit bank code
-     * @return bank account generated number
-     */
-    public String generateBankAccount(int numberlength, String bankcode) {
-        return (generate(numberlength) + "/" + bankcode);
     }
 
 }

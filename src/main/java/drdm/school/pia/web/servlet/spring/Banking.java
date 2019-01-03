@@ -1,6 +1,5 @@
 package drdm.school.pia.web.servlet.spring;
 
-
 import drdm.school.pia.domain.entities.Account;
 import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.domain.exceptions.UserValidationException;
@@ -21,71 +20,184 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Servlet for banking page
+ * @author Michal Drda
+ */
 @WebServlet({"/banking"})
 public class Banking extends AbstractServlet {
 
+    /**
+     * Error attribute
+     */
     private static final String ERROR_ATTRIBUTE = "err";
+    /**
+     * Success attribute
+     */
     private static final String SUCCESS_ATTRIBUTE = "suc";
+    /**
+     * First name attribute
+     */
     private static final String FIRSTNAME_ATTRIBUTE = "firstname";
+    /**
+     * Last name attribute
+     */
     private static final String LASTNAME_ATTRIBUTE = "lastname";
+    /**
+     * E-mail attribute
+     */
     private static final String EMAIL_ATTRIBUTE = "email";
+    /**
+     * Gender attribute
+     */
     private static final String GENDER_ATTRIBUTE = "gender";
+    /**
+     * Address attribute
+     */
     private static final String ADDRESS_ATTRIBUTE = "address";
+    /**
+     * City attribute
+     */
     private static final String CITY_ATTRIBUTE = "city";
+    /**
+     * Zip code attribute
+     */
     private static final String ZIP_ATTRIBUTE = "zip";
+    /**
+     * Captcha user managing attribute
+     */
     private static final String CAPTCHA_USER_ATTRIBUTE = "captchaUser";
+    /**
+     * Old password attribute
+     */
     private static final String OLDPWD_ATTRIBUTE = "oldPwd";
+    /**
+     * New password attribute
+     */
     private static final String NEWPWD_ATTRIBUTE = "newPwd";
+    /**
+     * Confirm password attribute
+     */
     private static final String CONFIRMPWD_ATTRIBUTE = "confirmPwd";
+    /**
+     * Captcha password change attribute
+     */
     private static final String CAPTCHA_PWD_ATTRIBUTE = "captchaPwd";
-
+    /**
+     * Transactions list initialization
+     */
     private static List<Transaction> transactions;
 
 
+    /**
+     * Initialization of the payment manager
+     */
     private PaymentManager paymentManager;
+    /**
+     * Initialization of the account manager
+     */
     private AccountManager accountManager;
+    /**
+     * Initialization of the user manager
+     */
     private UserManager userManager;
+    /**
+     * Initialization of the account
+     */
     private Account account;
+    /**
+     * Initialization of the user
+     */
     private User user;
+    /**
+     * Initialization of the string validator
+     */
     private Validator stringValidator;
 
+    /**
+     * Properties value of currency
+     */
     @Value("${default.currency}")
     private String currency;
+    /**
+     * Properties value of captcha for password change
+     */
     @Value("${captcha.banking.updatePsw}")
     private String captchaPwdValue;
+    /**
+     * Properties value of captcha for user change
+     */
     @Value("${captcha.banking.updateUser}")
     private String captchaUserValue;
+    /**
+     * Properties value of pattern for email validation
+     */
     @Value("${regex.email}")
     private String emailRegex;
+    /**
+     * Properties value of alphabetic words validation
+     */
     @Value("${regex.default.multipleAlphabeticWords}")
     private String alphabeticWordsRegex;
+    /**
+     * Properties value for password validation
+     */
     @Value("${regex.default.password}")
     private String passwordRegex;
 
+    /**
+     * Logger instance initialization
+     */
     private final static Logger logger = Logger.getLogger(Banking.class);
 
+    /**
+     * Setter for a String validator
+     * @param stringValidator provided string validator
+     */
     @Autowired
     public void setStringValidator(Validator stringValidator) {
         this.stringValidator = stringValidator;
     }
 
+    /**
+     * Setter for a payment manager
+     * @param paymentManager provided payment manager
+     */
     @Autowired
     public void setPaymentManager(PaymentManager paymentManager) {
         this.paymentManager = paymentManager;
     }
 
+    /**
+     * Setter for a account manager
+     * @param accountManager provided account manager
+     */
     @Autowired
     public void setAccountManager(AccountManager accountManager) {
         this.accountManager = accountManager;
     }
 
+    /**
+     * Setter for a user manager
+     * @param userManager provided user manager
+     */
     @Autowired
     public void setUserManager(UserManager userManager) {
         this.userManager = userManager;
     }
 
+    /**
+     * @inheritDoc
+     * Get method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("USER")) {
+            req.setCharacterEncoding("UTF-8");
+            resp.setCharacterEncoding("UTF-8");
             transactions = paymentManager.findTransactionsForUsername(req.getSession().getAttribute("user").toString());
             if (transactions != null && transactions.size() > 10) {
                 transactions = transactions.subList(0,10);
@@ -105,9 +217,18 @@ public class Banking extends AbstractServlet {
         }
     }
 
+    /**
+     * @inheritDoc
+     * Post method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         String username = req.getSession().getAttribute("user").toString();
 
         if (req.getParameter("updatePsw") != null) {
@@ -228,6 +349,14 @@ public class Banking extends AbstractServlet {
 
     }
 
+    /**
+     * Dispatcher method used for success dispatch
+     * @param suc success message provided
+     * @param req provided request
+     * @param resp provided response
+     * @throws ServletException in case of error thrown
+     * @throws IOException in case of error thrown
+     */
     private void succsessDispatch(String suc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SUCCESS_ATTRIBUTE, suc);
         setDefaultUserAttributes(req, user);
@@ -236,6 +365,14 @@ public class Banking extends AbstractServlet {
         req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
     }
 
+    /**
+     * Dispatcher method used for error dispatch
+     * @param err error message provided
+     * @param req provided request
+     * @param resp provided response
+     * @throws ServletException in case of error thrown
+     * @throws IOException in case of error thrown
+     */
     private void errorDispatch(String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
         setDefaultUserAttributes(req, user);
@@ -244,15 +381,41 @@ public class Banking extends AbstractServlet {
         req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
     }
 
+    /**
+     * Dispatcher method used for error dispatch
+     * @param firstname provided first name
+     * @param lastname provided last name
+     * @param email provided e-mail
+     * @param gender provided gender
+     * @param address provided address
+     * @param city provided city
+     * @param zip provided zip code
+     * @param err error message provided
+     * @param req provided request
+     * @param resp provided response
+     * @throws ServletException in case of error thrown
+     * @throws IOException in case of error thrown
+     */
     private void errorDispatchUser(String firstname, String lastname, String email, String gender, String address, String city, String zip, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
-        setDefaultUserAttributes(req, user);
+        req.setAttribute(FIRSTNAME_ATTRIBUTE, firstname);
+        req.setAttribute(LASTNAME_ATTRIBUTE, lastname);
+        req.setAttribute(EMAIL_ATTRIBUTE, email);
+        req.setAttribute(GENDER_ATTRIBUTE, gender);
+        req.setAttribute(ADDRESS_ATTRIBUTE, address);
+        req.setAttribute(CITY_ATTRIBUTE, city);
+        req.setAttribute(ZIP_ATTRIBUTE, zip);
         setDefaultAccountAttributes(req, account);
         setDefaultTransactionsAttributes(req, transactions);
         req.getRequestDispatcher("/WEB-INF/pages/banking.jsp").forward(req, resp);
     }
 
-    private void setDefaultUserAttributes(HttpServletRequest req, User user) throws ServletException, IOException {
+    /**
+     * Used for default User attributes loading
+     * @param req provided request
+     * @param user provided user instance
+     */
+    private void setDefaultUserAttributes(HttpServletRequest req, User user) {
         req.setAttribute(FIRSTNAME_ATTRIBUTE, user.getFirstname());
         req.setAttribute(LASTNAME_ATTRIBUTE, user.getLastname());
         req.setAttribute(EMAIL_ATTRIBUTE, user.getEmail());
@@ -262,12 +425,22 @@ public class Banking extends AbstractServlet {
         req.setAttribute(ZIP_ATTRIBUTE, user.getZip());
     }
 
-    private void setDefaultAccountAttributes(HttpServletRequest req, Account account) throws ServletException, IOException {
+    /**
+     * Used for default Account attributes loading
+     * @param req provided request
+     * @param account provided account instance
+     */
+    private void setDefaultAccountAttributes(HttpServletRequest req, Account account) {
         req.setAttribute("accountNumber", account.getNumber() + "/" + account.getBank());
         req.setAttribute("balance", String.format("%.3f",account.getBalance()) + " " + currency);
     }
 
-    private void setDefaultTransactionsAttributes(HttpServletRequest req, List<Transaction> transactions) throws ServletException, IOException {
+    /**
+     * Used for default Transaction attributes loading
+     * @param req provided request
+     * @param transactions provided transactions List instance
+     */
+    private void setDefaultTransactionsAttributes(HttpServletRequest req, List<Transaction> transactions) {
         req.setAttribute("transactions", transactions);
     }
 

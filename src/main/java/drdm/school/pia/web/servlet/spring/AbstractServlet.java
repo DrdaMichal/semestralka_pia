@@ -9,12 +9,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 /**
+ * Abstract servlet class used for Spring wiring
  * @author Michal Drda
  */
 public abstract class AbstractServlet extends HttpServlet {
 
+    /**
+     * Spring wiring bean factory
+     */
     protected AutowireCapableBeanFactory ctx;
 
+    /**
+     * Init of spring servlets config
+     * @param config config
+     * @throws ServletException exception in case of error
+     */
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -23,4 +32,5 @@ public abstract class AbstractServlet extends HttpServlet {
         ctx = context.getAutowireCapableBeanFactory();
         ctx.autowireBean(this);
     }
+
 }

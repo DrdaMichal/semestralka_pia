@@ -13,48 +13,108 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Servlet for a login page
+ * @author Michal Drda
+ */
 @WebServlet("/login")
 public class Login extends AbstractServlet {
-    private static final String USERNAME_PARAMETER = "username";
-    private static final String PASSWORD_PARAMETER = "password";
 
+    /**
+     * username parameter
+     */
+    private static final String USERNAME_PARAMETER = "username";
+    /**
+     * password parameter
+     */
+    private static final String PASSWORD_PARAMETER = "password";
+    /**
+     * Error attribute
+     */
+    private static final String ERR_ATTRIBUTE = "err";
+    /**
+     * Properties value of regex for alphanumeric english string validation
+     */
     @Value("${regex.alphanumericEnglish}")
     private String alphanumericEnglishRegex;
+    /**
+     * Properties value of regex for password validation
+     */
     @Value("${regex.default.password}")
     private String passwordRegex;
 
+    /**
+     * Logger used for logging of useful information
+     */
     final static Logger logger = Logger.getLogger(Login.class);
 
-    private static final String ERR_ATTRIBUTE = "err";
-
+    /**
+     * User manager initialization
+     */
     private UserManager userManager;
+    /**
+     * String validator initialization
+     */
     private Validator stringValidator;
+    /**
+     * Authentication service initialization
+     */
+    private AuthenticationService authService;
 
+    /**
+     * Setter for a string validator
+     * @param stringValidator provided string validator
+     */
     @Autowired
     public void setStringValidator(Validator stringValidator) {
         this.stringValidator = stringValidator;
     }
 
+    /**
+     * Setter for a user manager
+     * @param userManager provided user manager
+     */
     @Autowired
     public void setUserManager(UserManager userManager) {
         this.userManager = userManager;
     }
 
-    private AuthenticationService authService;
-
+    /**
+     * Setter for an auth service
+     * @param authService provided authentication service
+     */
     @Autowired
     public void setAuthService(AuthenticationService authService) {
         this.authService = authService;
     }
 
+    /**
+     * @inheritDoc
+     * Get method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 
+    /**
+     * @inheritDoc
+     * Post method implementation
+     * @param req servletRequest provided
+     * @param resp servletResponse provided
+     * @throws ServletException thrown in case of error
+     * @throws IOException thrown in case of error
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException  {
         req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         String username = req.getParameter(USERNAME_PARAMETER);
         String password = req.getParameter(PASSWORD_PARAMETER);
 
@@ -97,6 +157,15 @@ public class Login extends AbstractServlet {
         }
     }
 
+    /**
+     * Dispatcher method used for error dispatch
+     * @param username provided username
+     * @param err error message provided
+     * @param req provided request
+     * @param resp provided response
+     * @throws ServletException in case of error thrown
+     * @throws IOException in case of error thrown
+     */
     private void errorDispatch(String username, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(USERNAME_PARAMETER, username);
         req.setAttribute(ERR_ATTRIBUTE, err);

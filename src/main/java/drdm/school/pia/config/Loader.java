@@ -151,7 +151,7 @@ public class Loader implements ApplicationListener<ContextRefreshedEvent> {
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (fillup.equals("create")) {
             try {
-                userManager.register(new User("0001", "USER", "First", "User", "user1@email.com", "User street 1", "Usertown", "111111", "1234567890", "male"), "User0001");
+                userManager.register(new User("0001", "USER", "ěščřžýáíé", "User", "user1@email.com", "User street 1", "Usertown", "111111", "1234567890", "male"), "User0001");
             } catch (UserValidationException e) {
                 e.printStackTrace();
             }
