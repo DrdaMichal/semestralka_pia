@@ -148,8 +148,6 @@ public class Managing extends AbstractServlet {
      * @throws IOException thrown in case of error
      */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("ADMIN")) {
             req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
         } else {
@@ -168,8 +166,6 @@ public class Managing extends AbstractServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException  {
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
         String username = req.getParameter(USERNAME_PARAMETER);
         String updateAction = req.getParameter(UPDATE_ACTION_PARAMETER);
         String removeAction = req.getParameter(REMOVE_ACTION_PARAMETER);
@@ -272,9 +268,18 @@ public class Managing extends AbstractServlet {
         else if (removeUser != null) {
             try {
                 userManager.removeUser(user.getUsername());
-                setDefaultUserAttributes(req, null);
-                succsessDispatch(("User <strong>" + user.getUsername() + "</strong was successfully deleted along with it's account and card!"), req, resp);
+                user = null;
+                req.setAttribute(USERNAME_PARAMETER, "");
+                req.setAttribute(FIRSTNAME_ATTRIBUTE, "");
+                req.setAttribute(LASTNAME_ATTRIBUTE, "");
+                req.setAttribute(EMAIL_ATTRIBUTE, "");
+                req.setAttribute(GENDER_ATTRIBUTE, "");
+                req.setAttribute(ADDRESS_ATTRIBUTE, "");
+                req.setAttribute(CITY_ATTRIBUTE, "");
+                req.setAttribute(ZIP_ATTRIBUTE, "");
+                succsessDispatch(("User was successfully deleted along with it's account and card!"), req, resp);
             } catch (Exception e) {
+                logger.debug(e.getMessage());
                 errorDispatch(user.getUsername(), ("User could not be deleted!"), req, resp);
             }
         }
@@ -339,16 +344,6 @@ public class Managing extends AbstractServlet {
      * @param user provided user instance
      */
     private void setDefaultUserAttributes(HttpServletRequest req, User user) throws ServletException, IOException {
-        if (null == user) {
-            req.setAttribute(USERNAME_PARAMETER, "");
-            req.setAttribute(FIRSTNAME_ATTRIBUTE, "");
-            req.setAttribute(LASTNAME_ATTRIBUTE, "");
-            req.setAttribute(EMAIL_ATTRIBUTE, "");
-            req.setAttribute(GENDER_ATTRIBUTE, "");
-            req.setAttribute(ADDRESS_ATTRIBUTE, "");
-            req.setAttribute(CITY_ATTRIBUTE, "");
-            req.setAttribute(ZIP_ATTRIBUTE, "");
-        }
         req.setAttribute(USERNAME_PARAMETER, user.getUsername());
         req.setAttribute(FIRSTNAME_ATTRIBUTE, user.getFirstname());
         req.setAttribute(LASTNAME_ATTRIBUTE, user.getLastname());

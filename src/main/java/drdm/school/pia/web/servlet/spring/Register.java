@@ -147,8 +147,6 @@ public class Register extends AbstractServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("ADMIN")) {
-            req.setCharacterEncoding("UTF-8");
-            resp.setCharacterEncoding("UTF-8");
             req.getRequestDispatcher("/WEB-INF/pages/managing/register.jsp").forward(req, resp);
         } else {
             // User is not authorised to do the action.
@@ -166,8 +164,6 @@ public class Register extends AbstractServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
 
         String firstname = req.getParameter(FIRSTNAME_PARAMETER);
         String lastname = req.getParameter(LASTNAME_PARAMETER);

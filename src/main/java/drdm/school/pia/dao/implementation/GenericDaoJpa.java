@@ -42,8 +42,8 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
             return instance;
         }
         else {
-            // zmerguje vsechno se stejnym PK, proto muzeme pouzivat jen kdyz PK neexistuje -> novy zaznam
             return entityManager.merge(instance);
+
         }
     }
 
@@ -64,7 +64,10 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
     public void delete(PK id) {
         E en = entityManager.find(persistedClass, id);
         if(en != null) {
+            //entityManager.remove(entityManager.contains(en) ? en : entityManager.merge(en));
             entityManager.remove(en);
+            entityManager.flush();
+            entityManager.clear();
         }
     }
 

@@ -24,8 +24,6 @@ public class About extends AbstractServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null == req.getSession().getAttribute("role")) {
-            req.setCharacterEncoding("UTF-8");
-            resp.setCharacterEncoding("UTF-8");
             req.getRequestDispatcher("/WEB-INF/pages/about.jsp").forward(req, resp);
         } else {
             // User is not authorised to do the action.

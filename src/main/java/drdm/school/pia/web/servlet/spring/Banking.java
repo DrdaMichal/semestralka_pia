@@ -227,8 +227,6 @@ public class Banking extends AbstractServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
         String username = req.getSession().getAttribute("user").toString();
 
         if (req.getParameter("updatePsw") != null) {

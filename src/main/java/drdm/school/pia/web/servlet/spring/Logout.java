@@ -51,8 +51,6 @@ public class Logout extends AbstractServlet {
      */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && permittedRoles.contains(req.getSession().getAttribute("role"))) {
-            req.setCharacterEncoding("UTF-8");
-            resp.setCharacterEncoding("UTF-8");
             req.setAttribute("redirectInterval", redirectInterval);
             System.out.println("User[" + req.getSession().getAttribute("user") + "], role[" + req.getSession().getAttribute("role") + "], session[" + req.getSession().getId() + "] successfully logged out.");
             req.getSession().invalidate();

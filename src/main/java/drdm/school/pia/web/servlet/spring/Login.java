@@ -98,8 +98,6 @@ public class Login extends AbstractServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 
