@@ -230,6 +230,7 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
      * Setter for the email
      * @param email provided e-mail
      */
+    @Column(unique = true)
     public void setEmail(String email) {
         this.email = email;
     }

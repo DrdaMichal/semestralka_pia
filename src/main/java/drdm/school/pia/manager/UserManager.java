@@ -70,4 +70,11 @@ public interface UserManager {
      */
     void removeUser(String username);
 
+    /**
+     * Used for finding of the user by email
+     * @param email provided email
+     * @return user found or null
+     */
+    User findUserByEmail(String email);
+
 }

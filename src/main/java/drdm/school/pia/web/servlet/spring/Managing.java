@@ -24,7 +24,7 @@ public class Managing extends AbstractServlet {
     /**
      * Username attribute
      */
-    private static final String USERNAME_PARAMETER = "username";
+    private static final String EMAIL_PARAMETER = "emailParam";
     /**
      * Error attribute
      */
@@ -167,7 +167,7 @@ public class Managing extends AbstractServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException  {
-        String username = req.getParameter(USERNAME_PARAMETER);
+        String emailParam = req.getParameter(EMAIL_PARAMETER);
         String updateAction = req.getParameter(UPDATE_ACTION_PARAMETER);
         String removeAction = req.getParameter(REMOVE_ACTION_PARAMETER);
         String updateUser = req.getParameter(UPDATE_USER_PARAMETER);
@@ -175,19 +175,19 @@ public class Managing extends AbstractServlet {
 
 
         if (updateAction != null || removeAction != null) {
-            if (username.isEmpty()) {
-                errorDispatch(username, "Username is mandatory!", req, resp);
+            if (emailParam.isEmpty()) {
+                errorDispatch(emailParam, "Email is mandatory!", req, resp);
                 return;
-            } else if(!stringValidator.isValid(username, alphanumericEnglishRegex)) {
-                req.setAttribute(USERNAME_PARAMETER, username);
-                errorDispatch(username,"Username in invalid format!", req, resp);
+            } else if(!stringValidator.isValid(emailParam, emailRegex)) {
+                req.setAttribute(EMAIL_PARAMETER, emailParam);
+                errorDispatch(emailParam,"Email in invalid format!", req, resp);
                 return;
             } else {
-                if (null == user || !username.equals(user.getUsername())) {
-                    user = userManager.findUserByUsername(username);
+                if (null == user || !emailParam.equals(user.getEmail())) {
+                    user = userManager.findUserByEmail(emailParam);
                 }
                 if (null == user) {
-                    errorDispatch(username, ("User does not exist!"), req, resp);
+                    errorDispatch(emailParam, ("User does not exist!"), req, resp);
                     return;
                 }
             }
@@ -195,19 +195,19 @@ public class Managing extends AbstractServlet {
 
         if(updateAction != null) {
             req.setAttribute(UPDATE_ACTION_PARAMETER, updateAction);
-            req.setAttribute(USERNAME_PARAMETER, username);
+            req.setAttribute(EMAIL_PARAMETER, emailParam);
             setDefaultUserAttributes(req, user);
             req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
 
         }
         else if (removeAction != null) {
             req.setAttribute(REMOVE_ACTION_PARAMETER, removeAction);
-            req.setAttribute(USERNAME_PARAMETER, username);
+            req.setAttribute(EMAIL_PARAMETER, emailParam);
             req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
         }
         else if (updateUser != null) {
-            if (null == username) {
-                username = user.getUsername();
+            if (null == emailParam) {
+                emailParam = user.getEmail();
             }
             String firstname = req.getParameter(FIRSTNAME_ATTRIBUTE);
             String lastname = req.getParameter(LASTNAME_ATTRIBUTE);
@@ -219,43 +219,43 @@ public class Managing extends AbstractServlet {
             String captchaUser = req.getParameter(CAPTCHA_USER_ATTRIBUTE);
 
             if(firstname.isEmpty()) {
-                errorDispatchUpdateUser(username, firstname, lastname, email, gender, address, city, zip,"First name is mandatory!", req, resp);
+                errorDispatchUpdateUser(emailParam, firstname, lastname, email, gender, address, city, zip,"First name is mandatory!", req, resp);
                 return;
             }
 
             if(lastname.isEmpty()) {
-                errorDispatchUpdateUser(username, firstname, lastname, email, gender, address, city, zip,"Last name is mandatory!", req, resp);
+                errorDispatchUpdateUser(emailParam, firstname, lastname, email, gender, address, city, zip,"Last name is mandatory!", req, resp);
                 return;
             }
 
             if(email.isEmpty()) {
-                errorDispatchUpdateUser(username, firstname, lastname, email, gender, address, city, zip,"E-mail is mandatory!", req, resp);
+                errorDispatchUpdateUser(emailParam, firstname, lastname, email, gender, address, city, zip,"E-mail is mandatory!", req, resp);
                 return;
             }
 
             if(gender.isEmpty()) {
-                errorDispatchUpdateUser(username, firstname, lastname, email, gender, address, city, zip,"Gender is mandatory!", req, resp);
+                errorDispatchUpdateUser(emailParam, firstname, lastname, email, gender, address, city, zip,"Gender is mandatory!", req, resp);
                 return;
             }
 
             // Validate firstname and lastname
             if(!firstname.isEmpty() && !stringValidator.isValid(firstname, alphabeticWordsRegex)) {
-                errorDispatchUpdateUser(username, firstname, lastname, email, gender, address, city, zip,"First name is in invalid format, only letters are supported!", req, resp);
+                errorDispatchUpdateUser(emailParam, firstname, lastname, email, gender, address, city, zip,"First name is in invalid format, only letters are supported!", req, resp);
                 return;
             }
 
             if(!lastname.isEmpty() && !stringValidator.isValid(lastname, alphabeticWordsRegex)) {
-                errorDispatchUpdateUser(username, firstname, lastname, email, gender, address, city, zip, "Last name is in invalid format, only letters are supported!", req, resp);
+                errorDispatchUpdateUser(emailParam, firstname, lastname, email, gender, address, city, zip, "Last name is in invalid format, only letters are supported!", req, resp);
                 return;
             }
 
             if(!stringValidator.isValid(email, emailRegex)) {
-                errorDispatchUpdateUser(username, firstname, lastname, email, gender, address, city, zip,"Email is in invalid format!", req, resp);
+                errorDispatchUpdateUser(emailParam, firstname, lastname, email, gender, address, city, zip,"Email is in invalid format!", req, resp);
                 return;
             }
 
             if(captchaUser.isEmpty()) {
-                errorDispatchUpdateUser(username, firstname, lastname, email, gender, address, city, zip,"Captcha answer is incorrect!", req, resp);
+                errorDispatchUpdateUser(emailParam, firstname, lastname, email, gender, address, city, zip,"Captcha answer is incorrect!", req, resp);
                 return;
             }
 
@@ -263,14 +263,14 @@ public class Managing extends AbstractServlet {
                 userManager.updateUserInfo(firstname, lastname, email, gender, address, city,zip, user);
                 succsessDispatch(("User information successfully updated!"), req, resp);
             } catch (UserValidationException e) {
-                errorDispatch(username, ("User information could  not be updated!"), req, resp);
+                errorDispatch(emailParam, ("User information could  not be updated!"), req, resp);
             }
         }
         else if (removeUser != null) {
             try {
                 userManager.removeUser(user.getUsername());
                 user = null;
-                req.setAttribute(USERNAME_PARAMETER, "");
+                req.setAttribute(EMAIL_PARAMETER, "");
                 req.setAttribute(FIRSTNAME_ATTRIBUTE, "");
                 req.setAttribute(LASTNAME_ATTRIBUTE, "");
                 req.setAttribute(EMAIL_ATTRIBUTE, "");
@@ -281,7 +281,7 @@ public class Managing extends AbstractServlet {
                 succsessDispatch(("User was successfully deleted along with it's account and card!"), req, resp);
             } catch (Exception e) {
                 logger.debug(e.getMessage());
-                errorDispatch(user.getUsername(), ("User could not be deleted!"), req, resp);
+                errorDispatch(user.getEmail(), ("User could not be deleted!"), req, resp);
             }
         }
         else {
@@ -292,16 +292,16 @@ public class Managing extends AbstractServlet {
 
     /**
      * Dispatcher method used for error dispatch
-     * @param username provided username
+     * @param emailParam provided emailParam to find user by
      * @param err error message provided
      * @param req provided request
      * @param resp provided response
      * @throws ServletException in case of error thrown
      * @throws IOException in case of error thrown
      */
-    private void errorDispatch(String username, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (!username.isEmpty()) {
-            req.setAttribute(USERNAME_PARAMETER, username);
+    private void errorDispatch(String emailParam, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (!emailParam.isEmpty()) {
+            req.setAttribute(EMAIL_ATTRIBUTE, emailParam);
         }
         req.setAttribute(ERROR_ATTRIBUTE, err);
         req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
@@ -310,7 +310,7 @@ public class Managing extends AbstractServlet {
 
     /**
      * Dispatcher method used for error dispatch
-     * @param username provided user name
+     * @param emailParam provided email parameter to find user by
      * @param firstname provided first name
      * @param lastname provided last name
      * @param email provided e-mail
@@ -324,9 +324,9 @@ public class Managing extends AbstractServlet {
      * @throws ServletException in case of error thrown
      * @throws IOException in case of error thrown
      */
-    private void errorDispatchUpdateUser(String username, String firstname, String lastname, String email, String gender, String address, String city, String zip, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void errorDispatchUpdateUser(String emailParam, String firstname, String lastname, String email, String gender, String address, String city, String zip, String err, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(ERROR_ATTRIBUTE, err);
-        req.setAttribute(USERNAME_PARAMETER, username);
+        req.setAttribute(EMAIL_PARAMETER, emailParam);
         req.setAttribute(FIRSTNAME_ATTRIBUTE, firstname);
         req.setAttribute(LASTNAME_ATTRIBUTE, lastname);
         req.setAttribute(EMAIL_ATTRIBUTE, email);
@@ -345,7 +345,7 @@ public class Managing extends AbstractServlet {
      * @param user provided user instance
      */
     private void setDefaultUserAttributes(HttpServletRequest req, User user) throws ServletException, IOException {
-        req.setAttribute(USERNAME_PARAMETER, user.getUsername());
+        req.setAttribute(EMAIL_PARAMETER, user.getEmail());
         req.setAttribute(FIRSTNAME_ATTRIBUTE, user.getFirstname());
         req.setAttribute(LASTNAME_ATTRIBUTE, user.getLastname());
         req.setAttribute(EMAIL_ATTRIBUTE, user.getEmail());

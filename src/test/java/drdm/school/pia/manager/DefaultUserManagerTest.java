@@ -78,6 +78,7 @@ public class DefaultUserManagerTest {
         roleObj.setName(role);
         src.setRole(roleObj);
 
+        when(userDao.findByEmail(email)).thenReturn(null);
         when(stringGenerator.generate(8)).thenReturn(username);
         when(userDao.findByUsername(username)).thenReturn(null);
         when(userDao.findByUsername(null)).thenReturn(null);
@@ -86,7 +87,7 @@ public class DefaultUserManagerTest {
 
         userManager.register(src, null);
 
-
+        verify(userDao, times(1)).findByEmail(email);
         verify(userDao, times(1)).save(any(User.class));
         verify(userDao, times(1)).findByUsername("username");
         verify(encoder, times(1)).encode(password);
@@ -200,7 +201,11 @@ public class DefaultUserManagerTest {
         final String gender = "Gender";
         User src = new User(hashed, role, firstname, lastname, email, address, city, zip, birthid, gender);
 
+        when(userDao.findByEmail(email)).thenReturn(null);
+
         userManager.updateUserInfo(firstname, lastname, email, gender, address, city, zip, src);
+
+        verify(userDao, times(1)).findByEmail(email);
 
     }
 

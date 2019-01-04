@@ -22,4 +22,11 @@ public interface UserDao extends GenericDao<User, String> {
      */
     User findByAccountNo(String accountNo, String bankCode);
 
+    /**
+     * Finds a user by it's email
+     * @param email provided email
+     * @return user found
+     */
+    User findByEmail(String email);
+
 }

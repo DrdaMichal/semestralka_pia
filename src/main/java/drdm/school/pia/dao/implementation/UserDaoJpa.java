@@ -53,4 +53,15 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
         }
     }
 
+    @Override
+    public User findByEmail(String email) {
+        TypedQuery<User> q = entityManager.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
+        q.setParameter("email", email);
+        try {
+            return q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 }

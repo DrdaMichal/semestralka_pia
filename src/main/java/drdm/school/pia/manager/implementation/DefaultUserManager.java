@@ -207,6 +207,13 @@ public class DefaultUserManager implements UserManager {
             stringGenerator.generate(usernameLength);
         }
 
+
+        User emailExistingCheck = userDao.findByEmail(newUser.getEmail());
+
+        if (emailExistingCheck != null) {
+            throw new UserValidationException("E-mail is already in use, please fill another one!");
+        }
+
         if (!newUser.getRole().getName().equals("ADMIN")) {
             accountManager.createAccount(newUser);
             cardManager.createCard(newUser, newUser.getAccount());
@@ -243,6 +250,13 @@ public class DefaultUserManager implements UserManager {
     @Override
     public void updateUserInfo(String firstname, String lastname, String email, String gender, String address, String city, String zip, User user) throws UserValidationException {
         try {
+
+            User emailExistingCheck = userDao.findByEmail(email);
+
+            if (null != emailExistingCheck && !emailExistingCheck.getEmail().equals(email) && !emailExistingCheck.getUsername().equals(user.getUsername())) {
+                throw new UserValidationException("E-mail is already in use by another user, please fill another one!");
+            }
+
             user.setFirstname(firstname);
             user.setLastname(lastname);
             user.setEmail(email);
@@ -283,6 +297,14 @@ public class DefaultUserManager implements UserManager {
     public void removeUser(String username) {
         userDao.delete(username);
         logger.info("User " + username + " deleted!");
+    }
+
+    /**
+     * @inheritDoc
+     * Finds an user by email
+     */
+    public User findUserByEmail(String email) {
+        return userDao.findByEmail(email);
     }
 
 }

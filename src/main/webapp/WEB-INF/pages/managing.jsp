@@ -75,8 +75,8 @@
                     <form action="managing" method="post" class="form-horizontal">
                         <div class="row button-menu">
                             <div class="form-group form-input-170 disable-padding">
-                                <label class="control-label" for="username">*Username</label>
-                                <input class="form-control" type="text" id="username" name="username" value="<c:out value="${requestScope.username}"/>"/>
+                                <label class="control-label" for="emailParam">*User email</label>
+                                <input class="form-control" type="text" id="emailParam" name="emailParam" value="<c:out value="${requestScope.emailParam}"/>"/>
                             </div>
                             <div class="row button-menu">
                                 <button class="btn btn-default toggle-button" name="removeAction" value="remove" type="submit">Remove user</button>
@@ -88,12 +88,12 @@
                     </form>
                 </div>
 
-                <c:if test="${(not empty requestScope.username) and (requestScope.updateAction eq 'update')}">
+                <c:if test="${(not empty requestScope.emailParam) and (requestScope.updateAction eq 'update')}">
                     <div class="col-xs-12 col-sm-12 col-md-8 row">
                         <form action="managing" method="post" class="form-horizontal">
                             <div class="container max-width-600">
 
-                                <h2>Update user <strong>${requestScope.username}</strong></h2>
+                                <h2>Update user <strong>${requestScope.emailParam}</strong></h2>
                                 <div class="container-fluid disable-padding">
 
                                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -162,12 +162,12 @@
                     </div>
                 </c:if>
 
-                <c:if test="${(not empty requestScope.username) and (requestScope.removeAction eq 'remove')}">
+                <c:if test="${(not empty requestScope.emailParam) and (requestScope.removeAction eq 'remove')}">
                     <div class="col-xs-12 col-sm-12 col-md-8 row">
                         <div class="container max-width-600">
 
                             <form action="managing" method="post" class="form-horizontal form-border box-border">
-                                <h2>Surely remove user <strong>${requestScope.username}</strong>?</h2>
+                                <h2>Surely remove user <strong>${requestScope.emailParam}</strong>?</h2>
                                 <div class="form-group">
                                     <div class="col-xs-12 col-sm-9 col-md-9 disable-padding">
                                         <button class="btn btn-default" type="submit" name="removeUser" value="removeUser">Proceed</button>

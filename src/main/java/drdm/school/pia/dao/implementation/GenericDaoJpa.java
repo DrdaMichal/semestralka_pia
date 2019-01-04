@@ -78,7 +78,7 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
     public void removeFromContext(PK id) {
         E en = entityManager.find(persistedClass, id);
         if (en != null) {
-            entityManager.detach(en);
+            entityManager.clear();
         }
     }
 
