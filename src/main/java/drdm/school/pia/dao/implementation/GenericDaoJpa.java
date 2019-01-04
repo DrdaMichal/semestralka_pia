@@ -43,7 +43,6 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
         }
         else {
             return entityManager.merge(instance);
-
         }
     }
 
@@ -70,5 +69,18 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
             entityManager.clear();
         }
     }
+
+    /**
+     * @inheritDoc
+     * Removes the entity from persistence context to be loaded from DB next time
+     */
+    @Override
+    public void removeFromContext(PK id) {
+        E en = entityManager.find(persistedClass, id);
+        if (en != null) {
+            entityManager.detach(en);
+        }
+    }
+
 
 }

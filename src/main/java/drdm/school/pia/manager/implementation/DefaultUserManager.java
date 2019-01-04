@@ -245,6 +245,7 @@ public class DefaultUserManager implements UserManager {
             user.setAddress(address);
             user.setCity(city);
             user.setZip(zip);
+            userDao.removeFromContext(user.getUsername());
             userDao.save(user);
         } catch (Exception e) {
             throw new UserValidationException("Something went wrong while updating user!");

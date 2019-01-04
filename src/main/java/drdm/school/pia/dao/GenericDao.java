@@ -30,4 +30,10 @@ public interface GenericDao<E extends IEntity<PK>, PK extends Serializable> {
      */
     void delete(PK id);
 
+    /**
+     * Removes the entity from persistence context to be loaded from DB next time
+     * @param id of the entity instance
+     */
+    void removeFromContext(PK id);
+
 }
