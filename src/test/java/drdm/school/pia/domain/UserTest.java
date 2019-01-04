@@ -137,4 +137,23 @@ public class UserTest {
         User u = new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender);
         u.validate();
     }
+
+    //the test will fail when exception is thrown
+    @Test
+    public void testValidate_notReqParameters() throws Exception {
+        final String password = "psw";
+        final String role = "role";
+        final String firstname = "name";
+        final String lastname = "surname";
+        final String email = "email@cz.cz";
+        final String address = null;
+        final String city = null;
+        final String zip = null;
+        final String birthid = "abc";
+        final String gender = "93";
+
+        User u = new User(password, role, firstname, lastname, email, address, city, zip, birthid, gender);
+        u.validate();
+    }
+
 }

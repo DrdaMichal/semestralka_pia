@@ -185,6 +185,11 @@ public class DefaultUserManager implements UserManager {
             throw new RuntimeException("User already exists, use save method for updates!");
         }
 
+        // Because of the test - it can't read spring properties parameters, so we set default 8 in case that value is 0 (0 length would not be permitted either)
+        if (usernameLength == 0) {
+            usernameLength = 8;
+        }
+
         if (username == null || username == "") {
             newUser.setUsername(stringGenerator.generate(usernameLength));
             logger.info("Username generated: " + newUser.getUsername());
