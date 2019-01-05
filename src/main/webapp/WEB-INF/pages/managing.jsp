@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
@@ -16,6 +15,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Main page for administrator of the internet banking. There is a table filled with existing users, it's possible to update or remove user.">
         <title>CoolBank - administrative</title>
         <link rel="icon" href="../../img/icon-c.jpg">
 
@@ -28,6 +28,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Used for hiding menu - small screens -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <!-- Table paging -->
+        <script src="../../../js/paging.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        <!-- Table paging style -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
         <!-- Function used for hiding login/logout button -->
         <script src="../../js/loginFunction.js"></script>
 
@@ -132,7 +140,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="address">City</label>
+                                            <label class="control-label" for="city">City</label>
                                             <div class="disable-padding">
                                                 <input class="form-control" type="text" id="city" name="city" value="<c:out value="${requestScope.city}"/>"/>
                                             </div>
@@ -179,6 +187,40 @@
                     </div>
                 </c:if>
 
+            </div>
+            <div class="row">
+                <h2>Users registered to CoolBank</h2>
+                <table id="transactions" class="table box-background max-width-1300">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                        <th class="hidden-xs" scope="col">Birth id</th>
+                        <th class="hidden-xs" scope="col">Gender</th>
+                        <th scope="col">Account</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${usersFetchList}" var="userFetched">
+                        <tr>
+                            <td>${userFetched.email}</td>
+                            <td>${userFetched.firstname}</td>
+                            <td>${userFetched.lastname}</td>
+                            <td class="hidden-xs">${userFetched.birthid}</td>
+                            <td class="hidden-xs">${userFetched.gender}</td>
+                            <td>${userFetched.account}</td>
+                        </tr>
+                    </c:forEach>
+                    <%--<c:if test="${empty requestScope.usersFetchList and empty requestScope.paging}">
+                        <tr>
+                            <td valign="top" colspan="10" class="center-text">No data available in table</td>
+                        </tr>
+                    </c:if>--%>
+                    </tbody>
+
+                </table>
             </div>
         </div>
 

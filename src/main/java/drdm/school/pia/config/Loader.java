@@ -165,7 +165,7 @@ public class Loader implements ApplicationListener<ContextRefreshedEvent> {
             } catch (UserValidationException e) {
                 e.printStackTrace();
             }
-            /*User user0001 = userManager.findUserByUsername("User0001");
+            User user0001 = userManager.findUserByUsername("User0001");
             User user0002 = userManager.findUserByUsername("User0002");
             for (int i = 0; i < paymentsCreated; i++) {
                 //new Payment(selectedTemplate, sendTo, bankCode, recPreAccount, account.getNumber(), account.getBank(), "", vs, cs, ss, recipientMessage, myMessage, amount, currency, transactionDateDate, template), req.getSession().getAttribute("user").toString()
@@ -192,7 +192,7 @@ public class Loader implements ApplicationListener<ContextRefreshedEvent> {
                 } catch (PaymentValidationException e) {
                     logger.warn("Payment [" + i + "]could not been created!");
                 }
-            }*/
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 /**
  * JPA implementation of the UserDao interface
@@ -59,6 +60,20 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
         q.setParameter("email", email);
         try {
             return q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    /**
+     * @inheritDoc
+     * Fetches all users with role USER
+     */
+    public List<User> fetchAllUsers() {
+        TypedQuery<User> q = entityManager.createQuery("SELECT u FROM Account a LEFT JOIN User u ON  a.id = u.account.id LEFT JOIN Role r ON u.role.id = r.id WHERE r.name = :role ORDER BY u.lastname DESC", User.class);
+        q.setParameter("role", "USER");
+        try {
+            return q.getResultList();
         } catch (NoResultException e) {
             return null;
         }

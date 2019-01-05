@@ -2,6 +2,8 @@ package drdm.school.pia.dao;
 
 import drdm.school.pia.domain.entities.User;
 
+import java.util.List;
+
 /**
  * DAO interface for the User entity
  * @author Michal Drda
@@ -28,5 +30,11 @@ public interface UserDao extends GenericDao<User, String> {
      * @return user found
      */
     User findByEmail(String email);
+
+    /**
+     * Fetches all users from DB with role USER
+     * @return user list
+     */
+    List<User> fetchAllUsers();
 
 }

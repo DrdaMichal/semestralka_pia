@@ -2,6 +2,9 @@ package drdm.school.pia.manager;
 
 import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.domain.exceptions.UserValidationException;
+import drdm.school.pia.dto.implementation.UsersFetch;
+
+import java.util.ArrayList;
 
 /**
  * User manager interface - used for managing of users
@@ -76,5 +79,11 @@ public interface UserManager {
      * @return user found or null
      */
     User findUserByEmail(String email);
+
+    /**
+     * Fetches all users from persistence that has role USER
+     * @return Users fetched array list
+     */
+    ArrayList<UsersFetch> fetchAllUsers();
 
 }

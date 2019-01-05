@@ -15,6 +15,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="User mainpage used for showing latest trasactions, managing user password and user information. The account state can be also seen here.">
         <title>CoolBank - internet banking</title>
         <link rel="icon" href="../../img/icon-c.jpg">
 
@@ -219,7 +220,7 @@
 
             </div>
 
-            <div class="row" id="transactions">
+            <div class="row">
                 <h2>Latest transactions</h2>
                 <jsp:include page="generic/transactionsTable.jsp"/>
             </div>

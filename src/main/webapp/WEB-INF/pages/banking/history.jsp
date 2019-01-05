@@ -15,6 +15,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Page is showing the transactions history of user. All incoming and outcoming transactions should be visible here.">
         <title>CoolBank - transaction history</title>
         <link rel="icon" href="../../../img/icon-c.jpg">
 
@@ -27,16 +28,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- Table paging -->
-        <script type="text/javascript" src="../../../js/paging.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        <script src="../../../js/paging.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
         <!-- Table paging style -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
 
         <!-- Used for hiding menu - small screens -->
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <!-- Function used for hiding login/logout button -->
-        <script type="text/javascript" src="../../../js/loginFunction.js"></script>
+        <script src="../../../js/loginFunction.js"></script>
 
     </head>
 

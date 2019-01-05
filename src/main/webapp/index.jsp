@@ -16,6 +16,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Welcome to the CoolBank! This is a login and main page of the web. Please make yourself comfortable!">
         <title>CoolBank - login</title>
         <link rel="icon" href="img/icon-c.jpg">
 

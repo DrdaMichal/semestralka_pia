@@ -2,6 +2,7 @@ package drdm.school.pia.web.servlet.spring;
 
 import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.domain.exceptions.UserValidationException;
+import drdm.school.pia.dto.implementation.UsersFetch;
 import drdm.school.pia.manager.UserManager;
 import drdm.school.pia.utils.Validator;
 import org.apache.log4j.Logger;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Managing page servlet
@@ -112,6 +114,10 @@ public class Managing extends AbstractServlet {
      */
     private User user;
     /**
+     * List of the users in the bank initialization
+     */
+    private List<UsersFetch> usersFetchList;
+    /**
      * String validator initialization
      */
     private Validator stringValidator;
@@ -150,6 +156,8 @@ public class Managing extends AbstractServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (null != req.getSession().getAttribute("role") && req.getSession().getAttribute("role").equals("ADMIN")) {
             user = null;
+            usersFetchList = userManager.fetchAllUsers();
+            req.setAttribute("usersFetchList", usersFetchList);
             req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
         } else {
             // User is not authorised to do the action.
@@ -187,7 +195,8 @@ public class Managing extends AbstractServlet {
                     user = userManager.findUserByEmail(emailParam);
                 }
                 if (null == user) {
-                    errorDispatch(emailParam, ("User does not exist!"), req, resp);
+                    req.setAttribute(EMAIL_PARAMETER, emailParam);
+                    errorDispatch(emailParam, ("User with this e-mail does not exist!"), req, resp);
                     return;
                 }
             }
@@ -196,6 +205,8 @@ public class Managing extends AbstractServlet {
         if(updateAction != null) {
             req.setAttribute(UPDATE_ACTION_PARAMETER, updateAction);
             req.setAttribute(EMAIL_PARAMETER, emailParam);
+            usersFetchList = userManager.fetchAllUsers();
+            req.setAttribute("usersFetchList", usersFetchList);
             setDefaultUserAttributes(req, user);
             req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
 
@@ -203,6 +214,8 @@ public class Managing extends AbstractServlet {
         else if (removeAction != null) {
             req.setAttribute(REMOVE_ACTION_PARAMETER, removeAction);
             req.setAttribute(EMAIL_PARAMETER, emailParam);
+            usersFetchList = userManager.fetchAllUsers();
+            req.setAttribute("usersFetchList", usersFetchList);
             req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
         }
         else if (updateUser != null) {
@@ -278,6 +291,8 @@ public class Managing extends AbstractServlet {
                 req.setAttribute(ADDRESS_ATTRIBUTE, "");
                 req.setAttribute(CITY_ATTRIBUTE, "");
                 req.setAttribute(ZIP_ATTRIBUTE, "");
+                usersFetchList = userManager.fetchAllUsers();
+                req.setAttribute("usersFetchList", usersFetchList);
                 succsessDispatch(("User was successfully deleted along with it's account and card!"), req, resp);
             } catch (Exception e) {
                 logger.debug(e.getMessage());
@@ -286,6 +301,8 @@ public class Managing extends AbstractServlet {
         }
         else {
             req.setAttribute(ERROR_ATTRIBUTE, "Unknown action error!");
+            usersFetchList = userManager.fetchAllUsers();
+            req.setAttribute("usersFetchList", usersFetchList);
             req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
         }
     }
@@ -303,6 +320,7 @@ public class Managing extends AbstractServlet {
         if (!emailParam.isEmpty()) {
             req.setAttribute(EMAIL_ATTRIBUTE, emailParam);
         }
+        req.setAttribute("usersFetchList", usersFetchList);
         req.setAttribute(ERROR_ATTRIBUTE, err);
         req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
     }
@@ -335,9 +353,9 @@ public class Managing extends AbstractServlet {
         req.setAttribute(CITY_ATTRIBUTE, city);
         req.setAttribute(ZIP_ATTRIBUTE, zip);
         user = null;
+        req.setAttribute("usersFetchList", usersFetchList);
         req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
     }
-
 
     /**
      * Used for default User attributes loading
@@ -365,6 +383,8 @@ public class Managing extends AbstractServlet {
      */
     private void succsessDispatch(String suc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(SUCCESS_ATTRIBUTE, suc);
+        usersFetchList = userManager.fetchAllUsers();
+        req.setAttribute("usersFetchList", usersFetchList);
         req.getRequestDispatcher("/WEB-INF/pages/managing.jsp").forward(req, resp);
     }
 

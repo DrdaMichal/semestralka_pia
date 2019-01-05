@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
@@ -7,13 +6,15 @@
   Time: 17:41
   To change this template use File | Settings | File Templates.
 --%>
- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="en">
 
 	<head>
 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="All you wanted to know about CoolBank, but you were too shy to ask. You can ask the administrator now on email drdam@students.zcu.cz.">
 		<title>CoolBank - about</title>
 		<link rel="icon" href="../../img/icon-c.jpg">
 		

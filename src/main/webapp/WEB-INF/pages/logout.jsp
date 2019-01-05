@@ -14,6 +14,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="refresh" content="${requestScope.redirectInterval};url=/"/>
+        <meta name="description" content="See you soon back in the CoolBank! This is a logout page from CoolBank.">
         <title>CoolBank - log out</title>
         <link rel="icon" href="../../img/icon-c.jpg">
 

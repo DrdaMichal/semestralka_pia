@@ -4,6 +4,7 @@ import drdm.school.pia.dao.UserDao;
 
 import drdm.school.pia.domain.entities.Role;
 import drdm.school.pia.domain.entities.User;
+import drdm.school.pia.dto.implementation.UsersFetch;
 import drdm.school.pia.manager.implementation.DefaultAccountManager;
 import drdm.school.pia.manager.implementation.DefaultCardManager;
 import drdm.school.pia.manager.implementation.DefaultRoleManager;
@@ -17,6 +18,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -42,6 +46,8 @@ public class DefaultUserManagerTest {
     private User user;
     @Mock
     private Role role;
+    @Mock
+    private UsersFetch usersFetch;
 
     @InjectMocks
     private DefaultUserManager userManager;
@@ -188,7 +194,8 @@ public class DefaultUserManagerTest {
     }
 
     @Test
-    public void updateUserInfo() throws Exception {
+    public void testUpdateUserInfo() throws Exception {
+        final String username = "username";
         final String hashed = "Hash";
         final String role = "USER";
         final String firstname = "Name";
@@ -200,10 +207,12 @@ public class DefaultUserManagerTest {
         final String birthid = "BirthId";
         final String gender = "Gender";
         User src = new User(hashed, role, firstname, lastname, email, address, city, zip, birthid, gender);
+        src.setUsername(username);
 
-        when(userDao.findByEmail(email)).thenReturn(null);
+        when(userDao.findByEmail(email)).thenReturn(src);
 
         userManager.updateUserInfo(firstname, lastname, email, gender, address, city, zip, src);
+
 
         verify(userDao, times(1)).findByEmail(email);
 
@@ -249,6 +258,42 @@ public class DefaultUserManagerTest {
 
         verify(userDao, times(1)).findByUsername(username);
         verify(encoder,times(0)).validate(password, hashed);
+    }
+
+    @Test
+    public void testFindUserByEmail() throws Exception {
+        final String hashed = "Hash";
+        final String role = "Role";
+        final String firstname = "Name";
+        final String lastname = "Surname";
+        final String email = "Email";
+        final String address = "Address";
+        final String city = "City";
+        final String zip = "ZipCode";
+        final String birthid = "BirthId";
+        final String gender = "Gender";
+
+        User src = new User(hashed, role, firstname, lastname, email, address, city, zip, birthid, gender);
+
+        when(userDao.findByEmail(email)).thenReturn(src);
+
+        userManager.findUserByEmail(email);
+
+        verify(userDao, times(1)).findByEmail(email);
+    }
+
+    @Test
+    public void testFindAllUsers() throws Exception {
+
+        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<UsersFetch> usersFetch = new ArrayList<>();
+
+        when(userDao.fetchAllUsers()).thenReturn(users);
+
+        userManager.fetchAllUsers();
+
+        assertEquals(users.size(), usersFetch.size());
+        verify(userDao, times(1)).fetchAllUsers();
     }
 
 }

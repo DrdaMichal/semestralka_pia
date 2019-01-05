@@ -3,6 +3,7 @@ package drdm.school.pia.manager.implementation;
 import drdm.school.pia.dao.UserDao;
 import drdm.school.pia.domain.entities.User;
 import drdm.school.pia.domain.exceptions.UserValidationException;
+import drdm.school.pia.dto.implementation.UsersFetch;
 import drdm.school.pia.manager.AccountManager;
 import drdm.school.pia.manager.CardManager;
 import drdm.school.pia.manager.UserManager;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 
 /**
  * @inheritDoc
@@ -253,7 +255,7 @@ public class DefaultUserManager implements UserManager {
 
             User emailExistingCheck = userDao.findByEmail(email);
 
-            if (null != emailExistingCheck && !emailExistingCheck.getEmail().equals(email) && !emailExistingCheck.getUsername().equals(user.getUsername())) {
+            if (null != emailExistingCheck && emailExistingCheck.getEmail().equals(email) && !emailExistingCheck.getUsername().equals(user.getUsername())) {
                 throw new UserValidationException("E-mail is already in use by another user, please fill another one!");
             }
 
@@ -305,6 +307,45 @@ public class DefaultUserManager implements UserManager {
      */
     public User findUserByEmail(String email) {
         return userDao.findByEmail(email);
+    }
+
+    /**
+     * @inheritDoc
+     * Fetches all users with role USER from DB
+     */
+    public ArrayList<UsersFetch> fetchAllUsers() {
+        ArrayList<User> users = (ArrayList) userDao.fetchAllUsers();
+        // Remove null values fetched
+        while(users.remove(null)) {
+            logger.debug("removed null");
+        }
+
+        // Initialize transactions ArrayList
+        ArrayList<UsersFetch> usersFetch = new ArrayList<>();
+
+        if (users.size() > 0) {
+            for (int i = 0; i < (users.size()); i++) {
+                UsersFetch userFetched = new UsersFetch();
+                userFetched.setId(Integer.toString(i+1));
+                userFetched.setFirstname(users.get(i).getFirstname());
+                userFetched.setLastname(users.get(i).getLastname());
+                userFetched.setEmail(users.get(i).getEmail());
+                userFetched.setGender(users.get(i).getGender());
+                userFetched.setBirthid(users.get(i).getBirthId());
+                userFetched.setAccount(users.get(i).getAccount().getNumber() + "/" + users.get(i).getAccount().getBank());
+
+                usersFetch.add(userFetched);
+            }
+
+        } else {
+            logger.info("No users found!");
+        }
+
+        if (usersFetch.size() > 0) {
+            return usersFetch;
+        } else {
+            return null;
+        }
     }
 
 }

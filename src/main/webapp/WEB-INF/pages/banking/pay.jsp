@@ -15,6 +15,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Payments can be created here. There is also a possibility to load existing template, overwrite it, or save a new one. Payments can be done in CZK, EUR and USD.">
         <title>CoolBank - new payment</title>
         <link rel="icon" href="../../../img/icon-c.jpg">
 
@@ -228,6 +229,6 @@
 
         <jsp:include page="../generic/footer.jsp"/>
 
-    </body
+    </body>
 
 </html>

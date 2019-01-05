@@ -15,6 +15,7 @@
 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Bank administrator can register a new user on this page. Some of the fields are manadatory, some of them not. Don't forget to read the terms of use!">
 		<title>CoolBank - registration</title>
 		<link rel="icon" href="../../../img/icon-c.jpg">
 		
@@ -189,6 +190,6 @@
 
 		<jsp:include page="../generic/footer.jsp"/>
 
-	</body
+	</body>
 
 </html>

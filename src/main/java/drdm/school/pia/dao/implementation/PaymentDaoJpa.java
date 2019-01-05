@@ -59,7 +59,7 @@ public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements Payme
      */
     @Override
     public List<Payment> findTransactionsByAccount(String account, String bankCode) {
-        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM Account a LEFT JOIN Payment p ON  a.number = p.senderAccount and a.bank = p.senderBankCode WHERE (p.recipientAccount = :account and p.recipientBankCode = :bank) or (a.number = :account and a.bank = :bank) ORDER BY p.transactionDate DESC, p.id DESC", Payment.class);
+        TypedQuery<Payment> q = entityManager.createQuery("SELECT p FROM Account a LEFT JOIN Payment p ON  a.number = p.senderAccount and a.bank = p.senderBankCode WHERE (p.recipientAccount = :account and p.recipientBankCode = :bank) or (a.number = :account and a.bank = :bank) ORDER BY p.id DESC", Payment.class);
         q.setParameter("account", account);
         q.setParameter("bank", bankCode);
         try {
