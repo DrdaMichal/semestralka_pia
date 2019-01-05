@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Implementation of Validator interface, used for validation of strings by patterns
  * @author Michal Drda
  */
@@ -38,7 +38,7 @@ public class StringValidator implements Validator {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Validates stringToValidate against regex provided.
      */
     @Override

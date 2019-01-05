@@ -146,7 +146,7 @@ public class Managing extends AbstractServlet {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Get method implementation
      * @param req servletRequest provided
      * @param resp servletResponse provided
@@ -166,7 +166,7 @@ public class Managing extends AbstractServlet {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Post method implementation
      * @param req servletRequest provided
      * @param resp servletResponse provided
@@ -361,6 +361,8 @@ public class Managing extends AbstractServlet {
      * Used for default User attributes loading
      * @param req provided request
      * @param user provided user instance
+     * @throws ServletException in case of the error
+     * @throws IOException in case of the error
      */
     private void setDefaultUserAttributes(HttpServletRequest req, User user) throws ServletException, IOException {
         req.setAttribute(EMAIL_PARAMETER, user.getEmail());

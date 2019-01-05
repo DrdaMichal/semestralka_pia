@@ -19,7 +19,7 @@ public interface GenericDao<E extends IEntity<PK>, PK extends Serializable> {
 
     /**
      * Finds an object by it's id
-     * @param id
+     * @param id id
      * @return instance with the given id or null if not found
      */
     E findOne(PK id);

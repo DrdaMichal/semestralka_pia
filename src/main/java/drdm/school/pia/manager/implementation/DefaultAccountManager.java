@@ -16,7 +16,7 @@ import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Implementation of AccountManager interface
  * @author Michal Drda
  */
@@ -116,7 +116,7 @@ public class DefaultAccountManager implements AccountManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Implementation of createAccount method of AccountManager interface
      * Used for creating account
      */
@@ -140,7 +140,7 @@ public class DefaultAccountManager implements AccountManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Implementation of updateBalance method of AccountManager interface
      * Used for updating of balance of provided account
      */
@@ -159,7 +159,7 @@ public class DefaultAccountManager implements AccountManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Implementation of findAccountByUsername method of AccountManager interface
      * Used for getting account assigned to User with given username
      */

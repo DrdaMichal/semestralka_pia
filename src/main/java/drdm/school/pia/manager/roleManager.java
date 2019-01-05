@@ -12,16 +12,16 @@ public interface RoleManager {
 
     /**
      * Adds a role to user (currently user should have just for adding one role, not multiple)
-     * @param user
-     * @param roleName
-     * @throws UserValidationException
+     * @param user provided user
+     * @param roleName provided role name
+     * @throws UserValidationException in case of invalid user parameters
      */
     void addRoleToUser(User user, String roleName) throws UserValidationException;
 
     /**
      * Returns a Role assigned to user (expecting user to have just one role)
-     * @param username
-     * @return
+     * @param username provided user name
+     * @return user Role object
      */
     Role getUserRoleByUsername(String username);
 

@@ -23,7 +23,7 @@ public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements Payme
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findTemplatesByUsername method in PaymentDao interface
      */
     @Override
@@ -38,7 +38,7 @@ public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements Payme
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findPaymentByTemplate method in PaymentDao interface
      */
     @Override
@@ -54,7 +54,7 @@ public class PaymentDaoJpa extends GenericDaoJpa<Payment, Long> implements Payme
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findTransactionsByAccount method in PaymentDao interface
      */
     @Override

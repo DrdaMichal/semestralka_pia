@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Filter setting character encoding for every request
  * @author Michal Drda
  */
@@ -19,7 +19,7 @@ public class RequestEncoding implements Filter {
     private static final String ENC = "UTF-8";
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Initializes the Filter to be used
      */
     @Override
@@ -28,7 +28,7 @@ public class RequestEncoding implements Filter {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Used to set encoding to the request or response
      */
     @Override
@@ -42,7 +42,7 @@ public class RequestEncoding implements Filter {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Has to be implemented, but not used atm
      */
     @Override

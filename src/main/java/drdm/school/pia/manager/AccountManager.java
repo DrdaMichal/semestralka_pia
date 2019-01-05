@@ -22,6 +22,7 @@ public interface AccountManager {
      * Method used to manipulate with balance of the account
      * @param account provided account which balance to be adjusted
      * @param valueOfChange provided positive or negative value to be added or substracted from the account
+     * @throws PaymentValidationException in case of the error - payment is not in valid state
      */
     void updateBalance(Account account, BigDecimal valueOfChange) throws PaymentValidationException;
 

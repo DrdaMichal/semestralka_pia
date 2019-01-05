@@ -48,7 +48,7 @@ public class AuthenticationGuard implements Filter {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Used for filtering users to decide if they are or are not allowed to access the page
      * @param request provided request
      * @param response provided response
@@ -70,7 +70,7 @@ public class AuthenticationGuard implements Filter {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Destroy
      */
     @Override

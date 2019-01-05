@@ -25,7 +25,7 @@ public class Transaction implements TransferObject {
     /**
      * Account of the sender (in case of inbound direction)
      * Account of the recipient (in case of outbound direction)
-     * Including prefix & bank Code
+     * Including prefix and bank Code
      */
     private String account;
     /**

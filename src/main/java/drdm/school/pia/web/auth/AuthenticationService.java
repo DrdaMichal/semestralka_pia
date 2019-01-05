@@ -35,8 +35,8 @@ public class AuthenticationService {
 
     /**
      * Constructor used for spring linking of sources
-     * @param userManager
-     * @param roleManager
+     * @param userManager provided user manager
+     * @param roleManager provided role manager
      */
     @Autowired
     public AuthenticationService(UserManager userManager, RoleManager roleManager) {

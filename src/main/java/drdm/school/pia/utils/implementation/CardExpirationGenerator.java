@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Used for card expiration generation
  * @author Michal Drda
  */
@@ -32,7 +32,7 @@ public class CardExpirationGenerator implements ExpirationGenerator {
     String validationPattern;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Used for expiration generation
      */
     @Override

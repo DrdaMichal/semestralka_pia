@@ -20,6 +20,7 @@ public interface UserDao extends GenericDao<User, String> {
     /**
      * Finds a user by it's account number
      * @param accountNo account number provided
+     * @param bankCode bank code
      * @return user associated with the account found by account number or null
      */
     User findByAccountNo(String accountNo, String bankCode);

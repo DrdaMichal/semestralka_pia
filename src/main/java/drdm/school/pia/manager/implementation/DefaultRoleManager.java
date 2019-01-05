@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Implementation of RoleManager interface
  * @author Michal Drda
  */
@@ -71,7 +71,7 @@ public class DefaultRoleManager implements RoleManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for adding role to the user
      */
     @Override
@@ -87,7 +87,7 @@ public class DefaultRoleManager implements RoleManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used to find a role by user name
      */
     public Role getUserRoleByUsername(String username) {

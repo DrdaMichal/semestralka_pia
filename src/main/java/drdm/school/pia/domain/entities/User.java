@@ -102,7 +102,7 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Primary key getter implementation
      */
     @Override
@@ -188,7 +188,7 @@ public class User extends BaseObject implements IEntity<String>, Serializable {
 
     /**
      * Setter to set account instance to the user
-     * @param account
+     * @param account provided account
      */
     public void setAccount(Account account) {
         this.account = account;

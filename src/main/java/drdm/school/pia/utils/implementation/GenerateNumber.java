@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Class used for generating numbers.
  * @author Michal Drda
  */
@@ -29,7 +29,7 @@ public class GenerateNumber implements LongGenerator {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Generates a random number of positive value
      */
     public long generate(int numberLength) {

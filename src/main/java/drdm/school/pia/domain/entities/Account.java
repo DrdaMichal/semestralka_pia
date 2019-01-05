@@ -47,7 +47,7 @@ public class Account extends BaseObject implements IEntity<Long>, Serializable {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Primary key getter implementation
      */
     @Transient

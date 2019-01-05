@@ -22,7 +22,7 @@ public class AccountDaoJpa extends GenericDaoJpa<Account, Long> implements Accou
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findByAccountNumber method in AccountDao interface
      */
     @Override
@@ -37,7 +37,7 @@ public class AccountDaoJpa extends GenericDaoJpa<Account, Long> implements Accou
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findByAccountNumber in AccountDao interface
      */
     @Override

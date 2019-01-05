@@ -138,7 +138,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Primary key getter implementation
      */
     @Override
@@ -193,7 +193,7 @@ public class Payment extends BaseObject implements IEntity<Long>, Serializable {
 
     /**
      * Setter for a variable symbol
-     * @return variable symbol provided
+     * @param vs variable symbol provided
      */
     public void setVs(String vs) {
         this.vs = vs;

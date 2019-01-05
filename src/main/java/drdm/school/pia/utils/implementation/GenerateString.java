@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Implementation of the StringGenerator
  * @author Michal Drda
  */
@@ -34,7 +34,7 @@ public class GenerateString implements StringGenerator {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Used for generation of the string
      */
     @Override

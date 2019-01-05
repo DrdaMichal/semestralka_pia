@@ -25,6 +25,7 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
 
     /**
      * Constructor
+     * @param persistedClass class provided
      */
     public GenericDaoJpa(Class<E> persistedClass) {
         this.entityManager = entityManager;
@@ -32,7 +33,7 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of save method in GenericDao interface
      */
     @Override
@@ -47,7 +48,7 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findOne method in GenericDao interface
      */
     @Override
@@ -56,7 +57,7 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of delete method in GenericDao interface
      */
     @Override
@@ -71,7 +72,7 @@ public class GenericDaoJpa<E extends IEntity<PK>, PK extends Serializable> imple
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Removes the entity from persistence context to be loaded from DB next time
      */
     @Override

@@ -187,7 +187,7 @@ public class Banking extends AbstractServlet {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Get method implementation
      * @param req servletRequest provided
      * @param resp servletResponse provided
@@ -218,7 +218,7 @@ public class Banking extends AbstractServlet {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Post method implementation
      * @param req servletRequest provided
      * @param resp servletResponse provided

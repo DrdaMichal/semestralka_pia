@@ -22,7 +22,7 @@ public class RoleDaoJpa extends GenericDaoJpa<Role, Long> implements RoleDao {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findByUserName method in RoleDao interface
      */
     @Override
@@ -37,7 +37,7 @@ public class RoleDaoJpa extends GenericDaoJpa<Role, Long> implements RoleDao {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findByRoleName method in RoleDao interface
      */
     @Override

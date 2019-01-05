@@ -14,7 +14,7 @@ import java.io.IOException;
 public class About extends AbstractServlet {
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Get method implementation
      * @param req servletRequest provided
      * @param resp servletResponse provided

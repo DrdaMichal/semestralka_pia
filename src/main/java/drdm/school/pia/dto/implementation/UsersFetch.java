@@ -65,7 +65,7 @@ public class UsersFetch implements TransferObject {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Getter for id of UserFetch object
      * @return id
      */
@@ -179,7 +179,7 @@ public class UsersFetch implements TransferObject {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Used for writing the object to string
      * @return string of the object serialization
      */
@@ -197,7 +197,7 @@ public class UsersFetch implements TransferObject {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Used for equation of the object with another one
      * @param o object to be equalized
      * @return true if equal, false if not
@@ -217,7 +217,7 @@ public class UsersFetch implements TransferObject {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Hash code
      * @return hash int
      */

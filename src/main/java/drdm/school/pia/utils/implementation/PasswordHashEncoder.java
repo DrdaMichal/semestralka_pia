@@ -14,7 +14,7 @@ import java.security.spec.InvalidKeySpecException;
 public class PasswordHashEncoder implements Encoder {
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for calling PasswordHash encoder
      * @param text provided text to be encoded
      * @return encoded text or null in case of exception
@@ -33,11 +33,11 @@ public class PasswordHashEncoder implements Encoder {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Medhod used for validation of the text comparing it to hash
      * @param text plaintext form
      * @param hash hash for comparison
-     * @return
+     * @return true (valid) or false (invalid)
      */
     @Override
     public boolean validate(String text, String hash) {

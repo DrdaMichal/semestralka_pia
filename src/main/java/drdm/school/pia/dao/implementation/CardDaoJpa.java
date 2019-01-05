@@ -22,7 +22,7 @@ public class CardDaoJpa extends GenericDaoJpa<Card, Long> implements CardDao {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findByCardnumber method in CardDao interface
      */
     @Override

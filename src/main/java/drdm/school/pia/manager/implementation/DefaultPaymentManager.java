@@ -22,7 +22,7 @@ import java.util.*;
 
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Implementation of PaymentManager interface
  * @author Michal Drda
  */
@@ -157,7 +157,7 @@ public class DefaultPaymentManager implements PaymentManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for creation of the new payment with all it's complexity
      */
     @Override
@@ -237,7 +237,7 @@ public class DefaultPaymentManager implements PaymentManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for loading paymentTemplates for a user
      */
     @Override
@@ -252,7 +252,7 @@ public class DefaultPaymentManager implements PaymentManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for loading paymentsByTemplate after template selection
      */
     public Payment loadPaymentByTemplate(String username, String template) {
@@ -260,7 +260,7 @@ public class DefaultPaymentManager implements PaymentManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for finding all transactions associated with provided username, and creating list of the transactions
      */
     @Override

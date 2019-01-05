@@ -19,7 +19,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Implementation of UserManager interface
  * @author Michal Drda
  */
@@ -80,7 +80,7 @@ public class DefaultUserManager implements UserManager {
 
     /**
      * Getter for a roleManager
-     * @return
+     * @return found role manager
      */
     public RoleManager getRoleManager() { return roleManager; }
 
@@ -167,7 +167,7 @@ public class DefaultUserManager implements UserManager {
     public void setStringGenerator(StringGenerator generator) { this.stringGenerator = generator; }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for authentication of the user with it's username and password
      */
     @Override
@@ -177,7 +177,7 @@ public class DefaultUserManager implements UserManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for registering of the user to the system
      */
     @Override
@@ -228,7 +228,7 @@ public class DefaultUserManager implements UserManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for updating of the password of the user
      */
     @Override
@@ -246,7 +246,7 @@ public class DefaultUserManager implements UserManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for updating of the information for the user
      */
     @Override
@@ -274,7 +274,7 @@ public class DefaultUserManager implements UserManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for accessing userDao to find a user by it's username
      */
     @Override
@@ -283,7 +283,7 @@ public class DefaultUserManager implements UserManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for accessing userDao to find a user by his account number and bank code
      */
     @Override
@@ -292,7 +292,7 @@ public class DefaultUserManager implements UserManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Method used for removal of the user
      */
     @Override
@@ -302,7 +302,7 @@ public class DefaultUserManager implements UserManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Finds an user by email
      */
     public User findUserByEmail(String email) {
@@ -310,7 +310,7 @@ public class DefaultUserManager implements UserManager {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Fetches all users with role USER from DB
      */
     public ArrayList<UsersFetch> fetchAllUsers() {

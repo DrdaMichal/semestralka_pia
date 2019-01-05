@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  * Implementation of AccountManager interface
  * @author Michal Drda
  */
@@ -81,7 +81,7 @@ public class DefaultCardManager implements CardManager {
 
     /**
      * Constructor to inject CardDao
-     * @param cardDao
+     * @param cardDao provided card dao
      */
     public DefaultCardManager(CardDao cardDao) {
         this.cardDao = cardDao;
@@ -144,7 +144,7 @@ public class DefaultCardManager implements CardManager {
     public void setcardExpirationGenerator(ExpirationGenerator generator) { this.cardExpirationGenerator = generator; }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * creates a new card with provided user and account
      */
     @Override

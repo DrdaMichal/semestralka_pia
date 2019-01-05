@@ -24,7 +24,7 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findByUsername method in UserDao interface
      */
     @Override
@@ -39,7 +39,7 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * This is an implementation of findByAccountNo method in UserDao interface
      */
     @Override
@@ -66,7 +66,7 @@ public class UserDaoJpa extends GenericDaoJpa<User, String> implements UserDao {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * Fetches all users with role USER
      */
     public List<User> fetchAllUsers() {
